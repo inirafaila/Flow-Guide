@@ -22,7 +22,7 @@ source_of_truth: true
 
 ## 3. Content pipeline
 
-- **Format:** **Markdown (`.md`) + YAML frontmatter** in repo (`content/` or `src/content/`), **build-time validation** (e.g. Zod) against fields aligned to `DATA_CONTENT_MODEL_SPEC.md`.
+- **Format:** **Markdown (`.md`) + YAML frontmatter** in repo (`content/` or `src/content/`), **build-time validation** with **Zod** (`src/lib/schemas/content-page.ts` + `src/lib/content/parse-md.ts`) aligned to `DATA_CONTENT_MODEL_SPEC.md`. Invalid frontmatter **fails** the search-index prebuild step.
 - **Render:** `remark` / `rehype` (or equivalent) → HTML; **no MDX** required for v1.
 - **CMS:** **not** introduced for this launch; keep **typed content layer** and **clear module boundaries** (`lib/content/*`) so a headless CMS can **replace loaders later** without rewriting UI templates.
 - **Updates / places:** same pipeline—updates as content type; places as **data** (MD + frontmatter or small JSON) for **places-lite**.
@@ -30,7 +30,7 @@ source_of_truth: true
 
 ## 4. Search (must-launch)
 
-- **Index (build time):** emit `search-index.json` from validated content: **pages** (title, summary, slug, category, type, tags/aliases), **FAQ** entries (question + excerpt), **places-lite** rows when real place data exists.
+- **Index (build time):** `npm run build` / `predev` run **`node scripts/build-search-index.mjs`**, which executes **`scripts/build-search-index.impl.ts`** via **`tsx`** (devDependency) so the build reuses the same Zod paths as the app. Output: **`public/search-index.json`** validated with `src/lib/schemas/search-index.ts` — **pages** and **FAQ** under `src/content/` today; **places-lite** rows when that content exists.
 - **Runtime:** **client-side** **FlexSearch** or **Fuse.js** on `/search`; **grouped results** by type (guides, FAQ, places, …) per PRD.
 - **Scale:** acceptable for v1 corpus size; revisit server-side or hosted search if index size or privacy policy changes.
 
@@ -48,7 +48,9 @@ source_of_truth: true
 ## 7. Internationalization
 
 - **`next-intl`** (or equivalent): **dictionaries** `messages/{fa,en,ru}.json`.
-- **URLs:** **English-first slugs only** (no locale prefix); locale via **`NEXT_LOCALE` cookie** (optional `?lang=` for sharing).
+- **URLs:** **English-first slugs only** (no locale prefix); locale via **`NEXT_LOCALE` cookie** (optional `?lang=` for sharing — **not implemented in app middleware yet**; cookie + header switcher only).
+- **Request resolution:** `src/i18n/request.ts` uses **`getRequestConfig`** + **`await requestLocale`** (from `next-intl` middleware), validated against `src/i18n/routing.ts` `locales`, with JSON import fallback to `en`. Shell **locale switcher** posts **`setLocaleAction`** (`src/i18n/set-locale.ts`) to set the cookie and redirect.
+- **App Router mapping:** With **`localePrefix: "never"`**, middleware **internally rewrites** to **`/{locale}/...`** (e.g. `/en/search`). Route modules therefore live under **`src/app/[locale]/...`**; **`src/app/[locale]/layout.tsx`** calls **`setRequestLocale`** + **`generateStaticParams`** for `en`/`fa`/`ru`. **Public URLs** remain unprefixed (`/search`, …).
 - **RTL:** `fa` layout/CSS.
 
 ## 8. Hosting and deploy

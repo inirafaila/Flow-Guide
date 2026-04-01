@@ -12,6 +12,7 @@ Target layout under repo root (framework-agnostic names; map to Next/other as ne
 ```text
 src/
   app/           # Routes, layouts, route handlers (or pages/)
+  app/[locale]/  # IA + hub routes (next-intl internal segment; public URLs stay unprefixed)
   components/    # Shared UI primitives
   features/      # Feature-scoped UI + logic (dashboard, onboarding, guide)
   lib/           # Utilities, CMS client, rule engines

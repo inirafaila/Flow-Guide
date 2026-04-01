@@ -30,7 +30,7 @@ Web app for **newcomers to Armenia**: sequenced guidance, **source-backed** cont
 
 - **Product specs:** present (PRD, IA, data model, UI handoff, breakdown).
 - **Phase 0:** approved — `docs/04_engineering/PHASE_0_DECISION_RECORD.md`.
-- **Phase 1 (current):** Next.js **15** App Router + **TypeScript** + **React 19** + **`next-intl`** — code under `src/` (routes, lib, content). **Plumbing only:** no auth, no headless CMS, no Docker, no Phase 2 product logic (NBA/checklist/guest behavior).
+- **Phase 1 (current):** Next.js **15** App Router + **TypeScript** + **React 19** + **`next-intl`** — routes under **`src/app/[locale]/`** (internal locale segment; **browser URLs stay unprefixed** per architecture). **Plumbing only:** no auth, no headless CMS, no Docker, no Phase 2 product logic (NBA/checklist/guest behavior).
 - **Roadmap:** `docs/01_strategy/ROADMAP_MASTER.md` (strategy); `docs/01_strategy/ROADMAP_STATUS.md` (phase status).
 
 ## Local development
@@ -44,7 +44,7 @@ npm run dev
 
 `npm run dev` runs **`predev`** first → refreshes **`public/search-index.json`** for local `/search` stub.
 
-Open [http://localhost:3000](http://localhost:3000). **`/transport/airport`** redirects to **`/newcomer/airport-to-city`** (canonical airport route).
+Open [http://localhost:3000](http://localhost:3000). **`/transport/airport`** redirects to **`/newcomer/airport-to-city`** (canonical airport route). Use the header **language** control to switch **en / fa / ru** (persists **`NEXT_LOCALE`**; **`fa`** uses RTL).
 
 ```powershell
 npm run lint   # ESLint (next/core-web-vitals) on src/
@@ -52,7 +52,7 @@ npm run test   # Vitest — schema unit tests
 npm run build
 ```
 
-`npm run build` runs **`prebuild`** → `scripts/build-search-index.mjs` → writes **`public/search-index.json`** (gitignored; recreated each build). Next also type-checks during build.
+`npm run build` runs **`prebuild`** → `scripts/build-search-index.mjs` (runs **`tsx`** on `scripts/build-search-index.impl.ts` for shared Zod validation) → writes **`public/search-index.json`** (gitignored; recreated each build). Next also type-checks during build.
 
 **Optional env:** copy `.env.example` to `.env.local` — set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` when ready.
 

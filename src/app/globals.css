@@ -57,10 +57,47 @@ body {
   text-decoration: none;
 }
 
+.locale-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.locale-switcher__label {
+  margin-inline-end: 0.15rem;
+}
+
+.locale-switcher__form {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.locale-switcher__btn {
+  font: inherit;
+  font-size: 0.8125rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--header-bg) 92%, var(--fg));
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.locale-switcher__btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .site-header__nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
+  flex: 1 1 auto;
+  justify-content: flex-end;
 }
 
 .site-header__nav a {

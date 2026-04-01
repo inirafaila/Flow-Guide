@@ -1,14 +1,17 @@
 import { getRequestConfig } from "next-intl/server";
-import { cookies } from "next/headers";
 import type { AbstractIntlMessages } from "use-intl";
 import { defaultLocale, locales, type AppLocale } from "./routing";
 
-export default getRequestConfig(async () => {
-  const jar = await cookies();
-  const raw = jar.get("NEXT_LOCALE")?.value;
-  const locale: AppLocale = locales.includes(raw as AppLocale)
-    ? (raw as AppLocale)
-    : defaultLocale;
+function resolveLocale(candidate: string | undefined): AppLocale {
+  if (candidate && locales.includes(candidate as AppLocale)) {
+    return candidate as AppLocale;
+  }
+  return defaultLocale;
+}
+
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  const locale = resolveLocale(requested);
 
   let messages: AbstractIntlMessages;
   try {

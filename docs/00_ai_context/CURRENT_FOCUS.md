@@ -9,10 +9,11 @@ source_of_truth: true
 
 **Phase 1 only** — engineering and content **plumbing** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 1).
 
-1. **Route skeleton** — All IA routes from the scaffold list live under `src/app/` with shared layout/shell; **`/transport/airport` → `/newcomer/airport-to-city`** (middleware).
-2. **Content layer** — `src/content/` Markdown + YAML frontmatter; **`src/lib/content/`** loaders + **Zod** schemas (stubs extensible to full `DATA_CONTENT_MODEL_SPEC.md`).
-3. **Search pipeline stub** — `scripts/build-search-index.mjs` → **`public/search-index.json`**; `/search` page loads JSON only as **Phase 1 placeholder** (no real search UX).
+1. **Route skeleton** — IA hub and slug routes live under **`src/app/[locale]/`** ( **`next-intl`** internal segment; **`localePrefix: "never"`** keeps browser URLs unprefixed); root **`src/app/layout.tsx`** + shell; **`/transport/airport` → `/newcomer/airport-to-city`** (middleware).
+2. **Content layer** — `src/content/` Markdown + YAML frontmatter validated with **Zod** (`src/lib/schemas/content-page.ts`, `src/lib/content/parse-md.ts`); extend fields toward `DATA_CONTENT_MODEL_SPEC.md` as needed.
+3. **Search index (Phase 1)** — `scripts/build-search-index.mjs` runs **`build-search-index.impl.ts`** via **`tsx`** → **`public/search-index.json`** (validated output). **`/search`** loads JSON only as **placeholder** (no grouped / Phase 4 search UX).
 4. **Observability stubs** — Plausible script gated on env; Sentry init stub / TODO per `ENGINEERING_ARCHITECTURE.md` (no production DSN required yet).
 5. **Quality baseline** — **`npm run lint`** (ESLint on `src/`), **`npm run build`**, **`npm run test`** (Vitest); **README** run instructions.
+6. **i18n (Phase 1, UI-only)** — **`next-intl`** + **`messages/{en,fa,ru}`** + header locale switcher (**`NEXT_LOCALE`**); no locale-prefixed routes; optional **`?lang=`** deferred.
 
 **Explicitly not in focus:** NBA, checklist, `localStorage` guest **behavior**, auth, forms, headless CMS, Docker, real grouped search UI, admin.

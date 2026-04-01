@@ -9,13 +9,15 @@ source_of_truth: true
 
 ## Now (Phase 1 scaffold)
 
-- Run **`npm install`** and **`npm run dev`** from repo root; confirm **lint** and **build** pass (`npm run lint`, `npm run build` — build runs **`prebuild`** → search index).
+- **Shipped:** Git Markdown + YAML under `src/content/**` is validated at build time (shared **Zod** + `src/lib/content/parse-md.ts`); **`public/search-index.json`** is emitted from validated records via **`node scripts/build-search-index.mjs`** → **`tsx`** + `scripts/build-search-index.impl.ts` (invalid frontmatter **fails** `prebuild`). **`/search`** remains a Phase 1 placeholder (fetch + count only).
+- **Shipped (routing + i18n):** App routes under **`src/app/[locale]/`** aligned with **`next-intl`** middleware internal rewrite (public URLs still unprefixed).
+- **Shipped (i18n, Phase 1 UI-only):** **`next-intl`** request config uses middleware **`requestLocale`** + validated fallback; **`messages/{en,fa,ru}.json`** stay in parity (Vitest key-tree check); header **locale switcher** persists **`NEXT_LOCALE`** via server action (`src/i18n/set-locale.ts`). Optional **`?lang=`** query handling **deferred** (low priority vs middleware-order risk).
+- Run **`npm install`** (pulls **tsx** devDependency), then **`npm run dev`** / **`npm run lint`**, **`npm run test`**, **`npm run build`** from repo root before merge.
 - Fill **placeholder copy** on hub pages only where needed for sanity checks; keep **no** trust/legal claims until content review.
-- Keep **sample** Markdown under `src/content/pages/` and `src/content/faq/` in sync with **`DATA_CONTENT_MODEL_SPEC.md`** as schemas tighten (samples already exercise the search-index script).
+- When tightening `src/lib/schemas/content-page.ts`, keep sample Markdown under `src/content/pages/` and `src/content/faq/` passing validation.
 
 ## Next
 
-- **Wire `next-intl`** for **fa/ru** message files (parity with `messages/en.json`) and locale cookie UX when ready—still Phase 1 if UI-only.
 - **CI** — GitHub Actions (or Vercel-only checks): `lint` + `build` on PR.
 - Reconcile **`DEVELOPMENT_BREAKDOWN.md`** epic labels with **Phase 1** tickets (route list, content pipeline, search stub).
 

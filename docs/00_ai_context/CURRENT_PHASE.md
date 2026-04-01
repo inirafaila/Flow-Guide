@@ -26,7 +26,7 @@ Per master roadmap **Phase 1**:
 - App **shell** and **route skeleton** match `IA_SPEC.md` (including airport redirect to canonical).
 - Shared **types** / **Zod** stubs aligned toward `DATA_CONTENT_MODEL_SPEC.md`.
 - **Hub / guide / calculator / utility** pages exist as **placeholders** (no real product logic).
-- **Content** directory + **build-time validation** path stubbed; **`search-index.json`** produced in build (may be empty array initially).
+- **Content** directory + **build-time Zod validation** for Markdown frontmatter; **`search-index.json`** produced in **`prebuild`** from validated **pages** and **FAQ** records (empty array only if no valid files; invalid frontmatter **fails** the build).
 - **Env** pattern, **lint/test/build** runnable; **Plausible** + **Sentry** wired as **stubs** (no secrets required locally).
 - **No** NBA/checklist/guest **logic** beyond constants/types/stubs.
 

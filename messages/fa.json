@@ -1,6 +1,10 @@
 {
   "brand": "Flow-Guide",
   "shell": {
+    "language": "زبان",
+    "locale_en": "English",
+    "locale_fa": "فارسی",
+    "locale_ru": "Русский",
     "home": "خانه",
     "start": "شروع",
     "dashboard": "داشبورد",

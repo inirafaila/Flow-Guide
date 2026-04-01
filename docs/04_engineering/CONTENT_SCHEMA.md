@@ -19,6 +19,11 @@ source_of_truth: false
 
 - Types generated or hand-written in `src/types/` should stay in sync with this doc and CMS.
 
+## Phase 1 implementation (git Markdown)
+
+- **Frontmatter schema:** `src/lib/schemas/content-page.ts` (Zod); **shared parse:** `src/lib/content/parse-md.ts`.
+- **Search index records:** `src/lib/schemas/search-index.ts`, `src/types/search-index.ts`; **build:** `scripts/build-search-index.mjs` → `scripts/build-search-index.impl.ts` → `public/search-index.json`.
+
 ## i18n fields
 
 - Per-locale fields for title/body; single canonical **slug** (English-first).

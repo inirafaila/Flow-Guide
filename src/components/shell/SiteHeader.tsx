@@ -1,32 +1,41 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { LocaleSwitcher } from "@/components/shell/LocaleSwitcher";
 
 export async function SiteHeader() {
-  const t = await getTranslations("shell");
+  const t = await getTranslations();
 
   const links: { href: string; label: string }[] = [
-    { href: "/", label: t("home") },
-    { href: "/start", label: t("start") },
-    { href: "/dashboard", label: t("dashboard") },
-    { href: "/search", label: t("search") },
-    { href: "/faq", label: t("faq") },
-    { href: "/updates", label: t("updates") },
-    { href: "/newcomer", label: t("newcomer") },
-    { href: "/documents", label: t("documents") },
-    { href: "/work", label: t("work") },
-    { href: "/housing", label: t("housing") },
-    { href: "/payments", label: t("payments") },
-    { href: "/transport", label: t("transport") },
-    { href: "/daily-life", label: t("dailyLife") },
-    { href: "/city", label: t("city") },
+    { href: "/", label: t("shell.home") },
+    { href: "/start", label: t("shell.start") },
+    { href: "/dashboard", label: t("shell.dashboard") },
+    { href: "/search", label: t("shell.search") },
+    { href: "/faq", label: t("shell.faq") },
+    { href: "/updates", label: t("shell.updates") },
+    { href: "/newcomer", label: t("shell.newcomer") },
+    { href: "/documents", label: t("shell.documents") },
+    { href: "/work", label: t("shell.work") },
+    { href: "/housing", label: t("shell.housing") },
+    { href: "/payments", label: t("shell.payments") },
+    { href: "/transport", label: t("shell.transport") },
+    { href: "/daily-life", label: t("shell.dailyLife") },
+    { href: "/city", label: t("shell.city") },
   ];
 
   return (
     <header className="site-header">
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
-          Flow-Guide
+          {t("brand")}
         </Link>
+        <LocaleSwitcher
+          languageLabel={t("shell.language")}
+          localeLabels={{
+            en: t("shell.locale_en"),
+            fa: t("shell.locale_fa"),
+            ru: t("shell.locale_ru"),
+          }}
+        />
         <nav className="site-header__nav" aria-label="Primary">
           {links.map(({ href, label }) => (
             <Link key={href} href={href}>

@@ -13,6 +13,8 @@ All notable project changes are documented here. Format follows [Keep a Changelo
 
 ### Added
 
+- Phase 1 **App Router `[locale]` segment** under **`src/app/[locale]/`** ( **`setRequestLocale`** + **`generateStaticParams`** ) so **`next-intl`** middleware internal rewrites match the filesystem; hub routes no longer 404.
+- Phase 1 **i18n**: header locale switcher, **`NEXT_LOCALE`** server action, **`messages/*`** parity test, hardened **`src/i18n/request.ts`** (`requestLocale`).
 - Canonical `docs/` tree: AI context, strategy, product, design, engineering, execution, research.
 - Cursor rules under `.cursor/rules/` for project context and doc update policy.
 - `src/` and `public/` directory placeholders for upcoming application scaffold.
