@@ -12,7 +12,7 @@ source_of_truth: true
 - **Shipped:** Git Markdown + YAML under `src/content/**` is validated at build time (shared **Zod** + `src/lib/content/parse-md.ts`); **`public/search-index.json`** is emitted from validated records via **`node scripts/build-search-index.mjs`** → **`tsx`** + `scripts/build-search-index.impl.ts` (invalid frontmatter **fails** `prebuild`). **`/search`** remains a Phase 1 placeholder (fetch + count only).
 - **Shipped (routing + i18n):** App routes under **`src/app/[locale]/`** aligned with **`next-intl`** middleware internal rewrite (public URLs still unprefixed).
 - **Shipped (i18n, Phase 1 UI-only):** **`next-intl`** request config uses middleware **`requestLocale`** + validated fallback; **`messages/{en,fa,ru}.json`** stay in parity (Vitest key-tree check); header **locale switcher** persists **`NEXT_LOCALE`** via server action (`src/i18n/set-locale.ts`). Optional **`?lang=`** query handling **deferred** (low priority vs middleware-order risk).
-- **Shipped (CI, Phase 1):** **GitHub Actions** **`.github/workflows/ci.yml`** — on **pull requests to `main`**: **`npm ci`**, **`npm run lint`**, **`npm run build`** (concurrency cancel in-flight). **`npm run test`** not in CI for this slice (local / optional stricter gate later).
+- **Shipped (CI, Phase 1):** **GitHub Actions** **`.github/workflows/ci.yml`** — on **pull requests to `main`**: **`npm ci`**, **`npm run lint`**, **`npm run test`**, **`npm run build`** (concurrency cancel in-flight).
 - Run **`npm install`** (pulls **tsx** devDependency), then **`npm run dev`** / **`npm run lint`**, **`npm run test`**, **`npm run build`** from repo root before merge.
 - Fill **placeholder copy** on hub pages only where needed for sanity checks; keep **no** trust/legal claims until content review.
 - When tightening `src/lib/schemas/content-page.ts`, keep sample Markdown under `src/content/pages/` and `src/content/faq/` passing validation.
@@ -20,7 +20,7 @@ source_of_truth: true
 
 ## Next
 
-- Optional later: add **`npm run test`** to the same workflow if the team wants CI parity with **`CURRENT_PHASE.md`** / roadmap “lint/test/build” wording.
+- Continue **Phase 1** toward exit criteria in [`CURRENT_PHASE.md`](CURRENT_PHASE.md) / [`DEVELOPMENT_BREAKDOWN.md`](../05_execution/DEVELOPMENT_BREAKDOWN.md) §Phase 1 **Remaining** (no CI gap for lint/test/build).
 
 ## After Phase 1 exit
 
