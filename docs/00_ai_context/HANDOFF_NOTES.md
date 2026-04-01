@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-02
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed
 
+- **Phase 1 PR CI (2026-04-02):** Added **`.github/workflows/ci.yml`** — **`pull_request`** to **`main`**, Node **20**, **`npm ci`**, **`npm run lint`**, **`npm run build`**, concurrency **`cancel-in-progress`**. Scope is **lint + build only** (no **`npm run test`** in CI this slice).
 - **Phase 1 next-intl route repair (2026-04-01):** Moved all route **`page.tsx`** trees under **`src/app/[locale]/`** + thin **`[locale]/layout.tsx`** (`setRequestLocale`, `generateStaticParams`, invalid locale → `notFound`). Fixes **404** on hub routes when middleware rewrites to **`/en/...`** with **`localePrefix: "never"`**. Root **`src/app/layout.tsx`** unchanged (shell + `getLocale` / `getMessages`). **`/transport/airport`** redirect unchanged.
 - **Phase 1 i18n (2026-04-01):** Hardened **`src/i18n/request.ts`** (`requestLocale` + locale validation + JSON fallback). Added **`LocaleSwitcher`** in shell + **`setLocaleAction`** (`NEXT_LOCALE` cookie, redirect to current pathname). **`messages/*`** keys aligned; **`src/i18n/messages-parity.test.ts`**. **`?lang=`** not implemented—defer to a later slice if still wanted per `ENGINEERING_ARCHITECTURE` §7.
 - **Phase 0 approved** (2026-04-01): [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) `status: approved`, `source_of_truth: true`, new **§0 Approval** summary.
@@ -18,7 +19,7 @@ source_of_truth: true
 
 ## Repository reality
 
-- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). Remaining Phase 1 items include observability hardening, CI, and full exit checklist in `CURRENT_PHASE.md`.
+- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **PR CI (lint + build)** is in place for **`main`**. Remaining Phase 1 items include observability hardening and full exit checklist in `CURRENT_PHASE.md`.
 - **`DEVELOPMENT_BREAKDOWN.md`** should be reconciled to Phase 1 tickets when convenient.
 
 ## What the next session should do
