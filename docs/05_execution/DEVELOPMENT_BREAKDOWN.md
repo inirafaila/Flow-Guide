@@ -1,12 +1,55 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-02
 source_of_truth: true
 ---
 
 # Development Breakdown / Ticket Plan
 ## MVP وب‌اپ راهنمای تازه‌واردها و مهاجران در ارمنستان
+
+---
+
+## Canonical roadmap phases (authority)
+
+**Authoritative phase names and sequencing** live in [`docs/01_strategy/ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) (`Phase 0A`, `Phase 0B`, `Phase 1` … `Phase 9`, LAG). This document keeps **epic and ticket IDs (1.x–8.x, 18.x)** for traceability; schedule work using the **master roadmap**, not legacy labels in §4 below.
+
+| Master roadmap phase | Scope (summary) | Epics / tickets in *this* doc |
+|----------------------|-----------------|-------------------------------|
+| **0A / 0B** | MVP contract + technical architecture lock | Closed for execution; see [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) |
+| **Phase 1** | Engineering + content **foundation** only: app shell, IA **route skeleton**, schema-shaped **placeholder** pages, git Markdown + **Zod**, **`search-index.json`** in prebuild, env pattern, minimal **CI**, observability **stubs** — **no** NBA, checklist, or **guest behavior** | **1** (partial), **2** (partial), **5** (5.1 + template **shells**), **7** (**7.4** index model + **7.1** page stub only; not grouped UX) |
+| **Phase 2** | Onboarding, guest state, dashboard, NBA v1, checklist v1, trust UI wired to real behavior | **3**, **4**; **5.7–5.9** when behavior is real, not static-only |
+| **Phase 3** | Must-launch guides/hubs and journey copy | **6** (primary) |
+| **Phase 4** | Grouped **client** search UX, places-lite, updates surfacing, analytics/SEO hardening | **7** (**7.2–7.3**, **7.5–7.9**), **8** (e.g. **8.7**); aligns with [`ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) §4 |
+| **Phase 5+ / LAG** | QA, release readiness, launch approval | **18.x** |
+
+**Search split:** **Build-time index** (`search-index.json` + validation) = **Phase 1**. **Client grouped search results UI** = **Phase 4**. Must-launch search remains a **launch-bundle** requirement ([`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md)); it is **not** implied to be finished in Phase 1.
+
+**§4 (فازبندی کلان)** uses an older internal “Phase 0–4” sketch. Those labels **do not** match `ROADMAP_MASTER` — use the table above when prioritizing.
+
+---
+
+## Phase 1 execution status (repo reality, 2026-04)
+
+Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md), [`CURRENT_FOCUS.md`](../00_ai_context/CURRENT_FOCUS.md), [`PROJECT_STATE.md`](../00_ai_context/PROJECT_STATE.md).
+
+### Shipped (Phase 1 — partial)
+
+- **Routing + i18n:** IA routes under `src/app/[locale]/`; `next-intl` + `localePrefix: "never"` (URLs unprefixed); `NEXT_LOCALE` + header locale switcher; `/transport/airport` → `/newcomer/airport-to-city`.
+- **Content pipeline:** `src/content/**/*.md` + YAML; build-time **Zod** validation; invalid frontmatter **fails** prebuild.
+- **Search index (Phase 1 only):** `scripts/build-search-index.mjs` → `tsx` / `build-search-index.impl.ts` → validated `public/search-index.json`.
+- **`/search`:** placeholder only (e.g. fetch/count) — **not** Phase 4 grouped UX.
+- **CI:** GitHub Actions on PRs to `main`: `npm ci`, `npm run lint`, `npm run build` (no `npm run test` in CI for this slice).
+- **Observability:** Plausible / Sentry **stubs** per architecture.
+- **Ticket pointers (approximate):** **1.1–1.3**, **2.1–2.2** (locale switch **shipped**, not placeholder-only), **5.1** (partial), **7.4** (partial), **7.1** (stub until Phase 4 UX).
+
+### Remaining before Phase 1 exit
+
+Confirm route skeleton vs [`IA_SPEC.md`](../02_product/IA_SPEC.md); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md); hub/guide/calculator/utility remain **placeholders** without product logic; local **lint / test / build** green; stub observability ready for later env wiring; **no** NBA/checklist/guest logic beyond constants/stubs. Optional: add `npm run test` to CI; optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
+
+### Not Phase 1 (do not schedule as current implementation)
+
+Epic **3–4** (Phase 2). Epic **6** substantive content (Phase 3). Epic **7** grouped search / places / updates as product-complete (Phase 4). Epic **8** forms and full analytics (Phase 4+; housing/casino default **post-launch** unless promoted — [`OPEN_ITEMS.md`](../00_ai_context/OPEN_ITEMS.md)).
 
 ---
 
@@ -57,18 +100,33 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 7. Search + Places-lite + Updates
 8. Lightweight Service Forms + Instrumentation
 
+### Epic → master roadmap phase (quick tags)
+
+| Epic | Master roadmap phase | Notes |
+|------|----------------------|--------|
+| **1** | Phase 1 | Foundation; partial shipped |
+| **2** | Phase 1 | Shell/nav; partial shipped |
+| **3** | **Phase 2** | Onboarding + guest — **not** Phase 1 implementation |
+| **4** | **Phase 2** | Dashboard + checklist logic |
+| **5** | Phase 1 (schema + **shells**); **5.7–5.9** behavior = Phase 2 | Templates before content explosion |
+| **6** | **Phase 3** (+ calculator **logic** touches Phase 2) | Core content pages |
+| **7** | Phase 1: **7.1** stub + **7.4** index; **Phase 4:** **7.2–7.3**, **7.5–7.9** | Search UX / updates / places-lite |
+| **8** | **Phase 4** (e.g. **8.7**); forms default post-launch | See `OPEN_ITEMS` / Phase 0 record |
+
 ---
 
-## 4) فازبندی کلان
+## 4) فازبندی کلان (legacy internal sketch — do not equate to ROADMAP_MASTER)
 
-### Phase 0 — Setup & Alignment
+**Warning:** The following “Phase 0–4” blocks are **historical planning shorthand**. They **overlap** master **Phase 1–4** differently (e.g. old “Phase 1” here included onboarding/dashboard shells, which in `ROADMAP_MASTER` are **Phase 2**). For execution, use **`ROADMAP_MASTER`** + **Canonical roadmap phases** at the top of this file.
+
+### Legacy Phase 0 — Setup & Alignment
 خروجی:
 - repo structure
 - routing strategy
 - design token basics
 - data contracts baseline
 
-### Phase 1 — Core Product Skeleton
+### Legacy Phase 1 — Core Product Skeleton (historical label)
 خروجی:
 - app shell
 - navigation
@@ -76,7 +134,7 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 - onboarding shell
 - dashboard shell
 
-### Phase 2 — MVP Core Experience
+### Legacy Phase 2 — MVP Core Experience
 خروجی:
 - Home
 - Onboarding
@@ -84,14 +142,14 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 - content template usable
 - 8 صفحه حیاتی live
 
-### Phase 3 — Practical Utility Layer
+### Legacy Phase 3 — Practical Utility Layer
 خروجی:
 - Search basic
 - updates
 - places-lite blocks
 - additional core pages
 
-### Phase 4 — Lightweight Service Layer + Polish
+### Legacy Phase 4 — Lightweight Service Layer + Polish
 خروجی:
 - housing request form
 - casino referral form
@@ -101,6 +159,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ---
 
 ## 5) Epic 1 — Product Foundation
+
+**Master roadmap:** **Phase 1** (foundation); partial shipped — see **Phase 1 execution status** at top.
 
 ### هدف epic
 ساخت foundation فنی و محصولی که بقیه چیزها روی آن سوار شوند.
@@ -154,6 +214,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 ## 6) Epic 2 — Core Navigation + App Shell
 
+**Master roadmap:** **Phase 1** (shell/nav); partial shipped — locale switcher and shell live; mobile nav / search trigger may still be stub.
+
 ### هدف epic
 ساخت پوسته اصلی اپ که همه صفحات داخل آن رندر شوند.
 
@@ -174,8 +236,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 **خروجی:**
 - top navigation
 - CTA buttons
-- language switch placeholder
-- search trigger
+- language switch (**Phase 1 shipped:** header switcher + `NEXT_LOCALE` cookie; optional `?lang=` deferred per `ENGINEERING_ARCHITECTURE.md`)
+- search trigger (may remain stub until Phase 4 grouped search UX)
 
 ### Ticket 2.3 — Build mobile navigation
 **نوع:** frontend  
@@ -203,6 +265,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ---
 
 ## 7) Epic 3 — Onboarding + Guest State
+
+**Master roadmap:** **Phase 2** — not active Phase 1 implementation work.
 
 ### هدف epic
 ساخت guided setup و state موقت کاربر بدون ثبت‌نام.
@@ -259,6 +323,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ---
 
 ## 8) Epic 4 — Dashboard + Checklist Logic
+
+**Master roadmap:** **Phase 2** — not active Phase 1 implementation work.
 
 ### هدف epic
 ساخت یک dashboard ساده ولی useful بر اساس state کاربر.
@@ -327,6 +393,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ---
 
 ## 9) Epic 5 — Content System + Page Templates
+
+**Master roadmap:** **Phase 1** for schema (**5.1**) and **template shells** (**5.2–5.6**); **5.7–5.9** trust UI wired to real data/rules = **Phase 2**.
 
 ### هدف epic
 ساخت موتور نمایش pageها و templateهای reusable.
@@ -397,6 +465,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ---
 
 ## 10) Epic 6 — Core Content Pages
+
+**Master roadmap:** **Phase 3** (must-launch copy and journeys); stay-calculator **behavior** aligns with Phase 2 product logic where applicable.
 
 ### هدف epic
 ساخت صفحاتی که MVP بدون آن‌ها ارزش واقعی ندارد.
@@ -504,6 +574,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 ## 11) Epic 7 — Search + Places-lite + Updates
 
+**Master roadmap split:** **Phase 1** — **7.1** (stub page) + **7.4** (build-time index / schema; partial shipped). **Phase 4** — **7.2–7.3** (grouped client search UX), **7.5–7.6** (updates), **7.7–7.9** (places-lite).
+
 ### هدف epic
 افزودن utility layerی که usability و trust را بالا می‌برد.
 
@@ -546,6 +618,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ---
 
 ## 12) Epic 8 — Lightweight Service Forms + Instrumentation
+
+**Master roadmap:** **Phase 4** for **8.7** (analytics) and launch-adjacent instrumentation; housing/casino forms **default post-launch** unless promoted — see [`OPEN_ITEMS.md`](../00_ai_context/OPEN_ITEMS.md) and Phase 0 record.
 
 ### هدف epic
 اضافه کردن حداقل service layer و analytics پایه.
@@ -599,6 +673,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 ## 13) Dependency Map
 
+**Execution gate:** Meet **Phase 1 exit** ([`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md)) before treating Epic **3–4** as active **implementation** work (they are **Phase 2** on the master roadmap). Ticket lists in §14 describe **launch bundle**, not “all in Phase 1.”
+
 ### Foundation dependencies
 - Epic 1 باید قبل از همه شروع شود
 - Epic 2 روی Epic 1 سوار می‌شود
@@ -623,6 +699,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 ## 14) تعریف MVP Cut Line
 
 برای اینکه scope کنترل شود، باید دقیقاً روشن باشد چه ticketهایی برای launch لازم‌اند.
+
+**Master roadmap alignment:** §14.1–14.3 list tickets required for **launch / LAG** (product contract), **not** the Phase 1 engineering scope. **Implementation order** is **Phase 1 → 2 → 3 → 4 → 5** per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md). A ticket can be must-launch and still belong to **Phase 3** (content) or **Phase 4** (search UX).
 
 ## 14.1 Must-launch tickets
 این ticketها برای launch MVP ضروری‌اند:
@@ -741,6 +819,8 @@ P0 / P1 / P2
 
 ## 18) QA / Release Readiness Tickets
 
+**Roadmap:** **Phase 5** (verification / release readiness) and LAG prep — not Phase 1 work.
+
 ### Ticket 18.1 — Responsive QA on core pages
 **نوع:** QA  
 **اولویت:** P1
@@ -767,39 +847,42 @@ P0 / P1 / P2
 
 ---
 
-## 19) ترتیب پیشنهادی Sprintها
+## 19) Phase-gated execution order (canonical sequencing)
 
-## Sprint 1
-- Epic 1
-- Epic 2
-- Ticket 3.1
-- Ticket 5.1
+**Deprecated for scheduling:** The former “Sprint 1–6” list mixed **Phase 1** foundation with **Phase 2–4** tickets in parallel waves; that is **misleading** now that the repo follows [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md). Use **gates** below. Historical sprint bullets are archived at [§19.1 Legacy sprint reference (deprecated)](#191-legacy-sprint-reference-deprecated).
 
-## Sprint 2
-- باقی Epic 3
-- Ticket 5.2 تا 5.9
-- Ticket 4.1 تا 4.4
+### Gate A — Phase 1 exit (current track)
 
-## Sprint 3
-- Ticket 4.5 تا 4.8
-- Ticket 6.1 تا 6.9
+- Close items in **Phase 1 execution status** (top of this doc): routes, Zod/content, `search-index.json`, CI, stubs, placeholder templates — **no** guest/NBA/checklist behavior.
+- Epics **1–2** (remaining gaps), **5.1** + template shells **5.2–5.6** as placeholders, **7.4** + **7.1** stub only.
 
-## Sprint 4
-- Ticket 6.10 تا 6.18
-- Ticket 6.20 تا 6.21
-- Ticket 7.5 تا 7.6
+### Gate B — Phase 2
 
-## Sprint 5
-- Ticket 7.1 تا 7.4
-- Ticket 6.23 تا 6.24
-- Ticket 8.7
-- QA / polish
+- Epics **3–4**; trust blocks **5.7–5.9** when wired to real state/logic.
 
-## Sprint 6 (optional / post-launch prep)
-- places-lite
-- service forms
-- save/account prompts
-- additional polish
+### Gate C — Phase 3
+
+- Epic **6** must-launch pages and copy (see §14.1).
+
+### Gate D — Phase 4
+
+- Epic **7:** **7.2–7.3** grouped search UI, **7.5–7.6** updates, **7.7–7.9** places-lite.
+- Epic **8:** **8.7** analytics; service forms per [`OPEN_ITEMS.md`](../00_ai_context/OPEN_ITEMS.md) / Phase 0 default (post-launch unless promoted).
+
+### Gate E — Phase 5+
+
+- Tickets **18.x**, LAG, release hardening.
+
+### 19.1 Legacy sprint reference (deprecated)
+
+Do **not** use for current planning; retained for traceability only.
+
+- **Sprint 1 (legacy):** Epic 1, Epic 2, Ticket 3.1, Ticket 5.1  
+- **Sprint 2 (legacy):** remainder Epic 3; Tickets 5.2–5.9; Tickets 4.1–4.4  
+- **Sprint 3 (legacy):** Tickets 4.5–4.8; Tickets 6.1–6.9  
+- **Sprint 4 (legacy):** Tickets 6.10–6.18; 6.20–6.21; 7.5–7.6  
+- **Sprint 5 (legacy):** Tickets 7.1–7.4; 6.23–6.24; 8.7; QA / polish  
+- **Sprint 6 (legacy, optional):** places-lite; service forms; save/account prompts; polish  
 
 ---
 

@@ -16,10 +16,10 @@ source_of_truth: true
 - Run **`npm install`** (pulls **tsx** devDependency), then **`npm run dev`** / **`npm run lint`**, **`npm run test`**, **`npm run build`** from repo root before merge.
 - Fill **placeholder copy** on hub pages only where needed for sanity checks; keep **no** trust/legal claims until content review.
 - When tightening `src/lib/schemas/content-page.ts`, keep sample Markdown under `src/content/pages/` and `src/content/faq/` passing validation.
+- **Done (docs, 2026-04-02):** **`DEVELOPMENT_BREAKDOWN.md`** reconciled with **`ROADMAP_MASTER`** phase boundaries — Phase 1 shipped/remaining, epic tags, §14 launch vs phase note, §19 phase gates (legacy sprints deprecated).
 
 ## Next
 
-- Reconcile **`DEVELOPMENT_BREAKDOWN.md`** epic labels with **Phase 1** tickets (route list, content pipeline, search stub).
 - Optional later: add **`npm run test`** to the same workflow if the team wants CI parity with **`CURRENT_PHASE.md`** / roadmap “lint/test/build” wording.
 
 ## After Phase 1 exit
