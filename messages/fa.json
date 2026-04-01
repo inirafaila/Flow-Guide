@@ -1,0 +1,22 @@
+{
+  "brand": "Flow-Guide",
+  "shell": {
+    "home": "خانه",
+    "start": "شروع",
+    "dashboard": "داشبورد",
+    "search": "جستجو",
+    "faq": "سوالات متداول",
+    "updates": "به‌روزرسانی‌ها",
+    "newcomer": "تازه‌وارد",
+    "documents": "مدارک",
+    "work": "کار و درآمد",
+    "housing": "مسکن",
+    "payments": "پرداخت",
+    "transport": "حمل‌ونقل",
+    "dailyLife": "زندگی روزمره",
+    "city": "شهر و گردش"
+  },
+  "placeholder": {
+    "phase1": "صفحهٔ فاز ۱ — محتوا و رفتار در فازهای بعدی."
+  }
+}

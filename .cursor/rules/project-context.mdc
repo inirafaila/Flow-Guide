@@ -1,0 +1,25 @@
+---
+description: Flow-guide repo context — read docs before coding
+globs:
+  - "**/*"
+---
+
+# Flow-guide project context
+
+This repository is **flow-guide**: a **newcomer guide web app for Armenia** with **guest-first** UX, **dashboard**-centric **next actions**, **source-aware** content, and **English-first slugs**.
+
+## Before substantive edits
+
+1. Follow `docs/00_ai_context/CURSOR_NEW_CHAT_PROTOCOL.md` for file read order.
+2. Respect `docs/00_ai_context/LOCKED_DECISIONS.md` and `LOCKED_LOGIC.md`; do not override without explicit human direction.
+3. Product truth lives in `docs/02_product/` (especially `PRD_MVP.md`, `IA_SPEC.md`, `DATA_CONTENT_MODEL_SPEC.md`).
+4. Execution backlog reference: `docs/05_execution/DEVELOPMENT_BREAKDOWN.md`.
+
+## Structure
+
+- Application code targets `src/` and `public/` per `docs/04_engineering/FOLDER_STRUCTURE.md`.
+- Long-form documentation is under `docs/` only — avoid duplicating product rules in random markdown at repo root except `README.md` and `CHANGELOG.md`.
+
+## Staleness
+
+Content touching residency, payments, transport, or banking must align with `docs/00_ai_context/DATA_STALENESS.md` and source metadata in the content model.

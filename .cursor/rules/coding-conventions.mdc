@@ -1,0 +1,27 @@
+---
+description: Coding conventions for flow-guide application code
+globs:
+  - "src/**"
+  - "public/**"
+---
+
+# Coding conventions
+
+Stack is **not finalized** — follow whatever `docs/04_engineering/ENGINEERING_ARCHITECTURE.md` states once updated after `OPEN_ITEMS.md` is resolved.
+
+## General
+
+- Prefer **TypeScript** with explicit types for public APIs and shared models.
+- **Colocate** feature code under `src/features/<feature>/`; shared UI in `src/components/`.
+- Match types to `docs/04_engineering/CONTENT_SCHEMA.md` and `docs/02_product/DATA_CONTENT_MODEL_SPEC.md`.
+
+## Product rules in code
+
+- **Guest-first** — no forced auth on initial routes.
+- **English-first slugs** — routing and canonical IDs; locale for display only unless IA specifies otherwise.
+- **Sources** — UI must support source records on sensitive content; do not strip provenance.
+
+## Quality
+
+- Add tests for non-trivial logic (checklist rules, next-action ordering) when implemented.
+- No secrets in source; use environment variables documented in deployment docs.

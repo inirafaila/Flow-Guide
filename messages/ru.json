@@ -1,0 +1,22 @@
+{
+  "brand": "Flow-Guide",
+  "shell": {
+    "home": "Главная",
+    "start": "Старт",
+    "dashboard": "Дашборд",
+    "search": "Поиск",
+    "faq": "FAQ",
+    "updates": "Обновления",
+    "newcomer": "Новичкам",
+    "documents": "Документы",
+    "work": "Работа и доход",
+    "housing": "Жильё",
+    "payments": "Платежи",
+    "transport": "Транспорт",
+    "dailyLife": "Быт",
+    "city": "Город и туризм"
+  },
+  "placeholder": {
+    "phase1": "Каркас маршрута фазы 1 — контент и логика позже."
+  }
+}

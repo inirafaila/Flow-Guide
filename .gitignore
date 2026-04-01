@@ -1,0 +1,24 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+
+# env
+.env
+.env.local
+.env.*.local
+
+# debug / os
+npm-debug.log*
+.DS_Store
+*.pem
+
+# vitest
+coverage
+
+# search index (generated; recreated by prebuild)
+public/search-index.json

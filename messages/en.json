@@ -1,0 +1,22 @@
+{
+  "brand": "Flow-Guide",
+  "shell": {
+    "home": "Home",
+    "start": "Start",
+    "dashboard": "Dashboard",
+    "search": "Search",
+    "faq": "FAQ",
+    "updates": "Updates",
+    "newcomer": "Newcomer",
+    "documents": "Documents",
+    "work": "Work & income",
+    "housing": "Housing",
+    "payments": "Payments",
+    "transport": "Transport",
+    "dailyLife": "Daily life",
+    "city": "City & tourism"
+  },
+  "placeholder": {
+    "phase1": "Phase 1 route shell — content and behavior come in later phases."
+  }
+}

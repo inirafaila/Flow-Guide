@@ -1,0 +1,21 @@
+---
+description: When to update which docs after changes
+globs:
+  - "docs/**"
+  - "**/*.md"
+---
+
+# Documentation update policy
+
+After **meaningful** changes, keep docs consistent using `docs/00_ai_context/UPDATE_PROTOCOL.md`.
+
+## Quick triggers
+
+- **Scope / PRD change** → PRD, scope matrix, roadmap, `PROJECT_STATE.md`, `NEXT_ACTIONS.md`, `DECISION_LOG.md`.
+- **Task done** → `NEXT_ACTIONS.md`, `HANDOFF_NOTES.md`, sprint/task packs if used.
+- **New locked rule** → `LOCKED_DECISIONS.md` or `LOCKED_LOGIC.md` + `DECISION_LOG.md`; clear `TEMP_ASSUMPTIONS.md` conflicts.
+- **Architecture** → `ENGINEERING_ARCHITECTURE.md`, `FOLDER_STRUCTURE.md`, `API_CONTRACTS.md` / `CONTENT_SCHEMA.md` as applicable.
+- **UI behavior** → `UI_STATES.md`, optionally `UI_HANDOFF_SPEC.md` or design docs.
+- **Roadmap** → `ROADMAP_STATUS.md`, `SPRINT_PLAN.md` or `RELEASE_PLAN.md`.
+
+Bump `last_updated` in YAML frontmatter when the file’s meaning changes.
