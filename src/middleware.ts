@@ -1,5 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
+import { PHASE1_IA_AIRPORT_REDIRECT } from "./lib/ia-phase1-routes";
 import { defaultLocale, locales } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware({
@@ -10,9 +11,9 @@ const intlMiddleware = createMiddleware({
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname.replace(/\/$/, "") || "/";
-  if (pathname === "/transport/airport") {
+  if (pathname === PHASE1_IA_AIRPORT_REDIRECT.fromPath) {
     return NextResponse.redirect(
-      new URL("/newcomer/airport-to-city", request.url),
+      new URL(PHASE1_IA_AIRPORT_REDIRECT.toPath, request.url),
     );
   }
   return intlMiddleware(request);
