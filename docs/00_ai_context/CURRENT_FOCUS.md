@@ -16,6 +16,7 @@ source_of_truth: true
 5. **Search index (Phase 1)** — `scripts/build-search-index.mjs` runs **`build-search-index.impl.ts`** via **`tsx`** → **`public/search-index.json`** (validated output). **`/search`** loads JSON only as **placeholder** (no grouped / Phase 4 search UX).
 6. **Observability (Phase 1 wiring)** — **`@sentry/nextjs`** env-gated via root **`sentry.*.config.ts`** + **`src/instrumentation.ts`** (no init without DSNs). Plausible gated on domain + **no default load in `next dev`** unless **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`**. **Minimal structured server logs:** **`src/lib/observability/logger.ts`** (JSON per line); **release/source-map automation** remains a **later** slice.
 7. **Quality baseline** — **`npm run lint`** (ESLint on `src/`), **`npm run build`**, **`npm run test`** (Vitest); **README** run instructions.
-8. **i18n (Phase 1, UI-only)** — **`next-intl`** + **`messages/{en,fa,ru}`** + header locale switcher (**`NEXT_LOCALE`**); no locale-prefixed routes; optional **`?lang=`** deferred.
+8. **Design tokens + shared primitives (Phase 1)** — **`globals.css`** token consolidation; **`src/components/ui/`** (`Button`, `Card`, `SectionHeader`) on shell + template placeholders only—**no** Home/Start/Dashboard product layout, no trust/search/forms behavior.
+9. **i18n (Phase 1, UI-only)** — **`next-intl`** + **`messages/{en,fa,ru}`** + header locale switcher (**`NEXT_LOCALE`**); no locale-prefixed routes; optional **`?lang=`** deferred.
 
 **Explicitly not in focus:** NBA, checklist, `localStorage` guest **behavior**, auth, forms, headless CMS, Docker, real grouped search UI, admin.

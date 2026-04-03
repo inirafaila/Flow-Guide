@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
 import { setLocaleAction } from "@/i18n/set-locale";
 
@@ -20,15 +21,16 @@ export function LocaleSwitcher({
       <form className="locale-switcher__form" action={setLocaleAction}>
         <input type="hidden" name="pathname" value={pathname} />
         {(["en", "fa", "ru"] as const).map((code) => (
-          <button
+          <Button
             key={code}
             type="submit"
+            variant="secondary"
             name="locale"
             value={code}
             className="locale-switcher__btn"
           >
             {localeLabels[code]}
-          </button>
+          </Button>
         ))}
       </form>
     </div>

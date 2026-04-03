@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -67,8 +68,9 @@ export function SiteHeaderChrome({
         <div className="site-header__brand-slot">{brandLink}</div>
         <div className="site-header__row-end">
           <div className="site-header__locale">{localeSwitcher}</div>
-          <button
+          <Button
             type="button"
+            variant="secondary"
             className="site-header__menu-toggle"
             aria-expanded={open}
             aria-controls={panelId}
@@ -78,7 +80,7 @@ export function SiteHeaderChrome({
             <span className="site-header__menu-icon" aria-hidden={true}>
               {open ? "\u00d7" : "\u2630"}
             </span>
-          </button>
+          </Button>
         </div>
       </div>
 

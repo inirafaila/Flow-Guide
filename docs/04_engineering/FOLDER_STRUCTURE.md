@@ -14,6 +14,7 @@ src/
   app/           # Routes, layouts, route handlers (or pages/)
   app/[locale]/  # IA + hub routes (next-intl internal segment; public URLs stay unprefixed)
   components/    # Shared UI primitives
+  components/ui/     # Phase 1 minimal primitives (Button, Card, SectionHeader)
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
   features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub)
   lib/           # Utilities, CMS client, rule engines

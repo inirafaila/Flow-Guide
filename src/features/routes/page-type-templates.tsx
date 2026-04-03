@@ -1,15 +1,17 @@
 import { getTranslations } from "next-intl/server";
+import { Card } from "@/components/ui/Card";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RoutePageBanner } from "@/features/routes/RoutePageBanner";
 
 async function Block({ messageKey }: { messageKey: string }) {
   const t = await getTranslations("pageTemplate");
   return (
-    <section className="page-template__block">
-      <h2 className="page-template__block-title muted">{t(messageKey)}</h2>
+    <Card>
+      <SectionHeader className="muted">{t(messageKey)}</SectionHeader>
       <div className="page-template__block-stub muted" aria-hidden="true">
         —
       </div>
-    </section>
+    </Card>
   );
 }
 
@@ -68,14 +70,12 @@ export async function UtilityPageTemplate({ path }: { path: string }) {
   return (
     <article className="page-template page-template--utility">
       <RoutePageBanner path={path} />
-      <section className="page-template__block">
-        <h2 className="page-template__block-title muted">
-          {t("utility.groupedSurface")}
-        </h2>
+      <Card>
+        <SectionHeader className="muted">{t("utility.groupedSurface")}</SectionHeader>
         <div className="page-template__block-stub muted" aria-hidden="true">
           —
         </div>
-      </section>
+      </Card>
     </article>
   );
 }
