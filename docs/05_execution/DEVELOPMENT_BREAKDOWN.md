@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-04
 source_of_truth: true
 ---
 
@@ -36,6 +36,7 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 ### Shipped (Phase 1 — partial)
 
 - **Routing + i18n:** IA routes under `src/app/[locale]/`; `next-intl` + `localePrefix: "never"` (URLs unprefixed); `NEXT_LOCALE` + header locale switcher; `/transport/airport` → `/newcomer/airport-to-city` via **`PHASE1_IA_AIRPORT_REDIRECT`** in **`src/middleware.ts`**; **`/housing/request`** + **`/housing/request/success`** placeholder shells per **`IA_SPEC.md`** §6.5 (2026-04-03). **IA §6.1–6.9 regression guard:** **`src/lib/ia-phase1-routes.ts`** + **`ia-phase1-routes.test.ts`** (2026-04-04).
+- **Responsive shell + mobile nav (2026-04-04):** **`src/components/shell/SiteHeaderChrome.tsx`** + **`SiteHeader.tsx`** + **`globals.css`** — drawer + backdrop under **48rem**; desktop inline nav; Epic **2.3** baseline without Phase 2 behavior.
 - **Content pipeline:** `src/content/**/*.md` + YAML; build-time **Zod** validation; invalid frontmatter **fails** prebuild.
 - **Search index (Phase 1 only):** `scripts/build-search-index.mjs` → `tsx` / `build-search-index.impl.ts` → validated `public/search-index.json`.
 - **`/search`:** placeholder only (e.g. fetch/count) — **not** Phase 4 grouped UX; **utility-shaped** structural template + existing stub.
@@ -46,7 +47,7 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 
 ### Remaining before Phase 1 exit
 
-**IA_SPEC.md** §6.1–6.9 page set + airport redirect covered by automated guard (`ia-phase1-routes`); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md) as needed; **Epic 2** gaps if any (e.g. mobile nav / primitives per tickets)—**no** Phase 2 **behavior**; local **lint / test / build** green; PR CI runs the same **lint / test / build**; Sentry/Plausible **env-gated wiring** + **minimal structured logging** shipped (2026-04-03 / 2026-04-04)—**later:** source maps / `withSentryConfig`, funnel events; **no** NBA/checklist/guest logic beyond constants/stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
+**IA_SPEC.md** §6.1–6.9 page set + airport redirect covered by automated guard (`ia-phase1-routes`); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md) as needed; **Epic 2** remaining gaps if any (e.g. shared button/card primitives, ticket **1.4** design-token scale)—**no** Phase 2 **behavior**; local **lint / test / build** green; PR CI runs the same **lint / test / build**; Sentry/Plausible **env-gated wiring** + **minimal structured logging** shipped (2026-04-03 / 2026-04-04)—**later:** source maps / `withSentryConfig`, funnel events; **no** NBA/checklist/guest logic beyond constants/stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
 
 ### Not Phase 1 (do not schedule as current implementation)
 

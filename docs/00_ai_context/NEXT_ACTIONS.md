@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-04
 source_of_truth: true
 ---
 
@@ -18,6 +18,7 @@ source_of_truth: true
 - **Shipped (IA route skeleton, Phase 1 slice, 2026-04-03):** **`/housing/request`** via existing **`housing/[slug]`** (`request` added to **`HOUSING_SLUGS`** in **`src/lib/routes.ts`**); **`/housing/request/success`** as **`src/app/[locale]/housing/request/success/page.tsx`**. Placeholder shells only—**no** form, submission, or guest logic.
 - **Shipped (page template shells, Phase 1 slice, 2026-04-03):** Distinct **structural** placeholder templates for **hub / guide / calculator / utility / service-form** IA routes: **`src/features/routes/page-type-templates.tsx`**, shared header **`RoutePageBanner`**, slug branching via **`src/lib/page-type-routes.ts`** (`stay-calculator` → calculator; `housing/request` → service-form via existing **`housing/[slug]`**). **`messages/{en,fa,ru}.json`** **`pageTemplate`** keys (parity test). Generic **`RoutePlaceholder`** retained for **`/`**, **`/start`**, **`/dashboard`** only. **No** trust data, NBA, checklist, guest behavior, grouped search UX.
 - **Shipped (IA Phase 1 route contract, 2026-04-04):** **`src/lib/ia-phase1-routes.ts`** + **`src/lib/ia-phase1-routes.test.ts`** — MVP sitemap §6.1–6.9 page paths (32) + Vitest guard; **`/transport/airport`** redirect sourced from **`PHASE1_IA_AIRPORT_REDIRECT`** in **`src/middleware.ts`**. Does **not** add **`/places/*`** or Phase 4 search UX.
+- **Shipped (responsive app shell + mobile nav, Phase 1 slice, 2026-04-04):** **`src/components/shell/SiteHeaderChrome.tsx`** (client) + **`SiteHeader.tsx`** — hamburger + drawer for IA links under **48rem**; desktop horizontal nav unchanged in behavior; **`LocaleSwitcher`** stays visible in header on mobile; Escape / backdrop / route change close drawer; **`messages/{en,fa,ru}.json`** **`shell.primaryNav`**, **`shell.menuOpen`**, **`shell.menuClose`** (parity test). **`src/app/globals.css`** responsive header rules. **No** Phase 2 behavior; **`/start`** / **`/dashboard`** only inherit shared shell chrome.
 - Run **`npm install`** (pulls **tsx** devDependency), then **`npm run dev`** / **`npm run lint`**, **`npm run test`**, **`npm run build`** from repo root before merge.
 - Fill **placeholder copy** on hub pages only where needed for sanity checks; keep **no** trust/legal claims until content review.
 - Further frontmatter alignment: add fields only in **small bounded slices**; keep samples passing validation.

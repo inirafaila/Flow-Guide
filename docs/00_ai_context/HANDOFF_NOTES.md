@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-04
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed
 
+- **Responsive app shell + mobile navigation (2026-04-04, Phase 1 slice):** **`SiteHeaderChrome`** — client drawer for the existing IA link list below **48rem**; **`LocaleSwitcher`** remains in the header row on mobile; desktop keeps inline nav via CSS **`display: contents`** on the top row. **`globals.css`** adds drawer/backdrop, **`messages/*`** adds **`shell.primaryNav`**, **`menuOpen`**, **`menuClose`**. Closes on Escape, backdrop click, and navigation. **No** product logic; **`/start`** / **`/dashboard`** unchanged except shared header layout.
 - **Phase 1 page template shells (2026-04-03):** **`src/features/routes/page-type-templates.tsx`** — hub, guide, calculator, utility, service-form, and housing-request-success **structural** placeholders (i18n **`pageTemplate`**); **`RoutePageBanner`** primitive; **`RoutePlaceholder`** composes banner for non-IA slice routes only. Dynamic routes: **`documents/[slug]`** uses calculator template for **`stay-calculator`**; **`housing/[slug]`** uses service-form template for **`request`**. Tests: **`src/lib/page-type-routes.test.ts`**. **`/start`** and **`/dashboard`** untouched. Phase 1 exit still open (e.g. shell/nav polish, optional schema, optional `?lang=`).
 - **Prompt authoring guidance hardening (2026-04-03):** Added **`PROMPT_AUTHORING_PROTOCOL.md`** with concrete templates for **next-task selection**, **candidate-task evaluation**, **plan refinement**, and **implementation after approval**. Updated **`CURSOR_NEW_CHAT_PROTOCOL.md`**, **`CURSOR_PLANNING_PROTOCOL.md`**, **`AI_INDEX.md`**, **`AI_WORKING_RULES.md`**, and **`.cursor/rules/project-context.mdc`** so future ChatGPT/Cursor sessions stay **discovery-first**, validate **canonical naming**, separate **exit-criteria gaps** from **cleanup** and **deferred work**, avoid **defense-first** prompts, and use deterministic **"Read these files in order"** wording. No product scope, roadmap substance, or app code changed.
 - **Content frontmatter schema alignment (2026-04-03, Phase 1 slice):** **`src/lib/schemas/content-page.ts`** — bounded optional fields toward **`DATA_CONTENT_MODEL_SPEC.md`** §9: **`intent_type`**, **`related_page_slugs`**, **`searchable`**, **`dashboard_linkable`**, **`map_linked`**, **`urgency_tag`**, **`published_at`**, **`updated_at`**, **`is_active`** (all optional; existing Markdown unchanged). **`shouldIncludeInSearchIndex`** — **`build-search-index-records`** skips pages/FAQ when **`searchable: false`** or **`is_active: false`**. Vitest extended in **`content-page.test.ts`** and **`build-search-index-records.test.ts`**. Sample **`welcome.md`** sets **`intent_type: start`**. **Not in scope:** Source records, block body, trust UI, dashboard logic, Phase 1 exit marking.
@@ -29,7 +30,7 @@ source_of_truth: true
 
 ## Repository reality
 
-- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Sentry/Plausible env-gated wiring** shipped (2026-04-03); **minimal structured server logging** shipped (2026-04-04). **IA_SPEC §6.1–6.9** page paths + airport redirect are **encoded and regression-tested** (2026-04-04). **Frontmatter Zod** extended with a **bounded §9-aligned allowlist** (2026-04-03). **Hub/guide/calculator/utility/service-form page template shells** are **structurally differentiated** (2026-04-03); generic placeholder remains for **`/`**, **`/start`**, **`/dashboard`**. **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (e.g. mobile nav / design-token baseline if still gaps, any further schema toward data model)—**not** Phase 1 marked done in this slice.
+- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Responsive shell + mobile nav baseline** shipped (2026-04-04). **Sentry/Plausible env-gated wiring** shipped (2026-04-03); **minimal structured server logging** shipped (2026-04-04). **IA_SPEC §6.1–6.9** page paths + airport redirect are **encoded and regression-tested** (2026-04-04). **Frontmatter Zod** extended with a **bounded §9-aligned allowlist** (2026-04-03). **Hub/guide/calculator/utility/service-form page template shells** are **structurally differentiated** (2026-04-03); generic placeholder remains for **`/`**, **`/start`**, **`/dashboard`**. **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (e.g. design-token / shared primitives baseline, any further schema toward data model)—**not** Phase 1 marked done in this slice.
 - **`DEVELOPMENT_BREAKDOWN.md`** is **phase-aligned** with the master roadmap (2026-04-02); use it with the **Canonical roadmap phases** section at the top of that file.
 
 ## What the next session should do

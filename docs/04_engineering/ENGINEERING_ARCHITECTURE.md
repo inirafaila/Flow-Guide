@@ -52,6 +52,7 @@ source_of_truth: true
 - **Request resolution:** `src/i18n/request.ts` uses **`getRequestConfig`** + **`await requestLocale`** (from `next-intl` middleware), validated against `src/i18n/routing.ts` `locales`, with JSON import fallback to `en`. Shell **locale switcher** posts **`setLocaleAction`** (`src/i18n/set-locale.ts`) to set the cookie and redirect.
 - **App Router mapping:** With **`localePrefix: "never"`**, middleware **internally rewrites** to **`/{locale}/...`** (e.g. `/en/search`). Route modules therefore live under **`src/app/[locale]/...`**; **`src/app/[locale]/layout.tsx`** calls **`setRequestLocale`** + **`generateStaticParams`** for `en`/`fa`/`ru`. **Public URLs** remain unprefixed (`/search`, …).
 - **RTL:** `fa` layout/CSS.
+- **App shell (Phase 1):** Root **`src/app/layout.tsx`** wraps pages with **`SiteHeader`** / **`SiteFooter`**. **`SiteHeaderChrome`** (client) provides **mobile** drawer navigation for the IA link set below **48rem**; **`LocaleSwitcher`** stays in the header on small viewports; desktop uses inline primary nav (no Phase 2 product logic).
 
 ## 8. Hosting and deploy
 

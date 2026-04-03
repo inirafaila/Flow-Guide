@@ -18,7 +18,10 @@
     "payments": "Payments",
     "transport": "Transport",
     "dailyLife": "Daily life",
-    "city": "City & tourism"
+    "city": "City & tourism",
+    "primaryNav": "Primary navigation",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
   },
   "placeholder": {
     "phase1": "Phase 1 route shell — content and behavior come in later phases."

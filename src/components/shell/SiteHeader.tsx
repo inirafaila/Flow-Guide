@@ -1,6 +1,7 @@
-import { getTranslations } from "next-intl/server";
+﻿import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { LocaleSwitcher } from "@/components/shell/LocaleSwitcher";
+import { SiteHeaderChrome } from "@/components/shell/SiteHeaderChrome";
 
 export async function SiteHeader() {
   const t = await getTranslations();
@@ -25,24 +26,27 @@ export async function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link href="/" className="site-header__brand">
-          {t("brand")}
-        </Link>
-        <LocaleSwitcher
-          languageLabel={t("shell.language")}
-          localeLabels={{
-            en: t("shell.locale_en"),
-            fa: t("shell.locale_fa"),
-            ru: t("shell.locale_ru"),
-          }}
-        />
-        <nav className="site-header__nav" aria-label="Primary">
-          {links.map(({ href, label }) => (
-            <Link key={href} href={href}>
-              {label}
+        <SiteHeaderChrome
+          brandLink={
+            <Link href="/" className="site-header__brand">
+              {t("brand")}
             </Link>
-          ))}
-        </nav>
+          }
+          links={links}
+          localeSwitcher={
+            <LocaleSwitcher
+              languageLabel={t("shell.language")}
+              localeLabels={{
+                en: t("shell.locale_en"),
+                fa: t("shell.locale_fa"),
+                ru: t("shell.locale_ru"),
+              }}
+            />
+          }
+          primaryNavAriaLabel={t("shell.primaryNav")}
+          menuOpenLabel={t("shell.menuOpen")}
+          menuCloseLabel={t("shell.menuClose")}
+        />
       </div>
     </header>
   );

@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-04
 source_of_truth: false
 ---
 
@@ -14,6 +14,7 @@ src/
   app/           # Routes, layouts, route handlers (or pages/)
   app/[locale]/  # IA + hub routes (next-intl internal segment; public URLs stay unprefixed)
   components/    # Shared UI primitives
+  components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
   features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub)
   lib/           # Utilities, CMS client, rule engines
   lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root
