@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -61,8 +61,8 @@ source_of_truth: true
 
 ## 9. Observability
 
-- **Errors:** **Sentry** Next.js SDK in **preview + production**; PII scrubbing; releases tied to **git SHA**.
-- **Analytics:** **Plausible** (script + goals/events as needed for funnel); keep event surface **minimal** for speed and compliance review.
+- **Errors:** **`@sentry/nextjs`** with root **`sentry.client.config.ts`**, **`sentry.server.config.ts`**, **`sentry.edge.config.ts`**. **`Sentry.init`** runs only when **`NEXT_PUBLIC_SENTRY_DSN`** (client) and/or **`SENTRY_DSN`** / **`NEXT_PUBLIC_SENTRY_DSN`** (server + edge) are set—otherwise local and CI stay no-op. **`src/instrumentation.ts`** registers server/edge configs and exports **`onRequestError`** (`Sentry.captureRequestError`). Phase 1 wiring uses **`sendDefaultPii: false`** and **`tracesSampleRate: 0`** until performance/error policy is expanded; **release** / source-map upload can follow pre-launch (`withSentryConfig`, auth token) per Sentry docs.
+- **Analytics:** **Plausible** via **`PlausibleScript`** when **`NEXT_PUBLIC_PLAUSIBLE_DOMAIN`** is set; in **`next dev`**, the script does **not** load unless **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`**. Optional **`NEXT_PUBLIC_PLAUSIBLE_SCRIPT_SRC`** for self-hosted Plausible. Goals/events remain **Phase 4+** unless explicitly scoped.
 - **Logging:** **structured `console` / server logs** in Route Handlers; avoid noisy client logging in production.
 
 ## 10. Environment strategy

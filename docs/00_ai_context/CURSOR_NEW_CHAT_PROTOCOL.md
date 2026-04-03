@@ -1,15 +1,19 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
 # Cursor new chat protocol
 
-**Use this exact file reading order** at the start of every new Composer session or chat that may change code, docs, or product behavior.
+**Use this file** at the start of every new Composer session or chat that may change code, docs, product behavior, or **execution priorities**.
 
-## Read order
+## Planning, prioritization, or “what next”
+
+If the user asks for a **plan**, **roadmap-aligned next steps**, or **task choice** (including plan-only chats), read **`CURSOR_PLANNING_PROTOCOL.md`** and follow its **source stack + workflow** **before** recommending work. For **plan then implement** in one session, run that protocol **first**, then use the read order below for the chosen slice.
+
+## Read order (implementation and general sessions)
 
 1. `docs/00_ai_context/AI_INDEX.md` — authority map and “start here.”
 2. `docs/00_ai_context/PROJECT_STATE.md` — current snapshot.

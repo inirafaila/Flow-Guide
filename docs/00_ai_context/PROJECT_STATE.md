@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -18,7 +18,7 @@ source_of_truth: true
 - **AI context pack** (`docs/00_ai_context/`) with locked decisions/logic and protocols.
 - **Master roadmap:** [`docs/01_strategy/ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md).
 - **Phase 0 closed (2026-04-01):** [`docs/04_engineering/PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) **approved**; [`docs/04_engineering/ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) is the build source of truth.
-- **Phase 1 in progress:** Next.js App Router app under repo root (`package.json`, `src/app/`, …)—**plumbing only** (no NBA/checklist/auth/CMS/Docker). **Routes:** IA shells live under **`src/app/[locale]/`** (required for **`next-intl`** + **`localePrefix: "never"`**); root **`layout.tsx`** + **`globals.css`** stay at **`src/app/`**. **Content:** `src/content` Markdown is **Zod-validated** at build; **`search-index.json`** is generated from validated records (`scripts/build-search-index.mjs` + `tsx`); **`/search`** is still a placeholder (no grouped client search). **i18n:** `next-intl` with **`messages/en|fa|ru`**, English-only URLs, **`NEXT_LOCALE`** cookie via header switcher + middleware `requestLocale` resolution (**`?lang=`** not wired yet).
+- **Phase 1 in progress:** Next.js App Router app under repo root (`package.json`, `src/app/`, …)—**plumbing only** (no NBA/checklist/auth/CMS/Docker). **Routes:** IA shells live under **`src/app/[locale]/`** (required for **`next-intl`** + **`localePrefix: "never"`**); root **`layout.tsx`** + **`globals.css`** stay at **`src/app/`**. **Content:** `src/content` Markdown is **Zod-validated** at build; **`search-index.json`** is generated from validated records (`scripts/build-search-index.mjs` + `tsx`); **`/search`** is still a placeholder (no grouped client search). **i18n:** `next-intl` with **`messages/en|fa|ru`**, English-only URLs, **`NEXT_LOCALE`** cookie via header switcher + middleware `requestLocale` resolution (**`?lang=`** not wired yet). **Observability (Phase 1 slice):** **`@sentry/nextjs`** env-gated (no DSN → no init); Plausible **not** loaded in **`next dev`** by default (opt-in env).
 
 ## Approved roadmap backbone
 
@@ -26,7 +26,7 @@ source_of_truth: true
 
 ## Current roadmap phase
 
-**Phase 1 — Engineering and content foundation (plumbing only).** Goal: route skeleton per `IA_SPEC.md`, typed content stubs, search-index build stub, minimal styles, CI-ready scripts, Plausible/Sentry placeholders—**no** Phase 2 business logic.
+**Phase 1 — Engineering and content foundation (plumbing only).** Goal: route skeleton per `IA_SPEC.md`, typed content stubs, search-index build stub, minimal styles, CI-ready scripts, env-gated **Sentry** + dev-safe **Plausible** wiring—**no** Phase 2 business logic.
 
 **Strategic constraint:** public production target **&lt; one month** after Phase 1–5 completion per roadmap.
 

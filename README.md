@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: false
 ---
 
@@ -54,7 +54,7 @@ npm run build
 
 `npm run build` runs **`prebuild`** → `scripts/build-search-index.mjs` (runs **`tsx`** on `scripts/build-search-index.impl.ts` for shared Zod validation) → writes **`public/search-index.json`** (gitignored; recreated each build). Next also type-checks during build.
 
-**Optional env:** copy `.env.example` to `.env.local` — set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` when ready.
+**Optional env:** copy `.env.example` to `.env.local`. **Plausible:** set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` for production builds; in `next dev` the script does **not** load unless `NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`. **Sentry:** set `SENTRY_DSN` and/or `NEXT_PUBLIC_SENTRY_DSN` when ready; with no DSNs, the SDK stays uninitialized.
 
 **Docs:** `docs/04_engineering/ENGINEERING_ARCHITECTURE.md`, `docs/04_engineering/PHASE_0_DECISION_RECORD.md`, `docs/01_strategy/ROADMAP_MASTER.md`, `docs/00_ai_context/PROJECT_STATE.md`, `docs/00_ai_context/AI_INDEX.md`.
 

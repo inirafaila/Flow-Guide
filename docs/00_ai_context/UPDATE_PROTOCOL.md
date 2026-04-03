@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -52,3 +52,9 @@ Deterministic rules for keeping docs aligned with reality. After updates, bump `
 ## Stale or sensitive content
 
 1. If touching residency, payments, transport, banking, or service availability, see `DATA_STALENESS.md` — update last-verified metadata in content source records where applicable, not only prose.
+
+## AI / planning guidance changes
+
+1. Update the guidance file(s) that changed; bump `last_updated` in YAML frontmatter when **meaning** changes.
+2. Add a short line to `HANDOFF_NOTES.md` so the next session knows new planning rules exist.
+3. Do **not** use this path to change product scope, phase definitions, or locked decisions—those follow **Product scope changes** / **New decision made** above.

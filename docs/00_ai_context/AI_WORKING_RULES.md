@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -11,7 +11,7 @@ Rules for AI assistants working in this repository. Human maintainers may refine
 
 ## Context and changes
 
-1. **Read current context before making changes** — follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** and skim **`PROJECT_STATE.md`**, **`CURRENT_FOCUS.md`**, and **`NEXT_ACTIONS.md`** at minimum.
+1. **Read current context before making changes** — follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** and skim **`PROJECT_STATE.md`**, **`CURRENT_FOCUS.md`**, and **`NEXT_ACTIONS.md`** at minimum. For **planning or prioritization**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, multi-candidate comparison, smallest reviewable slice).
 2. **After meaningful changes**, update the smallest set of docs that keeps reality in sync (see **`UPDATE_PROTOCOL.md`**). Typical: `NEXT_ACTIONS.md`, `HANDOFF_NOTES.md`, and any spec that changed.
 3. **Prefer existing architecture and patterns** over improvisation. If the repo is still empty, align new code with **`docs/04_engineering/ENGINEERING_ARCHITECTURE.md`** and **`FOLDER_STRUCTURE.md`** once filled in.
 

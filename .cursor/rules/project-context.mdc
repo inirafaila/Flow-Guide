@@ -15,6 +15,10 @@ This repository is **flow-guide**: a **newcomer guide web app for Armenia** with
 3. Product truth lives in `docs/02_product/` (especially `PRD_MVP.md`, `IA_SPEC.md`, `DATA_CONTENT_MODEL_SPEC.md`).
 4. Execution backlog reference: `docs/05_execution/DEVELOPMENT_BREAKDOWN.md`.
 
+## Planning and next-task selection
+
+When the user asks for a **plan**, **priorities**, or **what to do next**, follow `docs/00_ai_context/CURSOR_PLANNING_PROTOCOL.md`: stay inside the **active phase** (`ROADMAP_STATUS.md`, `CURRENT_PHASE.md`), propose **2–4 candidates** when useful, compare by **exit-criteria impact** vs **nice-to-have**, and choose the **smallest safe slice**. Do not change roadmap substance or locked decisions from a planning answer.
+
 ## Structure
 
 - Application code targets `src/` and `public/` per `docs/04_engineering/FOLDER_STRUCTURE.md`.

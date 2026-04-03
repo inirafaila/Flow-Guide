@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -13,7 +13,8 @@ Central map for long-running Cursor collaboration on **flow-guide**. Use this fi
 
 1. Skim this index (30 seconds).
 2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order.
-3. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.
+3. If the session is **planning / prioritization / next-task selection**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, candidates, smallest slice).
+4. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.
 
 ## Authority order (highest first)
 
@@ -40,6 +41,7 @@ If two sources conflict, **locked docs win** unless humans update them via **`UP
 | `AI_INDEX.md` | Navigation and authority | Every session start |
 | `AI_WORKING_RULES.md` | Operating rules for AI | Before substantive edits |
 | `CURSOR_NEW_CHAT_PROTOCOL.md` | Fixed read order for new Composer/sessions | Every new chat |
+| `CURSOR_PLANNING_PROTOCOL.md` | Phase-safe planning: candidates, exit-criteria vs nice-to-have, smallest slice | Plan / prioritize / “what next” |
 | `UPDATE_PROTOCOL.md` | How to update docs after events | After scope/task/decision/architecture/UI/roadmap changes |
 | `PROJECT_STATE.md` | Current snapshot of product + execution | Every new chat; before planning |
 | `CURRENT_PHASE.md` | Phase goals, entry/exit criteria | Planning work; reporting progress |

@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-02
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -13,6 +13,7 @@ source_of_truth: true
 - **Shipped (routing + i18n):** App routes under **`src/app/[locale]/`** aligned with **`next-intl`** middleware internal rewrite (public URLs still unprefixed).
 - **Shipped (i18n, Phase 1 UI-only):** **`next-intl`** request config uses middleware **`requestLocale`** + validated fallback; **`messages/{en,fa,ru}.json`** stay in parity (Vitest key-tree check); header **locale switcher** persists **`NEXT_LOCALE`** via server action (`src/i18n/set-locale.ts`). Optional **`?lang=`** query handling **deferred** (low priority vs middleware-order risk).
 - **Shipped (CI, Phase 1):** **GitHub Actions** **`.github/workflows/ci.yml`** — on **pull requests to `main`**: **`npm ci`**, **`npm run lint`**, **`npm run test`**, **`npm run build`** (concurrency cancel in-flight).
+- **Shipped (observability, Phase 1 slice, 2026-04-03):** **`@sentry/nextjs`** with env-gated **`Sentry.init`** (root **`sentry.client|server|edge.config.ts`**, **`src/instrumentation.ts`** + **`onRequestError`**). **Plausible** skips **`next dev`** by default; opt-in via **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV`**. No structured logging, no analytics events, **Phase 1 not closed**.
 - Run **`npm install`** (pulls **tsx** devDependency), then **`npm run dev`** / **`npm run lint`**, **`npm run test`**, **`npm run build`** from repo root before merge.
 - Fill **placeholder copy** on hub pages only where needed for sanity checks; keep **no** trust/legal claims until content review.
 - When tightening `src/lib/schemas/content-page.ts`, keep sample Markdown under `src/content/pages/` and `src/content/faq/` passing validation.

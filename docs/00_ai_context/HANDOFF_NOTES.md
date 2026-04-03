@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-02
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -9,6 +9,8 @@ source_of_truth: true
 
 ## What changed
 
+- **Observability hardening (2026-04-03, Phase 1 slice):** Added **`@sentry/nextjs`** with root **`sentry.client.config.ts`**, **`sentry.server.config.ts`**, **`sentry.edge.config.ts`** — **`Sentry.init` only when DSN env vars are set**; **`src/instrumentation.ts`** loads server/edge configs and exports **`onRequestError`**. **Plausible** does not load in **`next dev`** unless **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`**. Removed unused **`src/lib/observability/sentry-stub.ts`**. **No** structured logging, **no** Phase 1 exit / roadmap closure, **no** product analytics events. See **`ENGINEERING_ARCHITECTURE.md`** §9, **`.env.example`**, **`README.md`**.
+- **AI planning protocol (2026-04-03):** Added **`CURSOR_PLANNING_PROTOCOL.md`** — deterministic planning workflow (phase-strict, 2–4 candidates, exit-criteria vs nice-to-have labels, smallest slice, execution-ready output). Wired from **`CURSOR_NEW_CHAT_PROTOCOL.md`**, **`AI_INDEX.md`**, **`AI_WORKING_RULES.md`**, **`UPDATE_PROTOCOL.md`** (new “AI / planning guidance changes” section), and **`.cursor/rules/project-context.mdc`**. No product, roadmap substance, or app code changes.
 - **Phase 1 PR CI (2026-04-02):** **`.github/workflows/ci.yml`** now runs **`npm run lint`** → **`npm run test`** → **`npm run build`** after **`npm ci`** (**`pull_request`** to **`main`**, Node **20**, npm cache, **`cancel-in-progress`** unchanged). Phase 1 quality gate only; no deploy/Docker/platform expansion.
 - **`DEVELOPMENT_BREAKDOWN.md` (2026-04-02):** Aligned with **`ROADMAP_MASTER`** / **`CURRENT_PHASE`**: canonical phase table + Phase 1 shipped vs remaining; epic headers tagged; §4 marked **legacy** (naming clash called out); §13 gate note; §14 “must-launch ≠ Phase 1”; §18 = Phase 5; §19 **phase gates A–E** + deprecated sprint archive; Ticket **2.2** locale line updated; Epic **7** search split (Phase 1 index vs Phase 4 UX).
 - **Phase 1 PR CI (initial slice, 2026-04-02):** First **`.github/workflows/ci.yml`** — **`pull_request`** to **`main`**, Node **20**, **`npm ci`**, **`npm run lint`**, **`npm run build`**, concurrency **`cancel-in-progress`**. (**Vitest** step added same day — see bullet above.)
@@ -21,12 +23,12 @@ source_of_truth: true
 
 ## Repository reality
 
-- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include observability hardening and full exit checklist in `CURRENT_PHASE.md`.
+- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Sentry/Plausible env-gated wiring** shipped (2026-04-03). **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (and any further schema/IA confirmation per breakdown)—**not** Phase 1 marked done in this slice.
 - **`DEVELOPMENT_BREAKDOWN.md`** is **phase-aligned** with the master roadmap (2026-04-02); use it with the **Canonical roadmap phases** section at the top of that file.
 
 ## What the next session should do
 
-1. Read **`CURSOR_NEW_CHAT_PROTOCOL.md`**, **`PROJECT_STATE.md`**, **`CURRENT_PHASE.md`**, **`ENGINEERING_ARCHITECTURE.md`**, **`NEXT_ACTIONS.md`**.
+1. Read **`CURSOR_NEW_CHAT_PROTOCOL.md`**, **`PROJECT_STATE.md`**, **`CURRENT_PHASE.md`**, **`ENGINEERING_ARCHITECTURE.md`**, **`NEXT_ACTIONS.md`**. If the user wants **planning or prioritization**, follow **`CURSOR_PLANNING_PROTOCOL.md`** first.
 2. Continue **Phase 1** until exit criteria in `CURRENT_PHASE.md` — then mark Phase 1 **done** in `ROADMAP_STATUS.md` and begin **Phase 2**.
 3. Before prod: close **`OPEN_ITEMS.md`** (legal, governance names, env projects).
 4. Before commit/push: run **`npm run lint`**, **`npm run test`**, **`npm run build`** locally.

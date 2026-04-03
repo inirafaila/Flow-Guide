@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-02
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -17,7 +17,7 @@ source_of_truth: true
 | Master roadmap phase | Scope (summary) | Epics / tickets in *this* doc |
 |----------------------|-----------------|-------------------------------|
 | **0A / 0B** | MVP contract + technical architecture lock | Closed for execution; see [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) |
-| **Phase 1** | Engineering + content **foundation** only: app shell, IA **route skeleton**, schema-shaped **placeholder** pages, git Markdown + **Zod**, **`search-index.json`** in prebuild, env pattern, minimal **CI**, observability **stubs** — **no** NBA, checklist, or **guest behavior** | **1** (partial), **2** (partial), **5** (5.1 + template **shells**), **7** (**7.4** index model + **7.1** page stub only; not grouped UX) |
+| **Phase 1** | Engineering + content **foundation** only: app shell, IA **route skeleton**, schema-shaped **placeholder** pages, git Markdown + **Zod**, **`search-index.json`** in prebuild, env pattern, minimal **CI**, observability **hooks** (env-gated Sentry + dev-safe Plausible)—**no** NBA, checklist, or **guest behavior** | **1** (partial), **2** (partial), **5** (5.1 + template **shells**), **7** (**7.4** index model + **7.1** page stub only; not grouped UX) |
 | **Phase 2** | Onboarding, guest state, dashboard, NBA v1, checklist v1, trust UI wired to real behavior | **3**, **4**; **5.7–5.9** when behavior is real, not static-only |
 | **Phase 3** | Must-launch guides/hubs and journey copy | **6** (primary) |
 | **Phase 4** | Grouped **client** search UX, places-lite, updates surfacing, analytics/SEO hardening | **7** (**7.2–7.3**, **7.5–7.9**), **8** (e.g. **8.7**); aligns with [`ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) §4 |
@@ -40,12 +40,12 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 - **Search index (Phase 1 only):** `scripts/build-search-index.mjs` → `tsx` / `build-search-index.impl.ts` → validated `public/search-index.json`.
 - **`/search`:** placeholder only (e.g. fetch/count) — **not** Phase 4 grouped UX.
 - **CI:** GitHub Actions on PRs to `main`: `npm ci`, `npm run lint`, `npm run test`, `npm run build`.
-- **Observability:** Plausible / Sentry **stubs** per architecture.
+- **Observability:** **`@sentry/nextjs`** env-gated (root **`sentry.*.config.ts`**, **`src/instrumentation.ts`**); Plausible **dev-safe** (no default load in **`next dev`** without opt-in env). Further: structured logging, release/source maps, funnel events = **later** slices.
 - **Ticket pointers (approximate):** **1.1–1.3**, **2.1–2.2** (locale switch **shipped**, not placeholder-only), **5.1** (partial), **7.4** (partial), **7.1** (stub until Phase 4 UX).
 
 ### Remaining before Phase 1 exit
 
-Confirm route skeleton vs [`IA_SPEC.md`](../02_product/IA_SPEC.md); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md); hub/guide/calculator/utility remain **placeholders** without product logic; local **lint / test / build** green; PR CI runs the same **lint / test / build**; stub observability ready for later env wiring; **no** NBA/checklist/guest logic beyond constants/stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
+Confirm route skeleton vs [`IA_SPEC.md`](../02_product/IA_SPEC.md); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md); hub/guide/calculator/utility remain **placeholders** without product logic; local **lint / test / build** green; PR CI runs the same **lint / test / build**; Sentry/Plausible **env-gated wiring** shipped (2026-04-03)—**later:** structured logging, source maps / `withSentryConfig`, funnel events; **no** NBA/checklist/guest logic beyond constants/stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
 
 ### Not Phase 1 (do not schedule as current implementation)
 

@@ -22,6 +22,7 @@ After substantive edits to any doc, bump its YAML `last_updated` when the fileâ€
 | Loading/error/empty states or surface behavior | UI states change | `docs/00_ai_context/UI_STATES.md`, `docs/02_product/UI_HANDOFF_SPEC.md`, `docs/03_design/`, `docs/03_design/DESIGN_SYSTEM_NOTES.md` |
 | Phase done / in progress / at risk | Roadmap status changes | `docs/01_strategy/ROADMAP_STATUS.md`, `SPRINT_PLAN.md` / `RELEASE_PLAN.md`, `PROJECT_STATE.md`, `NEXT_ACTIONS.md` |
 | Residency, money, transport, banking, availability copy | Stale or sensitive content | `docs/00_ai_context/DATA_STALENESS.md` + content source metadata (e.g. frontmatter), not prose only |
+| AI / planning guidance only (e.g. `CURSOR_PLANNING_PROTOCOL.md`) | AI / planning guidance changes | `docs/00_ai_context/HANDOFF_NOTES.md`; bump `last_updated` on edited guidance files |
 
 Paths without `docs/` above live under `docs/04_engineering/` or `docs/00_ai_context/` as named in `UPDATE_PROTOCOL.md` (e.g. `FOLDER_STRUCTURE.md` â†’ `docs/04_engineering/FOLDER_STRUCTURE.md`).
 
