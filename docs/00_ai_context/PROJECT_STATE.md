@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -18,7 +18,7 @@ source_of_truth: true
 - **AI context pack** (`docs/00_ai_context/`) with locked decisions/logic and protocols.
 - **Master roadmap:** [`docs/01_strategy/ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md).
 - **Phase 0 closed (2026-04-01):** [`docs/04_engineering/PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) **approved**; [`docs/04_engineering/ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) is the build source of truth.
-- **Phase 1 in progress:** Next.js App Router app under repo root (`package.json`, `src/app/`, …)—**plumbing only** (no NBA/checklist/auth/CMS/Docker). **Routes:** IA shells live under **`src/app/[locale]/`** (required for **`next-intl`** + **`localePrefix: "never"`**); root **`layout.tsx`** + **`globals.css`** stay at **`src/app/`**. **Content:** `src/content` Markdown is **Zod-validated** at build; **`search-index.json`** is generated from validated records (`scripts/build-search-index.mjs` + `tsx`); **`/search`** is still a placeholder (no grouped client search). **i18n:** `next-intl` with **`messages/en|fa|ru`**, English-only URLs, **`NEXT_LOCALE`** cookie via header switcher + middleware `requestLocale` resolution (**`?lang=`** not wired yet). **Observability (Phase 1 slice):** **`@sentry/nextjs`** env-gated (no DSN → no init); Plausible **not** loaded in **`next dev`** by default (opt-in env); minimal **JSON-line** server logger in **`src/lib/observability/logger.ts`** (instrumentation hook only in this slice).
+- **Phase 1 in progress:** Next.js App Router app under repo root (`package.json`, `src/app/`, …)—**plumbing only** (no NBA/checklist/auth/CMS/Docker). **Routes:** IA shells live under **`src/app/[locale]/`** (required for **`next-intl`** + **`localePrefix: "never"`**); root **`layout.tsx`** + **`globals.css`** stay at **`src/app/`**. **Page template shells:** hub / guide / calculator / utility / service-form **structural** placeholders (`src/features/routes/page-type-templates.tsx`, `RoutePageBanner`); generic **`RoutePlaceholder`** for **`/`**, **`/start`**, **`/dashboard`** only. **Content:** `src/content` Markdown is **Zod-validated** at build; **`search-index.json`** is generated from validated records (`scripts/build-search-index.mjs` + `tsx`); **`/search`** is still a placeholder (no grouped client search). **i18n:** `next-intl` with **`messages/en|fa|ru`**, English-only URLs, **`NEXT_LOCALE`** cookie via header switcher + middleware `requestLocale` resolution (**`?lang=`** not wired yet). **Observability (Phase 1 slice):** **`@sentry/nextjs`** env-gated (no DSN → no init); Plausible **not** loaded in **`next dev`** by default (opt-in env); minimal **JSON-line** server logger in **`src/lib/observability/logger.ts`** (instrumentation hook only in this slice).
 
 ## Approved roadmap backbone
 

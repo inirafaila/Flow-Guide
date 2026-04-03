@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { RoutePlaceholder } from "@/features/routes/RoutePlaceholder";
+import { GuidePageTemplate } from "@/features/routes/page-type-templates";
 import { PAYMENTS_SLUGS, isSlug } from "@/lib/routes";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -11,5 +11,5 @@ export function generateStaticParams() {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   if (!isSlug(slug, PAYMENTS_SLUGS)) notFound();
-  return <RoutePlaceholder path={`/payments/${slug}`} />;
+  return <GuidePageTemplate path={`/payments/${slug}`} />;
 }

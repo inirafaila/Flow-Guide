@@ -1,10 +1,10 @@
 import { SearchStub } from "@/features/search/SearchStub";
-import { RoutePlaceholder } from "@/features/routes/RoutePlaceholder";
+import { UtilityPageTemplate } from "@/features/routes/page-type-templates";
 
 export default async function Page() {
   return (
     <>
-      <RoutePlaceholder path="/search" />
+      <UtilityPageTemplate path="/search" />
       <SearchStub />
     </>
   );

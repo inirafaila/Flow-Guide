@@ -1,5 +1,5 @@
-import { RoutePlaceholder } from "@/features/routes/RoutePlaceholder";
+import { HubPageTemplate } from "@/features/routes/page-type-templates";
 
 export default async function Page() {
-  return <RoutePlaceholder path="/work" />;
+  return <HubPageTemplate path="/work" />;
 }

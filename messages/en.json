@@ -22,5 +22,41 @@
   },
   "placeholder": {
     "phase1": "Phase 1 route shell — content and behavior come in later phases."
+  },
+  "pageTemplate": {
+    "hub": {
+      "intro": "Intro (placeholder)",
+      "topTasks": "Top tasks (placeholder)",
+      "relatedGuides": "Related guides (placeholder)",
+      "quickTools": "Quick tools (placeholder)"
+    },
+    "guide": {
+      "quickSummary": "Quick summary (placeholder)",
+      "steps": "Step-by-step (placeholder)",
+      "requirements": "Requirements / documents (placeholder)",
+      "costsTime": "Costs / time (placeholder)",
+      "warnings": "Warnings (placeholder)",
+      "related": "Related pages / tools (placeholder)",
+      "trustPlaceholder": "Source / last verified / what may vary (placeholder only — Phase 1)"
+    },
+    "calculator": {
+      "intro": "Introduction (placeholder)",
+      "inputs": "Inputs (placeholder)",
+      "results": "Result states (placeholder)",
+      "warnings": "Warnings (placeholder)",
+      "trustPlaceholder": "Source / last verified (placeholder only — Phase 1)"
+    },
+    "utility": {
+      "groupedSurface": "Grouped utility content (placeholder)"
+    },
+    "serviceForm": {
+      "intro": "Introduction (placeholder)",
+      "formSchema": "Form fields (placeholder — no submission)",
+      "privacyFollowUp": "Privacy / follow-up (placeholder)"
+    },
+    "serviceFormFollowUp": {
+      "intro": "Follow-up summary (placeholder)",
+      "nextSteps": "What happens next (placeholder)"
+    }
   }
 }
