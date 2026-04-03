@@ -35,7 +35,7 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 
 ### Shipped (Phase 1 — partial)
 
-- **Routing + i18n:** IA routes under `src/app/[locale]/`; `next-intl` + `localePrefix: "never"` (URLs unprefixed); `NEXT_LOCALE` + header locale switcher; `/transport/airport` → `/newcomer/airport-to-city`.
+- **Routing + i18n:** IA routes under `src/app/[locale]/`; `next-intl` + `localePrefix: "never"` (URLs unprefixed); `NEXT_LOCALE` + header locale switcher; `/transport/airport` → `/newcomer/airport-to-city`; **`/housing/request`** + **`/housing/request/success`** placeholder shells per **`IA_SPEC.md`** §6.5 (2026-04-03).
 - **Content pipeline:** `src/content/**/*.md` + YAML; build-time **Zod** validation; invalid frontmatter **fails** prebuild.
 - **Search index (Phase 1 only):** `scripts/build-search-index.mjs` → `tsx` / `build-search-index.impl.ts` → validated `public/search-index.json`.
 - **`/search`:** placeholder only (e.g. fetch/count) — **not** Phase 4 grouped UX.
@@ -45,7 +45,7 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 
 ### Remaining before Phase 1 exit
 
-Confirm route skeleton vs [`IA_SPEC.md`](../02_product/IA_SPEC.md); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md); hub/guide/calculator/utility remain **placeholders** without product logic; local **lint / test / build** green; PR CI runs the same **lint / test / build**; Sentry/Plausible **env-gated wiring** shipped (2026-04-03)—**later:** structured logging, source maps / `withSentryConfig`, funnel events; **no** NBA/checklist/guest logic beyond constants/stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
+Continue confirming route skeleton vs [`IA_SPEC.md`](../02_product/IA_SPEC.md) (housing §6.5 **`/request`** + **`/request/success`** shipped as placeholders); extend types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md); hub/guide/calculator/utility remain **placeholders** without product logic; local **lint / test / build** green; PR CI runs the same **lint / test / build**; Sentry/Plausible **env-gated wiring** shipped (2026-04-03)—**later:** structured logging, source maps / `withSentryConfig`, funnel events; **no** NBA/checklist/guest logic beyond constants/stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
 
 ### Not Phase 1 (do not schedule as current implementation)
 

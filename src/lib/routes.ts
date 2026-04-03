@@ -22,6 +22,8 @@ export const ROUTE_TITLES: Record<string, string> = {
   "/housing": "Housing hub",
   "/housing/owner-vs-agency": "Owner vs agency",
   "/housing/rental-checklist": "Rental checklist",
+  "/housing/request": "Housing request",
+  "/housing/request/success": "Housing request follow-up",
   "/payments": "Payments hub",
   "/payments/terminals": "Payment terminals",
   "/payments/service-payments": "Service payments",
@@ -51,7 +53,11 @@ export const WORK_SLUGS = [
   "live-gaming",
 ] as const;
 
-export const HOUSING_SLUGS = ["owner-vs-agency", "rental-checklist"] as const;
+export const HOUSING_SLUGS = [
+  "owner-vs-agency",
+  "rental-checklist",
+  "request",
+] as const;
 
 export const PAYMENTS_SLUGS = ["terminals", "service-payments"] as const;
 
