@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-03
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed
 
+- **Content frontmatter schema alignment (2026-04-03, Phase 1 slice):** **`src/lib/schemas/content-page.ts`** — bounded optional fields toward **`DATA_CONTENT_MODEL_SPEC.md`** §9: **`intent_type`**, **`related_page_slugs`**, **`searchable`**, **`dashboard_linkable`**, **`map_linked`**, **`urgency_tag`**, **`published_at`**, **`updated_at`**, **`is_active`** (all optional; existing Markdown unchanged). **`shouldIncludeInSearchIndex`** — **`build-search-index-records`** skips pages/FAQ when **`searchable: false`** or **`is_active: false`**. Vitest extended in **`content-page.test.ts`** and **`build-search-index-records.test.ts`**. Sample **`welcome.md`** sets **`intent_type: start`**. **Not in scope:** Source records, block body, trust UI, dashboard logic, Phase 1 exit marking.
 - **IA Phase 1 route contract + regression guard (2026-04-04, Phase 1 slice):** **`src/lib/ia-phase1-routes.ts`** — canonical **`PHASE1_IA_PAGE_PATHS`** (32 paths) from **`IA_SPEC.md`** §6.1–6.9 only; **`PHASE1_IA_AIRPORT_REDIRECT`** for **`/transport/airport` → `/newcomer/airport-to-city`**. **`src/middleware.ts`** imports the redirect constant (single source of truth). **`src/lib/ia-phase1-routes.test.ts`** asserts each page path resolves to an existing **`src/app/[locale]/…`** shell (static, **`[slug]`**, or **`housing/request/success`**), **`ROUTE_TITLES`** coverage, **no** `transport/airport/page.tsx`, and middleware wiring. **Out of scope:** `/places/*`, grouped search, nav redesign, Phase 1 exit marking.
 - **Structured logging baseline (2026-04-04, Phase 1 slice):** **`src/lib/observability/logger.ts`** — one **JSON object per line** (`level`, `message`, `timestamp`, `service`, `env`); **`src/lib/observability/logger.test.ts`** (Vitest shape checks). **`src/instrumentation.ts`** calls **`logInfo("instrumentation_register_complete")`** once after Sentry server/edge config load — **no** request logging, **no** PII. **Not included:** log platform, source maps, analytics events, Phase 1 exit marking.
 - **IA housing route parity (2026-04-03, Phase 1 slice):** **`IA_SPEC.md`** §6.5 shells for **`/housing/request`** (slug **`request`** in **`HOUSING_SLUGS`**) and **`/housing/request/success`** (dedicated **`page.tsx`**). **`ROUTE_TITLES`** entries: “Housing request” / “Housing request follow-up” (neutral—no submission-success copy). No forms or Phase 2 logic.
@@ -26,7 +27,7 @@ source_of_truth: true
 
 ## Repository reality
 
-- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Sentry/Plausible env-gated wiring** shipped (2026-04-03); **minimal structured server logging** shipped (2026-04-04). **IA_SPEC §6.1–6.9** page paths + airport redirect are **encoded and regression-tested** (2026-04-04). **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (e.g. schema toward data model)—**not** Phase 1 marked done in this slice.
+- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Sentry/Plausible env-gated wiring** shipped (2026-04-03); **minimal structured server logging** shipped (2026-04-04). **IA_SPEC §6.1–6.9** page paths + airport redirect are **encoded and regression-tested** (2026-04-04). **Frontmatter Zod** extended with a **bounded §9-aligned allowlist** (2026-04-03). **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (template placeholders, any further schema toward data model)—**not** Phase 1 marked done in this slice.
 - **`DEVELOPMENT_BREAKDOWN.md`** is **phase-aligned** with the master roadmap (2026-04-02); use it with the **Canonical roadmap phases** section at the top of that file.
 
 ## What the next session should do

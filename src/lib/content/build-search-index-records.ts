@@ -2,8 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 import type { SearchIndexRecord } from "@/types/search-index";
+import { shouldIncludeInSearchIndex } from "@/lib/schemas/content-page";
 
-import { parseMarkdownPage } from "./parse-md";
+import { parseMarkdownPage, type ParsedMarkdownPage } from "./parse-md";
 
 const EXCERPT_MAX = 240;
 
@@ -39,19 +40,10 @@ function excerptForFaq(summary: string | undefined, body: string): string {
   return (summary?.trim() ?? "").slice(0, EXCERPT_MAX);
 }
 
-function recordFromFile(
-  absolutePath: string,
+function recordFromParsed(
+  parsed: ParsedMarkdownPage,
   kind: "page" | "faq",
 ): SearchIndexRecord {
-  const raw = fs.readFileSync(absolutePath, "utf8");
-  let parsed;
-  try {
-    parsed = parseMarkdownPage(raw);
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    throw new Error(`Invalid Markdown/frontmatter in ${absolutePath}: ${msg}`);
-  }
-
   const { frontmatter, body } = parsed;
   const { title, slug, summary, primary_category, audience_tags } = frontmatter;
 
@@ -78,6 +70,16 @@ function recordFromFile(
   };
 }
 
+function parseFile(absolutePath: string): ParsedMarkdownPage {
+  const raw = fs.readFileSync(absolutePath, "utf8");
+  try {
+    return parseMarkdownPage(raw);
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    throw new Error(`Invalid Markdown/frontmatter in ${absolutePath}: ${msg}`);
+  }
+}
+
 /**
  * Build search index records from validated Markdown under src/content/{pages,faq}.
  */
@@ -90,7 +92,9 @@ export function buildSearchIndexRecords(projectRoot: string): SearchIndexRecord[
   const seenIds = new Set<string>();
 
   for (const file of walkMdFiles(pagesDir)) {
-    const rec = recordFromFile(file, "page");
+    const parsed = parseFile(file);
+    if (!shouldIncludeInSearchIndex(parsed.frontmatter)) continue;
+    const rec = recordFromParsed(parsed, "page");
     if (seenIds.has(rec.id)) {
       throw new Error(`Duplicate search index id "${rec.id}" (${file})`);
     }
@@ -99,7 +103,9 @@ export function buildSearchIndexRecords(projectRoot: string): SearchIndexRecord[
   }
 
   for (const file of walkMdFiles(faqDir)) {
-    const rec = recordFromFile(file, "faq");
+    const parsed = parseFile(file);
+    if (!shouldIncludeInSearchIndex(parsed.frontmatter)) continue;
+    const rec = recordFromParsed(parsed, "faq");
     if (seenIds.has(rec.id)) {
       throw new Error(`Duplicate search index id "${rec.id}" (${file})`);
     }
