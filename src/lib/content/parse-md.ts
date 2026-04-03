@@ -8,6 +8,10 @@ import {
   parseUpdateItemFrontmatter,
   type UpdateItemFrontmatter,
 } from "@/lib/schemas/update-item";
+import {
+  parseSourceRecordFrontmatter,
+  type SourceRecordFrontmatter,
+} from "@/lib/schemas/source-record";
 
 export type ParsedMarkdownPage = {
   frontmatter: ReturnType<typeof parsePageFrontmatter>;
@@ -21,6 +25,11 @@ export type ParsedMarkdownChecklistItem = {
 
 export type ParsedMarkdownUpdateItem = {
   frontmatter: UpdateItemFrontmatter;
+  body: string;
+};
+
+export type ParsedMarkdownSourceRecord = {
+  frontmatter: SourceRecordFrontmatter;
   body: string;
 };
 
@@ -48,5 +57,14 @@ export function parseMarkdownUpdateItem(
 ): ParsedMarkdownUpdateItem {
   const { data, content } = matter(source);
   const frontmatter = parseUpdateItemFrontmatter(data);
+  return { frontmatter, body: content.trim() };
+}
+
+/** Canonical Source Record: src/content/sources/*.md */
+export function parseMarkdownSourceRecord(
+  source: string,
+): ParsedMarkdownSourceRecord {
+  const { data, content } = matter(source);
+  const frontmatter = parseSourceRecordFrontmatter(data);
   return { frontmatter, body: content.trim() };
 }
