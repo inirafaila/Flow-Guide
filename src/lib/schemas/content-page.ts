@@ -30,7 +30,10 @@ export const intentTypeSchema = z.enum([
   "adaptation",
 ]);
 
-/** Urgency framing for indexable pages (spec example + checklist-style levels). */
+/**
+ * Urgency framing for indexable pages (§9 urgency_tag), Checklist Item §7
+ * urgency_level, and Update Item §11 impact_level — single source of values.
+ */
 export const urgencyTagSchema = z.enum(["critical", "high", "medium", "low"]);
 
 /**

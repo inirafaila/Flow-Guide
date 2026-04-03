@@ -18,10 +18,15 @@ src/
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
   features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub)
   lib/           # Utilities, CMS client, rule engines
+  lib/content/     # parse-md, search-index records, load-checklist-and-updates (Node-only loaders)
   lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root
   hooks/         # Shared React hooks (if using React)
   styles/        # Global styles, tokens
-  content/       # Optional static MD/MDX or seed content
+  content/       # Git Markdown + YAML (Zod-validated)
+  content/pages/
+  content/faq/
+  content/checklist-items/   # Checklist Item rows (§7) — parse-md + checklist-item schema
+  content/updates/             # Update Item entries (§11) — parse-md + update-item schema
   data/          # Static JSON seeds, fixtures
   types/         # Shared TypeScript types
 public/          # Static assets
