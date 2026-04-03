@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-04
 source_of_truth: false
 ---
 
@@ -16,6 +16,7 @@ src/
   components/    # Shared UI primitives
   features/      # Feature-scoped UI + logic (dashboard, onboarding, guide)
   lib/           # Utilities, CMS client, rule engines
+  lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root
   hooks/         # Shared React hooks (if using React)
   styles/        # Global styles, tokens
   content/       # Optional static MD/MDX or seed content

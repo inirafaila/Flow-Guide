@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-04
 source_of_truth: true
 ---
 
@@ -9,8 +9,9 @@ source_of_truth: true
 
 ## What changed
 
+- **Structured logging baseline (2026-04-04, Phase 1 slice):** **`src/lib/observability/logger.ts`** — one **JSON object per line** (`level`, `message`, `timestamp`, `service`, `env`); **`src/lib/observability/logger.test.ts`** (Vitest shape checks). **`src/instrumentation.ts`** calls **`logInfo("instrumentation_register_complete")`** once after Sentry server/edge config load — **no** request logging, **no** PII. **Not included:** log platform, source maps, analytics events, Phase 1 exit marking.
 - **IA housing route parity (2026-04-03, Phase 1 slice):** **`IA_SPEC.md`** §6.5 shells for **`/housing/request`** (slug **`request`** in **`HOUSING_SLUGS`**) and **`/housing/request/success`** (dedicated **`page.tsx`**). **`ROUTE_TITLES`** entries: “Housing request” / “Housing request follow-up” (neutral—no submission-success copy). No forms or Phase 2 logic.
-- **Observability hardening (2026-04-03, Phase 1 slice):** Added **`@sentry/nextjs`** with root **`sentry.client.config.ts`**, **`sentry.server.config.ts`**, **`sentry.edge.config.ts`** — **`Sentry.init` only when DSN env vars are set**; **`src/instrumentation.ts`** loads server/edge configs and exports **`onRequestError`**. **Plausible** does not load in **`next dev`** unless **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`**. Removed unused **`src/lib/observability/sentry-stub.ts`**. **No** structured logging, **no** Phase 1 exit / roadmap closure, **no** product analytics events. See **`ENGINEERING_ARCHITECTURE.md`** §9, **`.env.example`**, **`README.md`**.
+- **Observability hardening (2026-04-03, Phase 1 slice):** Added **`@sentry/nextjs`** with root **`sentry.client.config.ts`**, **`sentry.server.config.ts`**, **`sentry.edge.config.ts`** — **`Sentry.init` only when DSN env vars are set**; **`src/instrumentation.ts`** loads server/edge configs and exports **`onRequestError`**. **Plausible** does not load in **`next dev`** unless **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`**. Removed unused **`src/lib/observability/sentry-stub.ts`**. **No** Phase 1 exit / roadmap closure, **no** product analytics events at that slice. See **`ENGINEERING_ARCHITECTURE.md`** §9, **`.env.example`**, **`README.md`**. (Structured logging baseline: **2026-04-04** bullet above.)
 - **AI planning protocol (2026-04-03):** Added **`CURSOR_PLANNING_PROTOCOL.md`** — deterministic planning workflow (phase-strict, 2–4 candidates, exit-criteria vs nice-to-have labels, smallest slice, execution-ready output). Wired from **`CURSOR_NEW_CHAT_PROTOCOL.md`**, **`AI_INDEX.md`**, **`AI_WORKING_RULES.md`**, **`UPDATE_PROTOCOL.md`** (new “AI / planning guidance changes” section), and **`.cursor/rules/project-context.mdc`**. No product, roadmap substance, or app code changes.
 - **Phase 1 PR CI (2026-04-02):** **`.github/workflows/ci.yml`** now runs **`npm run lint`** → **`npm run test`** → **`npm run build`** after **`npm ci`** (**`pull_request`** to **`main`**, Node **20**, npm cache, **`cancel-in-progress`** unchanged). Phase 1 quality gate only; no deploy/Docker/platform expansion.
 - **`DEVELOPMENT_BREAKDOWN.md` (2026-04-02):** Aligned with **`ROADMAP_MASTER`** / **`CURRENT_PHASE`**: canonical phase table + Phase 1 shipped vs remaining; epic headers tagged; §4 marked **legacy** (naming clash called out); §13 gate note; §14 “must-launch ≠ Phase 1”; §18 = Phase 5; §19 **phase gates A–E** + deprecated sprint archive; Ticket **2.2** locale line updated; Epic **7** search split (Phase 1 index vs Phase 4 UX).
@@ -24,7 +25,7 @@ source_of_truth: true
 
 ## Repository reality
 
-- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Sentry/Plausible env-gated wiring** shipped (2026-04-03). **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (and any further schema/IA confirmation per breakdown)—**not** Phase 1 marked done in this slice.
+- **Implementation** is **Phase 1 in progress** — content/search **index pipeline is no longer a loose stub**; **i18n plumbing + header locale UX** shipped (see above). **Sentry/Plausible env-gated wiring** shipped (2026-04-03); **minimal structured server logging** shipped (2026-04-04). **PR CI (lint + test + build)** is in place for **`main`**. Remaining Phase 1 items include **full exit checklist** in `CURRENT_PHASE.md` (and any further schema/IA confirmation per breakdown)—**not** Phase 1 marked done in this slice.
 - **`DEVELOPMENT_BREAKDOWN.md`** is **phase-aligned** with the master roadmap (2026-04-02); use it with the **Canonical roadmap phases** section at the top of that file.
 
 ## What the next session should do
