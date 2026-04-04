@@ -12,6 +12,10 @@ import {
   parseSourceRecordFrontmatter,
   type SourceRecordFrontmatter,
 } from "@/lib/schemas/source-record";
+import {
+  parsePlaceFrontmatter,
+  type PlaceFrontmatter,
+} from "@/lib/schemas/place";
 
 export type ParsedMarkdownPage = {
   frontmatter: ReturnType<typeof parsePageFrontmatter>;
@@ -30,6 +34,11 @@ export type ParsedMarkdownUpdateItem = {
 
 export type ParsedMarkdownSourceRecord = {
   frontmatter: SourceRecordFrontmatter;
+  body: string;
+};
+
+export type ParsedMarkdownPlace = {
+  frontmatter: PlaceFrontmatter;
   body: string;
 };
 
@@ -66,5 +75,12 @@ export function parseMarkdownSourceRecord(
 ): ParsedMarkdownSourceRecord {
   const { data, content } = matter(source);
   const frontmatter = parseSourceRecordFrontmatter(data);
+  return { frontmatter, body: content.trim() };
+}
+
+/** Canonical Place: src/content/places/*.md */
+export function parseMarkdownPlace(source: string): ParsedMarkdownPlace {
+  const { data, content } = matter(source);
+  const frontmatter = parsePlaceFrontmatter(data);
   return { frontmatter, body: content.trim() };
 }
