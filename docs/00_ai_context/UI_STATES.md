@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-05
 source_of_truth: true
 ---
 
@@ -20,7 +20,7 @@ Per-surface states implementations and design should handle consistently. Extend
 ## Onboarding
 
 - **Step in progress** — one primary question/action per step; **Step 5 (shipped)** — single screen, five `has_*` rows each with explicit true/false; Next disabled until all five answered.
-- **Completed** — minimal end on `/start` with CTA home only (Phase 2 slice to date); dashboard handoff not wired yet.
+- **Completed** — Step 6 Result Summary on `/start` when onboarding is complete: consumes **`deriveGuestOnboardingOutcomePreviewV1`** (emphasis line, primary + optional secondary links, two CTAs — **`/dashboard`** primary and **`/`** secondary on happy path); localized fallback if preview is **`null`**; **no** account/save-path CTA in this slice. **`/dashboard`** route remains a placeholder page.
 - **Abandoned resume** — restore from guest temp state when possible.
 - **Validation error** — inline, calm copy.
 

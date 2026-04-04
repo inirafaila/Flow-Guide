@@ -38,9 +38,43 @@
     "step3Title": "Where are you now?",
     "step4Title": "What are you mainly focused on right now?",
     "step5Title": "Your current situation",
-    "endTitle": "Saved",
-    "endBody": "Your basic choices are saved on this device. You can continue exploring the site.",
-    "ctaHome": "Back to home",
+    "step6": {
+      "title": "Your path is ready",
+      "intro": "Your answers are saved on this device. Here is a suggested next step based on what you shared.",
+      "secondariesA11y": "Other suggested steps",
+      "emphasis": {
+        "documents": "Suggested focus: residency and documents",
+        "housing": "Suggested focus: housing",
+        "work": "Suggested focus: work",
+        "life-setup": "Suggested focus: settling in",
+        "neutral": "Suggested focus: general orientation"
+      },
+      "reason": {
+        "spec_s15_example_primary": "Address registration",
+        "fallback_primary_documents": "Documents section",
+        "fallback_primary_housing": "Housing section",
+        "fallback_primary_work": "Work section",
+        "fallback_primary_life_setup": "Newcomer hub",
+        "fallback_primary_neutral": "Home"
+      },
+      "checklistSlug": {
+        "address-registration": "Address registration",
+        "social-card": "Social card",
+        "stay-calculator": "Stay calculator",
+        "documents-hub": "Documents",
+        "housing-hub": "Housing",
+        "work-hub": "Work",
+        "newcomer-hub": "Newcomer guide",
+        "neutral-hub": "Home",
+        "fallback": "Open {path}"
+      },
+      "errorTitle": "We could not show your summary",
+      "errorBody": "Something went wrong while building your personalized summary. You can still use the home page or open the dashboard.",
+      "ctaDashboard": "Go to dashboard",
+      "ctaContinueGuest": "Continue without an account",
+      "errorCtaHome": "Back to home",
+      "errorCtaDashboard": "Open dashboard"
+    },
     "options": {
       "language": {
         "fa": "فارسی",

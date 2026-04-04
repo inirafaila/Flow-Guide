@@ -10,6 +10,8 @@ import {
   readGuestBlob,
   writeGuestBlob,
 } from "@/lib/guest/storage";
+import { deriveGuestOnboardingOutcomePreviewV1 } from "@/lib/onboarding/onboarding-outcome-preview";
+import { step6SecondaryVisibleLabel } from "./onboarding-step6-labels";
 import {
   isStep5HasComplete,
   mergeOnboardingAfterStep,
@@ -178,19 +180,87 @@ export function StartOnboardingFlow() {
   }
 
   if (step === "end") {
+    const preview = deriveGuestOnboardingOutcomePreviewV1(blob?.onboarding);
     return (
       <Card as="article" className="start-onboarding">
         <h1 className="start-onboarding__title">{t("pageTitle")}</h1>
-        <h2 className="start-onboarding__step-title">{t("endTitle")}</h2>
-        <p className="muted">{t("endBody")}</p>
-        <p style={{ marginTop: "var(--space-8)" }}>
-          <Link
-            href="/"
-            className="fg-button fg-button--primary start-onboarding__cta-home"
-          >
-            {t("ctaHome")}
-          </Link>
-        </p>
+        {preview === null ? (
+          <>
+            <h2 className="start-onboarding__step-title">
+              {t("step6.errorTitle")}
+            </h2>
+            <p className="muted start-onboarding__step6-intro">
+              {t("step6.errorBody")}
+            </p>
+            <div className="start-onboarding__step6-cta-stack">
+              <Link
+                href="/"
+                className="fg-button fg-button--primary start-onboarding__cta-home"
+              >
+                {t("step6.errorCtaHome")}
+              </Link>
+              <Link
+                href="/dashboard"
+                className="fg-button fg-button--secondary start-onboarding__cta-home"
+              >
+                {t("step6.errorCtaDashboard")}
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <h2 className="start-onboarding__step-title">{t("step6.title")}</h2>
+            <p className="muted start-onboarding__step6-intro">
+              {t("step6.intro")}
+            </p>
+            <p className="start-onboarding__step6-emphasis">
+              {t(`step6.emphasis.${preview.emphasis}`)}
+            </p>
+            <div className="start-onboarding__step6-primary-wrap">
+              <Link
+                href={preview.primary.page_slug}
+                className="fg-button fg-button--primary start-onboarding__cta-home"
+              >
+                {t(`step6.reason.${preview.primary.reason_key}`)}
+              </Link>
+            </div>
+            {preview.secondaries.length > 0 ? (
+              <ul
+                className="start-onboarding__step6-secondaries"
+                aria-label={t("step6.secondariesA11y")}
+              >
+                {preview.secondaries.map((s) => (
+                  <li key={`${s.checklist_item_slug}-${s.page_slug}`}>
+                    <Link
+                      href={s.page_slug}
+                      className="fg-button fg-button--secondary start-onboarding__step6-secondary-link"
+                    >
+                      {step6SecondaryVisibleLabel(
+                        s.checklist_item_slug,
+                        s.page_slug,
+                        t,
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            <div className="start-onboarding__step6-cta-stack">
+              <Link
+                href="/dashboard"
+                className="fg-button fg-button--primary start-onboarding__cta-home"
+              >
+                {t("step6.ctaDashboard")}
+              </Link>
+              <Link
+                href="/"
+                className="fg-button fg-button--secondary start-onboarding__cta-home"
+              >
+                {t("step6.ctaContinueGuest")}
+              </Link>
+            </div>
+          </>
+        )}
       </Card>
     );
   }

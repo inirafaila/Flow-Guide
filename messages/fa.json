@@ -38,9 +38,43 @@
     "step3Title": "الان کجایی؟",
     "step4Title": "بیشتر دنبال چی هستی؟",
     "step5Title": "وضعیت فعلی‌ات",
-    "endTitle": "ذخیره شد",
-    "endBody": "انتخاب‌های پایه روی این دستگاه ذخیره شد. می‌توانی ادامه بدهی و سایت را بگردی.",
-    "ctaHome": "بازگشت به خانه",
+    "step6": {
+      "title": "مسیرت آماده است",
+      "intro": "پاسخ‌هایت روی این دستگاه ذخیره شده‌اند. بر اساس همین‌ها یک قدم پیشنهادی بعدی داریم.",
+      "secondariesA11y": "قدم‌های پیشنهادی دیگر",
+      "emphasis": {
+        "documents": "تمرکز پیشنهادی: اقامت و مدارک",
+        "housing": "تمرکز پیشنهادی: مسکن",
+        "work": "تمرکز پیشنهادی: کار",
+        "life-setup": "تمرکز پیشنهادی: شروع زندگی",
+        "neutral": "تمرکز پیشنهادی: مسیر کلی"
+      },
+      "reason": {
+        "spec_s15_example_primary": "ثبت آدرس",
+        "fallback_primary_documents": "بخش مدارک و اقامت",
+        "fallback_primary_housing": "بخش مسکن",
+        "fallback_primary_work": "بخش کار",
+        "fallback_primary_life_setup": "راهنمای تازه‌وارد",
+        "fallback_primary_neutral": "خانه"
+      },
+      "checklistSlug": {
+        "address-registration": "ثبت آدرس",
+        "social-card": "کارت سوشال",
+        "stay-calculator": "محاسبهٔ مدت اقامت",
+        "documents-hub": "مدارک و اقامت",
+        "housing-hub": "مسکن",
+        "work-hub": "کار",
+        "newcomer-hub": "راهنمای تازه‌وارد",
+        "neutral-hub": "خانه",
+        "fallback": "باز کردن {path}"
+      },
+      "errorTitle": "خلاصه نشان داده نشد",
+      "errorBody": "موقع ساخت خلاصهٔ شخصی‌سازی‌شده مشکلی پیش آمد. هنوز می‌توانی به خانه بروی یا داشبورد را باز کنی.",
+      "ctaDashboard": "رفتن به داشبورد",
+      "ctaContinueGuest": "ادامه بدون حساب کاربری",
+      "errorCtaHome": "بازگشت به خانه",
+      "errorCtaDashboard": "باز کردن داشبورد"
+    },
     "options": {
       "language": {
         "fa": "فارسی",
