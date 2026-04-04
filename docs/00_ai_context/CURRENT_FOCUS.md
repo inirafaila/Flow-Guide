@@ -7,16 +7,16 @@ source_of_truth: true
 
 # Current focus
 
-**Phase 1 only** — engineering and content **plumbing** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 1).
+**Phase 2** — core product **behavior** and **trust layer** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 2). Phase 1 plumbing is **complete** (2026-04-04); do not re-scope foundation work unless a regression forces a minimal fix.
 
-1. **Route skeleton** — IA hub and slug routes live under **`src/app/[locale]/`** ( **`next-intl`** internal segment; **`localePrefix: "never"`** keeps browser URLs unprefixed); root **`src/app/layout.tsx`** + shell; **`/transport/airport` → `/newcomer/airport-to-city`** (middleware).
-2. **Responsive app shell (Phase 1)** — **`SiteHeaderChrome`**: mobile drawer for IA links; desktop inline nav; locale visible on mobile—**no** Phase 2 surfaces.
-3. **Page template shells (Phase 1)** — **`page-type-templates.tsx`** + **`RoutePageBanner`**: structural placeholders for hub / guide / calculator / utility / service-form IA routes; **`/start`** and **`/dashboard`** stay generic **`RoutePlaceholder`**. No trust data or Phase 2 behavior.
-4. **Content layer** — `src/content/` Markdown + YAML frontmatter validated with **Zod** (`src/lib/schemas/content-page.ts`, `src/lib/content/parse-md.ts`); extend fields toward `DATA_CONTENT_MODEL_SPEC.md` as needed.
-5. **Search index (Phase 1)** — `scripts/build-search-index.mjs` runs **`build-search-index.impl.ts`** via **`tsx`** → **`public/search-index.json`** (validated output). **`/search`** loads JSON only as **placeholder** (no grouped / Phase 4 search UX).
-6. **Observability (Phase 1 wiring)** — **`@sentry/nextjs`** env-gated via root **`sentry.*.config.ts`** + **`src/instrumentation.ts`** (no init without DSNs). Plausible gated on domain + **no default load in `next dev`** unless **`NEXT_PUBLIC_PLAUSIBLE_ENABLE_DEV=true`**. **Minimal structured server logs:** **`src/lib/observability/logger.ts`** (JSON per line); **release/source-map automation** remains a **later** slice.
-7. **Quality baseline** — **`npm run lint`** (ESLint on `src/`), **`npm run build`**, **`npm run test`** (Vitest); **README** run instructions.
-8. **Design tokens + shared primitives (Phase 1)** — **`globals.css`** token consolidation; **`src/components/ui/`** (`Button`, `Card`, `SectionHeader`) on shell + template placeholders only—**no** Home/Start/Dashboard product layout, no trust/search/forms behavior.
-9. **i18n (Phase 1, UI-only)** — **`next-intl`** + **`messages/{en,fa,ru}`** + header locale switcher (**`NEXT_LOCALE`**); no locale-prefixed routes; optional **`?lang=`** deferred.
+1. **Onboarding** — guided steps framework + mapping to user state (guest-first; no forced auth at entry).
+2. **Guest persistence** — `localStorage` blob + TTL / schema version per [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) and [`ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) (behavior in Phase 2, not stubs only).
+3. **Dashboard** — populated from guest state; coherent layout vs placeholders on `/dashboard`.
+4. **Next best action v1** — one primary + capped secondary per locked direction.
+5. **Checklist v1** — filter/sort using checklist item contracts + user checklist status (rule-based, not ad hoc).
+6. **Trust UI** — source / last verified / variance blocks consuming real content-shaped data on guides where spec requires.
+7. **Stay calculator** — page behavior per product spec when scheduled in Phase 2 scope.
 
-**Explicitly not in focus:** NBA, checklist, `localStorage` guest **behavior**, auth, forms, headless CMS, Docker, real grouped search UI, admin.
+**Still Phase 1–legal / not product logic:** optional **`?lang=`**, Sentry release/source-map automation, grouped **`/search`** UX, places-lite product surface, housing/casino form submit, full analytics events—see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap Phase 4 where applicable.
+
+**Explicitly defer to later phases:** Phase 3 copy explosion, Phase 4 search/updates/places instrumentation bundle, auth/save-path (until account slice), admin (Phase 8).

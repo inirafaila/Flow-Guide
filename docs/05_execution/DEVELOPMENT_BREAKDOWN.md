@@ -17,7 +17,7 @@ source_of_truth: true
 | Master roadmap phase | Scope (summary) | Epics / tickets in *this* doc |
 |----------------------|-----------------|-------------------------------|
 | **0A / 0B** | MVP contract + technical architecture lock | Closed for execution; see [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) |
-| **Phase 1** | Engineering + content **foundation** only: app shell, IA **route skeleton**, schema-shaped **placeholder** pages, git Markdown + **Zod**, **`search-index.json`** in prebuild, env pattern, minimal **CI**, observability **hooks** (env-gated Sentry + dev-safe Plausible)—**no** NBA, checklist, or **guest behavior** | **1** (partial), **2** (partial), **5** (5.1 + template **shells**), **7** (**7.4** index model + **7.1** page stub only; not grouped UX) |
+| **Phase 1** | Engineering + content **foundation** only: app shell, IA **route skeleton**, schema-shaped **placeholder** pages, git Markdown + **Zod**, **`search-index.json`** in prebuild, env pattern, minimal **CI**, observability **hooks** (env-gated Sentry + dev-safe Plausible)—**no** NBA, checklist, or **guest behavior** | **Done** (2026-04-04 exit audit). Epic coverage: **1**, **2**, **5** (5.1 + template **shells**), **7** (**7.4** + **7.1** stub; not grouped UX) |
 | **Phase 2** | Onboarding, guest state, dashboard, NBA v1, checklist v1, trust UI wired to real behavior | **3**, **4**; **5.7–5.9** when behavior is real, not static-only |
 | **Phase 3** | Must-launch guides/hubs and journey copy | **6** (primary) |
 | **Phase 4** | Grouped **client** search UX, places-lite, updates surfacing, analytics/SEO hardening | **7** (**7.2–7.3**, **7.5–7.9**), **8** (e.g. **8.7**); aligns with [`ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) §4 |
@@ -29,11 +29,11 @@ source_of_truth: true
 
 ---
 
-## Phase 1 execution status (repo reality, 2026-04)
+## Phase 1 execution status (complete, 2026-04-04)
 
-Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md), [`CURRENT_FOCUS.md`](../00_ai_context/CURRENT_FOCUS.md), [`PROJECT_STATE.md`](../00_ai_context/PROJECT_STATE.md).
+Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md) (Phase 2 is the active phase doc), [`CURRENT_FOCUS.md`](../00_ai_context/CURRENT_FOCUS.md), [`PROJECT_STATE.md`](../00_ai_context/PROJECT_STATE.md). **Exit:** criterion audit + `npm run lint` / `test` / `build` green; see [`HANDOFF_NOTES.md`](../00_ai_context/HANDOFF_NOTES.md).
 
-### Shipped (Phase 1 — partial)
+### Delivered (Phase 1)
 
 - **Routing + i18n:** IA routes under `src/app/[locale]/`; `next-intl` + `localePrefix: "never"` (URLs unprefixed); `NEXT_LOCALE` + header locale switcher; `/transport/airport` → `/newcomer/airport-to-city` via **`PHASE1_IA_AIRPORT_REDIRECT`** in **`src/middleware.ts`**; **`/housing/request`** + **`/housing/request/success`** placeholder shells per **`IA_SPEC.md`** §6.5 (2026-04-03). **IA §6.1–6.9 regression guard:** **`src/lib/ia-phase1-routes.ts`** + **`ia-phase1-routes.test.ts`** (2026-04-04).
 - **Responsive shell + mobile nav (2026-04-04):** **`src/components/shell/SiteHeaderChrome.tsx`** + **`SiteHeader.tsx`** + **`globals.css`** — drawer + backdrop under **48rem**; desktop inline nav; Epic **2.3** baseline without Phase 2 behavior.
@@ -49,9 +49,9 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 - **Observability:** **`@sentry/nextjs`** env-gated (root **`sentry.*.config.ts`**, **`src/instrumentation.ts`**); Plausible **dev-safe** (no default load in **`next dev`** without opt-in env). **Structured logging (minimal):** **`src/lib/observability/logger.ts`** + instrumentation **`logInfo`** (2026-04-04). Further: release/source maps, funnel events = **later** slices.
 - **Ticket pointers (approximate):** **1.1–1.2**, **1.3** (domain enums/stubs, 2026-04-04), **1.4** (partial, 2026-04-04), **2.1–2.2** (locale switch **shipped**, not placeholder-only), **2.4–2.5** (partial, 2026-04-04 primitives), **5.1** (partial), **7.4** (partial), **7.1** (stub until Phase 4 UX).
 
-### Remaining before Phase 1 exit
+### Phase 1 optional / deferred (not exit blockers)
 
-**IA_SPEC.md** §6.1–6.9 page set + airport redirect covered by automated guard (`ia-phase1-routes`); **Checklist Item** + **Update Item** bounded Zod + canonical content dirs shipped (**2026-04-04**); **Source Record** + **Place** bounded Zod + **`src/content/sources/`** / **`src/content/places/`** shipped (**2026-04-04**); Epic **1.3** shared domain Zod stubs shipped (**2026-04-04**): **`user.ts`**, **`user-state.ts`**, **`user-checklist-status.ts`**, **`request-submission.ts`** (§5–6, §8, §13 enums + thin record/stub shapes; no persistence); further types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md) only if a future slice tightens parity; **Epic 1.4** / **Epic 2.4–2.5** partially addressed (**2026-04-04** minimal tokens + **`Button`/`Card`/`SectionHeader`** on shell/template placeholders only)—**no** Phase 2 **behavior**; local **lint / test / build** green; PR CI runs the same **lint / test / build**; Sentry/Plausible **env-gated wiring** + **minimal structured logging** shipped (2026-04-03 / 2026-04-04)—**later:** source maps / `withSentryConfig`, funnel events; **no** NBA/checklist **filtering** / guest **behavior** beyond contract stubs. Optional `?lang=` (deferred per `ENGINEERING_ARCHITECTURE.md` §7).
+Further types/Zod toward [`DATA_CONTENT_MODEL_SPEC.md`](../02_product/DATA_CONTENT_MODEL_SPEC.md) only if a future slice tightens parity. **Later (not Phase 1):** Sentry **source maps** / `withSentryConfig`, Plausible **funnel events**, optional **`?lang=`** (per `ENGINEERING_ARCHITECTURE.md` §7). Header **search trigger** may remain minimal until Phase 4 grouped UX.
 
 ### Not Phase 1 (do not schedule as current implementation)
 
@@ -110,8 +110,8 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 | Epic | Master roadmap phase | Notes |
 |------|----------------------|--------|
-| **1** | Phase 1 | Foundation; partial shipped |
-| **2** | Phase 1 | Shell/nav; partial shipped |
+| **1** | Phase 1 | Foundation; **complete** (Phase 1 exit 2026-04-04) |
+| **2** | Phase 1 | Shell/nav; baseline **complete** for Phase 1 (Phase 2 may extend chrome) |
 | **3** | **Phase 2** | Onboarding + guest — **not** Phase 1 implementation |
 | **4** | **Phase 2** | Dashboard + checklist logic |
 | **5** | Phase 1 (schema + **shells**); **5.7–5.9** behavior = Phase 2 | Templates before content explosion |
@@ -166,7 +166,7 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 ## 5) Epic 1 — Product Foundation
 
-**Master roadmap:** **Phase 1** (foundation); partial shipped — see **Phase 1 execution status** at top.
+**Master roadmap:** **Phase 1** (foundation); **complete** (2026-04-04)—see **Phase 1 execution status** at top.
 
 ### هدف epic
 ساخت foundation فنی و محصولی که بقیه چیزها روی آن سوار شوند.
@@ -220,7 +220,7 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 ## 6) Epic 2 — Core Navigation + App Shell
 
-**Master roadmap:** **Phase 1** (shell/nav); partial shipped — locale switcher and shell live; mobile nav / search trigger may still be stub.
+**Master roadmap:** **Phase 1** (shell/nav); **complete** for Phase 1 exit (2026-04-04)—locale switcher, responsive shell, mobile drawer; header search may stay minimal until Phase 4 grouped UX.
 
 ### هدف epic
 ساخت پوسته اصلی اپ که همه صفحات داخل آن رندر شوند.
@@ -679,7 +679,7 @@ housing request و casino referral فعلاً فقط در حد form و endpoint 
 
 ## 13) Dependency Map
 
-**Execution gate:** Meet **Phase 1 exit** ([`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md)) before treating Epic **3–4** as active **implementation** work (they are **Phase 2** on the master roadmap). Ticket lists in §14 describe **launch bundle**, not “all in Phase 1.”
+**Execution gate:** **Phase 1 exit passed** (2026-04-04); Epic **3–4** are **Phase 2** on the master roadmap—safe to schedule as active **implementation** per [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md). Ticket lists in §14 describe **launch bundle**, not “all in Phase 1.”
 
 ### Foundation dependencies
 - Epic 1 باید قبل از همه شروع شود
@@ -857,12 +857,12 @@ P0 / P1 / P2
 
 **Deprecated for scheduling:** The former “Sprint 1–6” list mixed **Phase 1** foundation with **Phase 2–4** tickets in parallel waves; that is **misleading** now that the repo follows [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md). Use **gates** below. Historical sprint bullets are archived at [§19.1 Legacy sprint reference (deprecated)](#191-legacy-sprint-reference-deprecated).
 
-### Gate A — Phase 1 exit (current track)
+### Gate A — Phase 1 exit (**passed 2026-04-04**)
 
-- Close items in **Phase 1 execution status** (top of this doc): routes, Zod/content, `search-index.json`, CI, stubs, placeholder templates — **no** guest/NBA/checklist behavior.
-- Epics **1–2** (remaining gaps), **5.1** + template shells **5.2–5.6** as placeholders, **7.4** + **7.1** stub only.
+- **Phase 1 execution status** (top of this doc): routes, Zod/content, `search-index.json`, CI, stubs, placeholder templates — **no** guest/NBA/checklist product behavior; **`npm run lint` / `test` / `build`** green.
+- Epics **1–2** (foundation + shell/nav baselines), **5.1** + template shells **5.2–5.6** as placeholders, **7.4** + **7.1** stub only.
 
-### Gate B — Phase 2
+### Gate B — Phase 2 (**current track**)
 
 - Epics **3–4**; trust blocks **5.7–5.9** when wired to real state/logic.
 

@@ -30,7 +30,8 @@ Web app for **newcomers to Armenia**: sequenced guidance, **source-backed** cont
 
 - **Product specs:** present (PRD, IA, data model, UI handoff, breakdown).
 - **Phase 0:** approved — `docs/04_engineering/PHASE_0_DECISION_RECORD.md`.
-- **Phase 1 (current):** Next.js **15** App Router + **TypeScript** + **React 19** + **`next-intl`** — routes under **`src/app/[locale]/`** (internal locale segment; **browser URLs stay unprefixed** per architecture). **Plumbing only:** no auth, no headless CMS, no Docker, no Phase 2 product logic (NBA/checklist/guest behavior).
+- **Phase 1 (complete, 2026-04-04):** Foundation shipped — IA shells, Zod content contracts, `search-index.json` prebuild, CI, observability stubs, placeholder templates (see `docs/00_ai_context/PROJECT_STATE.md`).
+- **Phase 2 (current track):** Core product behavior + trust layer per `docs/01_strategy/ROADMAP_MASTER.md` — not implied started by this README line alone; check `docs/00_ai_context/CURRENT_PHASE.md`.
 - **Roadmap:** `docs/01_strategy/ROADMAP_MASTER.md` (strategy); `docs/01_strategy/ROADMAP_STATUS.md` (phase status).
 
 ## Local development
