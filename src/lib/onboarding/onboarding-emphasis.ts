@@ -1,4 +1,5 @@
 import type { GuestOnboardingPartial } from "@/lib/schemas/guest-blob";
+import { STEP5_HAS_FIELD_ORDER } from "@/lib/onboarding/start-slice";
 
 /**
  * v1 dashboard emphasis derived from DATA_CONTENT_MODEL_SPEC §15 fields only
@@ -61,4 +62,65 @@ export function deriveGuestOnboardingEmphasisV1(
   }
   const _exhaustive: never = primary_goal;
   return _exhaustive;
+}
+
+/** Structured onboarding-derived signals for Phase 2 consumers (dashboard, NBA, …). */
+export type GuestOnboardingSignalsV2 = {
+  emphasis: GuestOnboardingEmphasisV1;
+};
+
+function coreFieldsComplete(o: GuestOnboardingPartial): boolean {
+  return (
+    o.language !== undefined &&
+    o.nationality !== undefined &&
+    o.location_status !== undefined &&
+    o.primary_goal !== undefined
+  );
+}
+
+function step5FieldsAllBooleans(o: GuestOnboardingPartial): boolean {
+  return STEP5_HAS_FIELD_ORDER.every((k) => typeof o[k] === "boolean");
+}
+
+/**
+ * v2 signals: same `emphasis` union as v1, plus DATA_CONTENT_MODEL_SPEC §15
+ * example override (R1) when core + Step 5 fields are complete.
+ * Pure; no I/O. Keeps v1 available via {@link deriveGuestOnboardingEmphasisV1}.
+ */
+export function deriveGuestOnboardingSignalsV2(
+  onboarding: GuestOnboardingPartial | undefined,
+): GuestOnboardingSignalsV2 {
+  if (onboarding === undefined) {
+    return { emphasis: "neutral" };
+  }
+
+  const base = deriveGuestOnboardingEmphasisV1(onboarding);
+
+  if (!coreFieldsComplete(onboarding)) {
+    return { emphasis: base };
+  }
+
+  if (!step5FieldsAllBooleans(onboarding)) {
+    return { emphasis: base };
+  }
+
+  const {
+    nationality,
+    location_status,
+    has_housing,
+    has_address_registration,
+    has_social_card,
+  } = onboarding;
+
+  if (
+    nationality === "iran" &&
+    location_status === "inside_armenia" &&
+    has_housing === true &&
+    has_address_registration === false &&
+    has_social_card === false
+  ) {
+    return { emphasis: "documents" };
+  }
+
+  return { emphasis: base };
 }
