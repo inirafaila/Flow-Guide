@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-04
 source_of_truth: true
 ---
 
@@ -19,8 +19,8 @@ Per-surface states implementations and design should handle consistently. Extend
 
 ## Onboarding
 
-- **Step in progress** — one primary question/action per step.
-- **Completed** — clear handoff to dashboard or home.
+- **Step in progress** — one primary question/action per step; **Step 5 (shipped)** — single screen, five `has_*` rows each with explicit true/false; Next disabled until all five answered.
+- **Completed** — minimal end on `/start` with CTA home only (Phase 2 slice to date); dashboard handoff not wired yet.
 - **Abandoned resume** — restore from guest temp state when possible.
 - **Validation error** — inline, calm copy.
 

@@ -37,6 +37,7 @@
     "step2Title": "What is your nationality?",
     "step3Title": "Where are you now?",
     "step4Title": "What are you mainly focused on right now?",
+    "step5Title": "Your current situation",
     "endTitle": "Saved",
     "endBody": "Your basic choices are saved on this device. You can continue exploring the site.",
     "ctaHome": "Back to home",
@@ -61,6 +62,15 @@
         "work": "Work",
         "housing": "Housing",
         "documents": "Residency & documents"
+      },
+      "step5": {
+        "boolYes": "Yes",
+        "boolNo": "No",
+        "has_housing": "Housing (a place to stay)",
+        "has_sim": "Local SIM card",
+        "has_address_registration": "Address registration completed",
+        "has_social_card": "Social card",
+        "has_bank_account": "Bank account"
       }
     }
   },

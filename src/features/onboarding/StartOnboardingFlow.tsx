@@ -11,11 +11,17 @@ import {
   writeGuestBlob,
 } from "@/lib/guest/storage";
 import {
+  isStep5HasComplete,
   mergeOnboardingAfterStep,
+  mergeOnboardingAfterStep5,
   patchForCompletedStep,
+  readStep5StateFromOnboarding,
   resolveStartSlicePhase,
   START_SLICE_FIELD_ORDER,
+  STEP5_HAS_FIELD_ORDER,
   type StartSliceStep,
+  type Step5HasComplete,
+  type Step5HasField,
   type StepValue,
 } from "@/lib/onboarding/start-slice";
 import type { GuestBlobV1 } from "@/lib/schemas/guest-blob";
@@ -61,6 +67,7 @@ export function StartOnboardingFlow() {
   const [blob, setBlob] = useState<GuestBlobV1 | null>(null);
   const [step, setStep] = useState<UiStep>(1);
   const [pending, setPending] = useState<StepValue | null>(null);
+  const [hasPending, setHasPending] = useState<Partial<Step5HasComplete>>({});
 
   const hydrate = useCallback(() => {
     if (!probeLocalStorage()) {
@@ -75,11 +82,18 @@ export function StartOnboardingFlow() {
     if (phase.kind === "end") {
       setStep("end");
       setPending(null);
+      setHasPending({});
     } else {
       setStep(phase.step);
-      const key = START_SLICE_FIELD_ORDER[phase.step - 1];
-      const existing = b?.onboarding?.[key];
-      setPending(existing !== undefined ? (existing as StepValue) : null);
+      if (phase.step <= 4) {
+        const key = START_SLICE_FIELD_ORDER[phase.step - 1];
+        const existing = b?.onboarding?.[key];
+        setPending(existing !== undefined ? (existing as StepValue) : null);
+        setHasPending({});
+      } else {
+        setPending(null);
+        setHasPending(readStep5StateFromOnboarding(b?.onboarding));
+      }
     }
     setReady(true);
   }, []);
@@ -90,30 +104,48 @@ export function StartOnboardingFlow() {
 
   useEffect(() => {
     if (typeof step !== "number" || !blob) return;
-    const key = START_SLICE_FIELD_ORDER[step - 1];
-    const existing = blob.onboarding?.[key];
-    setPending(existing !== undefined ? (existing as StepValue) : null);
+    if (step <= 4) {
+      const key = START_SLICE_FIELD_ORDER[step - 1];
+      const existing = blob.onboarding?.[key];
+      setPending(existing !== undefined ? (existing as StepValue) : null);
+    } else if (step === 5) {
+      setHasPending(readStep5StateFromOnboarding(blob.onboarding));
+    }
   }, [step, blob]);
 
   const handleNext = () => {
-    if (typeof step !== "number" || pending === null) return;
+    if (typeof step !== "number") return;
     const now = new Date();
     let base = blob;
     if (!base) {
       base = createInitialGuestBlob(now);
     }
+
+    if (step === 5) {
+      if (!isStep5HasComplete(hasPending)) return;
+      const onboarding = mergeOnboardingAfterStep5(
+        base.onboarding,
+        hasPending,
+      );
+      const updated: GuestBlobV1 = { ...base, onboarding };
+      writeGuestBlob(updated);
+      setBlob(updated);
+      setStep("end");
+      setPending(null);
+      setHasPending({});
+      return;
+    }
+
+    if (pending === null) return;
     const patch = patchForCompletedStep(step, pending);
-    const onboarding = mergeOnboardingAfterStep(
-      base.onboarding,
-      step,
-      patch,
-    );
+    const onboarding = mergeOnboardingAfterStep(base.onboarding, step, patch);
     const updated: GuestBlobV1 = { ...base, onboarding };
     writeGuestBlob(updated);
     setBlob(updated);
     if (step === 4) {
-      setStep("end");
+      setStep(5);
       setPending(null);
+      setHasPending({});
     } else {
       const nextStep = (step + 1) as StartSliceStep;
       setStep(nextStep);
@@ -123,6 +155,10 @@ export function StartOnboardingFlow() {
   const handleBack = () => {
     if (typeof step !== "number" || step <= 1) return;
     setStep((step - 1) as StartSliceStep);
+  };
+
+  const setHasField = (field: Step5HasField, value: boolean) => {
+    setHasPending((prev) => ({ ...prev, [field]: value }));
   };
 
   if (!ready) {
@@ -160,11 +196,17 @@ export function StartOnboardingFlow() {
   }
 
   const progressFilled = step;
-  const stepTitleKey = `step${step}Title` as
-    | "step1Title"
-    | "step2Title"
-    | "step3Title"
-    | "step4Title";
+  const stepTitleKey =
+    step === 5
+      ? "step5Title"
+      : (`step${step}Title` as
+          | "step1Title"
+          | "step2Title"
+          | "step3Title"
+          | "step4Title");
+
+  const nextDisabled =
+    step === 5 ? !isStep5HasComplete(hasPending) : pending === null;
 
   return (
     <Card as="article" className="start-onboarding">
@@ -172,9 +214,9 @@ export function StartOnboardingFlow() {
       <div
         className="start-onboarding__progress"
         role="group"
-        aria-label={t("progressA11y", { step, total: 4 })}
+        aria-label={t("progressA11y", { step, total: 5 })}
       >
-        {[1, 2, 3, 4].map((i) => (
+        {[1, 2, 3, 4, 5].map((i) => (
           <div
             key={i}
             className="start-onboarding__progress-segment"
@@ -240,6 +282,35 @@ export function StartOnboardingFlow() {
           ))}
         </div>
       )}
+      {step === 5 && (
+        <div className="start-onboarding__step5">
+          {STEP5_HAS_FIELD_ORDER.map((field) => (
+            <div key={field} className="start-onboarding__step5-row">
+              <p className="start-onboarding__step5-label">
+                {t(`options.step5.${field}`)}
+              </p>
+              <div className="start-onboarding__options start-onboarding__step5-options">
+                <Button
+                  type="button"
+                  variant={hasPending[field] === true ? "primary" : "secondary"}
+                  onClick={() => setHasField(field, true)}
+                >
+                  {t("options.step5.boolYes")}
+                </Button>
+                <Button
+                  type="button"
+                  variant={
+                    hasPending[field] === false ? "primary" : "secondary"
+                  }
+                  onClick={() => setHasField(field, false)}
+                >
+                  {t("options.step5.boolNo")}
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="start-onboarding__nav">
         <Button
@@ -254,7 +325,7 @@ export function StartOnboardingFlow() {
           type="button"
           variant="primary"
           onClick={handleNext}
-          disabled={pending === null}
+          disabled={nextDisabled}
         >
           {t("next")}
         </Button>
