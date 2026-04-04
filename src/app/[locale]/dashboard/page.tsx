@@ -1,5 +1,5 @@
-import { RoutePlaceholder } from "@/features/routes/RoutePlaceholder";
+import { DashboardNextBestAction } from "@/features/dashboard/DashboardNextBestAction";
 
-export default async function Page() {
-  return <RoutePlaceholder path="/dashboard" />;
+export default function Page() {
+  return <DashboardNextBestAction />;
 }

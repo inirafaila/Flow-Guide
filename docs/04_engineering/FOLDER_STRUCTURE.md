@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-06
 source_of_truth: false
 ---
 
@@ -16,7 +16,7 @@ src/
   components/    # Shared UI primitives
   components/ui/     # Phase 1 minimal primitives (Button, Card, SectionHeader)
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
-  features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub, onboarding/start slice)
+  features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub, onboarding/start slice, dashboard/NBA v1 consumer)
   lib/           # Utilities, CMS client, rule engines
   lib/onboarding/  # Phase 2 /start: start-slice (steps 1–5 merge/prune/resume); onboarding-emphasis v1 (four-field derivation)
   lib/content/     # parse-md, search-index records, load-checklist-and-updates, load-sources, load-places (Node-only loaders)

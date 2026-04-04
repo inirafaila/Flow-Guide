@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-06
 source_of_truth: true
 ---
 
@@ -44,7 +44,7 @@ Aligned with [`docs/00_ai_context/CURRENT_PHASE.md`](../00_ai_context/CURRENT_PH
 - **Checklist + update contracts (2026-04-04):** **`src/lib/schemas/checklist-item.ts`**, **`update-item.ts`**; **`parseMarkdownChecklistItem`** / **`parseMarkdownUpdateItem`**; **`load-checklist-and-updates.ts`**; dirs **`src/content/checklist-items/`**, **`src/content/updates/`**. Contract-only — **not** wired to search build or product UI.
 - **Search index (Phase 1 only):** `scripts/build-search-index.mjs` → `tsx` / `build-search-index.impl.ts` → validated `public/search-index.json`.
 - **`/search`:** placeholder only (e.g. fetch/count) — **not** Phase 4 grouped UX; **utility-shaped** structural template + existing stub.
-- **Page template shells (Phase 1):** distinct **structural** placeholders for **hub / guide / calculator / utility / service-form** routes via **`src/features/routes/page-type-templates.tsx`** + **`RoutePageBanner`**; **`/documents/stay-calculator`** → calculator shell; **`/housing/request`** → service-form shell (via **`housing/[slug]`**); **`/housing/request/success`** → follow-up shell. Generic **`RoutePlaceholder`** only for **`/`**, **`/start`**, **`/dashboard`**.
+- **Page template shells (Phase 1):** distinct **structural** placeholders for **hub / guide / calculator / utility / service-form** routes via **`src/features/routes/page-type-templates.tsx`** + **`RoutePageBanner`**; **`/documents/stay-calculator`** → calculator shell; **`/housing/request`** → service-form shell (via **`housing/[slug]`**); **`/housing/request/success`** → follow-up shell. Generic **`RoutePlaceholder`** only for **`/`** (**`/start`** / **`/dashboard`** = Phase 2 product UI per later slices).
 - **CI:** GitHub Actions on PRs to `main`: `npm ci`, `npm run lint`, `npm run test`, `npm run build`.
 - **Observability:** **`@sentry/nextjs`** env-gated (root **`sentry.*.config.ts`**, **`src/instrumentation.ts`**); Plausible **dev-safe** (no default load in **`next dev`** without opt-in env). **Structured logging (minimal):** **`src/lib/observability/logger.ts`** + instrumentation **`logInfo`** (2026-04-04). Further: release/source maps, funnel events = **later** slices.
 - **Ticket pointers (approximate):** **1.1–1.2**, **1.3** (domain enums/stubs, 2026-04-04), **1.4** (partial, 2026-04-04), **2.1–2.2** (locale switch **shipped**, not placeholder-only), **2.4–2.5** (partial, 2026-04-04 primitives), **5.1** (partial), **7.4** (partial), **7.1** (stub until Phase 4 UX).

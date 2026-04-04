@@ -26,6 +26,19 @@
   "placeholder": {
     "phase1": "Phase 1 route shell — content and behavior come in later phases."
   },
+  "dashboard": {
+    "pageTitle": "Dashboard",
+    "loading": "Loading…",
+    "empty": {
+      "noBlobTitle": "Start your path",
+      "noBlobBody": "We do not have your saved answers on this device yet. Take the short guided path so we can show personalized next steps here.",
+      "incompleteTitle": "Finish your setup",
+      "incompleteBody": "Your answers are only partly saved. Complete the remaining questions on Start so this dashboard can show your suggested next steps."
+    },
+    "nba": {
+      "sectionTitle": "Suggested next step"
+    }
+  },
   "onboardingStart": {
     "pageTitle": "Start",
     "loading": "Loading…",
