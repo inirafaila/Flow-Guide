@@ -1,5 +1,9 @@
-import { RoutePlaceholder } from "@/features/routes/RoutePlaceholder";
+import { StartOnboardingFlow } from "@/features/onboarding/StartOnboardingFlow";
 
-export default async function Page() {
-  return <RoutePlaceholder path="/start" />;
+export default function Page() {
+  return (
+    <section className="route-placeholder">
+      <StartOnboardingFlow />
+    </section>
+  );
 }

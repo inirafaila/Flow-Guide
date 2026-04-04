@@ -16,8 +16,9 @@ src/
   components/    # Shared UI primitives
   components/ui/     # Phase 1 minimal primitives (Button, Card, SectionHeader)
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
-  features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub)
+  features/      # Feature-scoped UI + logic (e.g. routes/page-type placeholder templates, search stub, onboarding/start slice)
   lib/           # Utilities, CMS client, rule engines
+  lib/onboarding/  # Pure helpers for Phase 2 onboarding (start-slice merge/prune; onboarding-emphasis v1 derivation)
   lib/content/     # parse-md, search-index records, load-checklist-and-updates, load-sources, load-places (Node-only loaders)
   lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root
   hooks/         # Shared React hooks (if using React)

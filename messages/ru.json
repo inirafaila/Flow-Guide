@@ -26,6 +26,44 @@
   "placeholder": {
     "phase1": "Каркас маршрута фазы 1 — контент и логика позже."
   },
+  "onboardingStart": {
+    "pageTitle": "Старт",
+    "loading": "Загрузка…",
+    "storageUnavailable": "Не удалось использовать память браузера — ответы на этом устройстве не сохранятся.",
+    "progressA11y": "Шаг {step} из {total}",
+    "back": "Назад",
+    "next": "Далее",
+    "step1Title": "Выберите язык",
+    "step2Title": "Ваша гражданство / страна?",
+    "step3Title": "Где вы сейчас?",
+    "step4Title": "Что сейчас важнее всего?",
+    "endTitle": "Сохранено",
+    "endBody": "Базовые ответы сохранены на этом устройстве. Можно продолжить знакомство с сайтом.",
+    "ctaHome": "На главную",
+    "options": {
+      "language": {
+        "fa": "فارسی",
+        "en": "English",
+        "ru": "Русский"
+      },
+      "nationality": {
+        "iran": "Иран",
+        "russia": "Россия",
+        "india": "Индия",
+        "other": "Другое"
+      },
+      "location_status": {
+        "inside_armenia": "Я в Армении",
+        "outside_armenia": "Ещё не приехал(а)"
+      },
+      "primary_goal": {
+        "start-life": "Обустроиться",
+        "work": "Работа",
+        "housing": "Жильё",
+        "documents": "ВНЖ и документы"
+      }
+    }
+  },
   "pageTemplate": {
     "hub": {
       "intro": "Введение (заглушка)",

@@ -13,6 +13,17 @@ source_of_truth: true
 
 If the user asks for a **plan**, **roadmap-aligned next steps**, or **task choice** (including plan-only chats), read **`CURSOR_PLANNING_PROTOCOL.md`** and follow its **source stack + workflow** **before** recommending work. For **plan then implement** in one session, run that protocol **first**, then use the read order below for the chosen slice.
 
+## Prompt writing or prompt refinement
+
+If the user asks you to **write**, **improve**, or **refine** a prompt for planning, next-task choice, candidate validation, plan refinement, or implementation, read **`PROMPT_AUTHORING_PROTOCOL.md`** after the relevant planning/session protocol.
+
+Rules:
+
+- Do **not** lock a task in the prompt unless the human explicitly says that exact task is already approved.
+- If the human proposes a task, treat it as a **candidate to evaluate**, not a decision to defend.
+- Use **deterministic read order** wording: say **"Read these files in order"**, not **"at least read these files"**.
+- Keep planning prompts **discovery-first** and implementation prompts **approval-first**.
+
 ## Read order (implementation and general sessions)
 
 1. `docs/00_ai_context/AI_INDEX.md` — authority map and “start here.”

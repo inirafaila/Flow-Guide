@@ -1,12 +1,23 @@
 /**
- * Guest persistence — Phase 2 implementation.
+ * Guest persistence — Phase 2 module surface.
  * @see PHASE_0_DECISION_RECORD §5.5 — localStorage key, schemaVersion, 90d TTL.
  */
-export const GUEST_STORAGE_KEY = "flowguide_guest_v1" as const;
+export {
+  GUEST_SCHEMA_VERSION,
+  GUEST_STORAGE_KEY,
+  GUEST_TTL_MS,
+} from "./constants";
 
-export const GUEST_SCHEMA_VERSION = 1 as const;
-
-export type GuestStateStub = {
-  schemaVersion: typeof GUEST_SCHEMA_VERSION;
-  /** Filled in Phase 2 per PRD / DATA_CONTENT_MODEL_SPEC */
-};
+export {
+  clearGuestBlob,
+  clearGuestBlobInStorage,
+  createInitialGuestBlob,
+  isGuestBlobExpired,
+  parseGuestBlobValue,
+  readGuestBlob,
+  readGuestBlobFromStorage,
+  touchGuestBlob,
+  writeGuestBlob,
+  writeGuestBlobToStorage,
+  type GuestStorageAdapter,
+} from "./persistence";

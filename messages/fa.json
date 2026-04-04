@@ -26,6 +26,44 @@
   "placeholder": {
     "phase1": "صفحهٔ فاز ۱ — محتوا و رفتار در فازهای بعدی."
   },
+  "onboardingStart": {
+    "pageTitle": "شروع",
+    "loading": "در حال بارگذاری…",
+    "storageUnavailable": "ذخیره‌سازی مرورگر در دسترس نیست؛ پاسخ‌ها روی این دستگاه ذخیره نمی‌شوند.",
+    "progressA11y": "گام {step} از {total}",
+    "back": "قبلی",
+    "next": "بعدی",
+    "step1Title": "زبان را انتخاب کن",
+    "step2Title": "ملیتت چیست؟",
+    "step3Title": "الان کجایی؟",
+    "step4Title": "بیشتر دنبال چی هستی؟",
+    "endTitle": "ذخیره شد",
+    "endBody": "انتخاب‌های پایه روی این دستگاه ذخیره شد. می‌توانی ادامه بدهی و سایت را بگردی.",
+    "ctaHome": "بازگشت به خانه",
+    "options": {
+      "language": {
+        "fa": "فارسی",
+        "en": "English",
+        "ru": "Русский"
+      },
+      "nationality": {
+        "iran": "ایران",
+        "russia": "روسیه",
+        "india": "هند",
+        "other": "سایر"
+      },
+      "location_status": {
+        "inside_armenia": "داخل ارمنستانم",
+        "outside_armenia": "هنوز نرسیدم"
+      },
+      "primary_goal": {
+        "start-life": "شروع زندگی",
+        "work": "کار",
+        "housing": "خانه",
+        "documents": "اقامت و مدارک"
+      }
+    }
+  },
   "pageTemplate": {
     "hub": {
       "intro": "مقدمه (بلوک نگهدارنده)",

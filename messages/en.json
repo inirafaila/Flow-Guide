@@ -26,6 +26,44 @@
   "placeholder": {
     "phase1": "Phase 1 route shell — content and behavior come in later phases."
   },
+  "onboardingStart": {
+    "pageTitle": "Start",
+    "loading": "Loading…",
+    "storageUnavailable": "We could not use browser storage here. Your answers cannot be saved on this device.",
+    "progressA11y": "Step {step} of {total}",
+    "back": "Back",
+    "next": "Next",
+    "step1Title": "Choose your language",
+    "step2Title": "What is your nationality?",
+    "step3Title": "Where are you now?",
+    "step4Title": "What are you mainly focused on right now?",
+    "endTitle": "Saved",
+    "endBody": "Your basic choices are saved on this device. You can continue exploring the site.",
+    "ctaHome": "Back to home",
+    "options": {
+      "language": {
+        "fa": "فارسی",
+        "en": "English",
+        "ru": "Русский"
+      },
+      "nationality": {
+        "iran": "Iran",
+        "russia": "Russia",
+        "india": "India",
+        "other": "Other"
+      },
+      "location_status": {
+        "inside_armenia": "I am in Armenia",
+        "outside_armenia": "I have not arrived yet"
+      },
+      "primary_goal": {
+        "start-life": "Settling in",
+        "work": "Work",
+        "housing": "Housing",
+        "documents": "Residency & documents"
+      }
+    }
+  },
   "pageTemplate": {
     "hub": {
       "intro": "Intro (placeholder)",

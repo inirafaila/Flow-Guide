@@ -334,3 +334,53 @@ body {
   margin: 0;
   font-size: var(--text-sm);
 }
+
+/* Phase 2 — /start onboarding slice (narrow) */
+.start-onboarding__title {
+  margin: 0 0 var(--space-7);
+  font-size: 1.25rem;
+}
+
+.start-onboarding__step-title {
+  margin: 0 0 var(--space-6);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.start-onboarding__progress {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.start-onboarding__progress-segment {
+  flex: 1;
+  height: 6px;
+  border-radius: var(--radius-sm);
+  background: var(--border);
+}
+
+.start-onboarding__progress-segment[data-active="true"] {
+  background: var(--accent);
+}
+
+.start-onboarding__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-bottom: var(--space-9);
+}
+
+.start-onboarding__nav {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.start-onboarding__cta-home {
+  display: inline-block;
+  padding: var(--space-4) var(--space-7);
+  text-decoration: none;
+  text-align: center;
+}

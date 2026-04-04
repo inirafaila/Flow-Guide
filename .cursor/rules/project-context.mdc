@@ -19,6 +19,16 @@ This repository is **flow-guide**: a **newcomer guide web app for Armenia** with
 
 When the user asks for a **plan**, **priorities**, or **what to do next**, follow `docs/00_ai_context/CURSOR_PLANNING_PROTOCOL.md`: stay inside the **active phase** (`ROADMAP_STATUS.md`, `CURRENT_PHASE.md`), propose **2–4 candidates** when useful, compare by **exit-criteria impact** vs **nice-to-have**, and choose the **smallest safe slice**. Do not change roadmap substance or locked decisions from a planning answer.
 
+## Prompt writing and prompt refinement
+
+When the user asks for a **prompt** for planning, candidate evaluation, plan refinement, or implementation, follow `docs/00_ai_context/PROMPT_AUTHORING_PROTOCOL.md`.
+
+- Do **not** lock a task in the prompt unless the human explicitly says that exact implementation slice is approved.
+- If the human proposes a task, treat it as a **candidate hypothesis** to validate, not a task to defend.
+- Use **canonical repo naming**; do not invent abstractions without doc support.
+- Use **deterministic read order** wording: `Read these files in order`.
+- Separate **exit-criteria gaps**, **optional cleanup**, and **deferred / post-exit** work.
+
 ## Structure
 
 - Application code targets `src/` and `public/` per `docs/04_engineering/FOLDER_STRUCTURE.md`.
