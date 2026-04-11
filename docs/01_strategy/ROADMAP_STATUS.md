@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-11
 source_of_truth: false
 ---
 
@@ -26,7 +26,7 @@ Per `ROADMAP_MASTER.md` Phase 2 exit: onboarding, guest state, dashboard, NBA v1
 | **0A** | Product scope and MVP contract | **Done** | 2026-04-01 — `PHASE_0_DECISION_RECORD` approved |
 | **0B** | Technical architecture lock | **Done** | 2026-04-01 — same record + `ENGINEERING_ARCHITECTURE.md` |
 | **1** | Engineering and content foundation | **Done** | 2026-04-04 — exit audit passed; IA + templates + Zod contracts + `search-index.json` prebuild + CI + observability stubs |
-| **2** | Core product behavior and trust layer | **In progress** | Onboarding, guest persistence, dashboard, NBA, checklist logic, trust UI—after Phase 1 exit |
+| **2** | Core product behavior and trust layer | **In progress** | Onboarding ✅, guest persistence ✅, NBA v1 ✅, checklist v1 (filter + seeds + UI + dashboard block) ✅ — trust UI + stay calculator remaining |
 | **3** | MVP content and journey implementation | **Later** | Depends on Phase 2 |
 | **4** | MVP utility, instrumentation, launch-scope hardening | **Later** | Required before launch |
 | **5** | Verification, QA, release readiness | **Later** | Before LAG |
@@ -46,6 +46,7 @@ Per `ROADMAP_MASTER.md` Phase 2 exit: onboarding, guest state, dashboard, NBA v1
 
 ## Last review
 
+- **2026-04-11** — Phase 2 checkpoint: checklist chain complete (filtering logic + 8 seed items + row component + dashboard block on `/dashboard`); onboarding + NBA previously shipped. Trust UI and stay calculator remaining for Phase 2 exit.
 - **2026-04-04** — Phase 1 marked **done** after exit audit + `lint` / `test` / `build`; Phase 2 active track; `CURRENT_PHASE`, `PROJECT_STATE`, `NEXT_ACTIONS`, `HANDOFF_NOTES`, `DEVELOPMENT_BREAKDOWN` updated.
 - **2026-04-01** — Phase 0 closed; Phase 1 scaffold started.
 - **2026-04-01** — Pre-commit pass: ESLint CLI for `npm run lint`; context/AI index aligned with roadmap + engineering authority docs.
