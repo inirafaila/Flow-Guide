@@ -19,7 +19,9 @@ describe("buildSearchIndexRecords", () => {
     expect(records.length).toBeGreaterThanOrEqual(2);
     const parsed = searchIndexFileSchema.safeParse(records);
     expect(parsed.success).toBe(true);
-    const page = records.find((r) => r.type === "page");
+    const page = records.find(
+      (r) => r.type === "page" && r.slug === "/start",
+    );
     expect(page?.slug).toBe("/start");
     const faq = records.find((r) => r.type === "faq");
     expect(faq?.slug).toBe("/faq/sample-question");

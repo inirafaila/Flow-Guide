@@ -1,8 +1,10 @@
+import path from "node:path";
 import { notFound } from "next/navigation";
 import {
   CalculatorPageTemplate,
   GuidePageTemplate,
 } from "@/features/routes/page-type-templates";
+import { loadTrustDataForPage } from "@/lib/content/load-trust-for-page";
 import { DOCUMENT_SLUGS, isSlug } from "@/lib/routes";
 import { templateForDocumentsSlug } from "@/lib/page-type-routes";
 
@@ -15,9 +17,18 @@ export function generateStaticParams() {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   if (!isSlug(slug, DOCUMENT_SLUGS)) notFound();
-  const path = `/documents/${slug}`;
+  const routePath = `/documents/${slug}`;
   if (templateForDocumentsSlug(slug) === "calculator") {
-    return <CalculatorPageTemplate path={path} />;
+    return <CalculatorPageTemplate path={routePath} />;
   }
-  return <GuidePageTemplate path={path} />;
+  const contentRoot = path.join(process.cwd(), "src", "content");
+  const trust = loadTrustDataForPage(contentRoot, slug);
+  return (
+    <GuidePageTemplate
+      path={routePath}
+      sources={trust.sources}
+      lastVerifiedAt={trust.lastVerifiedAt}
+      whatMayVary={trust.whatMayVary}
+    />
+  );
 }

@@ -1,7 +1,11 @@
 import { getTranslations } from "next-intl/server";
+import { LastVerifiedNote } from "@/components/ui/LastVerifiedNote";
+import { SourceBlock } from "@/components/ui/SourceBlock";
+import { WhatMayVaryNote } from "@/components/ui/WhatMayVaryNote";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { RoutePageBanner } from "@/features/routes/RoutePageBanner";
+import type { SourceRecordFrontmatter } from "@/lib/schemas/source-record";
 
 async function Block({ messageKey }: { messageKey: string }) {
   const t = await getTranslations("pageTemplate");
@@ -30,8 +34,25 @@ export async function HubPageTemplate({ path }: { path: string }) {
   );
 }
 
-/** Guide template shell — structural placeholders only. */
-export async function GuidePageTemplate({ path }: { path: string }) {
+export type GuidePageTemplateProps = {
+  path: string;
+  sources?: SourceRecordFrontmatter[];
+  lastVerifiedAt?: string;
+  whatMayVary?: string;
+};
+
+/** Guide template shell — structural placeholders only; optional trust blocks from content. */
+export async function GuidePageTemplate({
+  path,
+  sources,
+  lastVerifiedAt,
+  whatMayVary,
+}: GuidePageTemplateProps) {
+  const hasTrustData =
+    (sources?.length ?? 0) > 0 ||
+    Boolean(lastVerifiedAt) ||
+    Boolean(whatMayVary);
+
   return (
     <article className="page-template page-template--guide">
       <RoutePageBanner path={path} />
@@ -42,7 +63,17 @@ export async function GuidePageTemplate({ path }: { path: string }) {
         <Block messageKey="guide.costsTime" />
         <Block messageKey="guide.warnings" />
         <Block messageKey="guide.related" />
-        <Block messageKey="guide.trustPlaceholder" />
+        {hasTrustData ? (
+          <div className="guide-trust-section">
+            <SourceBlock sources={sources ?? []} />
+            {lastVerifiedAt ? (
+              <LastVerifiedNote verifiedAt={lastVerifiedAt} />
+            ) : null}
+            {whatMayVary ? <WhatMayVaryNote note={whatMayVary} /> : null}
+          </div>
+        ) : (
+          <Block messageKey="guide.trustPlaceholder" />
+        )}
       </div>
     </article>
   );
