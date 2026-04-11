@@ -11,6 +11,7 @@ const contentRoot = path.join(process.cwd(), "src", "content");
 describe("loadValidatedChecklistItems / loadValidatedUpdateItems", () => {
   it("loads canonical sample files without error", () => {
     const checklists = loadValidatedChecklistItems(contentRoot);
+    expect(checklists.length).toBeGreaterThanOrEqual(9);
     const updates = loadValidatedUpdateItems(contentRoot);
     expect(checklists.some((c) => c.frontmatter.slug === "sample-checklist-row"))
       .toBe(true);
