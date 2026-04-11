@@ -52,7 +52,8 @@ Per-surface states implementations and design should handle consistently. Extend
 
 ## Guide page
 
-- **Content loaded** — body, sources block, related links.
+- **Content loaded (with trust data)** — body placeholders + **trust section**: `SourceBlock` (source attribution with type/confidence/link), `LastVerifiedNote` (verification date), `WhatMayVaryNote` (variance framing). Renders when server-loaded `PageTrustData` has sources or metadata. Currently wired on `/documents/[slug]` guide routes only; `/documents/address-registration` has seed data.
+- **Content loaded (no trust data)** — body placeholders + `guide.trustPlaceholder` block (Phase 1 placeholder). Applies to guide pages without seed source records or page content files.
 - **Loading** — skeleton article.
 - **Not found** — 404 with search + home.
 - **Stale content warning** — optional banner when verification overdue (policy TBD).

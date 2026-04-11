@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import { LastVerifiedNote } from "@/components/ui/LastVerifiedNote";
 import { SourceBlock } from "@/components/ui/SourceBlock";
@@ -79,18 +80,30 @@ export async function GuidePageTemplate({
   );
 }
 
-/** Calculator template shell — structural placeholders only (no logic). */
-export async function CalculatorPageTemplate({ path }: { path: string }) {
+export type CalculatorPageTemplateProps = {
+  path: string;
+  children?: ReactNode;
+};
+
+/** Calculator template — placeholders or optional interactive content (e.g. stay calculator). */
+export async function CalculatorPageTemplate({
+  path,
+  children,
+}: CalculatorPageTemplateProps) {
   return (
     <article className="page-template page-template--calculator">
       <RoutePageBanner path={path} />
-      <div className="page-template__grid">
-        <Block messageKey="calculator.intro" />
-        <Block messageKey="calculator.inputs" />
-        <Block messageKey="calculator.results" />
-        <Block messageKey="calculator.warnings" />
-        <Block messageKey="calculator.trustPlaceholder" />
-      </div>
+      {children ? (
+        children
+      ) : (
+        <div className="page-template__grid">
+          <Block messageKey="calculator.intro" />
+          <Block messageKey="calculator.inputs" />
+          <Block messageKey="calculator.results" />
+          <Block messageKey="calculator.warnings" />
+          <Block messageKey="calculator.trustPlaceholder" />
+        </div>
+      )}
     </article>
   );
 }

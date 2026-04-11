@@ -14,13 +14,13 @@ src/
   app/           # Routes, layouts, route handlers (or pages/)
   app/[locale]/  # IA + hub routes (next-intl internal segment; public URLs stay unprefixed)
   components/    # Shared UI primitives
-  components/ui/     # Phase 1 minimal primitives (Button, Card, SectionHeader) + Phase 2 ChecklistItemRow
+  components/ui/     # Phase 1 primitives (Button, Card, SectionHeader) + Phase 2 ChecklistItemRow, SourceBlock, LastVerifiedNote, WhatMayVaryNote
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
   features/          # Feature-scoped UI + logic (onboarding/start, dashboard/NBA + checklist block)
   lib/           # Utilities, CMS client, rule engines
   lib/checklist/     # Phase 2 checklist filtering logic (checklist-filter.ts — pure filterChecklistItems)
   lib/onboarding/    # Phase 2 /start: start-slice, emphasis v1/v2, outcome preview v1
-  lib/content/     # parse-md, search-index records, load-checklist-and-updates, load-sources, load-places (Node-only loaders)
+  lib/content/       # parse-md, search-index records, load-checklist-and-updates, load-sources, load-places, load-trust-for-page (Node-only loaders)
   lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root
   hooks/         # Shared React hooks (if using React)
   styles/        # Global styles, tokens

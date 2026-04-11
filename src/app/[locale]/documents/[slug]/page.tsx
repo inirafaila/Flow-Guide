@@ -1,5 +1,6 @@
 import path from "node:path";
 import { notFound } from "next/navigation";
+import { StayCalculatorBlock } from "@/features/calculator/StayCalculatorBlock";
 import {
   CalculatorPageTemplate,
   GuidePageTemplate,
@@ -19,7 +20,11 @@ export default async function Page({ params }: Props) {
   if (!isSlug(slug, DOCUMENT_SLUGS)) notFound();
   const routePath = `/documents/${slug}`;
   if (templateForDocumentsSlug(slug) === "calculator") {
-    return <CalculatorPageTemplate path={routePath} />;
+    return (
+      <CalculatorPageTemplate path={routePath}>
+        <StayCalculatorBlock />
+      </CalculatorPageTemplate>
+    );
   }
   const contentRoot = path.join(process.cwd(), "src", "content");
   const trust = loadTrustDataForPage(contentRoot, slug);

@@ -13,7 +13,7 @@ Live tracking of phases defined in [`ROADMAP_MASTER.md`](ROADMAP_MASTER.md). **A
 
 - **Phase 0A** and **0B** are **done** (2026-04-01)—see [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) §0.
 - **Phase 1 — Engineering and content foundation** is **done** (2026-04-04): criterion audit + regression pass (`npm run lint` / `test` / `build`); context docs synced. Plumbing deliverables per [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md) (historical Phase 1 bullets) and [`ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md).
-- **Phase 2 — Core product behavior and trust layer** is **in progress** (active implementation track per [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md)).
+- **Phase 2 — Core product behavior and trust layer** — **exit criteria met** (2026-04-11): onboarding, guest persistence, dashboard NBA + checklist, guide trust blocks, stay calculator page shipped; see Phase status table and [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md) for any follow-up alignment.
 
 ## What must happen before Phase 3
 
@@ -26,7 +26,7 @@ Per `ROADMAP_MASTER.md` Phase 2 exit: onboarding, guest state, dashboard, NBA v1
 | **0A** | Product scope and MVP contract | **Done** | 2026-04-01 — `PHASE_0_DECISION_RECORD` approved |
 | **0B** | Technical architecture lock | **Done** | 2026-04-01 — same record + `ENGINEERING_ARCHITECTURE.md` |
 | **1** | Engineering and content foundation | **Done** | 2026-04-04 — exit audit passed; IA + templates + Zod contracts + `search-index.json` prebuild + CI + observability stubs |
-| **2** | Core product behavior and trust layer | **In progress** | Onboarding ✅, guest persistence ✅, NBA v1 ✅, checklist v1 (filter + seeds + UI + dashboard block) ✅ — trust UI + stay calculator remaining |
+| **2** | Core product behavior and trust layer | **Done** | Onboarding ✅, guest persistence ✅, NBA v1 ✅, checklist v1 ✅, trust UI ✅, stay calculator (logic + page) ✅ — **Phase 2 exit criteria met** |
 | **3** | MVP content and journey implementation | **Later** | Depends on Phase 2 |
 | **4** | MVP utility, instrumentation, launch-scope hardening | **Later** | Required before launch |
 | **5** | Verification, QA, release readiness | **Later** | Before LAG |
@@ -46,7 +46,7 @@ Per `ROADMAP_MASTER.md` Phase 2 exit: onboarding, guest state, dashboard, NBA v1
 
 ## Last review
 
-- **2026-04-11** — Phase 2 checkpoint: checklist chain complete (filtering logic + 8 seed items + row component + dashboard block on `/dashboard`); onboarding + NBA previously shipped. Trust UI and stay calculator remaining for Phase 2 exit.
+- **2026-04-11** — Phase 2 exit criteria met: onboarding → dashboard (NBA + checklist) → guide with trust blocks → stay calculator page (`StayCalculatorBlock` on `/documents/stay-calculator`). Remaining enhancements (dashboard shell, i18n, more trust wiring) are incremental, not exit-blocking.
 - **2026-04-04** — Phase 1 marked **done** after exit audit + `lint` / `test` / `build`; Phase 2 active track; `CURRENT_PHASE`, `PROJECT_STATE`, `NEXT_ACTIONS`, `HANDOFF_NOTES`, `DEVELOPMENT_BREAKDOWN` updated.
 - **2026-04-01** — Phase 0 closed; Phase 1 scaffold started.
 - **2026-04-01** — Pre-commit pass: ESLint CLI for `npm run lint`; context/AI index aligned with roadmap + engineering authority docs.
