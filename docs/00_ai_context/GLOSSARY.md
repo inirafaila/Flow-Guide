@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-11
 source_of_truth: true
 ---
 
@@ -17,6 +17,7 @@ source_of_truth: true
 | **Guide page** | Long-form or structured explainer page in the guide/hub taxonomy. |
 | **Hub** | Thematic entry grouping related guide content (IA term; see `IA_SPEC.md`). |
 | **Source** | First-class record for provenance (URL, institution, last verified) tied to content. |
+| **Trust block** | On sensitive guide pages: server-loaded sources + last-verified + what-may-vary notes (`UI_HANDOFF_SPEC`); driven by `loadTrustDataForPage` + page frontmatter. |
 | **Update** | Product/content alert linked to affected pages or entities. |
 | **Places-lite** | Lightweight location references without a full map product MVP. |
 | **Onboarding** | Short guided flow to capture situation and unlock personalization. |

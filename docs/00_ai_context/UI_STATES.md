@@ -52,7 +52,7 @@ Per-surface states implementations and design should handle consistently. Extend
 
 ## Guide page
 
-- **Content loaded (with trust data)** — body placeholders + **trust section**: `SourceBlock` (source attribution with type/confidence/link), `LastVerifiedNote` (verification date), `WhatMayVaryNote` (variance framing). Renders when server-loaded `PageTrustData` has sources or metadata. Currently wired on `/documents/[slug]` guide routes only; `/documents/address-registration` has seed data.
+- **Content loaded (with trust data)** — rendered Markdown body + **trust section**: `SourceBlock` (source attribution with type/confidence/link), `LastVerifiedNote` (verification date), `WhatMayVaryNote` (variance framing). Renders when server-loaded `PageTrustData` has sources or metadata. Wired on `/documents/[slug]` guide routes; **`/documents/address-registration`**, **`/documents/social-card`**, and **`/documents/temporary-residency`** have seed sources + page trust metadata.
 - **Content loaded (no trust data)** — body placeholders + `guide.trustPlaceholder` block (Phase 1 placeholder). Applies to guide pages without seed source records or page content files.
 - **Loading** — skeleton article.
 - **Not found** — 404 with search + home.

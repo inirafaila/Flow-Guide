@@ -25,11 +25,11 @@ src/
   hooks/         # Shared React hooks (if using React)
   styles/        # Global styles, tokens
   content/       # Git Markdown + YAML (Zod-validated)
-  content/pages/   # Hub + guide Markdown (e.g. newcomer.md, documents.md, housing.md, address-registration.md, welcome.md)
+  content/pages/   # Hub + guide Markdown (e.g. newcomer.md, documents.md, housing.md, address-registration.md, social-card.md, temporary-residency.md, welcome.md)
   content/faq/
   content/checklist-items/   # Checklist Item rows (§7) — parse-md + checklist-item schema
   content/updates/             # Update Item entries (§11) — parse-md + update-item schema
-  content/sources/           # Source Record rows (§10) — parse-md + source-record schema
+  content/sources/           # Source Record rows (§10) — e.g. address-reg-*.md, social-card-*.md, temp-residency-*.md, sample-source-001.md — parse-md + source-record schema
   content/places/            # Place rows (§12) — parse-md + place schema
   data/          # Static JSON seeds, fixtures
   types/         # Shared TypeScript types

@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-04-11
 source_of_truth: false
 ---
 
@@ -21,4 +21,4 @@ When a gate closes, update this file, `PROJECT_STATE.md`, `NEXT_ACTIONS.md`, and
 
 ## Note
 
-**Locked** product direction: `LOCKED_DECISIONS.md`, `LOCKED_LOGIC.md`. **No Docker / no headless CMS / no auth** for current Phase 1 scope.
+**Locked** product direction: `LOCKED_DECISIONS.md`, `LOCKED_LOGIC.md`. **No Docker / no headless CMS / no auth** for MVP scaffold per approved architecture — see `PHASE_0_DECISION_RECORD.md` and `ENGINEERING_ARCHITECTURE.md` for what ships when.

@@ -7,16 +7,36 @@ source_of_truth: true
 
 # Current focus
 
-**Phase 2** — core product **behavior** and **trust layer** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 2). Phase 1 plumbing is **complete** (2026-04-04); do not re-scope foundation work unless a regression forces a minimal fix.
+**Phase 3** — MVP **content** and **journey implementation** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3). Phase 2 behavior/trust layer is **complete** (2026-04-11); Phase 1 plumbing **complete** (2026-04-04).
 
-1. **Onboarding** — ✅ shipped: steps 1–5 + Step 6 Result Summary + guest persistence + emphasis/signals/outcome preview derivation.
-2. **Guest persistence** — ✅ shipped: `localStorage` blob + TTL / schema version.
-3. **Dashboard** — ✅ partial: NBA v1 consumer + checklist block (category-grouped, filtered by guest state). **Remaining:** full shell (header summary, residency card, alerts, quick actions, updates feed).
-4. **Next best action v1** — ✅ shipped: one primary + capped secondary.
-5. **Checklist v1** — ✅ shipped: filtering logic + 8 seed items + row component + dashboard block. **Remaining:** UserChecklistStatus wiring (per-user done/in-progress tracking), i18n.
-6. **Trust UI** — ✅ shipped: **SourceBlock**, **LastVerifiedNote**, **WhatMayVaryNote** presentational components + **guide trust wiring** on `/documents/address-registration` (server-loaded sources + page trust metadata → real trust blocks; fallback placeholder for unseeded guides). **Remaining:** wire trust to other guide routes, seed more source records.
-7. **Stay calculator** — ✅ shipped: pure logic + interactive page wiring on `/documents/stay-calculator`. **Remaining:** dashboard residency status card.
+## Phase 3 infrastructure (shipped)
 
-**Still Phase 1–legal / not product logic:** optional **`?lang=`**, Sentry release/source-map automation, grouped **`/search`** UX, places-lite product surface, housing/casino form submit, full analytics events—see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap Phase 4 where applicable.
+1. **Markdown rendering pipeline** — ✅ `renderMarkdownToHtml` (unified/remark/rehype, sync), `loadPageContent` → `PageContent | null`. Server-side, auto-renders any `.md` in `src/content/pages/`.
+2. **Guide template content wiring** — ✅ `GuidePageTemplate` accepts `bodyHtml` prop; renders real content body or placeholder fallback. Trust blocks (SourceBlock, LastVerifiedNote, WhatMayVaryNote) render alongside body when trust data exists.
+3. **Hub template content wiring** — ✅ `HubPageTemplate` accepts `bodyHtml` prop; same pattern.
+4. **Universal route loading** — ✅ All 7 hub routes + all 6 guide `[slug]` routes load content via `loadPageContent` + `loadTrustDataForPage`. Any new Markdown file auto-renders on matching route.
 
-**Explicitly defer to later phases:** Phase 3 copy explosion, Phase 4 search/updates/places instrumentation bundle, auth/save-path (until account slice), admin (Phase 8).
+## Content authored (Phase 3)
+
+5. **Documents section** — ✅ complete: all 3 guide pages authored with real content + trust blocks:
+
+   - `/documents/address-registration` — guide + 2 source records
+   - `/documents/social-card` — guide + 2 source records
+   - `/documents/temporary-residency` — guide + 2 source records
+
+6. **Hub pages** — 3 of 7 authored: newcomer ✅, documents ✅, housing ✅. **Remaining:** work, payments, transport, daily-life.
+
+## Content remaining (Phase 3)
+
+7. **Newcomer section guides** — `/newcomer/airport-to-city`, `/newcomer/first-week`, `/newcomer/day-one` (P0).
+8. **Housing section guides** — `/housing/owner-vs-agency`, `/housing/rental-checklist` (P0/P1).
+9. **Work section guides** — `/work/quick-income`, `/work/yandex-starter`, `/work/live-gaming` (P0).
+10. **Payments section guides** — `/payments/terminals`, `/payments/service-payments` (P0/P1).
+11. **Transport section guide** — `/transport/public-transport-payments` (P0).
+12. **Daily life** — `/daily-life/essential-apps` (P1).
+13. **Remaining hub content** — work, payments, transport, daily-life hubs (Markdown only, no code).
+14. **Home page** — `/` still `RoutePlaceholder`; needs real Home page design + content.
+15. **FAQ** — `/faq` needs real content.
+16. **Cross-link audit + editorial review** — once content pages are authored.
+
+**Explicitly deferred:** i18n content, UserChecklistStatus, dashboard full shell, admin, auth — see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap.

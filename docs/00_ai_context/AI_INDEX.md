@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-11
 source_of_truth: true
 ---
 
@@ -12,7 +12,7 @@ Central map for long-running Cursor collaboration on **flow-guide**. Use this fi
 ## Start here in every new chat
 
 1. Skim this index (30 seconds).
-2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order.
+2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order (stack includes **`CURRENT_PHASE.md`** + **`CURRENT_FOCUS.md`** — active phase is **Phase 3** content/journey work as of 2026-04-11 unless `ROADMAP_STATUS.md` says otherwise).
 3. If the session is **planning / prioritization / next-task selection**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, candidates, smallest slice).
 4. If the session is **writing or refining prompts** for planning or implementation, also follow **`PROMPT_AUTHORING_PROTOCOL.md`**.
 5. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.

@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-03
+last_updated: 2026-04-11
 source_of_truth: true
 ---
 
@@ -22,6 +22,7 @@ Deterministic rules for keeping docs aligned with reality. After updates, bump `
 1. Check off or archive the item in `NEXT_ACTIONS.md` and any sprint/task pack (`CURSOR_TASK_PACKS.md`, `SPRINT_PLAN.md`).
 2. If behavior or UI changed, update `UI_STATES.md` or `docs/02_product/UI_HANDOFF_SPEC.md` as needed.
 3. One-line handoff in `HANDOFF_NOTES.md` (what shipped, what remains).
+4. **AI context pack:** when phase focus, execution queue, or canonical “start here” behavior changes, bump `last_updated` on touched navigation files (`AI_INDEX.md`, `CURSOR_NEW_CHAT_PROTOCOL.md`, `AI_WORKING_RULES.md` as applicable) and ensure `CURRENT_PHASE.md` / `CURRENT_FOCUS.md` match `ROADMAP_STATUS.md` (if the roadmap phase table moved, also follow **Roadmap status changes** below).
 
 ## New decision made
 

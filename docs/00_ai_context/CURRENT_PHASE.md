@@ -13,7 +13,7 @@ source_of_truth: true
 
 ## Why we are here
 
-**Phase 2 — Core product behavior and trust layer** exited **2026-04-11**: onboarding (steps 1–6), guest persistence, dashboard (NBA v1 + checklist block), trust UI (SourceBlock + LastVerifiedNote + WhatMayVaryNote wired on address-registration guide), stay calculator (pure logic + interactive page). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 2 row = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md) and [`PROJECT_STATE.md`](PROJECT_STATE.md) aligned.
+**Phase 2 — Core product behavior and trust layer** exited **2026-04-11**: onboarding (steps 1–6), guest persistence, dashboard (NBA v1 + checklist block), trust UI (SourceBlock + LastVerifiedNote + WhatMayVaryNote wired on `/documents/[slug]` guides with seed data — e.g. address-registration, social-card, temporary-residency), stay calculator (pure logic + interactive page). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 2 row = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md) and [`PROJECT_STATE.md`](PROJECT_STATE.md) aligned.
 
 Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3: ship must-launch guides and hubs with real copy so the product is substantively useful — not an empty framework.
 
