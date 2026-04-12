@@ -20,31 +20,46 @@ async function Block({ messageKey }: { messageKey: string }) {
   );
 }
 
-/** Hub template shell per IA / UI handoff — structural placeholders only. */
-export async function HubPageTemplate({ path }: { path: string }) {
+export type HubPageTemplateProps = {
+  path: string;
+  bodyHtml?: string;
+};
+
+/** Hub template — optional rendered Markdown body or placeholder blocks. */
+export async function HubPageTemplate({ path, bodyHtml }: HubPageTemplateProps) {
+  const hasBody = Boolean(bodyHtml?.trim());
   return (
     <article className="page-template page-template--hub">
       <RoutePageBanner path={path} />
-      <div className="page-template__grid">
-        <Block messageKey="hub.intro" />
-        <Block messageKey="hub.topTasks" />
-        <Block messageKey="hub.relatedGuides" />
-        <Block messageKey="hub.quickTools" />
-      </div>
+      {hasBody ? (
+        <div
+          className="hub-body"
+          dangerouslySetInnerHTML={{ __html: bodyHtml ?? "" }}
+        />
+      ) : (
+        <div className="page-template__grid">
+          <Block messageKey="hub.intro" />
+          <Block messageKey="hub.topTasks" />
+          <Block messageKey="hub.relatedGuides" />
+          <Block messageKey="hub.quickTools" />
+        </div>
+      )}
     </article>
   );
 }
 
 export type GuidePageTemplateProps = {
   path: string;
+  bodyHtml?: string;
   sources?: SourceRecordFrontmatter[];
   lastVerifiedAt?: string;
   whatMayVary?: string;
 };
 
-/** Guide template shell — structural placeholders only; optional trust blocks from content. */
+/** Guide template — optional rendered Markdown body or placeholder blocks; optional trust blocks from content. */
 export async function GuidePageTemplate({
   path,
+  bodyHtml,
   sources,
   lastVerifiedAt,
   whatMayVary,
@@ -53,29 +68,48 @@ export async function GuidePageTemplate({
     (sources?.length ?? 0) > 0 ||
     Boolean(lastVerifiedAt) ||
     Boolean(whatMayVary);
+  const hasBody = Boolean(bodyHtml?.trim());
 
   return (
     <article className="page-template page-template--guide">
       <RoutePageBanner path={path} />
-      <div className="page-template__grid">
-        <Block messageKey="guide.quickSummary" />
-        <Block messageKey="guide.steps" />
-        <Block messageKey="guide.requirements" />
-        <Block messageKey="guide.costsTime" />
-        <Block messageKey="guide.warnings" />
-        <Block messageKey="guide.related" />
-        {hasTrustData ? (
-          <div className="guide-trust-section">
-            <SourceBlock sources={sources ?? []} />
-            {lastVerifiedAt ? (
-              <LastVerifiedNote verifiedAt={lastVerifiedAt} />
-            ) : null}
-            {whatMayVary ? <WhatMayVaryNote note={whatMayVary} /> : null}
-          </div>
-        ) : (
-          <Block messageKey="guide.trustPlaceholder" />
-        )}
-      </div>
+      {hasBody ? (
+        <>
+          <div
+            className="guide-body"
+            dangerouslySetInnerHTML={{ __html: bodyHtml ?? "" }}
+          />
+          {hasTrustData ? (
+            <div className="guide-trust-section">
+              <SourceBlock sources={sources ?? []} />
+              {lastVerifiedAt ? (
+                <LastVerifiedNote verifiedAt={lastVerifiedAt} />
+              ) : null}
+              {whatMayVary ? <WhatMayVaryNote note={whatMayVary} /> : null}
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <div className="page-template__grid">
+          <Block messageKey="guide.quickSummary" />
+          <Block messageKey="guide.steps" />
+          <Block messageKey="guide.requirements" />
+          <Block messageKey="guide.costsTime" />
+          <Block messageKey="guide.warnings" />
+          <Block messageKey="guide.related" />
+          {hasTrustData ? (
+            <div className="guide-trust-section">
+              <SourceBlock sources={sources ?? []} />
+              {lastVerifiedAt ? (
+                <LastVerifiedNote verifiedAt={lastVerifiedAt} />
+              ) : null}
+              {whatMayVary ? <WhatMayVaryNote note={whatMayVary} /> : null}
+            </div>
+          ) : (
+            <Block messageKey="guide.trustPlaceholder" />
+          )}
+        </div>
+      )}
     </article>
   );
 }

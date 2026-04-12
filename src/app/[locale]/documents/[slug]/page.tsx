@@ -5,6 +5,7 @@ import {
   CalculatorPageTemplate,
   GuidePageTemplate,
 } from "@/features/routes/page-type-templates";
+import { loadPageContent } from "@/lib/content/load-page-content";
 import { loadTrustDataForPage } from "@/lib/content/load-trust-for-page";
 import { DOCUMENT_SLUGS, isSlug } from "@/lib/routes";
 import { templateForDocumentsSlug } from "@/lib/page-type-routes";
@@ -28,9 +29,11 @@ export default async function Page({ params }: Props) {
   }
   const contentRoot = path.join(process.cwd(), "src", "content");
   const trust = loadTrustDataForPage(contentRoot, slug);
+  const pageContent = loadPageContent(contentRoot, slug);
   return (
     <GuidePageTemplate
       path={routePath}
+      bodyHtml={pageContent?.bodyHtml}
       sources={trust.sources}
       lastVerifiedAt={trust.lastVerifiedAt}
       whatMayVary={trust.whatMayVary}

@@ -25,7 +25,7 @@ src/
   hooks/         # Shared React hooks (if using React)
   styles/        # Global styles, tokens
   content/       # Git Markdown + YAML (Zod-validated)
-  content/pages/
+  content/pages/   # Hub + guide Markdown (e.g. newcomer.md, documents.md, housing.md, address-registration.md, welcome.md)
   content/faq/
   content/checklist-items/   # Checklist Item rows (§7) — parse-md + checklist-item schema
   content/updates/             # Update Item entries (§11) — parse-md + update-item schema

@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-04
+last_updated: 2026-04-11
 source_of_truth: true
 ---
 
@@ -9,28 +9,32 @@ source_of_truth: true
 
 ## Name
 
-**Phase 2 — Core product behavior and trust layer**
+**Phase 3 — MVP content and journey implementation**
 
 ## Why we are here
 
-**Phase 1 — Engineering and content foundation** exited **2026-04-04** (criterion audit vs [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 1 + documented Phase 1 exit list: shell + IA routes + Zod toward `DATA_CONTENT_MODEL_SPEC.md`, placeholder hub/guide/calculator/utility (and service-form per master roadmap), git Markdown validation + `search-index.json` in `prebuild`, env + lint/test/build + Plausible/Sentry stubs, no NBA/checklist/guest product logic beyond stubs; `npm run lint` / `test` / `build` green). Evidence summary: [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md). Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md), Phase 2 implements **meaningful** onboarding, guest state, dashboard, **next best action v1**, **checklist filtering v1**, and **trust UI** consuming content-shaped data—on top of Phase 1 templates and contracts.
+**Phase 2 — Core product behavior and trust layer** exited **2026-04-11**: onboarding (steps 1–6), guest persistence, dashboard (NBA v1 + checklist block), trust UI (SourceBlock + LastVerifiedNote + WhatMayVaryNote wired on address-registration guide), stay calculator (pure logic + interactive page). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 2 row = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md) and [`PROJECT_STATE.md`](PROJECT_STATE.md) aligned.
+
+Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3: ship must-launch guides and hubs with real copy so the product is substantively useful — not an empty framework.
 
 ## Entry criteria (met)
 
-- Phase 1 exit recorded in [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md); plumbing + IA shells + Zod contracts + search-index prebuild + CI + observability stubs in place per [`PROJECT_STATE.md`](PROJECT_STATE.md).
+- Phase 2 exit recorded in [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md); onboarding → dashboard → trust → stay calculator shipped per [`PROJECT_STATE.md`](PROJECT_STATE.md).
 
-## Exit criteria (Phase 2)
+## Exit criteria (Phase 3)
 
-Per master roadmap **Phase 2**:
+Per master roadmap Phase 3:
 
-- User can: **complete onboarding** → see **coherent dashboard** → follow **NBA** → land on a guide with **trust blocks** (source / last verified / variance framing per specs).
-- **Stay calculator** page behavior per product spec when in scope for this phase.
-- Alerts / quick actions **data-driven** where required by spec.
+- Newcomer can complete **primary journeys** without dead ends on must-launch routes.
+- Home, Start, Dashboard with **real copy** (not placeholder text).
+- All **must-launch** routes per §6 have substantive content.
+- Internal **cross-links** between related pages work.
+- **Editorial + trust review** for sensitive pages per Phase 0A governance.
 
 ## What counts as done
 
-- **`ROADMAP_STATUS.md`**: Phase 2 marked **done** with date when exit criteria met; Phase 3 **next/in progress**.
+- **`ROADMAP_STATUS.md`**: Phase 3 marked **done** with date when exit criteria met; Phase 4 next.
 
 ## After this phase
 
-**Phase 3** — must-launch guides and journey copy (per roadmap).
+**Phase 4** — MVP utility, instrumentation, and launch-scope hardening (search UX, places-lite, analytics, SEO).

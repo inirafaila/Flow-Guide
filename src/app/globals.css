@@ -799,6 +799,129 @@ a.fg-source-block__label:focus-visible {
   margin-top: var(--space-10);
 }
 
+/* Guide body — rendered Markdown content */
+.guide-body {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: var(--space-6) 0;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+.guide-body h2 {
+  margin: var(--space-10) 0 var(--space-5);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.guide-body h3 {
+  margin: var(--space-7) 0 var(--space-4);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.guide-body p {
+  margin: 0 0 var(--space-5);
+}
+
+.guide-body ul,
+.guide-body ol {
+  margin: 0 0 var(--space-5);
+  padding-left: var(--space-8);
+}
+
+.guide-body li {
+  margin-bottom: var(--space-3);
+}
+
+.guide-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.guide-body a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.guide-body strong {
+  font-weight: 600;
+}
+
+.guide-body blockquote {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--surface-muted);
+  color: var(--fg);
+  opacity: 0.85;
+}
+
+/* Hub body — rendered Markdown content for section hub pages */
+.hub-body {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: var(--space-6) 0;
+  line-height: 1.7;
+  color: var(--fg);
+}
+
+.hub-body > p:first-child {
+  font-size: var(--text-lg);
+  color: var(--fg);
+  opacity: 0.85;
+  margin-bottom: var(--space-8);
+}
+
+.hub-body h2 {
+  margin: var(--space-10) 0 var(--space-5);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.hub-body p {
+  margin: 0 0 var(--space-5);
+}
+
+.hub-body ul,
+.hub-body ol {
+  margin: 0 0 var(--space-6);
+  padding-left: var(--space-8);
+  list-style: none;
+}
+
+.hub-body ul li {
+  margin-bottom: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface-muted);
+  border-radius: var(--radius-md);
+}
+
+.hub-body ol {
+  list-style: decimal;
+  padding-left: var(--space-9);
+}
+
+.hub-body ol li {
+  margin-bottom: var(--space-3);
+}
+
+.hub-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+.hub-body a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.hub-body strong {
+  font-weight: 600;
+}
+
 /* Phase 2 — stay calculator (/documents/stay-calculator) */
 .stay-calc {
   max-width: 40rem;
