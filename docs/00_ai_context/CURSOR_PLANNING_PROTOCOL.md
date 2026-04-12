@@ -125,7 +125,27 @@ When the user asked for a plan, end with this structure (concise, copy-paste fri
 
 ---
 
-## 8) Relation to other protocols
+## 8) Execution plan integration
+
+A full execution roadmap (Phases 3–7 + LAG) exists and should be consulted during planning. The plan groups Phase 3 work into **Groups A–I** (content slices) and Phase 4 into **Slices 4.1–4.7** (utility/hardening).
+
+When determining the next slice:
+
+1. Read `CURRENT_FOCUS.md` to see what is shipped vs remaining.
+2. Cross-reference with the execution plan groups to identify the next logical slice.
+3. Respect execution plan dependencies (e.g., Group F Home page depends on Groups A–E; Group I cross-link audit depends on all content).
+4. Content-only slices (Groups A–E) are parallelizable and can be batched into a single Composer prompt if the slices share no code dependencies.
+
+### Checkpoint discipline
+
+After every ~5 slices or when a logical group completes, trigger a full doc sync (not just per-slice `NEXT_ACTIONS` updates). Full sync touches: `PROJECT_STATE.md`, `CURRENT_FOCUS.md`, `ROADMAP_STATUS.md`, `FOLDER_STRUCTURE.md`, `UI_STATES.md`.
+
+Phase transitions require: `CURRENT_PHASE.md` full rewrite, `DEVELOPMENT_BREAKDOWN.md` gate status update, and all the above.
+
+---
+
+## 9) Relation to other protocols
 
 - **Execution sessions** still follow `CURSOR_NEW_CHAT_PROTOCOL.md` for read order before coding.
 - **After shipping** meaningful work, follow `UPDATE_PROTOCOL.md` and repo rules (e.g. `docs-update-policy.mdc`, `flow-guide-update-protocol` skill).
+- **Execution workflow** is documented in `CURSOR_NEW_CHAT_PROTOCOL.md` §Execution workflow — two-agent model, per-slice prompts, checkpoint rules.

@@ -12,10 +12,15 @@ Central map for long-running Cursor collaboration on **flow-guide**. Use this fi
 ## Start here in every new chat
 
 1. Skim this index (30 seconds).
-2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order (stack includes **`CURRENT_PHASE.md`** + **`CURRENT_FOCUS.md`** — active phase is **Phase 3** content/journey work as of 2026-04-11 unless `ROADMAP_STATUS.md` says otherwise).
-3. If the session is **planning / prioritization / next-task selection**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, candidates, smallest slice).
-4. If the session is **writing or refining prompts** for planning or implementation, also follow **`PROMPT_AUTHORING_PROTOCOL.md`**.
-5. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.
+2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order and the **execution workflow** (two-agent model, checkpoint rules, Composer prompt structure).
+3. Active phase is **Phase 3** (content/journey work as of 2026-04-11) — check `ROADMAP_STATUS.md` for latest.
+4. If the session is **planning / prioritization / next-task selection**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, candidates, smallest slice, execution plan integration §8).
+5. If the session is **writing or refining prompts** for planning or implementation, also follow **`PROMPT_AUTHORING_PROTOCOL.md`**.
+6. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.
+
+## Execution plan
+
+A complete execution roadmap (Phases 3–7 + LAG + risk register + timeline) was generated from the repo's actual state and `ROADMAP_MASTER.md`. It groups remaining Phase 3 work into **Groups A–I** (content slices, Home page, FAQ, copy audit, cross-links) and Phase 4 into **Slices 4.1–4.7** (search, updates, places, analytics, SEO, dashboard, perf). The planning agent uses this plan to determine the next slice for Composer.
 
 ## Authority order (highest first)
 
@@ -39,15 +44,15 @@ If two sources conflict, **locked docs win** unless humans update them via **`UP
 
 | File | Purpose | When AI should read |
 |------|---------|---------------------|
-| `AI_INDEX.md` | Navigation and authority | Every session start |
+| `AI_INDEX.md` | Navigation, authority, execution plan overview | Every session start |
 | `AI_WORKING_RULES.md` | Operating rules for AI | Before substantive edits |
-| `CURSOR_NEW_CHAT_PROTOCOL.md` | Fixed read order for new Composer/sessions | Every new chat |
-| `CURSOR_PLANNING_PROTOCOL.md` | Phase-safe planning: candidates, exit-criteria vs nice-to-have, smallest slice | Plan / prioritize / “what next” |
+| `CURSOR_NEW_CHAT_PROTOCOL.md` | Read order + execution workflow (two-agent, checkpoint rules) | Every new chat |
+| `CURSOR_PLANNING_PROTOCOL.md` | Phase-safe planning: candidates, exit-criteria, smallest slice, execution plan integration | Plan / prioritize / "what next" |
 | `PROMPT_AUTHORING_PROTOCOL.md` | How to write discovery-first planning prompts and approval-safe implementation prompts | Prompt writing / prompt refinement |
 | `UPDATE_PROTOCOL.md` | How to update docs after events | After scope/task/decision/architecture/UI/roadmap changes |
 | `PROJECT_STATE.md` | Current snapshot of product + execution | Every new chat; before planning |
 | `CURRENT_PHASE.md` | Phase goals, entry/exit criteria | Planning work; reporting progress |
-| `CURRENT_FOCUS.md` | Active focus areas (short list) | Task selection |
+| `CURRENT_FOCUS.md` | Active focus areas + remaining work list | Task selection; finding next slice |
 | `NEXT_ACTIONS.md` | Now / next / later / blockers | Execution queue |
 | `OPEN_ITEMS.md` | Unresolved decisions | Before proposing stack, CMS, auth, deploy |
 | `LOCKED_DECISIONS.md` | Non-negotiable product decisions | Before any product or UX change |
