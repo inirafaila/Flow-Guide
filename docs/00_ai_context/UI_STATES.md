@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-04-11
+last_updated: 2026-04-13
 source_of_truth: true
 ---
 
@@ -11,11 +11,30 @@ Per-surface states implementations and design should handle consistently. Extend
 
 ## Home
 
-- **First visit / returning guest** — hybrid hero + entry to path; low friction.
-- **Returning user (account)** — personalized highlights + link to dashboard.
-- **Loading** — skeleton for primary blocks.
-- **Error** — friendly retry; offline message if applicable.
-- **Empty personalization** — fall back to default newcomer modules.
+**Implemented (Phase 3 — Group F — Home page, 2026-04-13):**
+
+- **Hero** — primary CTA `/start`, secondary anchor `#home-entry-points`
+- **Entry points** — three cards → `/newcomer`, `/work`, `/housing`
+- **Guided Start** — block + CTA `/start`
+- **Quick Tools** — five utility links (see `HomePage.tsx`)
+- **Trust** — short framing list (source-aware, last verified, what may vary)
+
+Server-rendered; copy in `home.*` i18n. No account-specific personalization on Home in this slice.
+
+**Deferred (not v1 Home):**
+
+- **Updates Preview** — updates teaser / feed block on Home.
+- **Secondary Layer** — settled-user highlights, personalized modules for returning users — see `EXECUTION_ROADMAP.md` Phase 3 Group F notes / Phase 4.
+
+Other deferred items called out historically: loading skeletons for primary blocks; error/offline handling — **not implemented** (static SSG Home).
+
+**Scenarios:**
+
+- **First visit / returning guest** — hybrid hero + entry to path; low friction (implemented as default Home).
+- **Returning user (account)** — personalized highlights + link to dashboard — **not implemented** on Home (dashboard remains the personal layer).
+- **Loading** — skeleton for primary blocks — **not implemented** (static SSG Home).
+- **Error** — friendly retry; offline message if applicable — **not implemented** (static SSG Home).
+- **Empty personalization** — fall back to default newcomer modules — **not applicable** until Home personalization ships; current Home is the default newcomer-oriented gateway for all guests.
 
 ## Onboarding
 

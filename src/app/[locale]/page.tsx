@@ -1,5 +1,5 @@
-import { RoutePlaceholder } from "@/features/routes/RoutePlaceholder";
+import { HomePage } from "@/features/home/HomePage";
 
-export default async function HomePage() {
-  return <RoutePlaceholder path="/" />;
+export default function Page() {
+  return <HomePage />;
 }

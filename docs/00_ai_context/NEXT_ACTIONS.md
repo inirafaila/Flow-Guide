@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-11
+last_updated: 2026-04-13
 source_of_truth: true
 ---
 
@@ -11,22 +11,23 @@ source_of_truth: true
 
 ### Next up
 
-Continue Phase 3 content authoring per execution plan. Next groups:
+Continue Phase 3 per execution plan. Next groups:
 
-- **Group A:** 4 remaining hub pages (work, payments, transport, daily-life) — content-only, no code
-- **Group B:** 3 newcomer guides (day-one, first-week, airport-to-city + 1 source record)
-- **Group C:** 3 work guides (quick-income, yandex-starter, live-gaming + 3 source records)
-- **Group D:** 3 payments/transport guides (terminals, service-payments, public-transport-payments + source records)
-- **Group E:** 3 housing/daily-life guides (owner-vs-agency, rental-checklist, essential-apps + source records)
-- **Group F:** Home page (replace RoutePlaceholder with real components — code change)
 - **Group G:** FAQ content
 - **Group H:** Dashboard + Start copy audit
 - **Group I:** Cross-link audit + editorial/trust review (depends on all above)
 
-Groups A–E are parallelizable. Group F can start its skeleton alongside content. Groups G–I depend on A–E.
+**Section guides:** All hub-linked section guides listed in `CURRENT_FOCUS.md` through **Group E** are authored with primary field sources. Remaining Phase 3 **content surfaces** before the **Group I** cross-link / editorial pass: **FAQ** and **Dashboard + Start copy** (Groups G–H). **Home (`/`)** shipped in Group F (2026-04-13).
+
+Sequence G–H as needed before I.
 
 ### Recently shipped (Phase 3)
 
+- **Group F — Home page (2026-04-13):** `HomePage`, `HomeEntryCard`, `HomeQuickToolItem` replace `RoutePlaceholder` on `/`; hero, entry points, guided start, quick tools, trust section; `home.*` i18n (en/fa/ru).
+- **Group E — housing + daily life (2026-04-12):** `owner-vs-agency.md`, `rental-checklist.md`, `essential-apps.md` + primary field sources `owner-vs-agency-field.md`, `rental-checklist-field.md`, `essential-apps-field.md`. Housing P0/P1-style guides + daily-life P1 guide content- and trust-complete; hubs already linked. (`housing/request` not in scope.)
+- **Group D — payments + transport (2026-04-12):** `terminals.md`, `service-payments.md`, `public-transport-payments.md` + primary field sources `terminals-field.md`, `service-payments-field.md`, `public-transport-payments-field.md`. Payments P0 guides + transport P0 guide content- and trust-complete; hubs already linked.
+- **Group C — work section (2026-04-12):** 3 work guides (`quick-income.md`, `yandex-starter.md`, `live-gaming.md`) + 3 field-experience source records (`quick-income-field.md`, `yandex-starter-field.md`, `live-gaming-field.md`). Work hub links were already present; guides + trust wiring complete for P0 work slugs.
+- **Groups A+B hub + newcomer batch (2026-04-12):** 4 hub pages (work.md, payments.md, transport.md, daily-life.md) + 3 newcomer guides (day-one.md, first-week.md, airport-to-city.md) + 1 source record (airport-to-city-field.md). All 7 hubs authored; newcomer section guides content-complete for P0 slugs.
 - **Documents section guide batch (2026-04-11):** social-card.md + temporary-residency.md — full guide content + 4 source records. Documents section content-complete.
 - **Hub content pipeline + universal loading (2026-04-11):** HubPageTemplate bodyHtml; all 7 hub + 6 guide routes content-wired. 3 hub pages (newcomer, documents, housing). Universal loading: new Markdown auto-renders.
 - **Guide content pipeline + Phase 3 transition (2026-04-11):** Markdown rendering pipeline (unified/remark/rehype), renderMarkdownToHtml, loadPageContent, GuidePageTemplate bodyHtml. First real guide: /documents/address-registration. CURRENT_PHASE transitioned to Phase 3.

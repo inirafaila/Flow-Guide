@@ -26,6 +26,42 @@
   "placeholder": {
     "phase1": "Phase 1 route shell — content and behavior come in later phases."
   },
+  "home": {
+    "hero": {
+      "headline": "You do not have to figure out everything alone",
+      "subheadline": "Practical guides for life in Armenia — documents, housing, work, and daily basics. Sensitive topics include sources and verification notes.",
+      "ctaPrimary": "Start the short guided path",
+      "ctaSecondary": "Browse main paths"
+    },
+    "entryPoints": {
+      "sectionTitle": "Main paths",
+      "newcomerTitle": "Newcomer",
+      "newcomerDesc": "First days, airport to city, and week-one priorities.",
+      "workTitle": "Work & income",
+      "workDesc": "Quick options and getting started with local platforms.",
+      "housingTitle": "Housing",
+      "housingDesc": "Renting basics, agencies vs owners, and checklists."
+    },
+    "guidedStart": {
+      "title": "Answer a few short questions",
+      "description": "We use your answers on this device to suggest a next step and a simple checklist — no account required.",
+      "cta": "Open Start"
+    },
+    "quickTools": {
+      "sectionTitle": "Quick tools",
+      "stayCalculator": "Stay calculator (90-in-180)",
+      "airportToCity": "Airport to city",
+      "terminals": "Payment terminals",
+      "essentialApps": "Essential apps",
+      "socialCard": "Social card"
+    },
+    "trustSection": {
+      "title": "How we handle trust",
+      "sourceAware": "Sensitive guidance links to sources where possible — not anonymous tips.",
+      "lastVerified": "Pages can show when information was last reviewed.",
+      "whatMayVary": "We call out what may differ by nationality, office, or timing."
+    }
+  },
   "dashboard": {
     "pageTitle": "Dashboard",
     "loading": "Loading…",

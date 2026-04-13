@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-11
+last_updated: 2026-04-13
 source_of_truth: false
 ---
 
@@ -18,6 +18,10 @@ src/
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
   features/          # Feature-scoped UI + logic
   features/dashboard/    # DashboardNextBestAction, DashboardChecklistBlock
+  features/home/         # Phase 3 — Home gateway (`/`)
+    HomePage.tsx
+    HomeEntryCard.tsx
+    HomeQuickToolItem.tsx
   features/calculator/   # StayCalculatorBlock ("use client" interactive form)
   features/routes/       # page-type-templates, page-type-routes
   lib/           # Utilities, CMS client, rule engines

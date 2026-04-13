@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-11
+last_updated: 2026-04-13
 source_of_truth: true
 ---
 
@@ -24,19 +24,28 @@ source_of_truth: true
    - `/documents/social-card` — guide + 2 source records
    - `/documents/temporary-residency` — guide + 2 source records
 
-6. **Hub pages** — 3 of 7 authored: newcomer ✅, documents ✅, housing ✅. **Remaining:** work, payments, transport, daily-life.
+6. **Hub pages** — ✅ 7 of 7 authored: newcomer, documents, housing, work, payments, transport, daily-life.
+
+7. **Newcomer section guides** — ✅ P0 slugs: `/newcomer/day-one`, `/newcomer/first-week`, `/newcomer/airport-to-city` (airport-to-city includes field-experience source record).
+
+8. **Work section guides** — ✅ P0 slugs: `/work/quick-income`, `/work/yandex-starter`, `/work/live-gaming` (each with primary field-experience source record).
+
+9. **Payments section guides** — ✅ P0 slugs: `/payments/terminals`, `/payments/service-payments` (each with primary field-experience source record).
+
+10. **Transport section guide** — ✅ P0 slug: `/transport/public-transport-payments` (primary field-experience source record).
+
+11. **Housing section guides** — ✅ `/housing/owner-vs-agency`, `/housing/rental-checklist` (each with primary field-experience source record). *(`/housing/request` is a separate flow — not a Markdown guide page.)*
+
+12. **Daily life** — ✅ `/daily-life/essential-apps` (primary field-experience source record).
+
+13. **Home page** — ✅ `/` ships `HomePage` + `HomeEntryCard` + `HomeQuickToolItem` (hero, entry points, guided start, quick tools, trust section; `home.*` i18n). **Group F** (2026-04-13).
 
 ## Content remaining (Phase 3)
 
-7. **Newcomer section guides** — `/newcomer/airport-to-city`, `/newcomer/first-week`, `/newcomer/day-one` (P0).
-8. **Housing section guides** — `/housing/owner-vs-agency`, `/housing/rental-checklist` (P0/P1).
-9. **Work section guides** — `/work/quick-income`, `/work/yandex-starter`, `/work/live-gaming` (P0).
-10. **Payments section guides** — `/payments/terminals`, `/payments/service-payments` (P0/P1).
-11. **Transport section guide** — `/transport/public-transport-payments` (P0).
-12. **Daily life** — `/daily-life/essential-apps` (P1).
-13. **Remaining hub content** — work, payments, transport, daily-life hubs (Markdown only, no code).
-14. **Home page** — `/` still `RoutePlaceholder`; needs real Home page design + content.
-15. **FAQ** — `/faq` needs real content.
-16. **Cross-link audit + editorial review** — once content pages are authored.
+Only **Groups G–I** remain on Phase 3 content/journey surfaces before cross-link and editorial closure:
+
+- **Group G — FAQ** — `/faq` needs real content.
+- **Group H — Dashboard + Start copy audit** — real user-facing text on `/dashboard` and `/start`.
+- **Group I — Cross-link audit + editorial/trust review** — after G–H; see `NEXT_ACTIONS.md`.
 
 **Explicitly deferred:** i18n content, UserChecklistStatus, dashboard full shell, admin, auth — see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap.
