@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-13
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -17,7 +17,12 @@ source_of_truth: true
 
 Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3: ship must-launch guides and hubs with real copy so the product is substantively useful — not an empty framework.
 
-**Progress note (2026-04-13):** Phase 3 **Group F — Home page** shipped — **`/`** uses **`HomePage`** (see `src/features/home/`) with real gateway copy; `RoutePlaceholder` no longer used on Home.
+**Progress (Phase 3 in progress — not exit-complete):**
+
+- **Group F — Home (2026-04-13):** **`/`** uses **`HomePage`**; `RoutePlaceholder` removed from Home.
+- **Group G — FAQ (2026-05-27):** **`/faq`** via `FaqPage` + `src/content/faq/*.md`; anchor URLs `/faq#<faq_id>`.
+- **Group H — Dashboard + Start copy (2026-05-28):** checklist chrome i18n; sample checklist fixture inactive; `dashboard.*` / `onboardingStart.*` audited (en/fa/ru).
+- **Remaining:** **Group I** — cross-link audit + editorial/trust review. **`RoutePageBanner` / `placeholder.phase1`** on hubs/guides/FAQ/search/updates is deferred template debt (track pre–Group I or separate cleanup).
 
 ## Entry criteria (met)
 

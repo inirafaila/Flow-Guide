@@ -15,7 +15,7 @@ Continue Phase 3 per execution plan. Next group:
 
 - **Group I:** Cross-link audit + editorial/trust review
 
-**Groups A–G and H** shipped. Phase 3 exit remaining: **Group I** + Phase 3 exit checklist verification.
+**Groups A–H** shipped. Phase 3 **not exit-complete** — remaining: **Group I** + full exit checklist verification (incl. cross-links, editorial/trust, deferred `RoutePageBanner` cleanup).
 
 ### Recently shipped (Phase 3)
 

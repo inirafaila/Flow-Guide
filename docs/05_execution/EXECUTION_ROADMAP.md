@@ -4,28 +4,28 @@ overview: Complete execution plan from current Phase 3 state through production 
 todos:
   - id: phase3-hubs
     content: "Phase 3 Group A: Author 4 remaining hub pages (work, payments, transport, daily-life)"
-    status: pending
+    status: completed
   - id: phase3-newcomer
     content: "Phase 3 Group B: Author 3 newcomer guides (day-one, first-week, airport-to-city) + source records"
-    status: pending
+    status: completed
   - id: phase3-work
     content: "Phase 3 Group C: Author 3 work guides (quick-income, yandex-starter, live-gaming) + source records"
-    status: pending
+    status: completed
   - id: phase3-payments-transport
     content: "Phase 3 Group D: Author 3 payments/transport guides (terminals, service-payments, public-transport-payments) + source records"
-    status: pending
+    status: completed
   - id: phase3-housing-daily
     content: "Phase 3 Group E: Author 3 housing/daily-life guides (owner-vs-agency, rental-checklist, essential-apps) + source records"
-    status: pending
+    status: completed
   - id: phase3-home
     content: "Phase 3 Group F: Build Home page (replace RoutePlaceholder with real components per UI_HANDOFF_SPEC)"
     status: completed
   - id: phase3-faq
     content: "Phase 3 Group G: Author FAQ content"
-    status: pending
+    status: completed
   - id: phase3-copy-audit
     content: "Phase 3 Group H: Dashboard + Start copy audit for real user-facing text"
-    status: pending
+    status: completed
   - id: phase3-crosslinks
     content: "Phase 3 Group I: Cross-link audit + editorial/trust review for sensitive pages"
     status: pending
@@ -64,11 +64,13 @@ isProject: false
 
 # Flow-Guide: Complete Execution Roadmap to Production
 
-**Baseline:** Phase 0A/0B done (2026-04-01), Phase 1 done (2026-04-04), Phase 2 done (2026-04-11), Phase 3 in progress (2026-04-13). Content pipeline fully operational — universal route wiring means any new `.md` file in `src/content/pages/` auto-renders on matching route. Documents section content-complete (3 guides + 6 source records). **7/7** hub pages authored. **Group F — Home page** shipped on `/` (`HomePage`, `HomeEntryCard`, `HomeQuickToolItem`). Remaining Phase 3: **Groups G–I** (FAQ, copy audit, cross-links / editorial). 233 Vitest tests, lint/test/build green.
+**Baseline (2026-05-28):** Phase 0A/0B done (2026-04-01), Phase 1 done (2026-04-04), Phase 2 done (2026-04-11), **Phase 3 in progress** (not exit-complete). Content pipeline operational. **Groups A–H shipped** (hubs, guides, Home, FAQ, Dashboard/Start copy audit). **Remaining Phase 3:** **Group I only** (cross-link audit + editorial/trust review). Deferred template debt: **`RoutePageBanner` / `placeholder.phase1`** on hubs/guides/FAQ/search/updates — see `HANDOFF_NOTES.md`. 247 Vitest tests; lint/test/build green per last ship.
 
 ---
 
 ## 1. Phase 3 Completion Plan (remaining slices)
+
+**Status (2026-05-28):** Slices **A–H** shipped. **Group I** is the only remaining Phase 3 content/journey slice. Phase 3 exit checklist (§2) stays open until Group I and verification complete — do not mark Phase 3 done in `ROADMAP_STATUS.md` until then.
 
 ### Execution Order and Grouping
 
@@ -271,7 +273,7 @@ Content slices below are **all content-only** (no code changes) unless noted. Th
 
 ---
 
-#### Group G: FAQ Page
+#### Group G: FAQ Page — **shipped (2026-05-27)**
 
 **Slice G1: FAQ content**
 - **Description:** Real FAQ content for `/faq`
@@ -284,10 +286,10 @@ Content slices below are **all content-only** (no code changes) unless noted. Th
 
 ---
 
-#### Group H: Dashboard + Start Real Copy Review
+#### Group H: Dashboard + Start Real Copy Review — **shipped (2026-05-28)**
 
 **Slice H1: Dashboard copy audit**
-- **Description:** Verify `/dashboard` has real user-facing copy, not placeholder text
+- **Description:** Shipped — checklist chrome i18n (`dashboard.checklist.*`, `checklistRow.*`); `sample-checklist-row` inactive; message audit en/fa/ru
 - **Files to modify:** Potentially `messages/en.json` (dashboard.\* keys), `src/features/dashboard/DashboardNextBestAction.tsx`, `src/features/dashboard/DashboardChecklistBlock.tsx`
 - **Dependencies:** None (already functional from Phase 2)
 - **Content notes:** NBA v1 and checklist block already render real data from guest blob + checklist items. Verify i18n strings are user-ready, not developer placeholder text. Dashboard "real copy" exit criterion may already be met -- audit needed
@@ -309,7 +311,7 @@ Content slices below are **all content-only** (no code changes) unless noted. Th
 **Slice I1: Cross-link audit**
 - **Description:** Verify all `related_page_slugs` frontmatter in every content page point to real pages; verify hub top-tasks link to correct guides; verify guide "related pages" sections are populated
 - **Files to modify:** Various `src/content/pages/*.md` files (add/fix `related_page_slugs` frontmatter)
-- **Dependencies:** All content pages authored (Groups A-G)
+- **Dependencies:** All content pages authored (Groups A–H)
 - **Content notes:** Per IA_SPEC Section 17: related content should be action-oriented (prerequisite, next step, related tool, related place). Every guide should link forward to logical next step
 - **Estimated complexity:** M
 - **Source records needed?** No
