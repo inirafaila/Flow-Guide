@@ -1,5 +1,6 @@
 import path from "node:path";
 import { notFound } from "next/navigation";
+import { RelatedPlacesBlock } from "@/features/places/RelatedPlacesBlock";
 import { GuidePageTemplate } from "@/features/routes/page-type-templates";
 import { loadPageContent } from "@/lib/content/load-page-content";
 import { loadTrustDataForPage } from "@/lib/content/load-trust-for-page";
@@ -18,12 +19,17 @@ export default async function Page({ params }: Props) {
   const trust = loadTrustDataForPage(contentRoot, slug);
   const pageContent = loadPageContent(contentRoot, slug);
   return (
-    <GuidePageTemplate
-      path={`/transport/${slug}`}
-      bodyHtml={pageContent?.bodyHtml}
-      sources={trust.sources}
-      lastVerifiedAt={trust.lastVerifiedAt}
-      whatMayVary={trust.whatMayVary}
-    />
+    <>
+      <GuidePageTemplate
+        path={`/transport/${slug}`}
+        bodyHtml={pageContent?.bodyHtml}
+        sources={trust.sources}
+        lastVerifiedAt={trust.lastVerifiedAt}
+        whatMayVary={trust.whatMayVary}
+      />
+      {slug === "public-transport-payments" ? (
+        <RelatedPlacesBlock guideHref="/transport/public-transport-payments" />
+      ) : null}
+    </>
   );
 }

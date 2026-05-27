@@ -186,6 +186,12 @@
     "relatedGuides": "Related guides",
     "empty": "No FAQ entries are available right now."
   },
+  "places": {
+    "relatedTitle": "Useful locations",
+    "verifyBeforeVisit": "Verify details before visiting.",
+    "openInMaps": "Open in Maps",
+    "externalLinkHint": "(external)"
+  },
   "updates": {
     "intro": "Editorial change notes on guides and tools. For source-backed steps and official requirements, open the linked guides.",
     "disclaimer": "These entries describe what we changed in Flow-Guide—they are not legal advice. Sensitive details can vary by office, timing, and your situation; follow each guide’s sources.",

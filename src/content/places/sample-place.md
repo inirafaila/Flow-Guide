@@ -9,7 +9,7 @@ confidence_level: low
 related_service_tags:
   - example-tag
 notes: Phase 1 contract fixture only — do not treat as authoritative.
-is_active: true
+is_active: false
 ---
 
 Optional body text (contract only; not rendered in Phase 1).

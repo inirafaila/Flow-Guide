@@ -14,9 +14,12 @@ import {
   resolveFaqId,
   validateFaqContentDir,
 } from "./faq-id";
+import { loadPlaceItems } from "./load-place-items";
 import { normalizeSearchExcerpt } from "./normalize-search-excerpt";
 import { resolvePageHref } from "./page-slug-to-href";
 import { parseMarkdownPage, type ParsedMarkdownPage } from "./parse-md";
+
+const PLACE_SEARCH_EXCERPT_MAX_LEN = 140;
 
 /** Matches `messages/en.json` → `routeBanner.summaries.stayCalculator`. */
 const STAY_CALCULATOR_SEARCH_EXCERPT =
@@ -161,6 +164,30 @@ export function buildSearchIndexRecords(projectRoot: string): SearchIndexRecord[
   }
   seenIds.add(toolRec.id);
   records.push(toolRec);
+
+  for (const place of loadPlaceItems(contentRoot)) {
+    const { frontmatter, slug } = place;
+    const rec: SearchIndexRecord = {
+      id: `place:${slug}`,
+      type: "place",
+      group: "places",
+      title: frontmatter.name,
+      excerpt: normalizeSearchExcerpt(
+        frontmatter.notes!.trim(),
+        PLACE_SEARCH_EXCERPT_MAX_LEN,
+      ),
+      href: frontmatter.parent_guide_href!,
+      tags: [
+        frontmatter.place_type,
+        ...(frontmatter.related_service_tags ?? []),
+      ],
+    };
+    if (seenIds.has(rec.id)) {
+      throw new Error(`Duplicate search index id "${rec.id}"`);
+    }
+    seenIds.add(rec.id);
+    records.push(rec);
+  }
 
   return records;
 }

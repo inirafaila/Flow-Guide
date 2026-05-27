@@ -34,6 +34,14 @@ describe("buildSearchIndexRecords", () => {
     const tool = records.find((r) => r.id === "tool:stay-calculator");
     expect(tool?.href).toBe("/documents/stay-calculator");
     expect(tool?.group).toBe("tools");
+    const place = records.find((r) => r.type === "place");
+    expect(place).toBeDefined();
+    expect(place?.group).toBe("places");
+    expect(place?.href).toMatch(/^\/(payments|documents|transport)\//);
+    expect(place!.excerpt.length).toBeLessThanOrEqual(140);
+    expect(
+      records.some((r) => r.id === "place:sample-placeholder-place"),
+    ).toBe(false);
   });
 
   it("rejects invalid frontmatter with file context", () => {

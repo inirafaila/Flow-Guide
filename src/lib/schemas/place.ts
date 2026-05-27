@@ -45,6 +45,10 @@ export const placeFrontmatterSchema = z.object({
   confidence_level: sourceConfidenceLevelSchema.optional(),
   related_service_tags: z.array(z.string()).optional(),
   notes: z.string().optional(),
+  /** Full IA path for parent guide — required for active curated places (validated in loadPlaceItems). */
+  parent_guide_href: z.string().min(1).optional(),
+  /** External map link — https allowlist only (assertMapsUrlAllowed in loadPlaceItems). */
+  maps_url: z.string().min(1).optional(),
   is_active: z.boolean().optional(),
 });
 

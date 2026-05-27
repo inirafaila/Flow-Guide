@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 4 — Slice 4.3 — Places-lite (2026-05-28):** `loadPlaceItems` (max 5 active), `assertMapsUrlAllowed`, `PlaceCard`, `RelatedPlacesBlock` on 3 guides; 4 curated place seeds; search index +4 place rows (33 total); no `/city`, no `/places` routes, no map embed. **294** Vitest tests; lint/test/build green. **Next:** Slice 4.4 Analytics.
 - **Phase 4 — Slice 4.2 — Updates v1 (2026-05-27):** `/updates` static editorial list (`loadUpdateItems`, `UpdatesPage`, `UpdateCard`); 3 seeds; fixture `sample-update.md` inactive; active items require `published_at`; excerpt rule (summary ≥140 → no body excerpt). **Not in slice:** search index, Home preview, Dashboard updates-for-you (**deferred 4.6**). **278** Vitest tests; lint/test/build green. **Next:** Slice 4.3 Places-lite.
 - **Phase 4 — Slice 4.1 — Search v1 (2026-05-28):** Search index v2 (`href`, `group`, no bare `slug`); `normalize-search-excerpt.ts`, `page-slug-to-href.ts`, synthetic `tool:stay-calculator`; `match-search-records.ts` (single/multi-token rules, `pickBestMatch` gating); `/search` UI with grouped results. **29** index records.
 - **Phase 3 exit verification passed (2026-05-27):** Automated `lint`/`test`/`build` green (255 tests); must-launch routes verified (content + Home/Start/Dashboard/FAQ); `content-internal-links` test; search index 28 records (22 pages + 6 FAQ, no Welcome row); RoutePageBanner has no phase1 shell; `/city` not in header nav. **Phase 3 closed** in `ROADMAP_STATUS`; **Phase 4 active** in `CURRENT_PHASE` / `CURRENT_FOCUS`. **Next:** Slice 4.1 Search v1 (plan then implement).
@@ -31,14 +32,14 @@ source_of_truth: true
 
 - **Phase 1** done (2026-04-04), **Phase 2** done (2026-04-11), **Phase 3** done (2026-05-27), **Phase 4** in progress.
 - Content pipeline fully operational: `loadPageContent` + `loadTrustDataForPage` + `renderMarkdownToHtml`. Any new `.md` in `src/content/pages/` auto-renders on matching route.
-- 278 Vitest tests, lint/test/build green.
+- 294 Vitest tests, lint/test/build green.
 - Documents section content-complete (3 guides + 6 source records + trust blocks).
 - 7/7 hub pages authored; newcomer P0 guides (day-one, first-week, airport-to-city) authored with trust source on airport-to-city.
 - Work section P0 guides authored (quick-income, yandex-starter, live-gaming) each with a primary field-experience source record.
 - Payments P0 guides (terminals, service-payments) and transport P0 guide (public-transport-payments) authored, each with a primary field-experience source record.
 - Housing guides (owner-vs-agency, rental-checklist) and daily-life guide (essential-apps) authored, each with a primary field-experience source record.
 - FAQ, Home, all must-launch hubs/guides, Dashboard/Start copy, Group I banner/links — Phase 3 complete.
-- **`/search`** — Search v1 shipped. **`/updates`** — Updates v1 shipped (static list). **`/city`** launch-adjacent stub.
+- **`/search`** — Search v1 shipped (includes Places group when indexed). **`/updates`** — Updates v1 shipped. **Places-lite** on three guides. **`/city`** launch-adjacent stub (unchanged).
 
 ## What the next session should do
 

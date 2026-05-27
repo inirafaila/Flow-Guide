@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -98,11 +98,17 @@ Other deferred items called out historically: loading skeletons for primary bloc
 
 - **Index load (client)** — fetch `public/search-index.json`; Zod-validated; `loading` / `ready` / `error` (no retry UI beyond message in v1).
 - **Empty query** — static hints + links to `/faq`, `/newcomer`, `/documents` (not full index browse).
-- **Results** — grouped sections: **Guides**, **Tools**, **FAQ** (empty **Places** hidden until 4.3); rows link via build-time `href`; optional **Best match** when clear winner (score threshold + margin).
+- **Results** — grouped sections: **Guides**, **Tools**, **FAQ**, **Places** (Places hidden when empty); rows link via build-time `href`; place rows link to **parent guide** (not maps URL); optional **Best match** when clear winner (score threshold + margin).
 - **No results** — message + link to FAQ.
 - **Query UX** — debounced input (~200ms); token/substring match (no search library).
 
 **Deferred (not 4.1):** recent searches, `?q=` deep links, query-param filters, hit highlighting, header typeahead, Plausible `search_used` (4.4), localized result titles.
+
+## Places (guide blocks — Slice 4.3 shipped)
+
+- **RelatedPlacesBlock** on `/payments/terminals`, `/documents/address-registration`, `/transport/public-transport-payments` — up to **3** `PlaceCard` rows per guide when active place content exists; section hidden when zero places.
+- **PlaceCard** — name, editorial `notes`, optional area-hint `address`, `places.verifyBeforeVisit` microcopy; optional external **Open in Maps** link (`maps_url`) with external affordance; **no** opening hours, `place_type` label, `confidence_level`, photos, or ratings.
+- **Not in this slice** — `/places` routes, `/city` hub, map embeds, place detail pages, filters, Home/Dashboard surfacing.
 
 ## Updates (`/updates` — Slice 4.2 shipped)
 

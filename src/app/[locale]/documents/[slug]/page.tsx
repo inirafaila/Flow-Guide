@@ -2,6 +2,7 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import { StayCalculatorBlock } from "@/features/calculator/StayCalculatorBlock";
 import { StayCalculatorRelatedLinks } from "@/features/calculator/StayCalculatorRelatedLinks";
+import { RelatedPlacesBlock } from "@/features/places/RelatedPlacesBlock";
 import {
   CalculatorPageTemplate,
   GuidePageTemplate,
@@ -33,12 +34,17 @@ export default async function Page({ params }: Props) {
   const trust = loadTrustDataForPage(contentRoot, slug);
   const pageContent = loadPageContent(contentRoot, slug);
   return (
-    <GuidePageTemplate
-      path={routePath}
-      bodyHtml={pageContent?.bodyHtml}
-      sources={trust.sources}
-      lastVerifiedAt={trust.lastVerifiedAt}
-      whatMayVary={trust.whatMayVary}
-    />
+    <>
+      <GuidePageTemplate
+        path={routePath}
+        bodyHtml={pageContent?.bodyHtml}
+        sources={trust.sources}
+        lastVerifiedAt={trust.lastVerifiedAt}
+        whatMayVary={trust.whatMayVary}
+      />
+      {slug === "address-registration" ? (
+        <RelatedPlacesBlock guideHref="/documents/address-registration" />
+      ) : null}
+    </>
   );
 }

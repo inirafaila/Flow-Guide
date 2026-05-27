@@ -16,6 +16,19 @@ describe("placeFrontmatterSchema", () => {
     expect(parsePlaceFrontmatter(data)).toMatchObject(data);
   });
 
+  it("accepts Phase 4.3 product fields", () => {
+    const data = {
+      id: "pl-3",
+      slug: "x",
+      name: "Y",
+      place_type: "terminal" as const,
+      parent_guide_href: "/payments/terminals",
+      maps_url: "https://www.google.com/maps/search/?api=1&query=test",
+      notes: "Editorial note.",
+    };
+    expect(parsePlaceFrontmatter(data)).toMatchObject(data);
+  });
+
   it("accepts optional §12 fields", () => {
     const data = {
       id: "pl-2",
