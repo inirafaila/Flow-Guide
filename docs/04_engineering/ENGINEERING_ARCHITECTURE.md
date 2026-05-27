@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 source_of_truth: true
 ---
 
@@ -95,7 +95,15 @@ Forms (post-launch or minimal): POST Route Handler → email/webhook/external st
 
 - **Canonical:** `/newcomer/airport-to-city`. **`/transport/airport` → redirect** to canonical (per `PHASE_0_DECISION_RECORD.md`).
 
-## 13. Related docs
+## 13. SEO (Phase 4.5)
+
+- **Origin:** `NEXT_PUBLIC_SITE_URL` (trimmed, no trailing slash); fallback `http://localhost:3000` for local/CI. **`metadataBase`** on root layout.
+- **Metadata:** English-only via `src/lib/seo/build-page-metadata.ts` — active page frontmatter `title`/`summary`, else `ROUTE_TITLES` + `messages/en.json` shell summaries. Raw page titles; root layout template adds ` · Flow-Guide`. **No** hreflang / localized meta.
+- **Sitemap:** `src/app/sitemap.ts` — `getSitemapPaths()` from `PHASE1_IA_PAGE_PATHS` minus utility/thin/form excludes; omits `is_active: false` Markdown pages. **Not** `search-index.json`. No `lastModified`.
+- **Robots:** `src/app/robots.ts` — allow `/`, sitemap URL. **Noindex** (`index: false, follow: true` only): `/search`, `/dashboard`, `/start`, `/city`, `/housing/request`, `/housing/request/success`.
+- **Social:** minimal Open Graph / Twitter mirroring title, description, URL — no image pipeline.
+
+## 14. Related docs
 
 - Folder layout: [`FOLDER_STRUCTURE.md`](FOLDER_STRUCTURE.md)
 - Product contracts: `docs/02_product/*`

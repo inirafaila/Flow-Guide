@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 source_of_truth: false
 ---
 
@@ -43,6 +43,9 @@ src/
                      #   page-slug-to-href.ts — content slug → public IA href
                      #   route-path-to-slug.ts — route path → content page slug for banner summaries
   lib/analytics/     # track-event.ts (allowlisted Plausible events), search-result-count-bucket.ts
+  lib/seo/           # Phase 4.5 — site-url, sitemap-paths, noindex-paths, build-page-metadata, generate-metadata-for-path
+  app/sitemap.ts     # MetadataRoute sitemap (26 indexable IA paths)
+  app/robots.ts      # allow + sitemap reference
   lib/search/        # match-search-records.ts, search-result-groups.ts (client search v1)
   features/search/   # SearchPage, GroupedSearchResults, SearchResultRow, SearchBestMatch, useSearchIndex
   features/updates/  # UpdatesPage.tsx — static editorial list for /updates

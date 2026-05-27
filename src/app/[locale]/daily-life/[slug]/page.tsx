@@ -4,8 +4,14 @@ import { GuidePageTemplate } from "@/features/routes/page-type-templates";
 import { loadPageContent } from "@/lib/content/load-page-content";
 import { loadTrustDataForPage } from "@/lib/content/load-trust-for-page";
 import { DAILY_LIFE_SLUGS, isSlug } from "@/lib/routes";
+import { buildPageMetadata } from "@/lib/seo/build-page-metadata";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  return buildPageMetadata(`/daily-life/${slug}`);
+}
 
 export function generateStaticParams() {
   return DAILY_LIFE_SLUGS.map((slug) => ({ slug }));

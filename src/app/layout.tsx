@@ -5,14 +5,17 @@ import { PlausiblePageview } from "@/components/observability/PlausiblePageview"
 import { PlausibleScript } from "@/components/observability/PlausibleScript";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
+import { DEFAULT_SITE_DESCRIPTION } from "@/lib/seo/build-page-metadata";
+import { getMetadataBase } from "@/lib/seo/site-url";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: getMetadataBase(),
   title: {
     default: "Flow-Guide",
     template: "%s · Flow-Guide",
   },
-  description: "Newcomer guide for life in Armenia — Phase 1 scaffold.",
+  description: DEFAULT_SITE_DESCRIPTION,
 };
 
 export default async function RootLayout({

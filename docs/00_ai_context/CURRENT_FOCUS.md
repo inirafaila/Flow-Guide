@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 source_of_truth: true
 ---
 
@@ -15,11 +15,11 @@ source_of_truth: true
 2. ~~**Updates surface (4.2)**~~ — **shipped 2026-05-27** (`loadUpdateItems`, `/updates` list, 3 seeds).
 3. ~~**Places-lite (4.3)**~~ — **shipped 2026-05-28** (`loadPlaceItems`, `PlaceCard`, `RelatedPlacesBlock`, search index places).
 4. ~~**Analytics (4.4)**~~ — **shipped 2026-05-29** (six Plausible funnel events + SPA pageviews).
-5. **SEO (4.5)** — **next up:** metadata, sitemap.xml, robots.txt.
-6. **Dashboard enhancement (4.6)** — alerts, quick actions, updates-for-you (scoped).
+5. ~~**SEO (4.5)**~~ — **shipped 2026-05-30** (metadata, sitemap, robots; `NEXT_PUBLIC_SITE_URL`).
+6. **Dashboard enhancement (4.6)** — **next up:** alerts, quick actions, updates-for-you (scoped).
 7. **Perf sanity (4.7)** — mobile performance check.
 
-**Do not start** until a slice is chosen via planning; default next candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) is **4.5 SEO**.
+**Do not start** until a slice is chosen via planning; default next candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) is **4.6 Dashboard enhancement**.
 
 ## Phase 3 shipped (reference)
 

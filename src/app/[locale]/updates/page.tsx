@@ -1,6 +1,11 @@
 import path from "node:path";
 import { UpdatesPage } from "@/features/updates/UpdatesPage";
 import { loadUpdateItems } from "@/lib/content/load-update-items";
+import { generateMetadataForPath } from "@/lib/seo/generate-metadata-for-path";
+
+export function generateMetadata() {
+  return generateMetadataForPath("/updates");
+}
 
 export default async function Page() {
   const contentRoot = path.join(process.cwd(), "src", "content");

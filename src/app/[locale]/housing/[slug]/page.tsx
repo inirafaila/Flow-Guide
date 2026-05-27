@@ -8,8 +8,14 @@ import { loadPageContent } from "@/lib/content/load-page-content";
 import { loadTrustDataForPage } from "@/lib/content/load-trust-for-page";
 import { HOUSING_SLUGS, isSlug } from "@/lib/routes";
 import { templateForHousingSlug } from "@/lib/page-type-routes";
+import { buildPageMetadata } from "@/lib/seo/build-page-metadata";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  return buildPageMetadata(`/housing/${slug}`);
+}
 
 export function generateStaticParams() {
   return HOUSING_SLUGS.map((slug) => ({ slug }));

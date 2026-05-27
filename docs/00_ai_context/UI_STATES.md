@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 source_of_truth: true
 ---
 
@@ -105,6 +105,12 @@ Other deferred items called out historically: loading skeletons for primary bloc
 - **Analytics (4.4):** `search_used` fires on debounced query only (`has_results`, `result_count_bucket`); no query text sent.
 
 **Deferred (not 4.1):** recent searches, `?q=` deep links, query-param filters, hit highlighting, header typeahead, localized result titles.
+
+## SEO baseline (Phase 4.5 — shipped)
+
+- **Head metadata:** English-only `<title>` / description / canonical per public IA path; UI locale (cookie) does **not** change head meta.
+- **Sitemap / robots:** `/sitemap.xml` (26 indexable paths); `/robots.txt` references sitemap. Utility/form/thin routes omitted from sitemap and use `noindex, follow` where listed in `src/lib/seo/noindex-paths.ts`.
+- **Not in slice:** hreflang, JSON-LD, OG images, localized meta, search-index-as-sitemap.
 
 ## Analytics (Phase 4.4 — shipped)
 
