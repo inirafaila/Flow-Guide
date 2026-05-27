@@ -24,7 +24,8 @@ describe("buildSearchIndexRecords", () => {
     );
     expect(page?.slug).toBe("/start");
     const faq = records.find((r) => r.type === "faq");
-    expect(faq?.slug).toBe("/faq/sample-question");
+    expect(faq?.slug).toMatch(/^\/faq#[a-z0-9]+(-[a-z0-9]+)*$/);
+    expect(faq?.id).toMatch(/^faq:[a-z0-9]+(-[a-z0-9]+)*$/);
   });
 
   it("rejects invalid frontmatter with file context", () => {
@@ -73,7 +74,7 @@ x`,
       path.join(content, "faq", "f.md"),
       `---
 title: F
-slug: /faq/f
+faq_id: f
 primary_category: faq
 page_type: faq
 ---
@@ -83,7 +84,7 @@ a`,
       path.join(content, "faq", "hidden-faq.md"),
       `---
 title: HF
-slug: /faq/hidden
+faq_id: hidden
 primary_category: faq
 page_type: faq
 searchable: false
@@ -92,7 +93,7 @@ a`,
     );
     try {
       const records = buildSearchIndexRecords(tmp);
-      expect(records.map((r) => r.slug).sort()).toEqual(["/faq/f", "/visible"]);
+      expect(records.map((r) => r.slug).sort()).toEqual(["/faq#f", "/visible"]);
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });
     }

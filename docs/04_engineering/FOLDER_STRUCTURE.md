@@ -34,6 +34,8 @@ src/
                      #   load-page-content.ts — loadPageContent → PageContent | null
                      #   load-trust-for-page.ts — loadTrustDataForPage (sources + trust metadata)
                      #   load-checklist-and-updates.ts, load-sources.ts, load-places.ts
+                     #   faq-id.ts — faq_id SSOT (normalize, public URL, uniqueness)
+                     #   load-faq-items.ts — loadFaqItems for /faq
                      #   build-search-index-records.ts — search index record builder
   lib/guest/         # Guest persistence (localStorage blob, 90d TTL)
   lib/schemas/       # Zod schemas: content-page, checklist-item, update-item, source-record, place, guest-blob, user, user-state, user-checklist-status, request-submission
@@ -44,7 +46,8 @@ src/
   content/pages/   # Hub + guide Markdown
                    #   Hubs: newcomer.md, documents.md, housing.md (+ work, payments, transport, daily-life pending)
                    #   Guides: address-registration.md, social-card.md, temporary-residency.md, welcome.md (+ more pending)
-  content/faq/
+  content/faq/       # FAQ entries (*.md) — faq_id + anchor /faq#<faq_id>; 6 entries (Group G)
+  features/faq/      # FaqPage.tsx — stacked Q&A UI for /faq
   content/checklist-items/   # Checklist Item rows (§7) — 8 seed items + sample-row
   content/updates/             # Update Item entries (§11) — sample fixture
   content/sources/           # Source Record rows (§10)

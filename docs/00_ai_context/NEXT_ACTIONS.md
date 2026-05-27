@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-13
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -13,16 +13,16 @@ source_of_truth: true
 
 Continue Phase 3 per execution plan. Next groups:
 
-- **Group G:** FAQ content
 - **Group H:** Dashboard + Start copy audit
-- **Group I:** Cross-link audit + editorial/trust review (depends on all above)
+- **Group I:** Cross-link audit + editorial/trust review (depends on Group H)
 
-**Section guides:** All hub-linked section guides listed in `CURRENT_FOCUS.md` through **Group E** are authored with primary field sources. Remaining Phase 3 **content surfaces** before the **Group I** cross-link / editorial pass: **FAQ** and **Dashboard + Start copy** (Groups G–H). **Home (`/`)** shipped in Group F (2026-04-13).
+**Section guides:** All hub-linked section guides through **Group E** are authored. **FAQ (`/faq`)** shipped in Group G (2026-05-27). Remaining Phase 3 **content surfaces** before Group I: **Dashboard + Start copy** (Group H).
 
-Sequence G–H as needed before I.
+Sequence H before I.
 
 ### Recently shipped (Phase 3)
 
+- **Group G — FAQ page (2026-05-27):** `loadFaqItems` + `faq-id.ts` (SSOT) + `FaqPage` on `/`; 6 FAQ entries under `src/content/faq/`; anchor deep links `/faq#<faq_id>`; search-index FAQ slugs aligned; no jump nav (deferred).
 - **Group F — Home page (2026-04-13):** `HomePage`, `HomeEntryCard`, `HomeQuickToolItem` replace `RoutePlaceholder` on `/`; hero, entry points, guided start, quick tools, trust section; `home.*` i18n (en/fa/ru).
 - **Group E — housing + daily life (2026-04-12):** `owner-vs-agency.md`, `rental-checklist.md`, `essential-apps.md` + primary field sources `owner-vs-agency-field.md`, `rental-checklist-field.md`, `essential-apps-field.md`. Housing P0/P1-style guides + daily-life P1 guide content- and trust-complete; hubs already linked. (`housing/request` not in scope.)
 - **Group D — payments + transport (2026-04-12):** `terminals.md`, `service-payments.md`, `public-transport-payments.md` + primary field sources `terminals-field.md`, `service-payments-field.md`, `public-transport-payments-field.md`. Payments P0 guides + transport P0 guide content- and trust-complete; hubs already linked.

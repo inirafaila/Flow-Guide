@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-13
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -40,12 +40,13 @@ source_of_truth: true
 
 13. **Home page** — ✅ `/` ships `HomePage` + `HomeEntryCard` + `HomeQuickToolItem` (hero, entry points, guided start, quick tools, trust section; `home.*` i18n). **Group F** (2026-04-13).
 
+14. **FAQ page** — ✅ `/faq` renders `FaqPage` from `src/content/faq/*.md` (6 entries); `faq-id.ts` + `loadFaqItems`; anchor URLs `/faq#<faq_id>`; search-index slugs `/faq#…`. **Group G** (2026-05-27). Jump nav omitted (deferred).
+
 ## Content remaining (Phase 3)
 
-Only **Groups G–I** remain on Phase 3 content/journey surfaces before cross-link and editorial closure:
+Only **Groups H–I** remain on Phase 3 content/journey surfaces before cross-link and editorial closure:
 
-- **Group G — FAQ** — `/faq` needs real content.
 - **Group H — Dashboard + Start copy audit** — real user-facing text on `/dashboard` and `/start`.
-- **Group I — Cross-link audit + editorial/trust review** — after G–H; see `NEXT_ACTIONS.md`.
+- **Group I — Cross-link audit + editorial/trust review** — after Group H; see `NEXT_ACTIONS.md`.
 
 **Explicitly deferred:** i18n content, UserChecklistStatus, dashboard full shell, admin, auth — see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap.

@@ -36,6 +36,11 @@ export const intentTypeSchema = z.enum([
  */
 export const urgencyTagSchema = z.enum(["critical", "high", "medium", "low"]);
 
+/** Kebab-case anchor id for FAQ entries under src/content/faq/. */
+export const faqIdSchema = z
+  .string()
+  .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "faq_id must be kebab-case");
+
 /**
  * Markdown frontmatter under src/content/pages and src/content/faq.
  * New fields are optional or omitted so legacy files keep validating.
@@ -44,7 +49,9 @@ export const pageFrontmatterSchema = z.object({
   title: z.string().min(1),
   short_title: z.string().optional(),
   summary: z.string().optional(),
-  slug: z.string().min(1),
+  /** Required for pages; optional for FAQ (use faq_id instead). */
+  slug: z.string().min(1).optional(),
+  faq_id: faqIdSchema.optional(),
   primary_category: z.string().optional(),
   page_type: markdownPageTypeSchema.optional(),
   audience_tags: z.array(z.string()).optional(),

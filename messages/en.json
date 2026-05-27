@@ -157,6 +157,11 @@
       }
     }
   },
+  "faq": {
+    "intro": "Short answers to common cross-topic questions. For step-by-step guidance and sources, open the linked guides.",
+    "relatedGuides": "Related guides",
+    "empty": "No FAQ entries are available right now."
+  },
   "pageTemplate": {
     "hub": {
       "intro": "Intro (placeholder)",
