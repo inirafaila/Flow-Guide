@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -44,10 +44,12 @@ source_of_truth: true
 
 15. **Dashboard + Start copy** — ✅ Checklist section/row chrome i18n; sample checklist fixture inactive; `dashboard.*` / `onboardingStart.*` audited (en/fa/ru). **Group H** (2026-05-28). No dashboard shell expansion.
 
+15. **Group I — Cross-link audit + bounded exit package** — ✅ RoutePageBanner cleanup, internal-link test, fixture deactivation, stay-calculator related links, `/city` nav deferral (2026-05-27).
+
 ## Content remaining (Phase 3)
 
-Only **Group I** remains on Phase 3 content/journey surfaces before cross-link and editorial closure:
+**Group I shipped.** Remaining before Phase 3 exit:
 
-- **Group I — Cross-link audit + editorial/trust review** — see `NEXT_ACTIONS.md`.
+- **Exit verification pass** — `EXECUTION_ROADMAP.md` §2 checklist + `ROADMAP_STATUS.md` update (separate slice; not done in Group I).
 
-**Explicitly deferred:** i18n content, UserChecklistStatus, dashboard full shell, admin, auth — see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap.
+**Explicitly deferred:** i18n guide bodies, UserChecklistStatus, dashboard full shell, Phase 4 search/updates/city content, admin, auth — see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap.

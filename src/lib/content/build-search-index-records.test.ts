@@ -20,9 +20,13 @@ describe("buildSearchIndexRecords", () => {
     const parsed = searchIndexFileSchema.safeParse(records);
     expect(parsed.success).toBe(true);
     const page = records.find(
-      (r) => r.type === "page" && r.slug === "/start",
+      (r) => r.type === "page" && r.slug === "newcomer",
     );
-    expect(page?.slug).toBe("/start");
+    expect(page?.slug).toBe("newcomer");
+    const welcomeRow = records.find(
+      (r) => r.type === "page" && r.title === "Welcome",
+    );
+    expect(welcomeRow).toBeUndefined();
     const faq = records.find((r) => r.type === "faq");
     expect(faq?.slug).toMatch(/^\/faq#[a-z0-9]+(-[a-z0-9]+)*$/);
     expect(faq?.id).toMatch(/^faq:[a-z0-9]+(-[a-z0-9]+)*$/);

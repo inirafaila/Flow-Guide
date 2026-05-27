@@ -1,6 +1,7 @@
 import path from "node:path";
 import { notFound } from "next/navigation";
 import { StayCalculatorBlock } from "@/features/calculator/StayCalculatorBlock";
+import { StayCalculatorRelatedLinks } from "@/features/calculator/StayCalculatorRelatedLinks";
 import {
   CalculatorPageTemplate,
   GuidePageTemplate,
@@ -24,6 +25,7 @@ export default async function Page({ params }: Props) {
     return (
       <CalculatorPageTemplate path={routePath}>
         <StayCalculatorBlock />
+        <StayCalculatorRelatedLinks />
       </CalculatorPageTemplate>
     );
   }

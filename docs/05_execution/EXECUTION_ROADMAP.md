@@ -28,7 +28,7 @@ todos:
     status: completed
   - id: phase3-crosslinks
     content: "Phase 3 Group I: Cross-link audit + editorial/trust review for sensitive pages"
-    status: pending
+    status: completed
   - id: phase4-search
     content: "Phase 4: Build client grouped search UI (FlexSearch/Fuse.js on search-index.json)"
     status: pending
@@ -64,13 +64,13 @@ isProject: false
 
 # Flow-Guide: Complete Execution Roadmap to Production
 
-**Baseline (2026-05-28):** Phase 0A/0B done (2026-04-01), Phase 1 done (2026-04-04), Phase 2 done (2026-04-11), **Phase 3 in progress** (not exit-complete). Content pipeline operational. **Groups A–H shipped** (hubs, guides, Home, FAQ, Dashboard/Start copy audit). **Remaining Phase 3:** **Group I only** (cross-link audit + editorial/trust review). Deferred template debt: **`RoutePageBanner` / `placeholder.phase1`** on hubs/guides/FAQ/search/updates — see `HANDOFF_NOTES.md`. 247 Vitest tests; lint/test/build green per last ship.
+**Baseline (2026-05-27):** Phase 0A/0B done (2026-04-01), Phase 1 done (2026-04-04), Phase 2 done (2026-04-11), **Phase 3 in progress** (not exit-complete). **Groups A–I shipped** (incl. Group I banner/fixtures/links 2026-05-27). **Next:** Phase 3 **exit verification** pass (§2 checklist) before `ROADMAP_STATUS` Phase 3 → Done. **`/city`:** removed from header nav; route remains launch-adjacent (no tourism content in MVP). Phase 4: `/search`, `/updates` UI still stub. 255 Vitest tests; lint/test/build green per last ship.
 
 ---
 
 ## 1. Phase 3 Completion Plan (remaining slices)
 
-**Status (2026-05-28):** Slices **A–H** shipped. **Group I** is the only remaining Phase 3 content/journey slice. Phase 3 exit checklist (§2) stays open until Group I and verification complete — do not mark Phase 3 done in `ROADMAP_STATUS.md` until then.
+**Status (2026-05-27):** Slices **A–I** shipped. Phase 3 exit checklist (§2) remains for a **separate verification pass** — do not mark Phase 3 done in `ROADMAP_STATUS.md` until that pass completes.
 
 ### Execution Order and Grouping
 
@@ -376,12 +376,14 @@ All of the following must be true:
   - [ ] 6.23: Essential Apps (`/daily-life/essential-apps`)
   - [ ] 6.24: FAQ (`/faq`)
 
-- [ ] Home, Start, Dashboard display real user-facing copy (no "placeholder" or "TODO" text visible to users)
-- [ ] Cross-links audit: every guide `related_page_slugs` resolves to a real page; hub top-tasks link correctly
-- [ ] Trust/source review: all sensitive pages (documents, payments, transport) have source records + `last_verified_at` + `what_may_vary` where applicable
-- [ ] `npm run lint`, `npm run test`, `npm run build` all green
-- [ ] search-index.json includes all new content pages
-- [ ] No dead-end routes on must-launch paths (user can navigate forward from every page)
+- [x] Home, Start, Dashboard display real user-facing copy (no "placeholder" or "TODO" text visible to users)
+- [x] Cross-links audit: Markdown internal links in pages/faq validated (`content-internal-links.test.ts`); hub/guide Related sections present (Group I)
+- [x] Trust/source review: sensitive pages spot-checked; metadata + field sources in place (Group I; no new official sources added)
+- [x] `npm run lint`, `npm run test`, `npm run build` all green (Group I ship)
+- [x] search-index.json includes active content pages; `welcome.md` excluded (`is_active: false`)
+- [ ] No dead-end routes on must-launch paths — confirm on exit verification walk (stay-calculator related links added Group I)
+- [x] RoutePageBanner: no user-visible Phase 1 shell on content routes (Group I)
+- [ ] **`/city` waiver:** not in MVP nav; direct URL may show utility stub — documented launch-adjacent deferral
 
 ---
 

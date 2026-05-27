@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-04-13
+last_updated: 2026-05-27
 source_of_truth: false
 ---
 
@@ -22,7 +22,7 @@ src/
     HomePage.tsx
     HomeEntryCard.tsx
     HomeQuickToolItem.tsx
-  features/calculator/   # StayCalculatorBlock ("use client" interactive form)
+  features/calculator/   # StayCalculatorBlock ("use client"); StayCalculatorRelatedLinks (server, /documents/stay-calculator)
   features/routes/       # page-type-templates, page-type-routes
   lib/           # Utilities, CMS client, rule engines
   lib/checklist/     # Phase 2 checklist filtering logic (checklist-filter.ts — pure filterChecklistItems)
@@ -37,6 +37,8 @@ src/
                      #   faq-id.ts — faq_id SSOT (normalize, public URL, uniqueness)
                      #   load-faq-items.ts — loadFaqItems for /faq
                      #   build-search-index-records.ts — search index record builder
+                     #   route-path-to-slug.ts — route path → content page slug for banner summaries
+                     #   allowed-internal-link-paths.ts, extract-markdown-internal-links.ts — Group I link audit
   lib/guest/         # Guest persistence (localStorage blob, 90d TTL)
   lib/schemas/       # Zod schemas: content-page, checklist-item, update-item, source-record, place, guest-blob, user, user-state, user-checklist-status, request-submission
   lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root

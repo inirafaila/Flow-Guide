@@ -22,7 +22,8 @@ Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3: ship must-l
 - **Group F — Home (2026-04-13):** **`/`** uses **`HomePage`**; `RoutePlaceholder` removed from Home.
 - **Group G — FAQ (2026-05-27):** **`/faq`** via `FaqPage` + `src/content/faq/*.md`; anchor URLs `/faq#<faq_id>`.
 - **Group H — Dashboard + Start copy (2026-05-28):** checklist chrome i18n; sample checklist fixture inactive; `dashboard.*` / `onboardingStart.*` audited (en/fa/ru).
-- **Remaining:** **Group I** — cross-link audit + editorial/trust review. **`RoutePageBanner` / `placeholder.phase1`** on hubs/guides/FAQ/search/updates is deferred template debt (track pre–Group I or separate cleanup).
+- **Group I (2026-05-27):** cross-link test + banner cleanup + fixtures + stay-calculator links; `/city` nav deferred.
+- **Remaining:** Phase 3 **exit verification** (checklist in `EXECUTION_ROADMAP.md` §2) — then `ROADMAP_STATUS` update.
 
 ## Entry criteria (met)
 

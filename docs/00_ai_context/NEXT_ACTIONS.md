@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -11,15 +11,14 @@ source_of_truth: true
 
 ### Next up
 
-Continue Phase 3 per execution plan. Next group:
+**Phase 3 exit verification** (separate pass): walk [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §2 exit checklist; then update `ROADMAP_STATUS.md`, `CURRENT_PHASE.md`, `PROJECT_STATE.md` when criteria met. Do **not** assume Phase 3 done until that pass completes.
 
-- **Group I:** Cross-link audit + editorial/trust review
-
-**Groups A–H** shipped. Phase 3 **not exit-complete** — remaining: **Group I** + full exit checklist verification (incl. cross-links, editorial/trust, deferred `RoutePageBanner` cleanup).
+**Groups A–I** shipped. Phase 3 **not exit-complete** until verification + roadmap status update.
 
 ### Recently shipped (Phase 3)
 
-- **Group H — Dashboard + Start copy audit (2026-05-28):** Checklist chrome i18n (`dashboard.checklist.*`, `checklistRow.*`); `sample-checklist-row` deactivated; Start wrapper class `start-page`; dashboard/onboarding message audit (en/fa/ru). RoutePageBanner / `placeholder.phase1` deferred.
+- **Group I — Cross-link audit + bounded exit package (2026-05-27):** `RoutePageBanner` product-facing title + summary (no phase1/path code); `route-path-to-slug` + `content-internal-links` test; `welcome.md` deactivated from search index; `sample-source` fixture `page_id`; stay-calculator i18n variance + `StayCalculatorRelatedLinks`; `/city` removed from header nav; FAQ intro deduped with banner.
+- **Group H — Dashboard + Start copy audit (2026-05-28):** Checklist chrome i18n (`dashboard.checklist.*`, `checklistRow.*`); `sample-checklist-row` deactivated; Start wrapper class `start-page`; dashboard/onboarding message audit (en/fa/ru).
 - **Group G — FAQ page (2026-05-27):** `loadFaqItems` + `faq-id.ts` (SSOT) + `FaqPage` on `/`; 6 FAQ entries under `src/content/faq/`; anchor deep links `/faq#<faq_id>`; search-index FAQ slugs aligned; no jump nav (deferred).
 - **Group F — Home page (2026-04-13):** `HomePage`, `HomeEntryCard`, `HomeQuickToolItem` replace `RoutePlaceholder` on `/`; hero, entry points, guided start, quick tools, trust section; `home.*` i18n (en/fa/ru).
 - **Group E — housing + daily life (2026-04-12):** `owner-vs-agency.md`, `rental-checklist.md`, `essential-apps.md` + primary field sources `owner-vs-agency-field.md`, `rental-checklist-field.md`, `essential-apps-field.md`. Housing P0/P1-style guides + daily-life P1 guide content- and trust-complete; hubs already linked. (`housing/request` not in scope.)

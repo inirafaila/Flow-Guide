@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -66,9 +66,9 @@ Other deferred items called out historically: loading skeletons for primary bloc
 - **Onboarding flow** — unchanged behavior; copy in `onboardingStart.*` (en/fa/ru). Wrapper class `start-page` (not `route-placeholder`).
 - **No** RoutePageBanner / Phase 1 placeholder on this route.
 
-## Deferred — route shell banner (not Group H)
+## Route shell banner (Group I — 2026-05-27)
 
-- **RoutePageBanner** on hubs/guides/FAQ/search/updates still shows `placeholder.phase1` + `<code>{path}</code>`. Track for pre–Group I or separate cleanup; does not affect `/dashboard` or `/start`.
+- **RoutePageBanner** on hubs/guides/FAQ/calculator/utility routes: **title** + optional **muted summary** (from page frontmatter `summary`, or `routeBanner.summaries.*` i18n). **No** `placeholder.phase1`, **no** raw path `<code>`. `/dashboard`, `/start`, `/` unchanged (no banner on those routes).
 
 ## Dashboard (full product — not yet shipped)
 
@@ -89,7 +89,7 @@ Other deferred items called out historically: loading skeletons for primary bloc
 
 ## FAQ (`/faq` — Group G shipped 2026-05-27)
 
-- **Populated list** — `RoutePageBanner` + i18n intro (`faq.intro`) + stacked `<section id={faqId}>` per entry: title (`h2`), rendered Markdown body (`.faq-body`), optional “Related guides” links from `related_page_slugs` (labels from `ROUTE_TITLES`). Sorted by title. No jump nav in v1.
+- **Populated list** — `RoutePageBanner` with `faq.intro` as banner summary (no duplicate intro paragraph) + stacked `<section id={faqId}>` per entry: title (`h2`), rendered Markdown body (`.faq-body`), optional “Related guides” links from `related_page_slugs` (labels from `ROUTE_TITLES`). Sorted by title. No jump nav in v1.
 - **Empty** — intro + `faq.empty` when no active FAQ items (`is_active: false` omitted).
 - **Anchor deep-link** — public URL `/faq#<faq_id>`; each section `id={faqId}` with `scroll-margin-top` for in-page navigation. Search-index FAQ rows use same `/faq#…` slug (Phase 4 search UX not wired yet).
 - **Not in this slice** — per-item routes (`/faq/[slug]`), accordion, trust blocks, FAQ search, jump nav with JS/sticky/scrollspy.

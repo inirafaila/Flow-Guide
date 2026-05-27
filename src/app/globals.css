@@ -309,15 +309,13 @@ body {
 }
 
 .route-placeholder code,
-.route-page-banner code {
-  font-size: var(--text-sm);
-  background: color-mix(in srgb, var(--fg) 6%, transparent);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-sm);
-}
-
 .route-page-banner {
   margin-bottom: var(--space-8);
+}
+
+.route-page-banner__summary {
+  margin: var(--space-3) 0 0;
+  max-width: 42rem;
 }
 
 .page-template {
@@ -1040,6 +1038,32 @@ a.fg-source-block__label:focus-visible {
   margin: 0;
   font-size: var(--text-sm);
   line-height: 1.5;
+}
+
+.stay-calc__variance {
+  margin: var(--space-5) 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.stay-calc-related {
+  max-width: 40rem;
+  margin: var(--space-8) auto 0;
+  padding: 0 var(--space-2);
+}
+
+.stay-calc-related__title {
+  margin: 0 0 var(--space-5);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.stay-calc-related__list {
+  margin: 0;
+  padding-left: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .stay-calc__card.stay-calc__card {

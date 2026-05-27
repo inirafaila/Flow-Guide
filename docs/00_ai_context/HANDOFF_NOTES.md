@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 3 — Group I — bounded exit package (2026-05-27):** `RoutePageBanner` shows title + summary from content or `routeBanner.summaries.*` (no `placeholder.phase1`, no path `<code>`). `welcome.md` `is_active: false` / `searchable: false`; `sample-source.md` → `page_id: _fixture-welcome`. `StayCalculatorRelatedLinks` on stay-calculator; `stayCalculator.*` i18n + variance note. `content-internal-links.test.ts` for pages/faq Markdown. `/city` removed from `SiteHeader` nav (route remains; launch-adjacent deferral). **255** Vitest tests; lint/test/build green. **Next:** Phase 3 exit verification — do not mark Phase 3 done in `ROADMAP_STATUS` until checklist pass.
 - **Phase 3 — Group H — Dashboard + Start copy audit (2026-05-28):** `dashboard.checklist.*` + `checklistRow.*` i18n; `ChecklistItemRow` client + `DashboardChecklistBlock` wired; `sample-row.md` `is_active: false`; Start `start-page` wrapper class.
 - **Phase 3 — Group G — FAQ page (2026-05-27):** `FaqPage` + `loadFaqItems` + `faq-id.ts`; 6 FAQ Markdown entries; `/faq#<faq_id>` anchors; search-index FAQ slugs `/faq#…`; sample-question removed.
 - **Phase 3 — Group F — Home page (2026-04-13):** HomePage + HomeEntryCard + HomeQuickToolItem replace RoutePlaceholder on `/`; includes hero, entry points, guided start, quick tools, trust section.
@@ -27,25 +28,21 @@ source_of_truth: true
 
 - **Phase 1** done (2026-04-04), **Phase 2** done (2026-04-11), **Phase 3** in progress.
 - Content pipeline fully operational: `loadPageContent` + `loadTrustDataForPage` + `renderMarkdownToHtml`. Any new `.md` in `src/content/pages/` auto-renders on matching route.
-- 247 Vitest tests, lint/test/build green.
+- 255 Vitest tests, lint/test/build green.
 - Documents section content-complete (3 guides + 6 source records + trust blocks).
 - 7/7 hub pages authored; newcomer P0 guides (day-one, first-week, airport-to-city) authored with trust source on airport-to-city.
 - Work section P0 guides authored (quick-income, yandex-starter, live-gaming) each with a primary field-experience source record.
 - Payments P0 guides (terminals, service-payments) and transport P0 guide (public-transport-payments) authored, each with a primary field-experience source record.
 - Housing guides (owner-vs-agency, rental-checklist) and daily-life guide (essential-apps) authored, each with a primary field-experience source record.
-- FAQ shipped on `/faq` (Group G). Dashboard/Start copy audit shipped (Group H). Remaining Phase 3: **Group I** cross-link + editorial review — see `CURRENT_FOCUS.md`.
+- FAQ shipped on `/faq` (Group G). Dashboard/Start copy (Group H). **Group I** shipped (banner, links, fixtures). **Next:** Phase 3 exit verification only.
 
 ## What the next session should do
 
-1. Read **`CURSOR_NEW_CHAT_PROTOCOL.md`** — it now contains the full execution workflow (two-agent model, checkpoint rules, Composer prompt structure).
-2. Read **`CURRENT_FOCUS.md`** — Phase 3 remaining work is listed with shipped/remaining items.
-3. Cross-reference with the **execution plan** (Groups A–I for Phase 3) to identify the next slice.
-4. Write Composer implementation prompt for **Group I (cross-link + editorial)** or the next approved slice.
-5. After every ~5 slices or group completion, trigger full doc sync.
-6. Before commit/push: `npm run lint`, `npm run test`, `npm run build`.
+1. Run **Phase 3 exit verification** per `EXECUTION_ROADMAP.md` §2 (checklist + manual smoke).
+2. If exit criteria met, update `ROADMAP_STATUS.md`, `CURRENT_PHASE.md`, `PROJECT_STATE.md` in a dedicated doc-sync slice.
+3. Otherwise record gaps in `HANDOFF_NOTES.md` / `NEXT_ACTIONS.md`.
+4. Before any commit: `npm run lint`, `npm run test`, `npm run build`.
 
 ## Still incomplete / watch
-
-- **RoutePageBanner** still shows `placeholder.phase1` and raw path on hubs/guides/FAQ/search/updates — deferred template debt; fix before Phase 3 exit or in a small pre–Group I cleanup (not Group H scope).
 - **OPEN_ITEMS.md** pre-production gates: governance names, legal/privacy, production Sentry/Plausible projects.
 - Replace placeholder research `.docx` with a repo-readable export when available (ops, not blocking).

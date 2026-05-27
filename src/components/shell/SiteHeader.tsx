@@ -20,7 +20,6 @@ export async function SiteHeader() {
     { href: "/payments", label: t("shell.payments") },
     { href: "/transport", label: t("shell.transport") },
     { href: "/daily-life", label: t("shell.dailyLife") },
-    { href: "/city", label: t("shell.city") },
   ];
 
   return (

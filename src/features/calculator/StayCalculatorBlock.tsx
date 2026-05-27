@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -31,16 +32,11 @@ function removeEntryAt(entries: StayEntry[], index: number): StayEntry[] {
   return entries.filter((_, i) => i !== index);
 }
 
-const STATUS_LABEL: Record<StayCalculatorResult["status"], string> = {
-  safe: "Safe",
-  watch: "Watch",
-  urgent: "Urgent",
-};
-
 /**
  * Interactive 90-in-180 stay calculator for /documents/stay-calculator.
  */
 export function StayCalculatorBlock() {
+  const t = useTranslations("stayCalculator");
   const [entries, setEntries] = useState<StayEntry[]>([
     { arrival: "", departure: "" },
   ]);
@@ -55,21 +51,19 @@ export function StayCalculatorBlock() {
     <section className="stay-calc" aria-labelledby="stay-calc-heading">
       <div className="stay-calc__intro">
         <h2 id="stay-calc-heading" className="stay-calc__title">
-          90-in-180 Stay Calculator
+          {t("title")}
         </h2>
-        <p className="stay-calc__description muted">
-          Track how many days you&apos;ve stayed in Armenia within the rolling
-          180-day window. Add your arrival and departure dates below.
-        </p>
+        <p className="stay-calc__description muted">{t("description")}</p>
+        <p className="stay-calc__variance muted">{t("varianceNote")}</p>
       </div>
 
       <Card className="stay-calc__card">
-        <SectionHeader>Stay periods</SectionHeader>
+        <SectionHeader>{t("stayPeriods")}</SectionHeader>
         <div className="stay-calc__entries">
           {entries.map((entry, index) => (
             <div className="stay-calc__entry-row" key={index}>
               <label className="stay-calc__entry-label">
-                <span className="muted">Arrival</span>
+                <span className="muted">{t("arrival")}</span>
                 <input
                   className="stay-calc__entry-input"
                   type="date"
@@ -84,7 +78,7 @@ export function StayCalculatorBlock() {
                 />
               </label>
               <label className="stay-calc__entry-label">
-                <span className="muted">Departure</span>
+                <span className="muted">{t("departure")}</span>
                 <input
                   className="stay-calc__entry-input"
                   type="date"
@@ -111,7 +105,7 @@ export function StayCalculatorBlock() {
                   })
                 }
               >
-                Remove
+                {t("remove")}
               </Button>
             </div>
           ))}
@@ -124,11 +118,11 @@ export function StayCalculatorBlock() {
             setEntries((prev) => [...prev, { arrival: "", departure: "" }])
           }
         >
-          + Add stay period
+          {t("addPeriod")}
         </Button>
         <div className="stay-calc__calculate">
           <Button type="button" variant="primary" onClick={handleCalculate}>
-            Calculate
+            {t("calculate")}
           </Button>
         </div>
       </Card>
@@ -138,24 +132,29 @@ export function StayCalculatorBlock() {
           <div
             className={`stay-calc__status stay-calc__status--${result.status}`}
           >
-            {STATUS_LABEL[result.status]}
+            {t(`status.${result.status}`)}
           </div>
           <p className="stay-calc__summary">
-            {result.daysUsed} days used out of {result.maxDays} —{" "}
-            {result.daysRemaining} days remaining
+            {t("daysSummary", {
+              daysUsed: result.daysUsed,
+              maxDays: result.maxDays,
+              daysRemaining: result.daysRemaining,
+            })}
           </p>
           <p className="stay-calc__window muted">
-            Window: {result.windowStart} to {result.asOf}
+            {t("window", {
+              windowStart: result.windowStart,
+              asOf: result.asOf,
+            })}
           </p>
           {result.status === "urgent" ? (
             <p className="stay-calc__warning" role="status">
-              Your stay limit is nearly reached or exceeded. Consider consulting
-              immigration guidance.
+              {t("warningUrgent")}
             </p>
           ) : null}
           {result.status === "watch" ? (
             <p className="stay-calc__warning" role="status">
-              You&apos;re approaching your stay limit. Plan accordingly.
+              {t("warningWatch")}
             </p>
           ) : null}
         </Card>

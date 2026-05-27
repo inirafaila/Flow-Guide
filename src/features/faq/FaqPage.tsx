@@ -16,8 +16,7 @@ export async function FaqPage({ items }: FaqPageProps) {
 
   return (
     <article className="page-template page-template--faq faq-page">
-      <RoutePageBanner path="/faq" />
-      <p className="faq-page__intro muted">{t("intro")}</p>
+      <RoutePageBanner path="/faq" summary={t("intro")} />
 
       {items.length === 0 ? (
         <p className="faq-page__empty muted">{t("empty")}</p>

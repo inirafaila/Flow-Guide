@@ -186,6 +186,36 @@
     "relatedGuides": "Related guides",
     "empty": "No FAQ entries are available right now."
   },
+  "routeBanner": {
+    "summaries": {
+      "faq": "Short answers to common cross-topic questions. For step-by-step guidance and sources, open the linked guides.",
+      "search": "Search across guides and FAQ entries. Full search experience ships in a later release.",
+      "updates": "Product updates and change notes. More detail will appear here in a later release.",
+      "stayCalculator": "Estimate days used in the rolling 90-in-180 window. Rules vary by nationality — confirm with official guidance.",
+      "city": "City and tourism content is not in the MVP yet. Use newcomer and daily-life guides for practical setup."
+    }
+  },
+  "stayCalculator": {
+    "title": "90-in-180 Stay Calculator",
+    "description": "Track how many days you have stayed in Armenia within the rolling 180-day window. Add your arrival and departure dates below.",
+    "varianceNote": "This tool is for orientation only. Stay limits and counting rules can vary by nationality, visa type, and current regulations — it is not legal advice. Confirm your situation with official sources before making travel or residency decisions.",
+    "stayPeriods": "Stay periods",
+    "arrival": "Arrival",
+    "departure": "Departure",
+    "remove": "Remove",
+    "addPeriod": "+ Add stay period",
+    "calculate": "Calculate",
+    "status": {
+      "safe": "Safe",
+      "watch": "Watch",
+      "urgent": "Urgent"
+    },
+    "daysSummary": "{daysUsed} days used out of {maxDays} — {daysRemaining} days remaining",
+    "window": "Window: {windowStart} to {asOf}",
+    "warningUrgent": "Your stay limit is nearly reached or exceeded. Consider consulting immigration guidance.",
+    "warningWatch": "You are approaching your stay limit. Plan accordingly.",
+    "relatedTitle": "Related guides"
+  },
   "pageTemplate": {
     "hub": {
       "intro": "Intro (placeholder)",
