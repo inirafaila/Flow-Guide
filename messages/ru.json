@@ -73,7 +73,31 @@
     },
     "nba": {
       "sectionTitle": "Предлагаемый следующий шаг"
+    },
+    "checklist": {
+      "sectionTitle": "Ваш чеклист",
+      "loading": "Загрузка…",
+      "empty": "Сейчас нет пунктов в чеклисте",
+      "category": {
+        "newcomer": "Прибытие и первая неделя",
+        "documents": "Документы",
+        "housing": "Жильё",
+        "work": "Работа",
+        "payments": "Платежи",
+        "transport": "Транспорт",
+        "dailyLife": "Повседневная жизнь"
+      }
     }
+  },
+  "checklistRow": {
+    "status": {
+      "notStarted": "Не начато",
+      "inProgress": "В процессе",
+      "done": "Готово",
+      "revisit": "Пересмотреть"
+    },
+    "locked": "Заблокировано",
+    "urgencyA11y": "Срочность: {level}"
   },
   "onboardingStart": {
     "pageTitle": "Старт",

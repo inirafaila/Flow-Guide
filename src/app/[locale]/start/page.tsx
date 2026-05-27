@@ -2,7 +2,7 @@ import { StartOnboardingFlow } from "@/features/onboarding/StartOnboardingFlow";
 
 export default function Page() {
   return (
-    <section className="route-placeholder">
+    <section className="start-page">
       <StartOnboardingFlow />
     </section>
   );

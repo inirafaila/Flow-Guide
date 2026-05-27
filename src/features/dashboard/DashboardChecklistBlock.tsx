@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { ChecklistItemRow } from "@/components/ui/ChecklistItemRow";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -16,7 +17,7 @@ export type DashboardChecklistBlockProps = {
   items: ChecklistItemFrontmatter[];
 };
 
-/** Category section order (UI_HANDOFF_SPEC §6.3 Block 4). i18n deferred. */
+/** Category section order (UI_HANDOFF_SPEC §6.3 Block 4). */
 export const CATEGORY_ORDER: string[] = [
   "newcomer",
   "documents",
@@ -27,20 +28,18 @@ export const CATEGORY_ORDER: string[] = [
   "daily-life",
 ];
 
-const CATEGORY_LABELS: Record<string, string> = {
-  newcomer: "Arrival & first week",
-  documents: "Documents",
-  housing: "Housing",
-  work: "Work",
-  payments: "Payments",
-  transport: "Transport",
-  "daily-life": "Daily life",
+/** Maps checklist category slug to `dashboard.checklist.category.*` message key. */
+const CATEGORY_MESSAGE_KEY: Record<string, string> = {
+  newcomer: "newcomer",
+  documents: "documents",
+  housing: "housing",
+  work: "work",
+  payments: "payments",
+  transport: "transport",
+  "daily-life": "dailyLife",
 };
 
-function categoryHeading(category: string): string {
-  if (CATEGORY_LABELS[category] !== undefined) {
-    return CATEGORY_LABELS[category]!;
-  }
+function formatUnknownCategory(category: string): string {
   return category
     .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -91,6 +90,8 @@ export function groupChecklistByCategory(
 }
 
 export function DashboardChecklistBlock({ items }: DashboardChecklistBlockProps) {
+  const t = useTranslations("dashboard.checklist");
+  const tCategory = useTranslations("dashboard.checklist.category");
   const [phase, setPhase] = useState<"loading" | "ready">("loading");
   const [filtered, setFiltered] = useState<FilteredChecklistResult | null>(null);
 
@@ -102,11 +103,19 @@ export function DashboardChecklistBlock({ items }: DashboardChecklistBlockProps)
     setPhase("ready");
   }, [items]);
 
+  const categoryHeading = (category: string): string => {
+    const key = CATEGORY_MESSAGE_KEY[category];
+    if (key !== undefined) {
+      return tCategory(key);
+    }
+    return formatUnknownCategory(category);
+  };
+
   if (phase === "loading" || filtered === null) {
     return (
       <section className="dashboard-checklist" aria-busy="true">
-        <SectionHeader as="h2">Your checklist</SectionHeader>
-        <p className="muted dashboard-checklist__loading">Loading…</p>
+        <SectionHeader as="h2">{t("sectionTitle")}</SectionHeader>
+        <p className="muted dashboard-checklist__loading">{t("loading")}</p>
       </section>
     );
   }
@@ -114,9 +123,9 @@ export function DashboardChecklistBlock({ items }: DashboardChecklistBlockProps)
   if (filtered.items.length === 0) {
     return (
       <section className="dashboard-checklist">
-        <SectionHeader as="h2">Your checklist</SectionHeader>
+        <SectionHeader as="h2">{t("sectionTitle")}</SectionHeader>
         <Card as="article" className="dashboard-checklist__empty-card">
-          <p className="muted">No checklist items</p>
+          <p className="muted">{t("empty")}</p>
         </Card>
       </section>
     );
@@ -126,7 +135,7 @@ export function DashboardChecklistBlock({ items }: DashboardChecklistBlockProps)
 
   return (
     <section className="dashboard-checklist">
-      <SectionHeader as="h2">Your checklist</SectionHeader>
+      <SectionHeader as="h2">{t("sectionTitle")}</SectionHeader>
       {groups.map((group) => (
         <div key={group.category} className="dashboard-checklist__group">
           <h3 className="dashboard-checklist__group-title">

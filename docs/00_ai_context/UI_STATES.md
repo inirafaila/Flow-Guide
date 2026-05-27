@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -54,12 +54,21 @@ Other deferred items called out historically: loading skeletons for primary bloc
 
 ## Dashboard (NBA + Checklist block — shipped)
 
-- **Loading (guest read pending)** — NBA: page title + Card + localized loading text, no CTA. Checklist: section title "Your checklist" + muted "Loading…" (`aria-busy`).
-- **No guest blob** (`readGuestBlob` `null`) — NBA: Card + copy to start path; CTAs `/start` + `/`. Checklist: all seed items shown unfiltered (inclusive when guest state undefined).
-- **Incomplete onboarding** (blob exists, DTO `null`) — NBA: Card + copy to finish Start; same CTAs. Checklist: filters with available partial guest state; items with undefined rule fields pass (inclusive).
-- **Valid NBA + populated checklist** — NBA: emphasis + primary + secondaries. Checklist: `filterChecklistItems` → category-grouped `ChecklistItemRow` list (newcomer → documents → housing → work → payments); each row: title, category badge, urgency marker, status chip (default "not-started"), estimated effort, destination link; `prerequisites_met === false` → dimmed/locked row.
-- **Checklist empty after filter** — NBA renders normally. Checklist section: Card with "No checklist items" muted text.
-- **Out of this slice** — full dashboard shell (header summary, residency card), alerts, quick actions, updates feed, trust blocks, UserChecklistStatus wiring (per-user done/in-progress), i18n for checklist labels.
+- **Loading (guest read pending)** — NBA: page title + Card + localized loading text, no CTA. Checklist: `dashboard.checklist.sectionTitle` + `dashboard.checklist.loading` (`aria-busy`).
+- **No guest blob** (`readGuestBlob` `null`) — NBA: Card + copy to start path; CTAs `/start` + `/`. Checklist: active seed items only (`sample-checklist-row` inactive); inclusive filter when guest state undefined.
+- **Incomplete onboarding** (blob exists, DTO `null`) — NBA: Card + copy to finish Start; same CTAs. Checklist: filters with available partial guest state.
+- **Valid NBA + populated checklist** — NBA: emphasis + primary + secondaries. Checklist: category groups use `dashboard.checklist.category.*`; rows use `checklistRow.status.*`, `checklistRow.locked`, `checklistRow.urgencyA11y`; item titles from content Markdown (English).
+- **Checklist empty after filter** — NBA renders normally. Checklist: Card with `dashboard.checklist.empty`.
+- **Out of this slice** — full dashboard shell (header summary, residency card), alerts, quick actions, updates feed, trust blocks, UserChecklistStatus wiring, translated checklist item bodies.
+
+## Start (`/start` — Group H note 2026-05-28)
+
+- **Onboarding flow** — unchanged behavior; copy in `onboardingStart.*` (en/fa/ru). Wrapper class `start-page` (not `route-placeholder`).
+- **No** RoutePageBanner / Phase 1 placeholder on this route.
+
+## Deferred — route shell banner (not Group H)
+
+- **RoutePageBanner** on hubs/guides/FAQ/search/updates still shows `placeholder.phase1` + `<code>{path}</code>`. Track for pre–Group I or separate cleanup; does not affect `/dashboard` or `/start`.
 
 ## Dashboard (full product — not yet shipped)
 

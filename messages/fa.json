@@ -73,7 +73,31 @@
     },
     "nba": {
       "sectionTitle": "قدم پیشنهادی بعدی"
+    },
+    "checklist": {
+      "sectionTitle": "چک‌لیست شما",
+      "loading": "در حال بارگذاری…",
+      "empty": "فعلاً موردی در چک‌لیست نیست",
+      "category": {
+        "newcomer": "ورود و هفتهٔ اول",
+        "documents": "مدارک",
+        "housing": "مسکن",
+        "work": "کار",
+        "payments": "پرداخت‌ها",
+        "transport": "حمل‌ونقل",
+        "dailyLife": "زندگی روزمره"
+      }
     }
+  },
+  "checklistRow": {
+    "status": {
+      "notStarted": "شروع نشده",
+      "inProgress": "در جریان",
+      "done": "انجام شد",
+      "revisit": "بازبینی"
+    },
+    "locked": "قفل",
+    "urgencyA11y": "فوریت: {level}"
   },
   "onboardingStart": {
     "pageTitle": "شروع",

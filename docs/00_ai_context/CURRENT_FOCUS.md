@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -42,11 +42,12 @@ source_of_truth: true
 
 14. **FAQ page** — ✅ `/faq` renders `FaqPage` from `src/content/faq/*.md` (6 entries); `faq-id.ts` + `loadFaqItems`; anchor URLs `/faq#<faq_id>`; search-index slugs `/faq#…`. **Group G** (2026-05-27). Jump nav omitted (deferred).
 
+15. **Dashboard + Start copy** — ✅ Checklist section/row chrome i18n; sample checklist fixture inactive; `dashboard.*` / `onboardingStart.*` audited (en/fa/ru). **Group H** (2026-05-28). No dashboard shell expansion.
+
 ## Content remaining (Phase 3)
 
-Only **Groups H–I** remain on Phase 3 content/journey surfaces before cross-link and editorial closure:
+Only **Group I** remains on Phase 3 content/journey surfaces before cross-link and editorial closure:
 
-- **Group H — Dashboard + Start copy audit** — real user-facing text on `/dashboard` and `/start`.
-- **Group I — Cross-link audit + editorial/trust review** — after Group H; see `NEXT_ACTIONS.md`.
+- **Group I — Cross-link audit + editorial/trust review** — see `NEXT_ACTIONS.md`.
 
 **Explicitly deferred:** i18n content, UserChecklistStatus, dashboard full shell, admin, auth — see [`CURRENT_PHASE.md`](CURRENT_PHASE.md) and master roadmap.

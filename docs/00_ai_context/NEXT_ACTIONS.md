@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -11,17 +11,15 @@ source_of_truth: true
 
 ### Next up
 
-Continue Phase 3 per execution plan. Next groups:
+Continue Phase 3 per execution plan. Next group:
 
-- **Group H:** Dashboard + Start copy audit
-- **Group I:** Cross-link audit + editorial/trust review (depends on Group H)
+- **Group I:** Cross-link audit + editorial/trust review
 
-**Section guides:** All hub-linked section guides through **Group E** are authored. **FAQ (`/faq`)** shipped in Group G (2026-05-27). Remaining Phase 3 **content surfaces** before Group I: **Dashboard + Start copy** (Group H).
-
-Sequence H before I.
+**Groups A–G and H** shipped. Phase 3 exit remaining: **Group I** + Phase 3 exit checklist verification.
 
 ### Recently shipped (Phase 3)
 
+- **Group H — Dashboard + Start copy audit (2026-05-28):** Checklist chrome i18n (`dashboard.checklist.*`, `checklistRow.*`); `sample-checklist-row` deactivated; Start wrapper class `start-page`; dashboard/onboarding message audit (en/fa/ru). RoutePageBanner / `placeholder.phase1` deferred.
 - **Group G — FAQ page (2026-05-27):** `loadFaqItems` + `faq-id.ts` (SSOT) + `FaqPage` on `/`; 6 FAQ entries under `src/content/faq/`; anchor deep links `/faq#<faq_id>`; search-index FAQ slugs aligned; no jump nav (deferred).
 - **Group F — Home page (2026-04-13):** `HomePage`, `HomeEntryCard`, `HomeQuickToolItem` replace `RoutePlaceholder` on `/`; hero, entry points, guided start, quick tools, trust section; `home.*` i18n (en/fa/ru).
 - **Group E — housing + daily life (2026-04-12):** `owner-vs-agency.md`, `rental-checklist.md`, `essential-apps.md` + primary field sources `owner-vs-agency-field.md`, `rental-checklist-field.md`, `essential-apps-field.md`. Housing P0/P1-style guides + daily-life P1 guide content- and trust-complete; hubs already linked. (`housing/request` not in scope.)

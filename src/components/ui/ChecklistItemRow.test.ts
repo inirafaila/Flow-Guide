@@ -1,8 +1,20 @@
-import { createElement } from "react";
+import { createElement, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { NextIntlClientProvider } from "next-intl";
 import { describe, expect, it } from "vitest";
 import type { FilteredChecklistItemV1 } from "@/lib/checklist/checklist-filter";
+import en from "../../../messages/en.json";
 import { ChecklistItemRow } from "./ChecklistItemRow";
+
+function renderRow(ui: ReactNode): string {
+  return renderToStaticMarkup(
+    createElement(
+      NextIntlClientProvider,
+      { locale: "en", messages: en },
+      ui,
+    ),
+  );
+}
 
 function baseItem(
   overrides: Partial<FilteredChecklistItemV1["item"]> = {},
@@ -27,7 +39,7 @@ function fixture(overrides: {
 
 describe("ChecklistItemRow", () => {
   it("renders title from data.item.title", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ item: { title: "Unique row title" } }),
       }),
@@ -36,7 +48,7 @@ describe("ChecklistItemRow", () => {
   });
 
   it("renders category badge when category is defined", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ item: { category: "documents" } }),
       }),
@@ -46,7 +58,7 @@ describe("ChecklistItemRow", () => {
   });
 
   it("renders urgency marker with high modifier when urgency_level is high", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ item: { urgency_level: "high" } }),
       }),
@@ -55,15 +67,13 @@ describe("ChecklistItemRow", () => {
   });
 
   it("defaults status to not-started chip when status prop is omitted", () => {
-    const html = renderToStaticMarkup(
-      createElement(ChecklistItemRow, { data: fixture() }),
-    );
+    const html = renderRow(createElement(ChecklistItemRow, { data: fixture() }));
     expect(html).toContain("fg-checklist-row__status--not-started");
     expect(html).toContain("Not started");
   });
 
   it("renders done chip with done modifier when status is done", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture(),
         status: "done",
@@ -74,16 +84,17 @@ describe("ChecklistItemRow", () => {
   });
 
   it("applies fg-checklist-row--locked when prerequisites_met is false", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ prerequisites_met: false }),
       }),
     );
     expect(html).toContain("fg-checklist-row--locked");
+    expect(html).toContain("Locked");
   });
 
   it("does not apply locked class when prerequisites_met is true", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ prerequisites_met: true }),
       }),
@@ -92,7 +103,7 @@ describe("ChecklistItemRow", () => {
   });
 
   it("renders link with href when primary_destination_slug is defined", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({
           item: { primary_destination_slug: "/documents/address-registration" },
@@ -104,7 +115,7 @@ describe("ChecklistItemRow", () => {
   });
 
   it("does not render a link when primary_destination_slug is undefined", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ item: { primary_destination_slug: undefined } }),
       }),
@@ -114,7 +125,7 @@ describe("ChecklistItemRow", () => {
   });
 
   it("renders estimated_effort when defined", () => {
-    const html = renderToStaticMarkup(
+    const html = renderRow(
       createElement(ChecklistItemRow, {
         data: fixture({ item: { estimated_effort: "half-day" } }),
       }),

@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: false
 ---
 
@@ -24,7 +24,7 @@ Live tracking of phases defined in [`ROADMAP_MASTER.md`](ROADMAP_MASTER.md). **A
 | **0B** | Technical architecture lock | **Done** | 2026-04-01 — same record + `ENGINEERING_ARCHITECTURE.md` |
 | **1** | Engineering and content foundation | **Done** | 2026-04-04 — exit audit passed; IA + templates + Zod contracts + `search-index.json` prebuild + CI + observability stubs |
 | **2** | Core product behavior and trust layer | **Done** | Onboarding ✅, guest persistence ✅, NBA v1 ✅, checklist v1 ✅, trust UI ✅, stay calculator (logic + page) ✅ — **Phase 2 exit criteria met** |
-| **3** | MVP content and journey implementation | **In progress** | **Groups A–G** shipped (incl. **FAQ** on `/` with `faq-id.ts` + 6 entries, 2026-05-27); remaining: **Groups H–I** (Dashboard/Start copy audit, cross-links / editorial) — exit per `ROADMAP_MASTER` Phase 3 |
+| **3** | MVP content and journey implementation | **In progress** | **Groups A–H** shipped (incl. FAQ Group G, Dashboard/Start copy Group H 2026-05-28); remaining: **Group I** (cross-links / editorial) — exit per `ROADMAP_MASTER` Phase 3 |
 | **4** | MVP utility, instrumentation, launch-scope hardening | **Later** | Required before launch |
 | **5** | Verification, QA, release readiness | **Later** | Before LAG |
 | **LAG** | Launch Approval Gate | **Later** | After Phase 5 |
@@ -43,6 +43,7 @@ Live tracking of phases defined in [`ROADMAP_MASTER.md`](ROADMAP_MASTER.md). **A
 
 ## Last review
 
+- **2026-05-28** — **Phase 3 Group H — Dashboard/Start copy:** checklist i18n + sample row inactive. Remaining: Group I.
 - **2026-05-27** — **Phase 3 Group G — FAQ:** `FaqPage` on `/faq`; `loadFaqItems` + `faq-id.ts`; 6 FAQ entries; anchor URLs `/faq#<faq_id>`; search-index FAQ slugs aligned. Remaining: Groups H–I.
 - **2026-04-13** — **Phase 3 Group F — Home page:** `HomePage` + `HomeEntryCard` + `HomeQuickToolItem` on `/` (hero, entry points, guided start, quick tools, trust section; `home.*` i18n). Remaining Phase 3: **Groups G–I** (FAQ, Dashboard/Start copy audit, cross-links / editorial).
 - **2026-04-12** — **Phase 3 Group E:** housing guides `owner-vs-agency`, `rental-checklist` + daily-life `essential-apps` + primary field sources; aligns with `CURRENT_FOCUS.md` (all listed section guides through Group E shipped). Remaining: Home, FAQ, copy audits, cross-links, editorial review.

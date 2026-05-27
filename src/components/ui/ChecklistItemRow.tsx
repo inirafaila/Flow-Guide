@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import type { FilteredChecklistItemV1 } from "@/lib/checklist/checklist-filter";
 
 export type ChecklistItemStatus =
@@ -13,11 +16,11 @@ export type ChecklistItemRowProps = {
   className?: string;
 };
 
-const STATUS_LABEL: Record<ChecklistItemStatus, string> = {
-  "not-started": "Not started",
-  "in-progress": "In progress",
-  done: "Done",
-  revisit: "Revisit",
+const STATUS_MESSAGE_KEY: Record<ChecklistItemStatus, string> = {
+  "not-started": "notStarted",
+  "in-progress": "inProgress",
+  done: "done",
+  revisit: "revisit",
 };
 
 function formatCategoryLabel(category: string): string {
@@ -29,13 +32,14 @@ function formatCategoryLabel(category: string): string {
 
 /**
  * Presentational row for one filtered checklist item (Phase 2).
- * No client state; optional destination link; visual lock when prerequisites are unmet.
+ * Optional destination link; visual lock when prerequisites are unmet.
  */
 export function ChecklistItemRow({
   data,
   status = "not-started",
   className = "",
 }: ChecklistItemRowProps) {
+  const t = useTranslations("checklistRow");
   const { item, prerequisites_met } = data;
   const locked = !prerequisites_met;
   const href = item.primary_destination_slug?.trim();
@@ -55,6 +59,7 @@ export function ChecklistItemRow({
       : "";
 
   const statusClass = `fg-checklist-row__status fg-checklist-row__status--${status}`;
+  const statusLabel = t(`status.${STATUS_MESSAGE_KEY[status]}`);
 
   const body = (
     <>
@@ -65,12 +70,15 @@ export function ChecklistItemRow({
           </span>
         ) : null}
         {urgency !== undefined ? (
-          <span className={urgencyClass} aria-label={`Urgency: ${urgency}`} />
+          <span
+            className={urgencyClass}
+            aria-label={t("urgencyA11y", { level: urgency })}
+          />
         ) : null}
-        <span className={statusClass}>{STATUS_LABEL[status]}</span>
+        <span className={statusClass}>{statusLabel}</span>
         {locked ? (
-          <span className="fg-checklist-row__lock" title="Prerequisites not met yet">
-            Locked
+          <span className="fg-checklist-row__lock" title={t("locked")}>
+            {t("locked")}
           </span>
         ) : null}
       </div>

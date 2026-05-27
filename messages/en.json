@@ -73,7 +73,31 @@
     },
     "nba": {
       "sectionTitle": "Suggested next step"
+    },
+    "checklist": {
+      "sectionTitle": "Your checklist",
+      "loading": "Loading…",
+      "empty": "No checklist items right now",
+      "category": {
+        "newcomer": "Arrival & first week",
+        "documents": "Documents",
+        "housing": "Housing",
+        "work": "Work",
+        "payments": "Payments",
+        "transport": "Transport",
+        "dailyLife": "Daily life"
+      }
     }
+  },
+  "checklistRow": {
+    "status": {
+      "notStarted": "Not started",
+      "inProgress": "In progress",
+      "done": "Done",
+      "revisit": "Revisit"
+    },
+    "locked": "Locked",
+    "urgencyA11y": "Urgency: {level}"
   },
   "onboardingStart": {
     "pageTitle": "Start",
