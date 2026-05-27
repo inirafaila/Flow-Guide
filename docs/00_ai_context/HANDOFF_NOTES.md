@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-29
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 4 — Slice 4.4 — Analytics (2026-05-29):** `src/lib/analytics/track-event.ts` (6 allowlisted Plausible events) + `PlausiblePageview`; Home entry cards, onboarding start/complete (transition-only), dashboard NBA (`checklist_item_slug` target), `search_used` (bucket props, no query text), `stay_calculator_used`. **308** Vitest tests; lint/test/build green. Legal/privacy + production Plausible project still open ([`OPEN_ITEMS.md`](OPEN_ITEMS.md)). **Next:** Slice 4.5 SEO.
 - **Phase 4 — Slice 4.3 — Places-lite (2026-05-28):** `loadPlaceItems` (max 5 active), `assertMapsUrlAllowed`, `PlaceCard`, `RelatedPlacesBlock` on 3 guides; 4 curated place seeds; search index +4 place rows (33 total); no `/city`, no `/places` routes, no map embed. **294** Vitest tests; lint/test/build green. **Next:** Slice 4.4 Analytics.
 - **Phase 4 — Slice 4.2 — Updates v1 (2026-05-27):** `/updates` static editorial list (`loadUpdateItems`, `UpdatesPage`, `UpdateCard`); 3 seeds; fixture `sample-update.md` inactive; active items require `published_at`; excerpt rule (summary ≥140 → no body excerpt). **Not in slice:** search index, Home preview, Dashboard updates-for-you (**deferred 4.6**). **278** Vitest tests; lint/test/build green. **Next:** Slice 4.3 Places-lite.
 - **Phase 4 — Slice 4.1 — Search v1 (2026-05-28):** Search index v2 (`href`, `group`, no bare `slug`); `normalize-search-excerpt.ts`, `page-slug-to-href.ts`, synthetic `tool:stay-calculator`; `match-search-records.ts` (single/multi-token rules, `pickBestMatch` gating); `/search` UI with grouped results. **29** index records.
@@ -32,7 +33,7 @@ source_of_truth: true
 
 - **Phase 1** done (2026-04-04), **Phase 2** done (2026-04-11), **Phase 3** done (2026-05-27), **Phase 4** in progress.
 - Content pipeline fully operational: `loadPageContent` + `loadTrustDataForPage` + `renderMarkdownToHtml`. Any new `.md` in `src/content/pages/` auto-renders on matching route.
-- 294 Vitest tests, lint/test/build green.
+- 308 Vitest tests, lint/test/build green.
 - Documents section content-complete (3 guides + 6 source records + trust blocks).
 - 7/7 hub pages authored; newcomer P0 guides (day-one, first-week, airport-to-city) authored with trust source on airport-to-city.
 - Work section P0 guides authored (quick-income, yandex-starter, live-gaming) each with a primary field-experience source record.
@@ -44,7 +45,7 @@ source_of_truth: true
 ## What the next session should do
 
 1. Read **`CURRENT_PHASE.md`** and **`EXECUTION_ROADMAP.md`** §3 (Phase 4 slices).
-2. **Plan** Slice **4.3 Places-lite** (or next approved Phase 4 slice) before implementing.
+2. **Plan** Slice **4.5 SEO** (or next approved Phase 4 slice) before implementing.
 3. Keep **OPEN_ITEMS** / LAG gates separate from Phase 4 feature work.
 4. Before commit: `npm run lint`, `npm run test`, `npm run build`.
 

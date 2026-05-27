@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { searchResultCountBucket } from "@/lib/analytics/search-result-count-bucket";
+import { trackEvent } from "@/lib/analytics/track-event";
 
 import {
   matchSearchRecords,
@@ -41,6 +43,21 @@ export function SearchPage() {
 
   const showResults = normalizedQuery.length > 0;
   const isLoadingIndex = indexState.status === "loading";
+  const lastSearchUsedKeyRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (indexState.status !== "ready") return;
+    if (normalizedQuery.length === 0) return;
+
+    if (lastSearchUsedKeyRef.current === normalizedQuery) return;
+    lastSearchUsedKeyRef.current = normalizedQuery;
+
+    const count = results.length;
+    trackEvent("search_used", {
+      has_results: count > 0,
+      result_count_bucket: searchResultCountBucket(count),
+    });
+  }, [indexState.status, debouncedQuery, normalizedQuery, results.length]);
 
   return (
     <div className="search-page__body" role="search">

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { trackEvent } from "@/lib/analytics/track-event";
 import {
   calculateStay,
   type StayCalculatorResult,
@@ -44,6 +45,9 @@ export function StayCalculatorBlock() {
 
   function handleCalculate() {
     const validEntries = filterValidEntries(entries);
+    trackEvent("stay_calculator_used", {
+      has_valid_entries: validEntries.length > 0,
+    });
     setResult(calculateStay({ entries: validEntries }));
   }
 

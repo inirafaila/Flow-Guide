@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-29
 source_of_truth: true
 ---
 
@@ -102,7 +102,15 @@ Other deferred items called out historically: loading skeletons for primary bloc
 - **No results** — message + link to FAQ.
 - **Query UX** — debounced input (~200ms); token/substring match (no search library).
 
-**Deferred (not 4.1):** recent searches, `?q=` deep links, query-param filters, hit highlighting, header typeahead, Plausible `search_used` (4.4), localized result titles.
+- **Analytics (4.4):** `search_used` fires on debounced query only (`has_results`, `result_count_bucket`); no query text sent.
+
+**Deferred (not 4.1):** recent searches, `?q=` deep links, query-param filters, hit highlighting, header typeahead, localized result titles.
+
+## Analytics (Phase 4.4 — shipped)
+
+- **Plausible:** env-gated script + SPA `pageview` on client route changes (skips duplicate first mount).
+- **Custom events (6):** `home_entry_point_clicked`, `onboarding_started`, `onboarding_completed`, `next_action_clicked`, `search_used`, `stay_calculator_used` — allowlisted props only via `trackEvent`; no Markdown-body instrumentation.
+- **Pre-prod:** legal/privacy + production Plausible domain remain [`OPEN_ITEMS.md`](OPEN_ITEMS.md) / LAG gates.
 
 ## Places (guide blocks — Slice 4.3 shipped)
 

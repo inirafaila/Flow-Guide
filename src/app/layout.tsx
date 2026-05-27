@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { PlausiblePageview } from "@/components/observability/PlausiblePageview";
 import { PlausibleScript } from "@/components/observability/PlausibleScript";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
@@ -26,6 +27,7 @@ export default async function RootLayout({
     <html lang={locale} dir={locale === "fa" ? "rtl" : "ltr"}>
       <body>
         <PlausibleScript />
+        <PlausiblePageview />
         <NextIntlClientProvider messages={messages}>
           <div className="layout">
             <SiteHeader />

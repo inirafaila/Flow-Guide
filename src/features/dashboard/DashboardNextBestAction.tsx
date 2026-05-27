@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/Card";
+import { trackEvent } from "@/lib/analytics/track-event";
 import { readGuestBlob } from "@/lib/guest/storage";
 import { deriveGuestOnboardingOutcomePreviewV1 } from "@/lib/onboarding/onboarding-outcome-preview";
 import { step6SecondaryVisibleLabel } from "@/features/onboarding/onboarding-step6-labels";
@@ -16,6 +17,12 @@ type DashboardViewState =
   | { kind: "valid"; preview: GuestOnboardingOutcomePreviewV1 };
 
 const MAX_SECONDARY_LINKS = 2;
+
+function trackNbaClick(role: "primary" | "secondary", target: string | undefined) {
+  const slug = target?.trim();
+  if (!slug) return;
+  trackEvent("next_action_clicked", { role, target: slug });
+}
 
 export function DashboardNextBestAction() {
   const t = useTranslations("dashboard");
@@ -107,6 +114,9 @@ export function DashboardNextBestAction() {
               <Link
                 href={state.preview.primary.page_slug}
                 className="fg-button fg-button--primary start-onboarding__cta-home"
+                onClick={() =>
+                  trackNbaClick("primary", state.preview.primary.checklist_item_slug)
+                }
               >
                 {tStep6(`step6.reason.${state.preview.primary.reason_key}`)}
               </Link>
@@ -123,6 +133,9 @@ export function DashboardNextBestAction() {
                       <Link
                         href={s.page_slug}
                         className="fg-button fg-button--secondary start-onboarding__step6-secondary-link"
+                        onClick={() =>
+                          trackNbaClick("secondary", s.checklist_item_slug)
+                        }
                       >
                         {step6SecondaryVisibleLabel(
                           s.checklist_item_slug,

@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-29
 source_of_truth: false
 ---
 
@@ -42,6 +42,7 @@ src/
                      #   normalize-search-excerpt.ts — plain-text excerpts for index
                      #   page-slug-to-href.ts — content slug → public IA href
                      #   route-path-to-slug.ts — route path → content page slug for banner summaries
+  lib/analytics/     # track-event.ts (allowlisted Plausible events), search-result-count-bucket.ts
   lib/search/        # match-search-records.ts, search-result-groups.ts (client search v1)
   features/search/   # SearchPage, GroupedSearchResults, SearchResultRow, SearchBestMatch, useSearchIndex
   features/updates/  # UpdatesPage.tsx — static editorial list for /updates
@@ -50,6 +51,7 @@ src/
   lib/guest/         # Guest persistence (localStorage blob, 90d TTL)
   lib/schemas/       # Zod schemas: content-page, checklist-item, update-item, source-record, place, guest-blob, user, user-state, user-checklist-status, request-submission
   lib/observability/  # Structured server logger (JSON lines); Sentry config lives at repo root
+  components/observability/  # PlausibleScript, PlausiblePageview (SPA pageviews)
   hooks/         # Shared React hooks (if using React)
   styles/        # Global styles, tokens
   content/       # Git Markdown + YAML (Zod-validated)

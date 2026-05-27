@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics/track-event";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -70,6 +71,7 @@ export function StartOnboardingFlow() {
   const [step, setStep] = useState<UiStep>(1);
   const [pending, setPending] = useState<StepValue | null>(null);
   const [hasPending, setHasPending] = useState<Partial<Step5HasComplete>>({});
+  const startedTrackedRef = useRef(false);
 
   const hydrate = useCallback(() => {
     if (!probeLocalStorage()) {
@@ -105,6 +107,13 @@ export function StartOnboardingFlow() {
   }, [hydrate]);
 
   useEffect(() => {
+    if (!ready || !storageOk || typeof step !== "number") return;
+    if (startedTrackedRef.current) return;
+    startedTrackedRef.current = true;
+    trackEvent("onboarding_started");
+  }, [ready, storageOk, step]);
+
+  useEffect(() => {
     if (typeof step !== "number" || !blob) return;
     if (step <= 4) {
       const key = START_SLICE_FIELD_ORDER[step - 1];
@@ -135,6 +144,7 @@ export function StartOnboardingFlow() {
       setStep("end");
       setPending(null);
       setHasPending({});
+      trackEvent("onboarding_completed");
       return;
     }
 
