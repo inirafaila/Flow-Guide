@@ -186,10 +186,36 @@
     "relatedGuides": "Related guides",
     "empty": "No FAQ entries are available right now."
   },
+  "search": {
+    "inputLabel": "Search",
+    "inputPlaceholder": "Search guides and FAQ…",
+    "loading": "Loading search index…",
+    "loadError": "Search is temporarily unavailable. Try again later or browse FAQ.",
+    "emptyIntro": "Search guides, tools, and FAQ answers. Try a topic like housing, SIM card, or address registration.",
+    "emptyLinkFaq": "Browse FAQ",
+    "emptyLinkNewcomer": "Newcomer hub",
+    "emptyLinkDocuments": "Documents hub",
+    "noResults": "No results found.",
+    "noResultsHint": "Try fewer or different words, or browse",
+    "resultCount": "{count, plural, one {# result} other {# results}}",
+    "bestMatchLabel": "Best match",
+    "groups": {
+      "guides": "Guides",
+      "tools": "Tools",
+      "faq": "FAQ",
+      "places": "Places"
+    },
+    "typeLabel": {
+      "page": "Guide",
+      "faq": "FAQ",
+      "tool": "Tool",
+      "place": "Place"
+    }
+  },
   "routeBanner": {
     "summaries": {
       "faq": "Short answers to common cross-topic questions. For step-by-step guidance and sources, open the linked guides.",
-      "search": "Search across guides and FAQ entries. Full search experience ships in a later release.",
+      "search": "Search guides, tools, and FAQ answers across Flow-Guide.",
       "updates": "Product updates and change notes. More detail will appear here in a later release.",
       "stayCalculator": "Estimate days used in the rolling 90-in-180 window. Rules vary by nationality — confirm with official guidance.",
       "city": "City and tourism content is not in the MVP yet. Use newcomer and daily-life guides for practical setup."

@@ -36,8 +36,12 @@ src/
                      #   load-checklist-and-updates.ts, load-sources.ts, load-places.ts
                      #   faq-id.ts — faq_id SSOT (normalize, public URL, uniqueness)
                      #   load-faq-items.ts — loadFaqItems for /faq
-                     #   build-search-index-records.ts — search index record builder
+                     #   build-search-index-records.ts — search index v2 record builder
+                     #   normalize-search-excerpt.ts — plain-text excerpts for index
+                     #   page-slug-to-href.ts — content slug → public IA href
                      #   route-path-to-slug.ts — route path → content page slug for banner summaries
+  lib/search/        # match-search-records.ts, search-result-groups.ts (client search v1)
+  features/search/   # SearchPage, GroupedSearchResults, SearchResultRow, SearchBestMatch, useSearchIndex
                      #   allowed-internal-link-paths.ts, extract-markdown-internal-links.ts — Group I link audit
   lib/guest/         # Guest persistence (localStorage blob, 90d TTL)
   lib/schemas/       # Zod schemas: content-page, checklist-item, update-item, source-record, place, guest-blob, user, user-state, user-checklist-status, request-submission

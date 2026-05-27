@@ -1,11 +1,11 @@
-import { SearchStub } from "@/features/search/SearchStub";
-import { UtilityPageTemplate } from "@/features/routes/page-type-templates";
+import { SearchPage } from "@/features/search/SearchPage";
+import { RoutePageBanner } from "@/features/routes/RoutePageBanner";
 
 export default async function Page() {
   return (
-    <>
-      <UtilityPageTemplate path="/search" />
-      <SearchStub />
-    </>
+    <article className="page-template page-template--search search-page">
+      <RoutePageBanner path="/search" />
+      <SearchPage />
+    </article>
   );
 }

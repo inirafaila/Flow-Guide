@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -94,13 +94,15 @@ Other deferred items called out historically: loading skeletons for primary bloc
 - **Anchor deep-link** — public URL `/faq#<faq_id>`; each section `id={faqId}` with `scroll-margin-top` for in-page navigation. Search-index FAQ rows use same `/faq#…` slug (Phase 4 search UX not wired yet).
 - **Not in this slice** — per-item routes (`/faq/[slug]`), accordion, trust blocks, FAQ search, jump nav with JS/sticky/scrollspy.
 
-## Search
+## Search (`/search` — Slice 4.1 shipped)
 
-- **Empty query** — recent, suggested, or categories per IA.
-- **Results** — list + filters if in scope.
-- **No results** — suggestions and broader categories.
-- **Loading** — debounced spinner.
-- **Error** — retry.
+- **Index load (client)** — fetch `public/search-index.json`; Zod-validated; `loading` / `ready` / `error` (no retry UI beyond message in v1).
+- **Empty query** — static hints + links to `/faq`, `/newcomer`, `/documents` (not full index browse).
+- **Results** — grouped sections: **Guides**, **Tools**, **FAQ** (empty **Places** hidden until 4.3); rows link via build-time `href`; optional **Best match** when clear winner (score threshold + margin).
+- **No results** — message + link to FAQ.
+- **Query UX** — debounced input (~200ms); token/substring match (no search library).
+
+**Deferred (not 4.1):** recent searches, `?q=` deep links, query-param filters, hit highlighting, header typeahead, Plausible `search_used` (4.4), localized result titles.
 
 ## Alerts / updates
 

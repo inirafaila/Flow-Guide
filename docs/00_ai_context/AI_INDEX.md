@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-11
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -13,7 +13,7 @@ Central map for long-running Cursor collaboration on **flow-guide**. Use this fi
 
 1. Skim this index (30 seconds).
 2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order and the **execution workflow** (two-agent model, checkpoint rules, Composer prompt structure).
-3. Active phase is **Phase 3** (content/journey work as of 2026-04-11) — check `ROADMAP_STATUS.md` for latest.
+3. Active phase is **Phase 4** (utility / instrumentation / launch hardening) — check `ROADMAP_STATUS.md` for latest. Slice **4.1 Search v1** shipped 2026-05-28.
 4. If the session is **planning / prioritization / next-task selection**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, candidates, smallest slice, execution plan integration §8).
 5. If the session is **writing or refining prompts** for planning or implementation, also follow **`PROMPT_AUTHORING_PROTOCOL.md`**.
 6. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.

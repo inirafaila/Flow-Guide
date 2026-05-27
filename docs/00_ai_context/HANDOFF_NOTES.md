@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 4 — Slice 4.1 — Search v1 (2026-05-28):** Search index v2 (`href`, `group`, no bare `slug`); `normalize-search-excerpt.ts`, `page-slug-to-href.ts`, synthetic `tool:stay-calculator`; `match-search-records.ts` (single/multi-token rules, `pickBestMatch` gating); `/search` UI with grouped results. **29** index records; **269** Vitest tests; lint/test/build green. **Next:** Slice 4.2 Updates.
 - **Phase 3 exit verification passed (2026-05-27):** Automated `lint`/`test`/`build` green (255 tests); must-launch routes verified (content + Home/Start/Dashboard/FAQ); `content-internal-links` test; search index 28 records (22 pages + 6 FAQ, no Welcome row); RoutePageBanner has no phase1 shell; `/city` not in header nav. **Phase 3 closed** in `ROADMAP_STATUS`; **Phase 4 active** in `CURRENT_PHASE` / `CURRENT_FOCUS`. **Next:** Slice 4.1 Search v1 (plan then implement).
 - **Phase 3 — Group I — bounded exit package (2026-05-27):** `RoutePageBanner` shows title + summary from content or `routeBanner.summaries.*` (no `placeholder.phase1`, no path `<code>`). `welcome.md` `is_active: false` / `searchable: false`; `sample-source.md` → `page_id: _fixture-welcome`. `StayCalculatorRelatedLinks` on stay-calculator; `stayCalculator.*` i18n + variance note. `content-internal-links.test.ts` for pages/faq Markdown. `/city` removed from `SiteHeader` nav (route remains; launch-adjacent deferral). **255** Vitest tests; lint/test/build green. **Next:** Phase 3 exit verification — do not mark Phase 3 done in `ROADMAP_STATUS` until checklist pass.
 - **Phase 3 — Group H — Dashboard + Start copy audit (2026-05-28):** `dashboard.checklist.*` + `checklistRow.*` i18n; `ChecklistItemRow` client + `DashboardChecklistBlock` wired; `sample-row.md` `is_active: false`; Start `start-page` wrapper class.
@@ -36,12 +37,12 @@ source_of_truth: true
 - Payments P0 guides (terminals, service-payments) and transport P0 guide (public-transport-payments) authored, each with a primary field-experience source record.
 - Housing guides (owner-vs-agency, rental-checklist) and daily-life guide (essential-apps) authored, each with a primary field-experience source record.
 - FAQ, Home, all must-launch hubs/guides, Dashboard/Start copy, Group I banner/links — Phase 3 complete.
-- **`/search`**, **`/updates`**, **`/city`** remain utility/stub or deferred (Phase 4 / launch-adjacent).
+- **`/search`** — Search v1 shipped (grouped client UI). **`/updates`**, **`/city`** remain stub/deferred (Phase 4 / launch-adjacent).
 
 ## What the next session should do
 
 1. Read **`CURRENT_PHASE.md`** and **`EXECUTION_ROADMAP.md`** §3 (Phase 4 slices).
-2. **Plan** Slice **4.1 Search v1** (or next approved Phase 4 slice) before implementing.
+2. **Plan** Slice **4.2 Updates** (or next approved Phase 4 slice) before implementing.
 3. Keep **OPEN_ITEMS** / LAG gates separate from Phase 4 feature work.
 4. Before commit: `npm run lint`, `npm run test`, `npm run build`.
 

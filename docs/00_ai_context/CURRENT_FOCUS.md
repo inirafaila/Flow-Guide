@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -11,8 +11,8 @@ source_of_truth: true
 
 ## Phase 4 priorities (from execution plan)
 
-1. **Search v1 (Slice 4.1)** — client grouped search UI on `/search` (FlexSearch/Fuse on `public/search-index.json`); replace `SearchStub`.
-2. **Updates surface (4.2)** — `/updates` page + seed `src/content/updates/*.md`.
+1. ~~**Search v1 (Slice 4.1)**~~ — **shipped 2026-05-28** (enriched index + grouped client UI on `/search`).
+2. **Updates surface (4.2)** — **next up:** `/updates` page + seed `src/content/updates/*.md`.
 3. **Places-lite (4.3)** — curated `src/content/places/` + `PlaceCard` / related block.
 4. **Analytics (4.4)** — Plausible funnel events.
 5. **SEO (4.5)** — metadata, sitemap.xml, robots.txt.

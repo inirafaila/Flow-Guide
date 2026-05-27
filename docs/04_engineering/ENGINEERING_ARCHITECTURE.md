@@ -31,7 +31,7 @@ source_of_truth: true
 ## 4. Search (must-launch)
 
 - **Index (build time):** `npm run build` / `predev` run **`node scripts/build-search-index.mjs`**, which executes **`scripts/build-search-index.impl.ts`** via **`tsx`** (devDependency) so the build reuses the same Zod paths as the app. Output: **`public/search-index.json`** validated with `src/lib/schemas/search-index.ts` — **pages** and **FAQ** under `src/content/` today; **places-lite** rows when that content exists.
-- **Runtime:** **client-side** **FlexSearch** or **Fuse.js** on `/search`; **grouped results** by type (guides, FAQ, places, …) per PRD.
+- **Runtime:** **client-side** token/substring match on `/search` over fetched JSON (no search library at current corpus size); **grouped results** by `group` (`guides`, `tools`, `faq`, `places` when indexed) per PRD.
 - **Scale:** acceptable for v1 corpus size; revisit server-side or hosted search if index size or privacy policy changes.
 
 ## 5. Guest persistence

@@ -20,16 +20,20 @@ describe("buildSearchIndexRecords", () => {
     const parsed = searchIndexFileSchema.safeParse(records);
     expect(parsed.success).toBe(true);
     const page = records.find(
-      (r) => r.type === "page" && r.slug === "newcomer",
+      (r) => r.type === "page" && r.id === "page:newcomer",
     );
-    expect(page?.slug).toBe("newcomer");
+    expect(page?.href).toBe("/newcomer");
+    expect(page?.group).toBe("guides");
     const welcomeRow = records.find(
       (r) => r.type === "page" && r.title === "Welcome",
     );
     expect(welcomeRow).toBeUndefined();
     const faq = records.find((r) => r.type === "faq");
-    expect(faq?.slug).toMatch(/^\/faq#[a-z0-9]+(-[a-z0-9]+)*$/);
+    expect(faq?.href).toMatch(/^\/faq#[a-z0-9]+(-[a-z0-9]+)*$/);
     expect(faq?.id).toMatch(/^faq:[a-z0-9]+(-[a-z0-9]+)*$/);
+    const tool = records.find((r) => r.id === "tool:stay-calculator");
+    expect(tool?.href).toBe("/documents/stay-calculator");
+    expect(tool?.group).toBe("tools");
   });
 
   it("rejects invalid frontmatter with file context", () => {
@@ -52,7 +56,8 @@ body`),
       path.join(content, "pages", "visible.md"),
       `---
 title: V
-slug: /visible
+slug: newcomer
+page_type: hub
 ---
 x`,
     );
@@ -60,7 +65,7 @@ x`,
       path.join(content, "pages", "no-search.md"),
       `---
 title: H
-slug: /hidden
+slug: day-one
 searchable: false
 ---
 x`,
@@ -69,7 +74,7 @@ x`,
       path.join(content, "pages", "inactive.md"),
       `---
 title: I
-slug: /inactive
+slug: first-week
 is_active: false
 ---
 x`,
@@ -97,7 +102,12 @@ a`,
     );
     try {
       const records = buildSearchIndexRecords(tmp);
-      expect(records.map((r) => r.slug).sort()).toEqual(["/faq#f", "/visible"]);
+      const hrefs = records.map((r) => r.href).sort();
+      expect(hrefs).toContain("/faq#f");
+      expect(hrefs).toContain("/newcomer");
+      expect(hrefs).toContain("/documents/stay-calculator");
+      expect(records.find((r) => r.id === "page:day-one")).toBeUndefined();
+      expect(records.find((r) => r.id === "page:first-week")).toBeUndefined();
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });
     }

@@ -1,7 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { SearchIndexRecord } from "@/types/search-index";
+import { ROUTE_TITLES } from "@/lib/routes";
+import type {
+  SearchIndexRecord,
+  SearchResultGroup,
+} from "@/types/search-index";
+import type { PageFrontmatter } from "@/lib/schemas/content-page";
 import { shouldIncludeInSearchIndex } from "@/lib/schemas/content-page";
 
 import {
@@ -9,9 +14,15 @@ import {
   resolveFaqId,
   validateFaqContentDir,
 } from "./faq-id";
+import { normalizeSearchExcerpt } from "./normalize-search-excerpt";
+import { resolvePageHref } from "./page-slug-to-href";
 import { parseMarkdownPage, type ParsedMarkdownPage } from "./parse-md";
 
-const EXCERPT_MAX = 240;
+/** Matches `messages/en.json` → `routeBanner.summaries.stayCalculator`. */
+const STAY_CALCULATOR_SEARCH_EXCERPT =
+  "Estimate days used in the rolling 90-in-180 window. Rules vary by nationality — confirm with official guidance.";
+
+const STAY_CALCULATOR_HREF = "/documents/stay-calculator";
 
 function walkMdFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -25,24 +36,33 @@ function walkMdFiles(dir: string): string[] {
   return files;
 }
 
-/** Page rows: prefer summary, then body (Phase 1 search stub). */
+function contentSlugFromFrontmatter(
+  slug: string | undefined,
+  filePath: string,
+): string {
+  const raw = slug ?? path.basename(filePath, ".md");
+  const basename = raw.replace(/^\/+/, "").split("/").pop() ?? raw;
+  return basename;
+}
+
+function groupForPage(pageType: PageFrontmatter["page_type"]): SearchResultGroup {
+  if (pageType === "calculator") return "tools";
+  return "guides";
+}
+
 function excerptForPage(
   summary: string | undefined,
   body: string,
 ): string {
   const s = summary?.trim();
-  if (s && s.length > 0) return s.slice(0, EXCERPT_MAX);
-  return body.replace(/\s+/g, " ").trim().slice(0, EXCERPT_MAX);
+  if (s && s.length > 0) return normalizeSearchExcerpt(s);
+  return normalizeSearchExcerpt(body);
 }
 
-/**
- * FAQ rows: index excerpt from answer **body** (matches legacy build-search-index).
- * If body is empty, fall back to `summary` so validation still yields a row.
- */
 function excerptForFaq(summary: string | undefined, body: string): string {
-  const fromBody = body.replace(/\s+/g, " ").trim().slice(0, EXCERPT_MAX);
-  if (fromBody.length > 0) return fromBody;
-  return (summary?.trim() ?? "").slice(0, EXCERPT_MAX);
+  const fromBody = body.replace(/\s+/g, " ").trim();
+  if (fromBody.length > 0) return normalizeSearchExcerpt(fromBody);
+  return normalizeSearchExcerpt(summary ?? "");
 }
 
 function recordFromParsed(
@@ -51,31 +71,42 @@ function recordFromParsed(
   filePath: string,
 ): SearchIndexRecord {
   const { frontmatter, body } = parsed;
-  const { title, slug, summary, primary_category, audience_tags } = frontmatter;
+  const { title, slug, summary, audience_tags, page_type } = frontmatter;
 
   if (kind === "faq") {
     const faqId = resolveFaqId(frontmatter, path.basename(filePath));
-    const publicSlug = faqPublicUrl(faqId);
     return {
       id: `faq:${faqId}`,
       type: "faq",
       title,
       excerpt: excerptForFaq(summary, body),
-      slug: publicSlug,
-      category: primary_category ?? "faq",
+      href: faqPublicUrl(faqId),
+      group: "faq",
       tags: audience_tags ?? [],
     };
   }
 
-  const pageSlug = slug ?? path.basename(filePath, ".md");
+  const pageSlug = contentSlugFromFrontmatter(slug, filePath);
   return {
     id: `page:${pageSlug}`,
     type: "page",
     title,
     excerpt: excerptForPage(summary, body),
-    slug: pageSlug,
-    category: primary_category,
+    href: resolvePageHref(pageSlug),
+    group: groupForPage(page_type),
     tags: audience_tags ?? [],
+  };
+}
+
+function syntheticStayCalculatorRecord(): SearchIndexRecord {
+  return {
+    id: "tool:stay-calculator",
+    type: "tool",
+    title: ROUTE_TITLES[STAY_CALCULATOR_HREF] ?? "Stay calculator",
+    excerpt: normalizeSearchExcerpt(STAY_CALCULATOR_SEARCH_EXCERPT),
+    href: STAY_CALCULATOR_HREF,
+    group: "tools",
+    tags: [],
   };
 }
 
@@ -123,6 +154,13 @@ export function buildSearchIndexRecords(projectRoot: string): SearchIndexRecord[
     seenIds.add(rec.id);
     records.push(rec);
   }
+
+  const toolRec = syntheticStayCalculatorRecord();
+  if (seenIds.has(toolRec.id)) {
+    throw new Error(`Duplicate search index id "${toolRec.id}"`);
+  }
+  seenIds.add(toolRec.id);
+  records.push(toolRec);
 
   return records;
 }

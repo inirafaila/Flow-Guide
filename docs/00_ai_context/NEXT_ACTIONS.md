@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -11,9 +11,11 @@ source_of_truth: true
 
 ### Next up
 
-**Phase 4 — plan and execute first slice** (default candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md)): **Slice 4.1 — Search v1** (client grouped search on `/search`).
+**Slice 4.2 — Updates surface** per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) (`/updates` + seed content). Do **not** bundle places-lite, analytics, or dashboard expansion unless explicitly approved.
 
-Phase 3 **exit-complete** (2026-05-27). Do **not** start places-lite, updates, or dashboard expansion in the same slice as search unless explicitly approved.
+### Recently shipped (Phase 4)
+
+- **Slice 4.1 — Search v1 (2026-05-28):** Enriched `search-index.json` v2 (`href`, `group`, synthetic stay-calculator); grouped client search on `/search` (`SearchPage`, token match, best-match gating); removed `SearchStub` + utility placeholder shell.
 
 ### Pre-LAG (unchanged — not Phase 4 blockers)
 
