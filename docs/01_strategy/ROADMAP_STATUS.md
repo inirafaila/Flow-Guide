@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: false
 ---
 
@@ -14,7 +14,8 @@ Live tracking of phases defined in [`ROADMAP_MASTER.md`](ROADMAP_MASTER.md). **A
 - **Phase 0A** and **0B** are **done** (2026-04-01)—see [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) §0.
 - **Phase 1 — Engineering and content foundation** is **done** (2026-04-04): criterion audit + regression pass (`npm run lint` / `test` / `build`); context docs synced. Plumbing deliverables per [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md) (historical Phase 1 bullets) and [`ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md).
 - **Phase 2 — Core product behavior and trust layer** — **done** (2026-04-11): exit criteria met; see Phase status table.
-- **Phase 3 — MVP content and journey implementation** — **in progress** (2026-04-11): must-launch guides and hubs with real copy; see [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md).
+- **Phase 3 — MVP content and journey implementation** — **done** (2026-05-27): Groups A–I shipped; exit verification passed — see [`CURRENT_PHASE.md`](../00_ai_context/CURRENT_PHASE.md).
+- **Phase 4 — MVP utility, instrumentation, and launch-scope hardening** — **in progress** (2026-05-27): search UX, updates, places-lite, analytics, SEO — active track.
 
 ## Phase status
 
@@ -24,8 +25,8 @@ Live tracking of phases defined in [`ROADMAP_MASTER.md`](ROADMAP_MASTER.md). **A
 | **0B** | Technical architecture lock | **Done** | 2026-04-01 — same record + `ENGINEERING_ARCHITECTURE.md` |
 | **1** | Engineering and content foundation | **Done** | 2026-04-04 — exit audit passed; IA + templates + Zod contracts + `search-index.json` prebuild + CI + observability stubs |
 | **2** | Core product behavior and trust layer | **Done** | Onboarding ✅, guest persistence ✅, NBA v1 ✅, checklist v1 ✅, trust UI ✅, stay calculator (logic + page) ✅ — **Phase 2 exit criteria met** |
-| **3** | MVP content and journey implementation | **In progress** | **Groups A–H** shipped (incl. FAQ Group G, Dashboard/Start copy Group H 2026-05-28); remaining: **Group I** (cross-links / editorial) — exit per `ROADMAP_MASTER` Phase 3 |
-| **4** | MVP utility, instrumentation, launch-scope hardening | **Later** | Required before launch |
+| **3** | MVP content and journey implementation | **Done** | 2026-05-27 — Groups A–I + exit verification (`lint`/`test`/`build`, cross-links, banner, trust spot-check) |
+| **4** | MVP utility, instrumentation, launch-scope hardening | **In progress** | 2026-05-27 — active; first slice candidate: search v1 (`EXECUTION_ROADMAP` §3) |
 | **5** | Verification, QA, release readiness | **Later** | Before LAG |
 | **LAG** | Launch Approval Gate | **Later** | After Phase 5 |
 | **6** | Production deployment and infrastructure hardening | **Later** | After LAG GO |
@@ -43,7 +44,8 @@ Live tracking of phases defined in [`ROADMAP_MASTER.md`](ROADMAP_MASTER.md). **A
 
 ## Last review
 
-- **2026-05-28** — **Phase 3 Group H — Dashboard/Start copy:** checklist i18n + sample row inactive. Remaining: Group I.
+- **2026-05-27** — **Phase 3 exit verification passed; Phase 4 active.** Groups A–I complete; `ROADMAP_STATUS` + `CURRENT_PHASE` transitioned. Pre-LAG items remain in `OPEN_ITEMS.md`.
+- **2026-05-28** — **Phase 3 Group H — Dashboard/Start copy:** checklist i18n + sample row inactive.
 - **2026-05-27** — **Phase 3 Group G — FAQ:** `FaqPage` on `/faq`; `loadFaqItems` + `faq-id.ts`; 6 FAQ entries; anchor URLs `/faq#<faq_id>`; search-index FAQ slugs aligned. Remaining: Groups H–I.
 - **2026-04-13** — **Phase 3 Group F — Home page:** `HomePage` + `HomeEntryCard` + `HomeQuickToolItem` on `/` (hero, entry points, guided start, quick tools, trust section; `home.*` i18n). Remaining Phase 3: **Groups G–I** (FAQ, Dashboard/Start copy audit, cross-links / editorial).
 - **2026-04-12** — **Phase 3 Group E:** housing guides `owner-vs-agency`, `rental-checklist` + daily-life `essential-apps` + primary field sources; aligns with `CURRENT_FOCUS.md` (all listed section guides through Group E shipped). Remaining: Home, FAQ, copy audits, cross-links, editorial review.

@@ -7,16 +7,21 @@ source_of_truth: true
 
 # Next actions
 
-## Now (Phase 3 — content and journey implementation)
+## Now (Phase 4 — utility, instrumentation, launch-scope hardening)
 
 ### Next up
 
-**Phase 3 exit verification** (separate pass): walk [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §2 exit checklist; then update `ROADMAP_STATUS.md`, `CURRENT_PHASE.md`, `PROJECT_STATE.md` when criteria met. Do **not** assume Phase 3 done until that pass completes.
+**Phase 4 — plan and execute first slice** (default candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md)): **Slice 4.1 — Search v1** (client grouped search on `/search`).
 
-**Groups A–I** shipped. Phase 3 **not exit-complete** until verification + roadmap status update.
+Phase 3 **exit-complete** (2026-05-27). Do **not** start places-lite, updates, or dashboard expansion in the same slice as search unless explicitly approved.
 
-### Recently shipped (Phase 3)
+### Pre-LAG (unchanged — not Phase 4 blockers)
 
+See [`OPEN_ITEMS.md`](OPEN_ITEMS.md): governance names, legal/privacy, production Sentry/Plausible projects.
+
+### Recently shipped (Phase 3 — closed 2026-05-27)
+
+- **Phase 3 exit verification (2026-05-27):** `lint` / `test` / `build` green; checklist §2 satisfied; `ROADMAP_STATUS` Phase 3 → Done; Phase 4 active.
 - **Group I — Cross-link audit + bounded exit package (2026-05-27):** `RoutePageBanner` product-facing title + summary (no phase1/path code); `route-path-to-slug` + `content-internal-links` test; `welcome.md` deactivated from search index; `sample-source` fixture `page_id`; stay-calculator i18n variance + `StayCalculatorRelatedLinks`; `/city` removed from header nav; FAQ intro deduped with banner.
 - **Group H — Dashboard + Start copy audit (2026-05-28):** Checklist chrome i18n (`dashboard.checklist.*`, `checklistRow.*`); `sample-checklist-row` deactivated; Start wrapper class `start-page`; dashboard/onboarding message audit (en/fa/ru).
 - **Group G — FAQ page (2026-05-27):** `loadFaqItems` + `faq-id.ts` (SSOT) + `FaqPage` on `/`; 6 FAQ entries under `src/content/faq/`; anchor deep links `/faq#<faq_id>`; search-index FAQ slugs aligned; no jump nav (deferred).
@@ -39,15 +44,14 @@ source_of_truth: true
 - **Dashboard NBA v1 (2026-04-06):** DashboardNextBestAction on /dashboard.
 - **Onboarding complete (2026-04-04–2026-04-05):** Steps 1–6, guest persistence, emphasis/signals/outcome-preview pipeline.
 
-## After Phase 3 exit
+## After Phase 4 exit
 
-- **Phase 4** — search v1, updates surface, places-lite, analytics events, SEO, dashboard enhancement, perf check.
-- **Phase 5** — full QA pass (responsive, trust, nav, security, analytics).
+- **Phase 5** — full QA pass (responsive, trust, nav, security/privacy, analytics).
 - **LAG** — close all gates (governance names, legal/privacy, production Sentry/Plausible).
 - **Phase 6** — Vercel production deployment.
 - **Phase 7** — post-launch stabilization.
 
 ## Blockers
 
-- None for Phase 3 content authoring (pipeline is fully operational).
-- **Pre-prod items** remain in [`OPEN_ITEMS.md`](OPEN_ITEMS.md): legal/privacy, governance names, production env projects.
+- None for Phase 4 implementation start (Phase 3 pipeline complete).
+- **Pre-prod / LAG items** remain in [`OPEN_ITEMS.md`](OPEN_ITEMS.md): legal/privacy, governance names, production env projects.

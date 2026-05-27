@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -9,40 +9,33 @@ source_of_truth: true
 
 ## Name
 
-**Phase 3 — MVP content and journey implementation**
+**Phase 4 — MVP utility, instrumentation, and launch-scope hardening**
 
 ## Why we are here
 
-**Phase 2 — Core product behavior and trust layer** exited **2026-04-11**: onboarding (steps 1–6), guest persistence, dashboard (NBA v1 + checklist block), trust UI (SourceBlock + LastVerifiedNote + WhatMayVaryNote wired on `/documents/[slug]` guides with seed data — e.g. address-registration, social-card, temporary-residency), stay calculator (pure logic + interactive page). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 2 row = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md) and [`PROJECT_STATE.md`](PROJECT_STATE.md) aligned.
+**Phase 3 — MVP content and journey implementation** exited **2026-05-27** after exit verification: Groups A–I shipped (hubs, guides, Home, FAQ, Dashboard/Start copy, cross-link audit, RoutePageBanner cleanup, stay-calculator related links). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 3 row = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md) and [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §2.
 
-Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3: ship must-launch guides and hubs with real copy so the product is substantively useful — not an empty framework.
-
-**Progress (Phase 3 in progress — not exit-complete):**
-
-- **Group F — Home (2026-04-13):** **`/`** uses **`HomePage`**; `RoutePlaceholder` removed from Home.
-- **Group G — FAQ (2026-05-27):** **`/faq`** via `FaqPage` + `src/content/faq/*.md`; anchor URLs `/faq#<faq_id>`.
-- **Group H — Dashboard + Start copy (2026-05-28):** checklist chrome i18n; sample checklist fixture inactive; `dashboard.*` / `onboardingStart.*` audited (en/fa/ru).
-- **Group I (2026-05-27):** cross-link test + banner cleanup + fixtures + stay-calculator links; `/city` nav deferred.
-- **Remaining:** Phase 3 **exit verification** (checklist in `EXECUTION_ROADMAP.md` §2) — then `ROADMAP_STATUS` update.
+Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 4: close the gap to **launchable** utility — grouped client search, updates surfacing, places-lite, analytics, SEO, and honest handling of deferred surfaces.
 
 ## Entry criteria (met)
 
-- Phase 2 exit recorded in [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md); onboarding → dashboard → trust → stay calculator shipped per [`PROJECT_STATE.md`](PROJECT_STATE.md).
+- Phase 3 exit criteria met (2026-05-27): must-launch routes with substantive content or product UI; cross-links validated; trust metadata on sensitive guides; no user-visible Phase 1 route shell on content routes.
 
-## Exit criteria (Phase 3)
+## Exit criteria (Phase 4)
 
-Per master roadmap Phase 3:
+Per master roadmap Phase 4 (launch bundle):
 
-- Newcomer can complete **primary journeys** without dead ends on must-launch routes.
-- Home, Start, Dashboard with **real copy** (not placeholder text).
-- All **must-launch** routes per §6 have substantive content.
-- Internal **cross-links** between related pages work.
-- **Editorial + trust review** for sensitive pages per Phase 0A governance.
+- **Search v1** — client grouped search on `/search` using `search-index.json`.
+- **Updates** — `/updates` surface with seed editorial items; path to Home/Dashboard teasers as scoped.
+- **Places-lite** — curated place records + honest UX (not a fake map).
+- **Analytics** — Plausible events for core funnels (per Phase 0B).
+- **SEO** — metadata, sitemap, robots baseline.
+- Reconcile PRD DoD vs MVP contract; document any approved gaps.
 
 ## What counts as done
 
-- **`ROADMAP_STATUS.md`**: Phase 3 marked **done** with date when exit criteria met; Phase 4 next.
+- **`ROADMAP_STATUS.md`**: Phase 4 marked **done** with date when exit criteria met; Phase 5 (QA) next.
 
 ## After this phase
 
-**Phase 4** — MVP utility, instrumentation, and launch-scope hardening (search UX, places-lite, analytics, SEO).
+**Phase 5** — Verification, QA, and release readiness (before LAG).

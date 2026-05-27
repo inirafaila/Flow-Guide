@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 3 exit verification passed (2026-05-27):** Automated `lint`/`test`/`build` green (255 tests); must-launch routes verified (content + Home/Start/Dashboard/FAQ); `content-internal-links` test; search index 28 records (22 pages + 6 FAQ, no Welcome row); RoutePageBanner has no phase1 shell; `/city` not in header nav. **Phase 3 closed** in `ROADMAP_STATUS`; **Phase 4 active** in `CURRENT_PHASE` / `CURRENT_FOCUS`. **Next:** Slice 4.1 Search v1 (plan then implement).
 - **Phase 3 — Group I — bounded exit package (2026-05-27):** `RoutePageBanner` shows title + summary from content or `routeBanner.summaries.*` (no `placeholder.phase1`, no path `<code>`). `welcome.md` `is_active: false` / `searchable: false`; `sample-source.md` → `page_id: _fixture-welcome`. `StayCalculatorRelatedLinks` on stay-calculator; `stayCalculator.*` i18n + variance note. `content-internal-links.test.ts` for pages/faq Markdown. `/city` removed from `SiteHeader` nav (route remains; launch-adjacent deferral). **255** Vitest tests; lint/test/build green. **Next:** Phase 3 exit verification — do not mark Phase 3 done in `ROADMAP_STATUS` until checklist pass.
 - **Phase 3 — Group H — Dashboard + Start copy audit (2026-05-28):** `dashboard.checklist.*` + `checklistRow.*` i18n; `ChecklistItemRow` client + `DashboardChecklistBlock` wired; `sample-row.md` `is_active: false`; Start `start-page` wrapper class.
 - **Phase 3 — Group G — FAQ page (2026-05-27):** `FaqPage` + `loadFaqItems` + `faq-id.ts`; 6 FAQ Markdown entries; `/faq#<faq_id>` anchors; search-index FAQ slugs `/faq#…`; sample-question removed.
@@ -26,7 +27,7 @@ source_of_truth: true
 
 ## Repository reality
 
-- **Phase 1** done (2026-04-04), **Phase 2** done (2026-04-11), **Phase 3** in progress.
+- **Phase 1** done (2026-04-04), **Phase 2** done (2026-04-11), **Phase 3** done (2026-05-27), **Phase 4** in progress.
 - Content pipeline fully operational: `loadPageContent` + `loadTrustDataForPage` + `renderMarkdownToHtml`. Any new `.md` in `src/content/pages/` auto-renders on matching route.
 - 255 Vitest tests, lint/test/build green.
 - Documents section content-complete (3 guides + 6 source records + trust blocks).
@@ -34,14 +35,15 @@ source_of_truth: true
 - Work section P0 guides authored (quick-income, yandex-starter, live-gaming) each with a primary field-experience source record.
 - Payments P0 guides (terminals, service-payments) and transport P0 guide (public-transport-payments) authored, each with a primary field-experience source record.
 - Housing guides (owner-vs-agency, rental-checklist) and daily-life guide (essential-apps) authored, each with a primary field-experience source record.
-- FAQ shipped on `/faq` (Group G). Dashboard/Start copy (Group H). **Group I** shipped (banner, links, fixtures). **Next:** Phase 3 exit verification only.
+- FAQ, Home, all must-launch hubs/guides, Dashboard/Start copy, Group I banner/links — Phase 3 complete.
+- **`/search`**, **`/updates`**, **`/city`** remain utility/stub or deferred (Phase 4 / launch-adjacent).
 
 ## What the next session should do
 
-1. Run **Phase 3 exit verification** per `EXECUTION_ROADMAP.md` §2 (checklist + manual smoke).
-2. If exit criteria met, update `ROADMAP_STATUS.md`, `CURRENT_PHASE.md`, `PROJECT_STATE.md` in a dedicated doc-sync slice.
-3. Otherwise record gaps in `HANDOFF_NOTES.md` / `NEXT_ACTIONS.md`.
-4. Before any commit: `npm run lint`, `npm run test`, `npm run build`.
+1. Read **`CURRENT_PHASE.md`** and **`EXECUTION_ROADMAP.md`** §3 (Phase 4 slices).
+2. **Plan** Slice **4.1 Search v1** (or next approved Phase 4 slice) before implementing.
+3. Keep **OPEN_ITEMS** / LAG gates separate from Phase 4 feature work.
+4. Before commit: `npm run lint`, `npm run test`, `npm run build`.
 
 ## Still incomplete / watch
 - **OPEN_ITEMS.md** pre-production gates: governance names, legal/privacy, production Sentry/Plausible projects.

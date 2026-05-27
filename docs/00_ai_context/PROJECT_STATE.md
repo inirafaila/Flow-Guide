@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -20,15 +20,16 @@ source_of_truth: true
 - **Phase 0 closed (2026-04-01):** [`docs/04_engineering/PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) **approved**; [`docs/04_engineering/ENGINEERING_ARCHITECTURE.md`](../04_engineering/ENGINEERING_ARCHITECTURE.md) is the build source of truth.
 - **Phase 1 complete (2026-04-04):** Next.js App Router app under repo root (`package.json`, `src/app/`, …)—**plumbing only** (no NBA/checklist/auth/CMS/Docker product logic). **Routes:** IA shells under **`src/app/[locale]/`** (**`next-intl`** + **`localePrefix: "never"`**); **`src/lib/ia-phase1-routes.ts`** + tests; **`/transport/airport` → `/newcomer/airport-to-city`** in middleware. **App shell:** **`SiteHeader`** + **`SiteHeaderChrome`** (responsive + mobile drawer). **Shared UI baseline:** design tokens **`globals.css`**; **`Button`**, **`Card`**, **`SectionHeader`** on shell + template placeholders only. **Page template shells:** hub / guide / calculator / utility / service-form (`page-type-templates.tsx`, `RoutePageBanner`); **`RoutePlaceholder`** for **`/`** only; **`/start`** = Phase 2 onboarding (guest blob); **`/dashboard`** = Phase 2 product UI in later slices (not Phase 1 placeholder). **Content:** `src/content` **Zod-validated** at build (pages + FAQ); **`search-index.json`** via `prebuild` (`scripts/build-search-index.mjs` + `tsx`); **`/search`** placeholder only. **Contracts (no product UI wiring):** checklist/update/source/place loaders + canonical dirs; Epic **1.3** stubs **`user.ts`**, **`user-state.ts`**, **`user-checklist-status.ts`**, **`request-submission.ts`**. **i18n:** `next-intl`, **`NEXT_LOCALE`**, **`?lang=`** deferred. **Observability:** env-gated **Sentry** + dev-safe **Plausible**; **`logger.ts`** JSON lines + instrumentation **`logInfo`**. **CI:** PR **`lint` / `test` / `build`** on `main`.
 - **Phase 2 complete (2026-04-11):** Guest persistence, onboarding (steps 1–6), dashboard NBA v1 + checklist block (**`ChecklistItemRow`** + **`filterChecklistItems`**), trust UI (**SourceBlock**, **LastVerifiedNote**, **WhatMayVaryNote**) + guide trust wiring, stay calculator (**`calculateStay`** + **`StayCalculatorBlock`** on **`/documents/stay-calculator`**). **Pure emphasis v1** / **signals v2** / **outcome preview v1** unchanged in lib. Incremental follow-ups (not Phase 2 exit blockers): full dashboard shell, i18n, UserChecklistStatus, more trust seeding, residency card — see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md).
-- **Phase 3 in progress (content track):** Guide + hub content pipelines — Markdown rendering (**unified** / **remark-parse** / **remark-rehype** / **rehype-stringify**), **`renderMarkdownToHtml`**, **`loadPageContent`**, **`GuidePageTemplate`** / **`HubPageTemplate`** optional **`bodyHtml`** + **`.guide-body`** / **`.hub-body`** CSS. All hub and guide **[slug]** routes load content (and trust on guides); **Documents section content-complete (2026-04-11):** **social-card.md** + **temporary-residency.md** guides + 4 source records (2 per page). All 3 documents guides (**address-registration**, **social-card**, **temporary-residency**) render real body content + trust blocks. **Home gateway (2026-04-13):** **`/`** renders **`HomePage`** + **`HomeEntryCard`** + **`HomeQuickToolItem`** (hero, entry points, guided start, quick tools, trust framing; **`home.*`** i18n) — **Group F** shipped; **`RoutePlaceholder`** removed from Home. First hub Markdown: **`/newcomer`**, **`/documents`**, **`/housing`**. **Universal route wiring:** new **`src/content/pages/*.md`** files render on the matching slug without extra route code. **Group G — FAQ (2026-05-27):** `/faq` with anchor deep links and search-index alignment. **Group H — Dashboard/Start copy (2026-05-28):** checklist chrome i18n; sample fixture inactive. **Remaining Phase 3:** cross-links + editorial (**Group I**) — [`CURRENT_PHASE.md`](CURRENT_PHASE.md).
+- **Phase 3 complete (2026-05-27):** Must-launch hubs/guides with Markdown bodies + trust on sensitive guides; **Home** (`HomePage`), **FAQ** (6 entries, `/faq#…`), **Dashboard/Start** copy (en/fa/ru); **Group I** banner summaries, internal-link test, stay-calculator related links, fixture cleanup. Exit verification passed — [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md).
+- **Phase 4 in progress (2026-05-27):** Utility and launch hardening — search v1, updates, places-lite, analytics, SEO per [`CURRENT_PHASE.md`](CURRENT_PHASE.md).
 
 ## Approved roadmap backbone
 
-**0A–0B** ✅ → **1** ✅ (2026-04-04) → **2** ✅ (2026-04-11) → **3** in progress → **4** utilities + hardening → **5** QA → **LAG** → **6** deploy → **7** stabilize → **8** admin → **9** expansion.
+**0A–0B** ✅ → **1** ✅ (2026-04-04) → **2** ✅ (2026-04-11) → **3** ✅ (2026-05-27) → **4** in progress → **5** QA → **LAG** → **6** deploy → **7** stabilize → **8** admin → **9** expansion.
 
 ## Current roadmap phase
 
-**Phase 3 — MVP content and journey implementation.** Ship must-launch guides and hubs with substantive copy, working cross-links, and editorial/trust review for sensitive topics — per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 3 and [`CURRENT_PHASE.md`](CURRENT_PHASE.md).
+**Phase 4 — MVP utility, instrumentation, and launch-scope hardening.** Client search UX, updates surface, places-lite, analytics, SEO — per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 4 and [`CURRENT_PHASE.md`](CURRENT_PHASE.md).
 
 **Strategic constraint:** public production target **&lt; one month** after Phase 1–5 completion per roadmap.
 
@@ -38,8 +39,8 @@ See [`OPEN_ITEMS.md`](OPEN_ITEMS.md): **pre-production** items (governance names
 
 ## Next execution-critical decisions
 
-1. **Execute Phase 3** per [`CURRENT_PHASE.md`](CURRENT_PHASE.md) / [`DEVELOPMENT_BREAKDOWN.md`](../05_execution/DEVELOPMENT_BREAKDOWN.md)—must-launch content and journeys; no regressions on Phase 1–2 plumbing.
-2. **Assign content governance names** before shipping sensitive verified copy.
+1. **Execute Phase 4** per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §3 — first slice: **Search v1** (4.1) unless replanned.
+2. **Assign content governance names** before shipping sensitive verified copy (LAG).
 3. **Legal / privacy** sign-off before **LAG** / production.
 
 ## Source-of-truth map

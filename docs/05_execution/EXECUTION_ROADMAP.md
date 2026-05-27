@@ -64,13 +64,13 @@ isProject: false
 
 # Flow-Guide: Complete Execution Roadmap to Production
 
-**Baseline (2026-05-27):** Phase 0A/0B done (2026-04-01), Phase 1 done (2026-04-04), Phase 2 done (2026-04-11), **Phase 3 in progress** (not exit-complete). **Groups A–I shipped** (incl. Group I banner/fixtures/links 2026-05-27). **Next:** Phase 3 **exit verification** pass (§2 checklist) before `ROADMAP_STATUS` Phase 3 → Done. **`/city`:** removed from header nav; route remains launch-adjacent (no tourism content in MVP). Phase 4: `/search`, `/updates` UI still stub. 255 Vitest tests; lint/test/build green per last ship.
+**Baseline (2026-05-27):** Phase 0A–3 **done** (Phase 3 exit verification passed 2026-05-27). **Phase 4 in progress** — utility, instrumentation, launch hardening. First slice candidate: **4.1 Search v1**. `/search`, `/updates` remain Phase 4 stubs; `/city` launch-adjacent (not in header nav). 255 Vitest tests; lint/test/build green.
 
 ---
 
 ## 1. Phase 3 Completion Plan (remaining slices)
 
-**Status (2026-05-27):** Slices **A–I** shipped. Phase 3 exit checklist (§2) remains for a **separate verification pass** — do not mark Phase 3 done in `ROADMAP_STATUS.md` until that pass completes.
+**Status (2026-05-27):** Phase 3 **complete** (exit verification passed). Phase 4 **active** — see §3.
 
 ### Execution Order and Grouping
 
@@ -345,45 +345,37 @@ Week 2:
 
 ## 2. Phase 3 Exit Checklist
 
-All of the following must be true:
+**Verified 2026-05-27** — Phase 3 closed in `ROADMAP_STATUS.md`.
 
-- [ ] Every must-launch route from DEVELOPMENT_BREAKDOWN Section 14.1 has substantive content:
-  - [ ] 6.1: Home (`/`) -- real page, not RoutePlaceholder
-  - [ ] 6.2: Newcomer hub (`/newcomer`) -- DONE
-  - [ ] 6.3: First Week (`/newcomer/first-week`)
-  - [ ] 6.4: Airport to City (`/newcomer/airport-to-city`)
-  - [ ] 6.5: Documents hub (`/documents`) -- DONE
-  - [ ] 6.6: Stay Calculator (`/documents/stay-calculator`) -- DONE (Phase 2)
-  - [ ] 6.7: Address Registration (`/documents/address-registration`) -- DONE
-  - [ ] 6.8: Social Card (`/documents/social-card`) -- DONE
-  - [ ] 6.9: Temporary Residency (`/documents/temporary-residency`) -- DONE
-  - [ ] 6.10: Housing hub (`/housing`) -- DONE
-  - [ ] 6.11: Owner vs Agency (`/housing/owner-vs-agency`)
-  - [ ] 6.13: Work hub (`/work`)
-  - [ ] 6.14: Quick Income (`/work/quick-income`)
-  - [ ] 6.15: Yandex Starter (`/work/yandex-starter`)
-  - [ ] 6.16: Live Gaming (`/work/live-gaming`)
-  - [ ] 6.17: Payments hub (`/payments`)
-  - [ ] 6.18: Terminals (`/payments/terminals`)
-  - [ ] 6.20: Transport hub (`/transport`)
-  - [ ] 6.21: Public Transport Payments (`/transport/public-transport-payments`)
-  - [ ] Newcomer Day One (`/newcomer/day-one`) -- in PRD 10.1 item 4
+- [x] Every must-launch route from DEVELOPMENT_BREAKDOWN Section 14.1 has substantive content:
+  - [x] 6.1: Home (`/`) — `HomePage`
+  - [x] 6.2: Newcomer hub (`/newcomer`)
+  - [x] 6.3: First Week (`/newcomer/first-week`)
+  - [x] 6.4: Airport to City (`/newcomer/airport-to-city`)
+  - [x] 6.5: Documents hub (`/documents`)
+  - [x] 6.6: Stay Calculator (`/documents/stay-calculator`) — Phase 2 UI + Group I related links
+  - [x] 6.7–6.9: Documents guides (address-registration, social-card, temporary-residency)
+  - [x] 6.10–6.11: Housing hub + owner-vs-agency
+  - [x] 6.13–6.16: Work hub + P0 guides
+  - [x] 6.17–6.18: Payments hub + terminals
+  - [x] 6.20–6.21: Transport hub + public-transport-payments
+  - [x] Newcomer Day One (`/newcomer/day-one`)
 
-- [ ] Strongly recommended routes (from Section 14.2 / PRD) have content:
-  - [ ] 6.12: Rental Checklist (`/housing/rental-checklist`)
-  - [ ] 6.19: Service Payments (`/payments/service-payments`)
-  - [ ] 6.22: Daily Life hub (`/daily-life`)
-  - [ ] 6.23: Essential Apps (`/daily-life/essential-apps`)
-  - [ ] 6.24: FAQ (`/faq`)
+- [x] Strongly recommended routes have content:
+  - [x] 6.12: Rental Checklist
+  - [x] 6.19: Service Payments
+  - [x] 6.22: Daily Life hub
+  - [x] 6.23: Essential Apps
+  - [x] 6.24: FAQ
 
-- [x] Home, Start, Dashboard display real user-facing copy (no "placeholder" or "TODO" text visible to users)
-- [x] Cross-links audit: Markdown internal links in pages/faq validated (`content-internal-links.test.ts`); hub/guide Related sections present (Group I)
-- [x] Trust/source review: sensitive pages spot-checked; metadata + field sources in place (Group I; no new official sources added)
-- [x] `npm run lint`, `npm run test`, `npm run build` all green (Group I ship)
-- [x] search-index.json includes active content pages; `welcome.md` excluded (`is_active: false`)
-- [ ] No dead-end routes on must-launch paths — confirm on exit verification walk (stay-calculator related links added Group I)
-- [x] RoutePageBanner: no user-visible Phase 1 shell on content routes (Group I)
-- [ ] **`/city` waiver:** not in MVP nav; direct URL may show utility stub — documented launch-adjacent deferral
+- [x] Home, Start, Dashboard — real user-facing copy
+- [x] Cross-links audit (`content-internal-links.test.ts`)
+- [x] Trust/source review on sensitive pages
+- [x] `npm run lint`, `npm run test`, `npm run build` green
+- [x] search-index.json — 22 active pages + 6 FAQ; no Welcome row
+- [x] No dead-end on must-launch paths (code-backed: Related sections + stay-calculator links)
+- [x] RoutePageBanner — no Phase 1 shell on content routes
+- [x] **`/city` waiver:** removed from header nav; launch-adjacent deferral documented
 
 ---
 
