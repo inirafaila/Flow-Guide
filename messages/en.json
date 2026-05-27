@@ -186,6 +186,19 @@
     "relatedGuides": "Related guides",
     "empty": "No FAQ entries are available right now."
   },
+  "updates": {
+    "intro": "Editorial change notes on guides and tools. For source-backed steps and official requirements, open the linked guides.",
+    "disclaimer": "These entries describe what we changed in Flow-Guide—they are not legal advice. Sensitive details can vary by office, timing, and your situation; follow each guide’s sources.",
+    "empty": "No updates are available right now.",
+    "relatedGuides": "Related guides",
+    "publishedLabel": "Published",
+    "impact": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    }
+  },
   "search": {
     "inputLabel": "Search",
     "inputPlaceholder": "Search guides and FAQ…",
@@ -216,7 +229,7 @@
     "summaries": {
       "faq": "Short answers to common cross-topic questions. For step-by-step guidance and sources, open the linked guides.",
       "search": "Search guides, tools, and FAQ answers across Flow-Guide.",
-      "updates": "Product updates and change notes. More detail will appear here in a later release.",
+      "updates": "Editorial change notes on guides and tools. For source-backed steps and official requirements, open the linked guides.",
       "stayCalculator": "Estimate days used in the rolling 90-in-180 window. Rules vary by nationality — confirm with official guidance.",
       "city": "City and tourism content is not in the MVP yet. Use newcomer and daily-life guides for practical setup."
     }

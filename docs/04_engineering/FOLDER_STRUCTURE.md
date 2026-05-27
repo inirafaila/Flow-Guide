@@ -36,12 +36,15 @@ src/
                      #   load-checklist-and-updates.ts, load-sources.ts, load-places.ts
                      #   faq-id.ts — faq_id SSOT (normalize, public URL, uniqueness)
                      #   load-faq-items.ts — loadFaqItems for /faq
+                     #   load-update-items.ts — loadUpdateItems for /updates
+                     #   format-published-date.ts — display dates on update cards
                      #   build-search-index-records.ts — search index v2 record builder
                      #   normalize-search-excerpt.ts — plain-text excerpts for index
                      #   page-slug-to-href.ts — content slug → public IA href
                      #   route-path-to-slug.ts — route path → content page slug for banner summaries
   lib/search/        # match-search-records.ts, search-result-groups.ts (client search v1)
   features/search/   # SearchPage, GroupedSearchResults, SearchResultRow, SearchBestMatch, useSearchIndex
+  features/updates/  # UpdatesPage.tsx — static editorial list for /updates
                      #   allowed-internal-link-paths.ts, extract-markdown-internal-links.ts — Group I link audit
   lib/guest/         # Guest persistence (localStorage blob, 90d TTL)
   lib/schemas/       # Zod schemas: content-page, checklist-item, update-item, source-record, place, guest-blob, user, user-state, user-checklist-status, request-submission
@@ -55,7 +58,7 @@ src/
   content/faq/       # FAQ entries (*.md) — faq_id + anchor /faq#<faq_id>; 6 entries (Group G)
   features/faq/      # FaqPage.tsx — stacked Q&A UI for /faq
   content/checklist-items/   # Checklist Item rows (§7) — 8 seed items + sample-row
-  content/updates/             # Update Item entries (§11) — sample fixture
+  content/updates/             # Update Item entries (§11) — 3 editorial seeds + inactive sample fixture
   content/sources/           # Source Record rows (§10)
                              #   address-reg-gov.md, address-reg-field.md
                              #   social-card-gov.md, social-card-field.md

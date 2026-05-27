@@ -7,7 +7,7 @@ affected_categories:
 impact_level: medium
 summary: Phase 1 contract fixture — no surfacing logic.
 published_at: "2026-04-04"
-is_active: true
+is_active: false
 ---
 
 Detail body for the update (contract only; not rendered in Phase 1).

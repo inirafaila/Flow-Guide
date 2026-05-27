@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -104,9 +104,15 @@ Other deferred items called out historically: loading skeletons for primary bloc
 
 **Deferred (not 4.1):** recent searches, `?q=` deep links, query-param filters, hit highlighting, header typeahead, Plausible `search_used` (4.4), localized result titles.
 
-## Alerts / updates
+## Updates (`/updates` — Slice 4.2 shipped)
 
-- **None** — hide or show “all clear” per design.
+- **Populated list** — `RoutePageBanner` + page disclaimer + stacked `UpdateCard` rows: title, published date, calm impact badge (if set), summary, optional plain-text body excerpt (summary &lt; 140 chars), related guide links. Sorted `published_at` desc.
+- **Empty** — intro + disclaimer + `updates.empty` when no active items.
+- **Not in this slice** — per-update routes, expand/collapse, filters/tabs, `SourceBlock` / `source_ids`, search index rows, Home preview, Dashboard “updates for you” (**4.6**), read/unread, client fetch.
+
+## Alerts (dashboard — not yet shipped)
+
+- **None** — hide or show “all clear” per design (target **4.6**).
 - **List** — unread/read distinction if account; guest may show inline only.
 - **Detail** — linked targets to pages/entities.
 - **Error** — retry fetch.

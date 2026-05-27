@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -12,14 +12,14 @@ source_of_truth: true
 ## Phase 4 priorities (from execution plan)
 
 1. ~~**Search v1 (Slice 4.1)**~~ — **shipped 2026-05-28** (enriched index + grouped client UI on `/search`).
-2. **Updates surface (4.2)** — **next up:** `/updates` page + seed `src/content/updates/*.md`.
-3. **Places-lite (4.3)** — curated `src/content/places/` + `PlaceCard` / related block.
+2. ~~**Updates surface (4.2)**~~ — **shipped 2026-05-27** (`loadUpdateItems`, `/updates` list, 3 seeds).
+3. **Places-lite (4.3)** — **next up:** curated `src/content/places/` + `PlaceCard` / related block.
 4. **Analytics (4.4)** — Plausible funnel events.
 5. **SEO (4.5)** — metadata, sitemap.xml, robots.txt.
 6. **Dashboard enhancement (4.6)** — alerts, quick actions, updates-for-you (scoped).
 7. **Perf sanity (4.7)** — mobile performance check.
 
-**Do not start** until a slice is chosen via planning; default first candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) is **4.1 Search v1**.
+**Do not start** until a slice is chosen via planning; default next candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) is **4.3 Places-lite**.
 
 ## Phase 3 shipped (reference)
 

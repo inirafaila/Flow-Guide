@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-28
+last_updated: 2026-05-27
 source_of_truth: true
 ---
 
@@ -11,10 +11,11 @@ source_of_truth: true
 
 ### Next up
 
-**Slice 4.2 — Updates surface** per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) (`/updates` + seed content). Do **not** bundle places-lite, analytics, or dashboard expansion unless explicitly approved.
+**Slice 4.3 — Places-lite** per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md). Do **not** bundle analytics, SEO, or dashboard expansion unless explicitly approved.
 
 ### Recently shipped (Phase 4)
 
+- **Slice 4.2 — Updates v1 (2026-05-27):** `loadUpdateItems` + `UpdatesPage` / `UpdateCard` on `/updates`; 3 editorial seeds; `sample-update.md` inactive; calm impact badges; no search index / Home / Dashboard teasers (4.6).
 - **Slice 4.1 — Search v1 (2026-05-28):** Enriched `search-index.json` v2 (`href`, `group`, synthetic stay-calculator); grouped client search on `/search` (`SearchPage`, token match, best-match gating); removed `SearchStub` + utility placeholder shell.
 
 ### Pre-LAG (unchanged — not Phase 4 blockers)
