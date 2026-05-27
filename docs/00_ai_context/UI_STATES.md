@@ -1,7 +1,7 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-30
+last_updated: 2026-05-31
 source_of_truth: true
 ---
 
@@ -59,7 +59,16 @@ Other deferred items called out historically: loading skeletons for primary bloc
 - **Incomplete onboarding** (blob exists, DTO `null`) — NBA: Card + copy to finish Start; same CTAs. Checklist: filters with available partial guest state.
 - **Valid NBA + populated checklist** — NBA: emphasis + primary + secondaries. Checklist: category groups use `dashboard.checklist.category.*`; rows use `checklistRow.status.*`, `checklistRow.locked`, `checklistRow.urgencyA11y`; item titles from content Markdown (English).
 - **Checklist empty after filter** — NBA renders normally. Checklist: Card with `dashboard.checklist.empty`.
-- **Out of this slice** — full dashboard shell (header summary, residency card), alerts, quick actions, updates feed, trust blocks, UserChecklistStatus wiring, translated checklist item bodies.
+- **Out of this slice** — full dashboard shell (header summary, residency card), alerts, trust blocks, UserChecklistStatus wiring, translated checklist item bodies.
+
+## Dashboard (Resume & reach — Slice 4.6 shipped)
+
+- **Layout** — `dashboard-page` wrapper: re-entry intro → NBA (client) → checklist (client) → quick actions (server) → updates (server, when items exist).
+- **Re-entry intro** — `dashboard.intro` + link `dashboard.editAnswers` → `/start` (server; no guest blob read).
+- **Quick actions** — five static links (`dashboard.quickActions.*`): stay calculator, terminals, essential apps, FAQ, updates; reuses `HomeQuickToolItem` with dashboard styling.
+- **Updates block** — up to **3** latest active items via `selectLatestUpdates` + `loadUpdateItems` (newest-first, no personalization); compact `DashboardUpdateRow` (title + date); row links to first `related_page_slugs[0]` or `/updates`; footer `dashboard.updates.viewAll` → `/updates`; **section omitted** when zero active updates.
+- **Unchanged** — NBA/checklist client islands, guest blob only, `next_action_clicked` only; no new analytics events; no progress UI; checklist rows still default `not-started`.
+- **Still deferred** — residency/status card, alerts engine, header summary with name, saved/requests placeholders, `UserChecklistStatus`, Home updates preview.
 
 ## Start (`/start` — Group H note 2026-05-28)
 
@@ -72,7 +81,7 @@ Other deferred items called out historically: loading skeletons for primary bloc
 
 ## Dashboard (full product — not yet shipped)
 
-- **Default populated** — next best actions, checklist, updates teaser (target per PRD/handoff §6; beyond current narrow NBA slice).
+- **Default populated** — next best actions, checklist, quick actions, updates teaser (4.6); residency card and alerts still out of scope.
 - **Sparse new user** — explain how to add context / complete onboarding.
 - **Loading** — skeleton rows (broader shell; narrow slice uses simple text loading).
 - **Error** — partial render + retry for failed sections.
@@ -128,7 +137,7 @@ Other deferred items called out historically: loading skeletons for primary bloc
 
 - **Populated list** — `RoutePageBanner` + page disclaimer + stacked `UpdateCard` rows: title, published date, calm impact badge (if set), summary, optional plain-text body excerpt (summary &lt; 140 chars), related guide links. Sorted `published_at` desc.
 - **Empty** — intro + disclaimer + `updates.empty` when no active items.
-- **Not in this slice** — per-update routes, expand/collapse, filters/tabs, `SourceBlock` / `source_ids`, search index rows, Home preview, Dashboard “updates for you” (**4.6**), read/unread, client fetch.
+- **Not in this slice** — per-update routes, expand/collapse, filters/tabs, `SourceBlock` / `source_ids`, search index rows, Home preview, read/unread, client fetch. Dashboard compact block shipped in **4.6** (no personalization).
 
 ## Alerts (dashboard — not yet shipped)
 

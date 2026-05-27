@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-30
+last_updated: 2026-05-31
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 4 — Slice 4.6 — Dashboard enhancement / Resume & reach (2026-05-31):** `/dashboard` adds re-entry intro + edit-answers link, `DashboardQuickActions` (5 routes), `DashboardUpdatesBlock` (≤3 server-fed rows + view all); `selectLatestUpdates`; NBA/checklist unchanged; no alerts, status card, or new persistence. PRD status card **deferred** (needs calculator/guest state). **329** tests; lint/test/build green. **Next:** Slice 4.7 perf.
 - **Phase 4 — Slice 4.5 — SEO (2026-05-30):** `src/lib/seo/` (`site-url`, `sitemap-paths`, `noindex-paths`, `build-page-metadata`); `src/app/sitemap.ts` + `robots.ts`; `metadataBase` + per-route `generateMetadata` (English-only, raw titles); 26-url sitemap; noindex `/search`, `/dashboard`, `/start`, `/city`, `/housing/request*`. **323** Vitest tests; lint/test/build green. **Next:** Slice 4.6 Dashboard enhancement. Prod: set `NEXT_PUBLIC_SITE_URL`.
 - **Phase 4 — Slice 4.4 — Analytics (2026-05-29):** `src/lib/analytics/track-event.ts` (6 allowlisted Plausible events) + `PlausiblePageview`; Home entry cards, onboarding start/complete (transition-only), dashboard NBA (`checklist_item_slug` target), `search_used` (bucket props, no query text), `stay_calculator_used`. **308** Vitest tests; lint/test/build green. Legal/privacy + production Plausible project still open ([`OPEN_ITEMS.md`](OPEN_ITEMS.md)). **Next:** Slice 4.5 SEO.
 - **Phase 4 — Slice 4.3 — Places-lite (2026-05-28):** `loadPlaceItems` (max 5 active), `assertMapsUrlAllowed`, `PlaceCard`, `RelatedPlacesBlock` on 3 guides; 4 curated place seeds; search index +4 place rows (33 total); no `/city`, no `/places` routes, no map embed. **294** Vitest tests; lint/test/build green. **Next:** Slice 4.4 Analytics.
@@ -34,7 +35,7 @@ source_of_truth: true
 
 - **Phase 1** done (2026-04-04), **Phase 2** done (2026-04-11), **Phase 3** done (2026-05-27), **Phase 4** in progress.
 - Content pipeline fully operational: `loadPageContent` + `loadTrustDataForPage` + `renderMarkdownToHtml`. Any new `.md` in `src/content/pages/` auto-renders on matching route.
-- 323 Vitest tests, lint/test/build green.
+- 329 Vitest tests, lint/test/build green.
 - Documents section content-complete (3 guides + 6 source records + trust blocks).
 - 7/7 hub pages authored; newcomer P0 guides (day-one, first-week, airport-to-city) authored with trust source on airport-to-city.
 - Work section P0 guides authored (quick-income, yandex-starter, live-gaming) each with a primary field-experience source record.
@@ -46,7 +47,7 @@ source_of_truth: true
 ## What the next session should do
 
 1. Read **`CURRENT_PHASE.md`** and **`EXECUTION_ROADMAP.md`** §3 (Phase 4 slices).
-2. **Plan** Slice **4.6 Dashboard enhancement** (or next approved Phase 4 slice) before implementing.
+2. **Plan** Slice **4.7 Performance sanity** (or next approved Phase 4 slice) before implementing.
 3. Keep **OPEN_ITEMS** / LAG gates separate from Phase 4 feature work.
 4. Before commit: `npm run lint`, `npm run test`, `npm run build`.
 

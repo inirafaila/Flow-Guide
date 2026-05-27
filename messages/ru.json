@@ -64,6 +64,8 @@
   },
   "dashboard": {
     "pageTitle": "Панель",
+    "intro": "Сохранённый маршрут на этом устройстве. Продолжите с того же места или измените ответы.",
+    "editAnswers": "Изменить ответы",
     "loading": "Загрузка…",
     "empty": {
       "noBlobTitle": "Начните свой маршрут",
@@ -87,6 +89,18 @@
         "transport": "Транспорт",
         "dailyLife": "Повседневная жизнь"
       }
+    },
+    "quickActions": {
+      "sectionTitle": "Быстрые ссылки",
+      "stayCalculator": "Проверить дни пребывания",
+      "terminals": "Платёжные терминалы",
+      "essentialApps": "Нужные приложения",
+      "faq": "FAQ",
+      "updates": "Все обновления"
+    },
+    "updates": {
+      "sectionTitle": "Недавние обновления",
+      "viewAll": "Все обновления"
     }
   },
   "checklistRow": {

@@ -64,6 +64,8 @@
   },
   "dashboard": {
     "pageTitle": "داشبورد",
+    "intro": "مسیر ذخیره‌شده روی این دستگاه. از همان‌جا ادامه بده یا پاسخ‌ها را به‌روز کن.",
+    "editAnswers": "ویرایش پاسخ‌ها",
     "loading": "در حال بارگذاری…",
     "empty": {
       "noBlobTitle": "مسیرت را شروع کن",
@@ -87,6 +89,18 @@
         "transport": "حمل‌ونقل",
         "dailyLife": "زندگی روزمره"
       }
+    },
+    "quickActions": {
+      "sectionTitle": "میانبرها",
+      "stayCalculator": "بررسی روزهای اقامت",
+      "terminals": "ترمینال‌های پرداخت",
+      "essentialApps": "اپ‌های ضروری",
+      "faq": "سوالات متداول",
+      "updates": "همهٔ به‌روزرسانی‌ها"
+    },
+    "updates": {
+      "sectionTitle": "به‌روزرسانی‌های اخیر",
+      "viewAll": "مشاهدهٔ همهٔ به‌روزرسانی‌ها"
     }
   },
   "checklistRow": {

@@ -14,10 +14,10 @@ src/
   app/           # Routes, layouts, route handlers (or pages/)
   app/[locale]/  # IA + hub routes (next-intl internal segment; public URLs stay unprefixed)
   components/    # Shared UI primitives
-  components/ui/     # Phase 1 primitives (Button, Card, SectionHeader) + Phase 2 ChecklistItemRow, SourceBlock, LastVerifiedNote, WhatMayVaryNote
+  components/ui/     # Primitives + ChecklistItemRow, trust blocks, UpdateCard, DashboardUpdateRow (4.6)
   components/shell/  # SiteHeader, SiteHeaderChrome (responsive / mobile nav), footer, locale switcher
   features/          # Feature-scoped UI + logic
-  features/dashboard/    # DashboardNextBestAction, DashboardChecklistBlock
+  features/dashboard/    # NBA, checklist, ReentryNote, QuickActions, UpdatesBlock (4.6)
   features/home/         # Phase 3 — Home gateway (`/`)
     HomePage.tsx
     HomeEntryCard.tsx
@@ -37,6 +37,7 @@ src/
                      #   faq-id.ts — faq_id SSOT (normalize, public URL, uniqueness)
                      #   load-faq-items.ts — loadFaqItems for /faq
                      #   load-update-items.ts — loadUpdateItems for /updates
+                     #   select-latest-updates.ts — selectLatestUpdates for dashboard (4.6)
                      #   format-published-date.ts — display dates on update cards
                      #   build-search-index-records.ts — search index v2 record builder
                      #   normalize-search-excerpt.ts — plain-text excerpts for index

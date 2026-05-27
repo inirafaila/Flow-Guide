@@ -64,6 +64,8 @@
   },
   "dashboard": {
     "pageTitle": "Dashboard",
+    "intro": "Your saved path on this device. Pick up where you left off or adjust your answers.",
+    "editAnswers": "Edit your answers",
     "loading": "Loading…",
     "empty": {
       "noBlobTitle": "Start your path",
@@ -87,6 +89,18 @@
         "transport": "Transport",
         "dailyLife": "Daily life"
       }
+    },
+    "quickActions": {
+      "sectionTitle": "Quick links",
+      "stayCalculator": "Check stay days",
+      "terminals": "Payment terminals",
+      "essentialApps": "Essential apps",
+      "faq": "FAQ",
+      "updates": "All updates"
+    },
+    "updates": {
+      "sectionTitle": "Recent updates",
+      "viewAll": "View all updates"
     }
   },
   "checklistRow": {

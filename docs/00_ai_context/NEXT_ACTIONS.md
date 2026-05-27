@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-30
+last_updated: 2026-05-31
 source_of_truth: true
 ---
 
@@ -11,10 +11,11 @@ source_of_truth: true
 
 ### Next up
 
-**Slice 4.6 — Dashboard enhancement** (alerts, quick actions, updates-for-you) per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md). Do **not** bundle perf (4.7) unless explicitly approved.
+**Slice 4.7 — Performance sanity** per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md). Do **not** bundle unrelated Phase 5 QA unless explicitly approved.
 
 ### Recently shipped (Phase 4)
 
+- **Slice 4.6 — Dashboard enhancement / Resume & reach (2026-05-31):** `DashboardReentryNote`, `DashboardQuickActions`, `DashboardUpdatesBlock`, `DashboardUpdateRow`, `selectLatestUpdates`; server-fed latest 3 updates; 5 quick links; no new storage/analytics; PRD **residency/status card** deferred (waiver for Phase 5 reconciliation). **329** Vitest tests; lint/test/build green.
 - **Slice 4.5 — SEO (2026-05-30):** `src/lib/seo/*` (English-only metadata, canonicals via `NEXT_PUBLIC_SITE_URL`), `sitemap.xml` (26 paths from `PHASE1_IA_PAGE_PATHS`), `robots.txt`, noindex on utility/thin/form routes; minimal OG/Twitter mirroring; **323** Vitest tests; lint/test/build green. Set prod `NEXT_PUBLIC_SITE_URL` before launch.
 - **Slice 4.4 — Analytics (2026-05-29):** `trackEvent` allowlist (6 events) + `PlausiblePageview` SPA helper; instrumented Home entry cards, onboarding start/complete, dashboard NBA clicks, search buckets, stay calculator; no raw queries; legal/Plausible prod remain [`OPEN_ITEMS.md`](OPEN_ITEMS.md).
 - **Slice 4.3 — Places-lite (2026-05-28):** `loadPlaceItems` + `assertMapsUrlAllowed`; 4 curated places (max 5); `PlaceCard` + `RelatedPlacesBlock` on terminals / address-registration / public-transport-payments; search index Places group (`href` = parent guide); `sample-place.md` inactive; `/city` untouched.
