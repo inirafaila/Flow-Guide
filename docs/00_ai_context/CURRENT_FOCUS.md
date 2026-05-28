@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-31
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -17,9 +17,9 @@ source_of_truth: true
 4. ~~**Analytics (4.4)**~~ — **shipped 2026-05-29** (six Plausible funnel events + SPA pageviews).
 5. ~~**SEO (4.5)**~~ — **shipped 2026-05-30** (metadata, sitemap, robots; `NEXT_PUBLIC_SITE_URL`).
 6. ~~**Dashboard enhancement (4.6)**~~ — **shipped 2026-05-31** (Resume & reach: re-entry intro, quick actions, compact updates; no alerts/status card).
-7. **Perf sanity (4.7)** — **next up:** mobile performance check.
+7. ~~**Perf sanity (4.7)**~~ — **shipped 2026-05-28** (audit + report; 0 code fixes). See [`PERF_SANITY_4_7_REPORT.md`](../05_execution/PERF_SANITY_4_7_REPORT.md).
 
-**Do not start** until a slice is chosen via planning; default next candidate per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) is **4.7 Performance sanity**.
+**Next (Phase 4 exit):** PRD/MVP gap reconciliation (doc-only) — then mark Phase 4 done in `ROADMAP_STATUS`. **Do not** bundle Phase 5 QA into exit pass.
 
 ## Phase 3 shipped (reference)
 

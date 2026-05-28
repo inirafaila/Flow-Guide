@@ -469,11 +469,11 @@ Week 2:
 - **Complexity:** M
 - **Ticket refs:** 4.6-4.8
 
-### Slice 4.7: Performance Sanity Check
+### Slice 4.7: Performance Sanity Check — **Done 2026-05-28**
 
-- **Description:** Lighthouse audit, bundle size check, Core Web Vitals on mobile
-- **Files to modify:** Optimize as needed (image sizes, lazy loading, code splitting)
-- **Dependencies:** All Phase 4 features complete
+- **Description:** Evidence-driven mobile/route audit (six routes); max 3 small fixes; no score chasing
+- **Shipped:** [`PERF_SANITY_4_7_REPORT.md`](PERF_SANITY_4_7_REPORT.md) — **0 code fixes**; lint/test/build green
+- **Dependencies:** All Phase 4 features complete (met)
 - **Complexity:** S
 
 ---

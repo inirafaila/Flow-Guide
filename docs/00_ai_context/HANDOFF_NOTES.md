@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-31
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -9,6 +9,7 @@ source_of_truth: true
 
 ## What changed (latest first)
 
+- **Phase 4 — Slice 4.7 — Performance sanity (2026-05-28):** Evidence-driven audit on six launch routes (`/`, `/newcomer/day-one`, `/search`, `/start`, `/dashboard`, `/documents/stay-calculator`); baselines recorded (`search-index.json` 9,440 B / 33 records, `globals.css` 35,766 B); lint/test/build green (329 tests); **0 code fixes**. Report: [`PERF_SANITY_4_7_REPORT.md`](../05_execution/PERF_SANITY_4_7_REPORT.md). **Next:** Phase 4 exit / PRD reconciliation (doc-only); do **not** mark Phase 4 done in `ROADMAP_STATUS` until that pass.
 - **Phase 4 — Slice 4.6 — Dashboard enhancement / Resume & reach (2026-05-31):** `/dashboard` adds re-entry intro + edit-answers link, `DashboardQuickActions` (5 routes), `DashboardUpdatesBlock` (≤3 server-fed rows + view all); `selectLatestUpdates`; NBA/checklist unchanged; no alerts, status card, or new persistence. PRD status card **deferred** (needs calculator/guest state). **329** tests; lint/test/build green. **Next:** Slice 4.7 perf.
 - **Phase 4 — Slice 4.5 — SEO (2026-05-30):** `src/lib/seo/` (`site-url`, `sitemap-paths`, `noindex-paths`, `build-page-metadata`); `src/app/sitemap.ts` + `robots.ts`; `metadataBase` + per-route `generateMetadata` (English-only, raw titles); 26-url sitemap; noindex `/search`, `/dashboard`, `/start`, `/city`, `/housing/request*`. **323** Vitest tests; lint/test/build green. **Next:** Slice 4.6 Dashboard enhancement. Prod: set `NEXT_PUBLIC_SITE_URL`.
 - **Phase 4 — Slice 4.4 — Analytics (2026-05-29):** `src/lib/analytics/track-event.ts` (6 allowlisted Plausible events) + `PlausiblePageview`; Home entry cards, onboarding start/complete (transition-only), dashboard NBA (`checklist_item_slug` target), `search_used` (bucket props, no query text), `stay_calculator_used`. **308** Vitest tests; lint/test/build green. Legal/privacy + production Plausible project still open ([`OPEN_ITEMS.md`](OPEN_ITEMS.md)). **Next:** Slice 4.5 SEO.
@@ -47,7 +48,7 @@ source_of_truth: true
 ## What the next session should do
 
 1. Read **`CURRENT_PHASE.md`** and **`EXECUTION_ROADMAP.md`** §3 (Phase 4 slices).
-2. **Plan** Slice **4.7 Performance sanity** (or next approved Phase 4 slice) before implementing.
+2. Run **Phase 4 exit / PRD reconciliation** (doc-only waivers: status card, Home updates teaser, save-path, etc.) then mark Phase 4 done in `ROADMAP_STATUS`.
 3. Keep **OPEN_ITEMS** / LAG gates separate from Phase 4 feature work.
 4. Before commit: `npm run lint`, `npm run test`, `npm run build`.
 

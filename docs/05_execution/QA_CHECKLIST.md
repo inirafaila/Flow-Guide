@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -32,7 +32,8 @@ source_of_truth: true
 
 ## Performance
 
-- [ ] LCP acceptable on 3G Fast throttling (define budget in engineering)
+- [ ] 375px smoke on launch-critical routes — see [`PERF_SANITY_4_7_REPORT.md`](PERF_SANITY_4_7_REPORT.md) (Slice 4.7, 2026-05-28)
+- [ ] LCP acceptable on 3G Fast throttling (define budget in engineering — Phase 5)
 
 ## Security
 

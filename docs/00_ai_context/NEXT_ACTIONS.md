@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-31
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -11,10 +11,11 @@ source_of_truth: true
 
 ### Next up
 
-**Slice 4.7 — Performance sanity** per [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md). Do **not** bundle unrelated Phase 5 QA unless explicitly approved.
+**Phase 4 exit — PRD/MVP reconciliation** (doc-only waivers; then `ROADMAP_STATUS` Phase 4 → Done). Report: [`PERF_SANITY_4_7_REPORT.md`](../05_execution/PERF_SANITY_4_7_REPORT.md). Do **not** bundle Phase 5 full QA.
 
 ### Recently shipped (Phase 4)
 
+- **Slice 4.7 — Performance sanity (2026-05-28):** Six-route mobile smoke + baselines; lint/test/build green (329 tests); **0 code fixes**. Evidence: [`PERF_SANITY_4_7_REPORT.md`](../05_execution/PERF_SANITY_4_7_REPORT.md).
 - **Slice 4.6 — Dashboard enhancement / Resume & reach (2026-05-31):** `DashboardReentryNote`, `DashboardQuickActions`, `DashboardUpdatesBlock`, `DashboardUpdateRow`, `selectLatestUpdates`; server-fed latest 3 updates; 5 quick links; no new storage/analytics; PRD **residency/status card** deferred (waiver for Phase 5 reconciliation). **329** Vitest tests; lint/test/build green.
 - **Slice 4.5 — SEO (2026-05-30):** `src/lib/seo/*` (English-only metadata, canonicals via `NEXT_PUBLIC_SITE_URL`), `sitemap.xml` (26 paths from `PHASE1_IA_PAGE_PATHS`), `robots.txt`, noindex on utility/thin/form routes; minimal OG/Twitter mirroring; **323** Vitest tests; lint/test/build green. Set prod `NEXT_PUBLIC_SITE_URL` before launch.
 - **Slice 4.4 — Analytics (2026-05-29):** `trackEvent` allowlist (6 events) + `PlausiblePageview` SPA helper; instrumented Home entry cards, onboarding start/complete, dashboard NBA clicks, search buckets, stay calculator; no raw queries; legal/Plausible prod remain [`OPEN_ITEMS.md`](OPEN_ITEMS.md).
