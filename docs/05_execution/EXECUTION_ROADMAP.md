@@ -30,23 +30,26 @@ todos:
     content: "Phase 3 Group I: Cross-link audit + editorial/trust review for sensitive pages"
     status: completed
   - id: phase4-search
-    content: "Phase 4: Build client grouped search UI (FlexSearch/Fuse.js on search-index.json)"
-    status: pending
+    content: "Phase 4.1: Client grouped search UI on search-index.json"
+    status: completed
   - id: phase4-updates
-    content: "Phase 4: Build /updates page + seed update items"
-    status: pending
+    content: "Phase 4.2: /updates page + seed update items"
+    status: completed
   - id: phase4-places
-    content: "Phase 4: Curate real Place records + PlaceCard component + related places block"
-    status: pending
+    content: "Phase 4.3: Places-lite (PlaceCard + related places)"
+    status: completed
   - id: phase4-analytics
-    content: "Phase 4: Instrument Plausible analytics events for core funnels"
-    status: pending
+    content: "Phase 4.4: Plausible core funnel events (6)"
+    status: completed
   - id: phase4-seo
-    content: "Phase 4: SEO metadata, sitemap.xml, robots.txt"
-    status: pending
+    content: "Phase 4.5: SEO metadata, sitemap, robots"
+    status: completed
   - id: phase4-dashboard
-    content: "Phase 4: Dashboard enhancement (alerts, quick actions, updates-for-you blocks)"
-    status: pending
+    content: "Phase 4.6: Dashboard resume and reach (quick actions, updates block)"
+    status: completed
+  - id: phase4-reconciliation
+    content: "Phase 4 exit: MVP_LAUNCH_CONTRACT + waivers; close Phase 4"
+    status: completed
   - id: phase5-qa
     content: "Phase 5: Full QA pass (responsive, trust/source, navigation, security/privacy, analytics)"
     status: pending
@@ -64,13 +67,13 @@ isProject: false
 
 # Flow-Guide: Complete Execution Roadmap to Production
 
-**Baseline (2026-05-27):** Phase 0A–3 **done** (Phase 3 exit verification passed 2026-05-27). **Phase 4 in progress** — utility, instrumentation, launch hardening. First slice candidate: **4.1 Search v1**. `/search`, `/updates` remain Phase 4 stubs; `/city` launch-adjacent (not in header nav). 255 Vitest tests; lint/test/build green.
+**Baseline (2026-05-28):** Phases **0A–4 done**. Phase 4 slices **4.1–4.7** shipped; exit reconciliation: [`MVP_LAUNCH_CONTRACT.md`](../02_product/MVP_LAUNCH_CONTRACT.md). **Phase 5 active** — QA / release readiness (not production launch). **329** Vitest tests; lint/test/build green. `/city` launch-adjacent (W-009); operational scope in contract.
 
 ---
 
 ## 1. Phase 3 Completion Plan (remaining slices)
 
-**Status (2026-05-27):** Phase 3 **complete** (exit verification passed). Phase 4 **active** — see §3.
+**Status (2026-05-28):** Phase 3 **complete**. Phase 4 **complete** (see §3 + contract). Phase 5 **active** — see §5.
 
 ### Execution Order and Grouping
 
@@ -708,13 +711,22 @@ Assumes one developer + AI pair working full-time. Estimates in working days.
 
 ### Mandatory full doc sync (not just per-slice NEXT_ACTIONS updates)
 
-**After Phase 3 exit:**
+**After Phase 3 exit (2026-05-27):**
 - `PROJECT_STATE.md` -- Phase 3 complete, Phase 4 active
 - `CURRENT_PHASE.md` -- transition to Phase 4
 - `CURRENT_FOCUS.md` -- Phase 4 scope
 - `ROADMAP_STATUS.md` -- Phase 3 done with date
 - `HANDOFF_NOTES.md` -- all Phase 3 shipped slices
 - `NEXT_ACTIONS.md` -- Phase 4 track
+
+**After Phase 4 exit (2026-05-28):**
+- `MVP_LAUNCH_CONTRACT.md` -- operational launch interpretation + waivers
+- `PROJECT_STATE.md` -- Phase 4 complete, Phase 5 active
+- `CURRENT_PHASE.md` -- transition to Phase 5
+- `CURRENT_FOCUS.md` -- Phase 5 QA scope
+- `ROADMAP_STATUS.md` -- Phase 4 done with date
+- `DECISION_LOG.md` -- waiver bundle row
+- `PRD_MVP.md` §33 link only; `UI_HANDOFF_SPEC.md` launch note optional
 - `FOLDER_STRUCTURE.md` -- update if new feature directories created (e.g., `features/home/`, `features/search/`)
 - `CONTENT_SCHEMA.md` -- if any schema changes
 

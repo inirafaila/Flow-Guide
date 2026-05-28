@@ -1,13 +1,13 @@
 ---
 owner: design
 status: active
-last_updated: 2026-05-31
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
 # UI states (canonical)
 
-Per-surface states implementations and design should handle consistently. Extend when new surfaces ship.
+Per-surface states implementations and design should handle consistently. Extend when new surfaces ship. **Deferred vs shipped launch scope:** [`MVP_LAUNCH_CONTRACT.md`](../02_product/MVP_LAUNCH_CONTRACT.md) (waivers W-001–W-011).
 
 ## Home
 

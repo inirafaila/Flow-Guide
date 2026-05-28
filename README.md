@@ -1,7 +1,7 @@
 ---
 owner: engineering
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: false
 ---
 
@@ -33,7 +33,8 @@ Web app for **newcomers to Armenia**: sequenced guidance, **source-backed** cont
 - **Phase 1 (complete, 2026-04-04):** Foundation shipped — IA shells, Zod content contracts, `search-index.json` prebuild, CI, observability stubs, placeholder templates (see `docs/00_ai_context/PROJECT_STATE.md`).
 - **Phase 2 (complete, 2026-04-11):** Onboarding, guest persistence, dashboard NBA + checklist, trust UI, stay calculator — see `docs/00_ai_context/PROJECT_STATE.md`.
 - **Phase 3 (complete, 2026-05-27):** Must-launch hubs/guides, Home, FAQ, Dashboard/Start copy, cross-links and banner cleanup (Groups A–I).
-- **Phase 4 (current track):** Utility and launch hardening — search UX, updates, places-lite, analytics, SEO; see `docs/00_ai_context/CURRENT_PHASE.md`.
+- **Phase 4 (complete, 2026-05-28):** Search, updates, places-lite, analytics, SEO, dashboard resume & reach, perf sanity; [`MVP_LAUNCH_CONTRACT.md`](docs/02_product/MVP_LAUNCH_CONTRACT.md) defines operational launch scope.
+- **Phase 5 (current track):** QA and release readiness — see `docs/00_ai_context/CURRENT_PHASE.md`.
 - **Roadmap:** `docs/01_strategy/ROADMAP_MASTER.md` (strategy); `docs/01_strategy/ROADMAP_STATUS.md` (phase status).
 
 ## Local development

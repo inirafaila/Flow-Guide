@@ -7,26 +7,29 @@ source_of_truth: true
 
 # Current focus
 
-**Phase 4** — MVP **utility**, **instrumentation**, and **launch-scope hardening** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 4). Phase 3 content/journey work is **complete** (2026-05-27).
+**Phase 5** — **Verification, QA, and release readiness** (see [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 5). Phase 4 utility work is **complete** (2026-05-28). Operational launch scope: [`MVP_LAUNCH_CONTRACT.md`](../02_product/MVP_LAUNCH_CONTRACT.md).
 
-## Phase 4 priorities (from execution plan)
+## Phase 5 priorities (from execution plan)
 
-1. ~~**Search v1 (Slice 4.1)**~~ — **shipped 2026-05-28** (enriched index + grouped client UI on `/search`).
-2. ~~**Updates surface (4.2)**~~ — **shipped 2026-05-27** (`loadUpdateItems`, `/updates` list, 3 seeds).
-3. ~~**Places-lite (4.3)**~~ — **shipped 2026-05-28** (`loadPlaceItems`, `PlaceCard`, `RelatedPlacesBlock`, search index places).
-4. ~~**Analytics (4.4)**~~ — **shipped 2026-05-29** (six Plausible funnel events + SPA pageviews).
-5. ~~**SEO (4.5)**~~ — **shipped 2026-05-30** (metadata, sitemap, robots; `NEXT_PUBLIC_SITE_URL`).
-6. ~~**Dashboard enhancement (4.6)**~~ — **shipped 2026-05-31** (Resume & reach: re-entry intro, quick actions, compact updates; no alerts/status card).
-7. ~~**Perf sanity (4.7)**~~ — **shipped 2026-05-28** (audit + report; 0 code fixes). See [`PERF_SANITY_4_7_REPORT.md`](../05_execution/PERF_SANITY_4_7_REPORT.md).
+1. **Responsive QA** — must-launch routes on mobile/tablet/desktop ([`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §5.1, [`QA_CHECKLIST.md`](../05_execution/QA_CHECKLIST.md)).
+2. **Trust / source QA** — sensitive guides show trust blocks; sources present where required.
+3. **Navigation / routing QA** — IA paths, airport redirect, locale switcher, no 404 on contract routes.
+4. **Security / privacy review** — guest blob, `NEXT_PUBLIC_*` only, Plausible/Sentry policy vs [`OPEN_ITEMS.md`](OPEN_ITEMS.md).
+5. **Analytics smoke** — six funnel events + pageviews in preview/staging.
+6. **Content completeness spot-check** — cross-links, no user-visible Phase 1 shells on content routes.
+7. **Release readiness** — known-issues list, rollback note, handoff for post-launch owner.
 
-**Next (Phase 4 exit):** PRD/MVP gap reconciliation (doc-only) — then mark Phase 4 done in `ROADMAP_STATUS`. **Do not** bundle Phase 5 QA into exit pass.
+**Do not** bundle new MVP features into Phase 5. Defects found here are **fixes or waivers**, not scope expansion.
 
-## Phase 3 shipped (reference)
+## Phase 4 shipped (reference)
 
-- **Infrastructure:** Markdown pipeline, universal hub/guide loading, trust wiring, search-index prebuild.
-- **Content:** 7 hubs, all must-launch guides, Home, FAQ (6 entries), Dashboard/Start copy (en/fa/ru).
-- **Group I (2026-05-27):** RoutePageBanner product summaries; internal-link test; fixture cleanup; stay-calculator related links; `/city` nav deferred.
+- **4.1–4.7:** Search, updates, places-lite, analytics, SEO, dashboard resume & reach, perf sanity — see [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md).
+- **Exit:** [`MVP_LAUNCH_CONTRACT.md`](../02_product/MVP_LAUNCH_CONTRACT.md) (waivers W-001–W-011).
 
-## Explicitly deferred (not Phase 4 unless escalated)
+## Explicitly deferred (not Phase 5 unless defect)
 
-- Full dashboard shell, UserChecklistStatus, guide body i18n, admin, auth, `/city` tourism content, housing/request operational forms — see master roadmap and [`OPEN_ITEMS.md`](OPEN_ITEMS.md).
+- Residency status card, alerts, Home updates preview, auth/save-path, checklist status persistence, housing/casino form POST, `/city` content + nav — see contract waivers and [`UI_STATES.md`](UI_STATES.md).
+
+## Pre-LAG (parallel track, not Phase 5 code)
+
+- Content governance names, legal/privacy sign-off, production Plausible/Sentry projects — [`OPEN_ITEMS.md`](OPEN_ITEMS.md).

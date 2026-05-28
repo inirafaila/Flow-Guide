@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -780,4 +780,12 @@ MVP زمانی قابل قبول است که:
 2. **Data + content model spec** برای تیم توسعه
 3. **UI handoff spec** برای Home / Onboarding / Dashboard / Content template
 4. **Development breakdown** به ticketهای اجرایی
+
+---
+
+## 33) MVP launch interpretation (2026-05-28)
+
+**Operational launch scope** for the repository as shipped (guest-first, static-first, no-auth v1) is defined in **[`MVP_LAUNCH_CONTRACT.md`](MVP_LAUNCH_CONTRACT.md)** — including approved waivers **W-001** through **W-011** where this PRD or UI handoff describe capabilities not in the current build.
+
+Read **§28 Definition of Done** through that contract and [`PHASE_0_DECISION_RECORD.md`](../04_engineering/PHASE_0_DECISION_RECORD.md) §4. This section does not change historical scope text above.
 

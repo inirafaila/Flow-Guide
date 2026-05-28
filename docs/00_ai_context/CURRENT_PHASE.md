@@ -1,7 +1,7 @@
 ---
 owner: product
 status: active
-last_updated: 2026-05-27
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
@@ -9,33 +9,36 @@ source_of_truth: true
 
 ## Name
 
-**Phase 4 — MVP utility, instrumentation, and launch-scope hardening**
+**Phase 5 — Verification, QA, and release readiness**
 
 ## Why we are here
 
-**Phase 3 — MVP content and journey implementation** exited **2026-05-27** after exit verification: Groups A–I shipped (hubs, guides, Home, FAQ, Dashboard/Start copy, cross-link audit, RoutePageBanner cleanup, stay-calculator related links). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 3 row = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md) and [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §2.
+**Phase 4 — MVP utility, instrumentation, and launch-scope hardening** exited **2026-05-28** after slices **4.1–4.7** shipped and **PRD/MVP reconciliation** published [`MVP_LAUNCH_CONTRACT.md`](../02_product/MVP_LAUNCH_CONTRACT.md). Evidence: [`ROADMAP_STATUS.md`](../01_strategy/ROADMAP_STATUS.md) Phase 4 = Done; [`HANDOFF_NOTES.md`](HANDOFF_NOTES.md).
 
-Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 4: close the gap to **launchable** utility — grouped client search, updates surfacing, places-lite, analytics, SEO, and honest handling of deferred surfaces.
+Per [`ROADMAP_MASTER.md`](../01_strategy/ROADMAP_MASTER.md) Phase 5: prove quality, safety, and operability **before** Launch Approval Gate (LAG)—not by adding MVP feature scope.
 
 ## Entry criteria (met)
 
-- Phase 3 exit criteria met (2026-05-27): must-launch routes with substantive content or product UI; cross-links validated; trust metadata on sensitive guides; no user-visible Phase 1 route shell on content routes.
+- Phase 4 exit criteria met (2026-05-28): search v1, updates, places-lite, analytics subset, SEO, perf sanity, MVP launch contract + waivers documented.
 
-## Exit criteria (Phase 4)
+## Exit criteria (Phase 5)
 
-Per master roadmap Phase 4 (launch bundle):
+Per master roadmap Phase 5:
 
-- **Search v1** — client grouped search on `/search` using `search-index.json`.
-- **Updates** — `/updates` surface with seed editorial items; path to Home/Dashboard teasers as scoped.
-- **Places-lite** — curated place records + honest UX (not a fake map).
-- **Analytics** — Plausible events for core funnels (per Phase 0B).
-- **SEO** — metadata, sitemap, robots baseline.
-- Reconcile PRD DoD vs MVP contract; document any approved gaps.
+- Responsive QA on core flows (see [`EXECUTION_ROADMAP.md`](../05_execution/EXECUTION_ROADMAP.md) §5, [`QA_CHECKLIST.md`](../05_execution/QA_CHECKLIST.md)).
+- Checklist / NBA behavior QA across guest states.
+- Trust-layer QA on sensitive guides.
+- Security / privacy review (guest blob, analytics, env)—align [`OPEN_ITEMS.md`](OPEN_ITEMS.md).
+- Analytics smoke tests (Plausible / Sentry in preview).
+- Release checklist: known issues, rollback exercise, README/handoff current.
+- **No open launch-blocker bugs** unless explicitly waived with owner + mitigation.
+
+**Phase 5 exit does not imply LAG GO or production deploy.**
 
 ## What counts as done
 
-- **`ROADMAP_STATUS.md`**: Phase 4 marked **done** with date when exit criteria met; Phase 5 (QA) next.
+- **`ROADMAP_STATUS.md`**: Phase 5 marked **done** with date when exit criteria met; **LAG** is the next gate (not Phase 6 until LAG GO).
 
 ## After this phase
 
-**Phase 5** — Verification, QA, and release readiness (before LAG).
+**Launch Approval Gate (LAG)** — then **Phase 6** production deployment per roadmap.

@@ -13,7 +13,7 @@ Central map for long-running Cursor collaboration on **flow-guide**. Use this fi
 
 1. Skim this index (30 seconds).
 2. Follow **`CURSOR_NEW_CHAT_PROTOCOL.md`** for the exact read order and the **execution workflow** (two-agent model, checkpoint rules, Composer prompt structure).
-3. Active phase is **Phase 4** (utility / instrumentation / launch hardening) — check `ROADMAP_STATUS.md` for latest. Slice **4.1 Search v1** shipped 2026-05-28.
+3. Active phase is **Phase 5** (QA / release readiness) — check `ROADMAP_STATUS.md` for latest. Operational MVP scope: [`MVP_LAUNCH_CONTRACT.md`](../02_product/MVP_LAUNCH_CONTRACT.md) (Phase 4 closed 2026-05-28).
 4. If the session is **planning / prioritization / next-task selection**, follow **`CURSOR_PLANNING_PROTOCOL.md`** (phase boundaries, candidates, smallest slice, execution plan integration §8).
 5. If the session is **writing or refining prompts** for planning or implementation, also follow **`PROMPT_AUTHORING_PROTOCOL.md`**.
 6. Before editing code or docs, confirm **`LOCKED_DECISIONS.md`** and **`LOCKED_LOGIC.md`** still apply.
@@ -29,14 +29,15 @@ A complete execution roadmap (Phases 3–7 + LAG + risk register + timeline) was
 | 1 | `LOCKED_DECISIONS.md` | Product rules that must not drift without explicit reopening |
 | 2 | `LOCKED_LOGIC.md` | Behavioral / data rules (filters, guest mode, entities) |
 | 3 | `PROJECT_STATE.md` | One-screen snapshot: what we are building, readiness |
-| 4 | `docs/02_product/PRD_MVP.md` | MVP scope and requirements (existing PRD) |
-| 5 | `docs/01_strategy/ROADMAP_MASTER.md` | Phases, MVP matrix, LAG, execution sequencing |
-| 6 | `docs/01_strategy/ROADMAP_STATUS.md` | **Status only** — which phase is active/done (definitions stay in master roadmap) |
-| 7 | `docs/04_engineering/PHASE_0_DECISION_RECORD.md` | **Approved** Phase 0A/0B contract (stack, launch bundle, governance cadence) |
-| 8 | `docs/04_engineering/ENGINEERING_ARCHITECTURE.md` | **v1 implementation** architecture (Next, content, search, hosting, observability) |
-| 9 | `docs/01_strategy/` (other), `docs/02_product/` (other) | Vision, IA, data model, flows |
-| 10 | `TEMP_ASSUMPTIONS.md` | May change; verify before treating as fact |
-| 11 | `OPEN_ITEMS.md` | **Pre-production / ops gates** (governance names, legal, env projects); Phase 0 tech choices are **not** open here |
+| 4 | `docs/02_product/MVP_LAUNCH_CONTRACT.md` | **Operational MVP launch interpretation** (shipped vs waived) |
+| 5 | `docs/02_product/PRD_MVP.md` | MVP requirements history (read via contract for launch scope) |
+| 6 | `docs/01_strategy/ROADMAP_MASTER.md` | Phases, MVP matrix, LAG, execution sequencing |
+| 7 | `docs/01_strategy/ROADMAP_STATUS.md` | **Status only** — which phase is active/done (definitions stay in master roadmap) |
+| 8 | `docs/04_engineering/PHASE_0_DECISION_RECORD.md` | **Approved** Phase 0A/0B contract (stack, launch bundle, governance cadence) |
+| 9 | `docs/04_engineering/ENGINEERING_ARCHITECTURE.md` | **v1 implementation** architecture (Next, content, search, hosting, observability) |
+| 10 | `docs/01_strategy/` (other), `docs/02_product/` (other) | Vision, IA, data model, flows |
+| 11 | `TEMP_ASSUMPTIONS.md` | May change; verify before treating as fact |
+| 12 | `OPEN_ITEMS.md` | **Pre-production / ops gates** (governance names, legal, env projects); Phase 0 tech choices are **not** open here |
 
 If two sources conflict, **locked docs win** unless humans update them via **`UPDATE_PROTOCOL.md`**.
 

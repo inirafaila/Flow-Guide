@@ -1,12 +1,14 @@
 ---
 owner: product
 status: active
-last_updated: 2026-04-01
+last_updated: 2026-05-28
 source_of_truth: true
 ---
 
 # UI Handoff Spec
 ## MVP وب‌اپ راهنمای تازه‌واردها و مهاجران در ارمنستان
+
+> **Launch note (2026-05-28):** This spec is the **design north star** for Figma and future work—not a literal launch checklist. **Operational MVP launch interpretation** (what ships vs deferred) lives in [`MVP_LAUNCH_CONTRACT.md`](MVP_LAUNCH_CONTRACT.md). Canonical UI states for shipped surfaces: [`UI_STATES.md`](../00_ai_context/UI_STATES.md).
 
 ---
 
